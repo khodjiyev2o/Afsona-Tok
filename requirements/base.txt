@@ -1,12 +1,15 @@
-django
-psycopg2-binary
-python-environ
-django-cors-headers
-django-jazzmin
-drf-yasg
-djangorestframework
-django-filter
-django-modeltranslation
+django==5.0.3
+psycopg2-binary==2.9.9
+python-environ==0.4.54
+django-cors-headers==4.3.1
+django-jazzmin==2.6.1
+drf-yasg==1.21.7
+djangorestframework==3.15.1
+django-filter==24.2
+django-modeltranslation==0.18.11
+djangorestframework-simplejwt==5.2.2
+PyJWT==2.6.0
+Pillow==10.2.0
 
 # testing
 factory-boy==3.2.1
@@ -18,3 +21,7 @@ pytest-django==4.5.2
 pytest-factoryboy==2.5.1
 #pytest-env==0.8.2
 #pytest-xdist==3.3.1
+
+# phone number
+django-phonenumber-field==7.1.0
+phonenumbers==8.13.19
