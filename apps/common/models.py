@@ -82,3 +82,40 @@ class UserCar(BaseModel):
         verbose_name = _("User Car")
         verbose_name_plural = _("User Cars")
 
+class Country(BaseModel):
+    ico_code = models.CharField(max_length=10, verbose_name=_("ISO code"))
+    name = models.CharField(max_length=30, verbose_name=_(_("Name")))
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['-name']
+        verbose_name = _("Country")
+        verbose_name_plural = _("Countries")
+
+
+class Region(BaseModel):
+    name = models.CharField(_("Name"), max_length=255)
+    country = models.ForeignKey(Country, verbose_name=_("Country"), on_delete=models.PROTECT)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['-name']
+        verbose_name = _("Region")
+        verbose_name_plural = _("Regions")
+
+
+class District(BaseModel):
+    name = models.CharField(_("Name"), max_length=50)
+    region = models.ForeignKey(to=Region, verbose_name=_("Region"), on_delete=models.PROTECT)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['-name']
+        verbose_name = _("District")
+        verbose_name_plural = _("Districts")
