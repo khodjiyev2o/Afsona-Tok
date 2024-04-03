@@ -51,7 +51,6 @@ THIRD_PARTY_APPS = [
     "corsheaders",
     "modeltranslation",
     "fcm_django",
-
 ]
 
 REST_FRAMEWORK = {
@@ -178,7 +177,6 @@ CELERY_TIMEZONE = "Asia/Tashkent"
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 
-
 FIREBASE_APP = initialize_app()
 FCM_DJANGO_SETTINGS = {
     "DEFAULT_FIREBASE_APP": None,
@@ -190,3 +188,40 @@ FCM_DJANGO_SETTINGS = {
         "AAAAf-BdT7Q:APA91bF3IkaVvmd3CmCOH8J4ugLCk6MJ52PzY4c3pp5IC1eh8JVnE9a4Ym6_jkChMBWqWndcxhCIxBGuSuMvmp5tMflGfI_2288AJ814V1qdyN-uBzdMXAQm1PbXlDZAzUnBlyHEnixK",
     ),
 }
+
+#  MODEL TRANSLATIONS
+LANGUAGES = (
+    ("uz", "Uzbek"),
+    ("ru", "Russian"),
+    ("en", "English"),
+)
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = "ru"
+MODELTRANSLATION_LANGUAGES = (
+    "uz",
+    "ru",
+    "en",
+)
+MODELTRANSLATION_FALLBACK_LANGUAGES = {
+    "default": (
+        "uz",
+        "ru",
+        "en",
+    ),
+    "uz": (
+        "ru",
+        "en",
+    ),
+    "en": (
+        "uz",
+        "ru",
+    ),
+    "ru": (
+        "uz",
+        "en",
+    ),
+}
+
+MODELTRANSLATION_PREPOPULATE_LANGUAGE = "ru"
+
+
