@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from apps.common.models import BaseModel, District
+from apps.common.models import BaseModel, District, UserCar
 
 
 class Location(BaseModel):
@@ -114,3 +114,16 @@ class Connector(BaseModel):
 
     def __str__(self):
         return f"{self.charge_point}: № {self.connector_id}"
+
+
+class ChargingTransaction(BaseModel):
+    class Status(models.TextChoices):
+        IN_PROGRESS = "IN_PROGRESS", _("In Progress")
+        FINISHED = "FINISHED", _("Finished")
+
+    car = models.ForeignKey(to=UserCar, verbose_name=_("Car"), on_delete=models.PROTECT)
+    connector = models.ForeignKey(to=Connector, verbose_name=_("Connector"), on_delete=models.PROTECT)
+    start_time = models.DateTimeField(verbose_name=_("Start Time"))
+    end_time = models.DateTimeField(verbose_name=_("End Time"))
+    status = models.CharField(verbose_name=_("Status"), max_length=30, choices=Status.choices,
+                              default=Status.IN_PROGRESS)
