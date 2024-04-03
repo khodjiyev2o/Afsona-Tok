@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from phonenumber_field.modelfields import PhoneNumberField
+
 
 class BaseModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created at"))
@@ -54,10 +56,26 @@ class CarModel(BaseModel):
         verbose_name_plural = _("Car models")
 
 
+class ConnectionType(BaseModel):
+    class AC_DC_TYPE_Choice(models.TextChoices):
+        AC = "AC", _("AC")
+        DC = "DC", _("DC")
+
+    name = models.CharField(max_length=255, verbose_name=_("Name"))
+    _type = models.CharField(max_length=255, verbose_name=_("Type"), choices=AC_DC_TYPE_Choice.choices)
+    icon = models.ImageField(_("Icon"), upload_to="icons/%Y/%m")
+    max_voltage = models.IntegerField(verbose_name=_("Max Voltage"))
+
+
 class UserCar(BaseModel):
+
     class STATE_NUMBER_TYPES(models.TextChoices):
         INDIVIDUAL = 'INDIVIDUAL', _('INDIVIDUAL')  # физическое лицо
         LEGAL = 'LEGAL', _('LEGAL')  # юридическое лицо
+        DIPLOMATIC = 'DIPLOMATIC', _('DIPLOMATIC')  # Дипломатический
+        OON = 'OON', _('OON')  # Организация Объединённых Наций
+        InternationalResident = 'InternationalResident', _('InternationalResident')  # Международные резиденты
+        InternationalOrganization = 'InternationalOrganization', _('InternationalOrganization')  # Международные организации
 
     vin = models.CharField(_("VIN"), max_length=100, null=True, blank=True)
     state_number = models.CharField(_("Гос.номер"), max_length=100, null=True, blank=True)
@@ -72,7 +90,7 @@ class UserCar(BaseModel):
         on_delete=models.CASCADE,
     )
     model = models.ForeignKey(CarModel, related_name="cars", on_delete=models.CASCADE, null=True, blank=True)
-    ## charging_type = models.ManyToManyField(TypeConnection, verbose_name=_("Type Connection"), related_name="cars")
+    connector_type = models.ForeignKey(ConnectionType, on_delete=models.CASCADE)
     user = models.ForeignKey("users.User", verbose_name=_("User"), related_name="cars", on_delete=models.CASCADE)
 
     def __str__(self):
@@ -82,3 +100,51 @@ class UserCar(BaseModel):
         verbose_name = _("User Car")
         verbose_name_plural = _("User Cars")
 
+
+class Country(BaseModel):
+    ico_code = models.CharField(max_length=10, verbose_name=_("ISO code"))
+    name = models.CharField(max_length=30, verbose_name=_(_("Name")))
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['-name']
+        verbose_name = _("Country")
+        verbose_name_plural = _("Countries")
+
+
+class Region(BaseModel):
+    name = models.CharField(_("Name"), max_length=255)
+    country = models.ForeignKey(Country, verbose_name=_("Country"), on_delete=models.PROTECT)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['-name']
+        verbose_name = _("Region")
+        verbose_name_plural = _("Regions")
+
+
+class District(BaseModel):
+    name = models.CharField(_("Name"), max_length=50)
+    region = models.ForeignKey(to=Region, verbose_name=_("Region"), on_delete=models.PROTECT)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['-id']
+        verbose_name = _("District")
+        verbose_name_plural = _("Districts")
+
+
+class Support(BaseModel):
+    telegram_link = models.CharField(max_length=255, verbose_name=_("Telegram Link"))
+    phone_number = PhoneNumberField(_("Phone number"), max_length=255)
+    email = models.EmailField(verbose_name=_("Email"))
+
+    class Meta:
+        verbose_name = _("Support")
+        verbose_name_plural = _("Support")

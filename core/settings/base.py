@@ -3,6 +3,8 @@ from pathlib import Path
 
 import environ
 
+from django.utils.translation import gettext_lazy as _
+from firebase_admin import initialize_app
 from core.jazzmin_conf import *  # noqa
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,6 +39,9 @@ DJANGO_APPS = [
 CUSTOM_APPS = [
     "apps.common",
     "apps.users",
+    "apps.chargers",
+    "apps.notification",
+    "apps.payment",
 ]
 
 THIRD_PARTY_APPS = [
@@ -45,6 +50,8 @@ THIRD_PARTY_APPS = [
     "drf_yasg",
     "corsheaders",
     "modeltranslation",
+    "fcm_django",
+
 ]
 
 REST_FRAMEWORK = {
@@ -170,3 +177,16 @@ CELERY_TIMEZONE = "Asia/Tashkent"
 
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
+
+
+FIREBASE_APP = initialize_app()
+FCM_DJANGO_SETTINGS = {
+    "DEFAULT_FIREBASE_APP": None,
+    "APP_VERBOSE_NAME": _("Devices"),
+    "ONE_DEVICE_PER_USER": False,
+    "DELETE_INACTIVE_DEVICES": False,
+    "FCM_SERVER_KEY": env.str(
+        "FCM_SERVER_KEY",
+        "AAAAf-BdT7Q:APA91bF3IkaVvmd3CmCOH8J4ugLCk6MJ52PzY4c3pp5IC1eh8JVnE9a4Ym6_jkChMBWqWndcxhCIxBGuSuMvmp5tMflGfI_2288AJ814V1qdyN-uBzdMXAQm1PbXlDZAzUnBlyHEnixK",
+    ),
+}
