@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from apps.common.models import BaseModel, District, UserCar
+from apps.common.models import BaseModel, District, UserCar, ConnectorType
 
 
 class Location(BaseModel):
@@ -29,59 +29,6 @@ class ChargePoint(BaseModel):
 
 
 class Connector(BaseModel):
-    class ConnectorType(models.TextChoices):
-        CHADEMO = 'CHADEMO'
-        CHAOJI = 'CHAOJI'
-        DOMESTIC_A = 'DOMESTIC_A'
-        DOMESTIC_B = 'DOMESTIC_B'
-        DOMESTIC_C = 'DOMESTIC_C'
-        DOMESTIC_D = 'DOMESTIC_D'
-        DOMESTIC_E = 'DOMESTIC_E'
-        DOMESTIC_F = 'DOMESTIC_F'
-        DOMESTIC_G = 'DOMESTIC_G'
-        DOMESTIC_H = 'DOMESTIC_H'
-        DOMESTIC_I = 'DOMESTIC_I'
-        DOMESTIC_J = 'DOMESTIC_J'
-        DOMESTIC_K = 'DOMESTIC_K'
-        DOMESTIC_L = 'DOMESTIC_L'
-        DOMESTIC_M = 'DOMESTIC_M'
-        DOMESTIC_N = 'DOMESTIC_N'
-        DOMESTIC_O = 'DOMESTIC_O'
-        GBT_AC = 'GBT_AC'
-        GBT_DC = 'GBT_DC'
-        IEC_60309_2_SINGLE_16 = 'IEC_60309_2_single_16'
-        IEC_60309_2_THREE_16 = 'IEC_60309_2_three_16'
-        IEC_60309_2_THREE_32 = 'IEC_60309_2_three_32'
-        IEC_60309_2_THREE_64 = 'IEC_60309_2_three_64'
-        IEC_62196_T1 = 'IEC_62196_T1'
-        IEC_62196_T1_COMBO = 'IEC_62196_T1_COMBO'
-        IEC_62196_T2 = 'IEC_62196_T2'
-        IEC_62196_T2_COMBO = 'IEC_62196_T2_COMBO'
-        IEC_62196_T3A = 'IEC_62196_T3A'
-        IEC_62196_T3C = 'IEC_62196_T3C'
-        NEMA_5_20 = 'NEMA_5_20'
-        NEMA_6_30 = 'NEMA_6_30'
-        NEMA_6_50 = 'NEMA_6_50'
-        NEMA_10_30 = 'NEMA_10_30'
-        NEMA_10_50 = 'NEMA_10_50'
-        NEMA_14_30 = 'NEMA_14_30'
-        NEMA_14_50 = 'NEMA_14_50'
-        PANTOGRAPH_BOTTOM_UP = 'PANTOGRAPH_BOTTOM_UP'
-        PANTOGRAPH_TOP_DOWN = 'PANTOGRAPH_TOP_DOWN'
-        TESLA_R = 'TESLA_R'
-        TESLA_S = 'TESLA_S'
-
-    class ConnectorFormat(models.TextChoices):
-        SOCKET = 'SOCKET'
-        CABLE = 'CABLE'
-
-    class PowerType(models.TextChoices):
-        AC_1_PHASE = 'AC_1_PHASE'  # 'AC single phase.'
-        AC_2_PHASE = 'AC_2_PHASE'  # 'AC two phases, only two of the three available phases connected.'
-        AC_2_PHASE_SPLIT = 'AC_2_PHASE_SPLIT'  # '3 AC two phases using split phase system.'
-        AC_3_PHASE = 'AC_3_PHASE'  # 'AC three phases.'
-        DC = 'DC'  # 'Direct Current.'
-
     class Status(models.TextChoices):
         AVAILABLE = "Available"
         PREPARING = "Preparing"
@@ -96,14 +43,11 @@ class Connector(BaseModel):
     charge_point = models.ForeignKey(ChargePoint, on_delete=models.PROTECT)
     name = models.CharField(max_length=40, null=True, verbose_name=_("Name"))
 
-    connector_id = models.IntegerField(verbose_name=_("Connector Id within EVS"))
+    connector_id = models.IntegerField(verbose_name=_("Connector Id within Charger"))
     standard = models.CharField(max_length=50, choices=ConnectorType.choices, verbose_name=_("Connector's standard"))
-    format = models.CharField(max_length=50, choices=ConnectorFormat.choices, verbose_name=_("Connector's format"))
-    power_type = models.CharField(max_length=50, choices=PowerType.choices, verbose_name=_("Connector's power type"))
     max_voltage = models.IntegerField(default=0, verbose_name=_("Connector's Max Voltage"))
     max_amperage = models.IntegerField(default=0, verbose_name=_("Connector's Max Amperage"))
     max_electric_power = models.IntegerField(default=0, verbose_name=_("Connector's Max electric power"))
-
     status = models.CharField(_("Статус"), choices=Status.choices, max_length=50, default=Status.UNAVAILABLE)
 
     class Meta:
@@ -127,3 +71,9 @@ class ChargingTransaction(BaseModel):
     end_time = models.DateTimeField(verbose_name=_("End Time"))
     status = models.CharField(verbose_name=_("Status"), max_length=30, choices=Status.choices,
                               default=Status.IN_PROGRESS)
+    battery_percent_on_start = models.IntegerField(verbose_name=_("Battery Percent on Start"), default=0)
+    battery_percent = models.IntegerField(verbose_name=_("Battery Percent"), default=0)
+
+    meter_on_start = models.IntegerField(verbose_name=_("Meter On Start"))
+    current_meter = models.IntegerField(verbose_name=_("Current Meter"), default=0)
+    meter_on_end = models.IntegerField(verbose_name=_("Meter on End"), null=True, blank=True)
