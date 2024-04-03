@@ -10,6 +10,8 @@ django-modeltranslation==0.18.11
 djangorestframework-simplejwt==5.2.2
 PyJWT==2.6.0
 Pillow==10.2.0
+# firebase
+fcm-django==2.0.1
 
 # testing
 factory-boy==3.2.1

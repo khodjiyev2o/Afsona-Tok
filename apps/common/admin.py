@@ -44,3 +44,12 @@ class UserCarAdmin(admin.ModelAdmin):
     list_display = ["id", "vin", "model", "state_number", "state_number_type", "user"]
     autocomplete_fields = ["model", "user"]
     search_fields = ["vin", "model"]
+
+
+@admin.register(models.Support)
+class SupportAdmin(admin.ModelAdmin):
+    def has_add_permission(self, request):
+        if self.model.objects.count() > 0:
+            return False
+        return True
+

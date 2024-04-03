@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from phonenumber_field.modelfields import PhoneNumberField
+
 
 class BaseModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_("Created at"))
@@ -53,53 +55,27 @@ class CarModel(BaseModel):
         verbose_name = _("Car model")
         verbose_name_plural = _("Car models")
 
-class ConnectorType(models.TextChoices):
-        CHADEMO = 'CHADEMO'
-        CHAOJI = 'CHAOJI'
-        DOMESTIC_A = 'DOMESTIC_A'
-        DOMESTIC_B = 'DOMESTIC_B'
-        DOMESTIC_C = 'DOMESTIC_C'
-        DOMESTIC_D = 'DOMESTIC_D'
-        DOMESTIC_E = 'DOMESTIC_E'
-        DOMESTIC_F = 'DOMESTIC_F'
-        DOMESTIC_G = 'DOMESTIC_G'
-        DOMESTIC_H = 'DOMESTIC_H'
-        DOMESTIC_I = 'DOMESTIC_I'
-        DOMESTIC_J = 'DOMESTIC_J'
-        DOMESTIC_K = 'DOMESTIC_K'
-        DOMESTIC_L = 'DOMESTIC_L'
-        DOMESTIC_M = 'DOMESTIC_M'
-        DOMESTIC_N = 'DOMESTIC_N'
-        DOMESTIC_O = 'DOMESTIC_O'
-        GBT_AC = 'GBT_AC'
-        GBT_DC = 'GBT_DC'
-        IEC_60309_2_SINGLE_16 = 'IEC_60309_2_single_16'
-        IEC_60309_2_THREE_16 = 'IEC_60309_2_three_16'
-        IEC_60309_2_THREE_32 = 'IEC_60309_2_three_32'
-        IEC_60309_2_THREE_64 = 'IEC_60309_2_three_64'
-        IEC_62196_T1 = 'IEC_62196_T1'
-        IEC_62196_T1_COMBO = 'IEC_62196_T1_COMBO'
-        IEC_62196_T2 = 'IEC_62196_T2'
-        IEC_62196_T2_COMBO = 'IEC_62196_T2_COMBO'
-        IEC_62196_T3A = 'IEC_62196_T3A'
-        IEC_62196_T3C = 'IEC_62196_T3C'
-        NEMA_5_20 = 'NEMA_5_20'
-        NEMA_6_30 = 'NEMA_6_30'
-        NEMA_6_50 = 'NEMA_6_50'
-        NEMA_10_30 = 'NEMA_10_30'
-        NEMA_10_50 = 'NEMA_10_50'
-        NEMA_14_30 = 'NEMA_14_30'
-        NEMA_14_50 = 'NEMA_14_50'
-        PANTOGRAPH_BOTTOM_UP = 'PANTOGRAPH_BOTTOM_UP'
-        PANTOGRAPH_TOP_DOWN = 'PANTOGRAPH_TOP_DOWN'
-        TESLA_R = 'TESLA_R'
-        TESLA_S = 'TESLA_S'
+
+class ConnectionType(BaseModel):
+    class AC_DC_TYPE_Choice(models.TextChoices):
+        AC = "AC", _("AC")
+        DC = "DC", _("DC")
+
+    name = models.CharField(max_length=255, verbose_name=_("Name"))
+    _type = models.CharField(max_length=255, verbose_name=_("Type"), choices=AC_DC_TYPE_Choice.choices)
+    icon = models.ImageField(_("Icon"), upload_to="icons/%Y/%m")
+    max_voltage = models.IntegerField(verbose_name=_("Max Voltage"))
 
 
 class UserCar(BaseModel):
+
     class STATE_NUMBER_TYPES(models.TextChoices):
         INDIVIDUAL = 'INDIVIDUAL', _('INDIVIDUAL')  # физическое лицо
         LEGAL = 'LEGAL', _('LEGAL')  # юридическое лицо
+        DIPLOMATIC = 'DIPLOMATIC', _('DIPLOMATIC')  # Дипломатический
+        OON = 'OON', _('OON')  # Организация Объединённых Наций
+        InternationalResident = 'InternationalResident', _('InternationalResident')  # Международные резиденты
+        InternationalOrganization = 'InternationalOrganization', _('InternationalOrganization')  # Международные организации
 
     vin = models.CharField(_("VIN"), max_length=100, null=True, blank=True)
     state_number = models.CharField(_("Гос.номер"), max_length=100, null=True, blank=True)
@@ -114,7 +90,7 @@ class UserCar(BaseModel):
         on_delete=models.CASCADE,
     )
     model = models.ForeignKey(CarModel, related_name="cars", on_delete=models.CASCADE, null=True, blank=True)
-    ## charging_type = models.ManyToManyField(TypeConnection, verbose_name=_("Type Connection"), related_name="cars")
+    connector_type = models.ForeignKey(ConnectionType, on_delete=models.CASCADE)
     user = models.ForeignKey("users.User", verbose_name=_("User"), related_name="cars", on_delete=models.CASCADE)
 
     def __str__(self):
@@ -123,6 +99,7 @@ class UserCar(BaseModel):
     class Meta:
         verbose_name = _("User Car")
         verbose_name_plural = _("User Cars")
+
 
 class Country(BaseModel):
     ico_code = models.CharField(max_length=10, verbose_name=_("ISO code"))
@@ -158,6 +135,16 @@ class District(BaseModel):
         return self.name
 
     class Meta:
-        ordering = ['-name']
+        ordering = ['-id']
         verbose_name = _("District")
         verbose_name_plural = _("Districts")
+
+
+class Support(BaseModel):
+    telegram_link = models.CharField(max_length=255, verbose_name=_("Telegram Link"))
+    phone_number = PhoneNumberField(_("Phone number"), max_length=255)
+    email = models.EmailField(verbose_name=_("Email"))
+
+    class Meta:
+        verbose_name = _("Support")
+        verbose_name_plural = _("Support")
