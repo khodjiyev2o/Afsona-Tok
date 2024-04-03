@@ -65,6 +65,11 @@ class ChargingTransaction(BaseModel):
         IN_PROGRESS = "IN_PROGRESS", _("In Progress")
         FINISHED = "FINISHED", _("Finished")
 
+    class StopReason(models.TextChoices):
+        LOCAL = "LOCAL", _("Local")
+        REMOTE = "REMOTE", _("Remote")
+        OTHER = "OTHER", _("Other")
+
     car = models.ForeignKey(to=UserCar, verbose_name=_("Car"), on_delete=models.PROTECT)
     connector = models.ForeignKey(to=Connector, verbose_name=_("Connector"), on_delete=models.PROTECT)
     start_time = models.DateTimeField(verbose_name=_("Start Time"))
@@ -77,3 +82,8 @@ class ChargingTransaction(BaseModel):
     meter_on_start = models.IntegerField(verbose_name=_("Meter On Start"))
     current_meter = models.IntegerField(verbose_name=_("Current Meter"), default=0)
     meter_on_end = models.IntegerField(verbose_name=_("Meter on End"), null=True, blank=True)
+
+    total_price = models.IntegerField(verbose_name=_("Total Price"), null=True, blank=True)
+    stop_reason = models.CharField(
+        max_length=40, verbose_name=_("Stop Reason"),choices=StopReason.choices, null=True, blank=True
+    )
