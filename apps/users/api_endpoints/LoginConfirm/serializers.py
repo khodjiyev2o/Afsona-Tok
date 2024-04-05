@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 
-class LoginSerializer(serializers.ModelSerializer):
+class LoginConfirmSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ('phone', 'language')
+        fields = ('phone', 'session', 'otp')

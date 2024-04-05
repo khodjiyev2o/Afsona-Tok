@@ -42,6 +42,7 @@ CUSTOM_APPS = [
     "apps.chargers",
     "apps.notification",
     "apps.payment",
+    "apps.ocpp_messages"
 ]
 
 THIRD_PARTY_APPS = [

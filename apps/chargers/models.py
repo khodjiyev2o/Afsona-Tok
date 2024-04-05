@@ -45,7 +45,6 @@ class ChargePoint(BaseModel):
 
 
 class Connector(BaseModel):
-
     class Status(models.TextChoices):
         AVAILABLE = "Available"
         PREPARING = "Preparing"
@@ -90,7 +89,8 @@ class ChargingTransaction(BaseModel):
         REMOTE = "REMOTE", _("Remote")
 
     user = models.ForeignKey("users.User", verbose_name=_("User"), on_delete=models.PROTECT)
-    user_car = models.ForeignKey("common.UserCar", verbose_name=_("User Car"), null=True, blank=True, on_delete=models.SET_NULL)
+    user_car = models.ForeignKey("common.UserCar", verbose_name=_("User Car"), null=True, blank=True,
+                                 on_delete=models.SET_NULL)
     connector = models.ForeignKey(to=Connector, verbose_name=_("Connector"), on_delete=models.PROTECT)
     end_time = models.DateTimeField(verbose_name=_("End Time"), null=True, blank=True)
     battery_percent_on_start = models.IntegerField(verbose_name=_("Battery Percent on Start"), default=0)
@@ -98,14 +98,15 @@ class ChargingTransaction(BaseModel):
     meter_on_start = models.IntegerField(verbose_name=_("Meter On Start"))
     meter_on_end = models.IntegerField(verbose_name=_("Meter on End"), null=True, blank=True)
     meter_used = models.IntegerField(verbose_name=_("Meter Used"), default=0)
-    total_price = models.DecimalField(verbose_name=_("Total Price"), null=True, blank=True, decimal_places=2, max_digits=10)
+    total_price = models.DecimalField(verbose_name=_("Total Price"), null=True, blank=True, decimal_places=2,
+                                      max_digits=10)
     status = models.CharField(verbose_name=_("Status"), max_length=30, choices=Status.choices,
                               default=Status.IN_PROGRESS)
     start_reason = models.CharField(
         max_length=40, verbose_name=_("Start Reason"), choices=StartReason.choices, null=True, blank=True
     )
     stop_reason = models.CharField(
-        max_length=40, verbose_name=_("Stop Reason"),choices=StopReason.choices, null=True, blank=True
+        max_length=40, verbose_name=_("Stop Reason"), choices=StopReason.choices, null=True, blank=True
     )
     is_limited = models.BooleanField(default=False, verbose_name=_("Is Limited"))
 
@@ -116,3 +117,21 @@ class ChargingTransaction(BaseModel):
 
     def __str__(self):
         return f"{self.id}: {self.user} - {self.total_price}"
+
+
+class ChargeCommand(BaseModel):
+    class Commands(models.TextChoices):
+        REMOTE_START_TRANSACTION = "REMOTE_START_TRANSACTION", _("Remote start transaction")
+        REMOTE_STOP_TRANSACTION = "REMOTE_STOP_TRANSACTION", _("Remote start transaction")
+
+    user_car = models.ForeignKey("common.UserCar", verbose_name=_("User Car"), null=True, blank=True,
+                                 on_delete=models.SET_NULL)
+    user = models.ForeignKey("users.User", verbose_name=_("User"), on_delete=models.PROTECT)
+    command = models.CharField(max_length=50, verbose_name=_("Command"), choices=Commands.choices)
+    id_tag = models.CharField(max_length=20, verbose_name=_("Unique Id tag of command"))  # should be unique
+
+    is_delivered = models.BooleanField(null=True, blank=True)
+    delivered_at = models.DateTimeField(null=True, blank=True)
+
+    status = models.BooleanField(null=True, blank=True)
+    done_at = models.DateTimeField(null=True, blank=True)
