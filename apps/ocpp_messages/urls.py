@@ -1,13 +1,17 @@
 from django.urls import path
-from .views import default_index
+from .views import (
+    default_index, BootNotificationApiView, HeartbeatApiView,
+    MeterValuesApiView, StatusNotificationApiView,
+)
 
 app_name = 'ocpp_messages'
 
 urlpatterns = [
-    path("boot_notification/", default_index),
-    path("heartbeat/", default_index),
-    path('meter_values/', default_index),
-    path("start_transaction/", default_index),
-    path("status_notification", default_index),
-    path("stop_transaction", default_index)
+    path("<str:charger_identify>/boot_notification/", BootNotificationApiView.as_view()),
+    path("<str:charger_identify>/heartbeat/", HeartbeatApiView.as_view()),
+    path('<str:charger_identify>/meter_values/', MeterValuesApiView),
+    path("<str:charger_identify>/start_transaction/", default_index),
+    path("<str:charger_identify>/status_notification", StatusNotificationApiView),
+    path("<str:charger_identify>/stop_transaction", default_index),
+    path("<str:charger_identify>/disonnect/", default_index)
 ]
