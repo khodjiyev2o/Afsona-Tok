@@ -97,7 +97,7 @@ class ChargingTransaction(BaseModel):
     battery_percent_on_end = models.IntegerField(verbose_name=_("Battery Percent on End"), null=True, blank=True)
     meter_on_start = models.IntegerField(verbose_name=_("Meter On Start"))
     meter_on_end = models.IntegerField(verbose_name=_("Meter on End"), null=True, blank=True)
-    meter_used = models.IntegerField(verbose_name=_("Meter Used"), default=0)
+    meter_used = models.FloatField(verbose_name=_("Meter Used"), default=0)
     total_price = models.DecimalField(verbose_name=_("Total Price"), null=True, blank=True, decimal_places=2,
                                       max_digits=10)
     status = models.CharField(verbose_name=_("Status"), max_length=30, choices=Status.choices,
@@ -115,6 +115,10 @@ class ChargingTransaction(BaseModel):
         verbose_name_plural = _("ChargingTransactions")
         ordering = ["-id"]
 
+    @property
+    def consumer_kwh(self) -> float:
+        return round((self.meter_on_start - self.meter_on_end) / 1000, 2)
+
     def __str__(self):
         return f"{self.id}: {self.user} - {self.total_price}"
 
@@ -126,6 +130,7 @@ class ChargeCommand(BaseModel):
 
     user_car = models.ForeignKey("common.UserCar", verbose_name=_("User Car"), null=True, blank=True,
                                  on_delete=models.SET_NULL)
+    connector = models.ForeignKey(to=Connector, on_delete=models.PROTECT, verbose_name=_("Connector"))
     user = models.ForeignKey("users.User", verbose_name=_("User"), on_delete=models.PROTECT)
     command = models.CharField(max_length=50, verbose_name=_("Command"), choices=Commands.choices)
     id_tag = models.CharField(max_length=20, verbose_name=_("Unique Id tag of command"))  # should be unique
