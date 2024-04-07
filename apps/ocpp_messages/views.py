@@ -4,7 +4,7 @@ from django.utils import timezone
 from ocpp.v16.enums import RegistrationStatus, AuthorizationStatus
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
+from rest_framework import status
 from apps.chargers.models import ChargePoint, ChargingTransaction, ChargeCommand
 
 logger = logging.getLogger("telegram")
@@ -74,7 +74,7 @@ class StartTransactionAPIView(APIView):
         initial_response = {
             "transaction_id": -1,
             "id_tag_info":
-                {"status": AuthorizationStatus.invalid, "id_tag": "random_string_len_20", "expiry_date": None}
+                {"status": AuthorizationStatus.invalid, "id_tag": None, "expiry_date": None}
         }
 
         charger_id, connector_id = kwargs.get("charger_identify"), data.get("connector_id")
@@ -95,11 +95,31 @@ class StartTransactionAPIView(APIView):
 
 class StopTransactionAPIView(APIView):
     def post(self, request, *args, **kwargs):
-        data = request.data
-        return Response(status=200)
+        initial_response = dict(id_tag_info=dict(status=AuthorizationStatus.invalid, id_tag=None, expiry_date=None))
+        transaction_id = request.data.get("transaction_id")
+        meter_stop = request.data.get("meter_stop")
+        reason = request.data.get('reason')
+        transaction_data = request.data.get("transaction_data")
+
+        charging_transaction: ChargingTransaction = ChargingTransaction.objects.filter(
+            pk=transaction_id, status=ChargingTransaction.Status.IN_PROGRESS
+        ).first()
+        if not charging_transaction:
+            logger.error(f"StopTransaction: {transaction_id} Not Found")
+            return Response(initial_response, status=status.HTTP_200_OK)
+
+        charging_transaction.meter_on_end = meter_stop
+        charging_transaction.meter_used = round(
+            (charging_transaction.meter_on_start - charging_transaction.meter_on_end) / 1000, 2
+        )
+        charging_transaction.status = ChargingTransaction.Status.FINISHED
+        charging_transaction.stop_reason = reason
+        charging_transaction.save(update_fields=['meter_on_start', 'meter_used'])
+
+        initial_response['id_tag_info']['status'] = AuthorizationStatus.accepted
+        return Response(data=initial_response, status=200)
 
 
 class CommandCallbackAPIView(APIView):
     def post(self, request, *args, **kwargs):
-        print(request.data)
         return Response(data={}, status=200)

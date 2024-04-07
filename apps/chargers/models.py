@@ -80,13 +80,13 @@ class ChargingTransaction(BaseModel):
         FINISHED = "FINISHED", _("Finished")
 
     class StopReason(models.TextChoices):
-        LOCAL = "LOCAL", _("Local")
-        REMOTE = "REMOTE", _("Remote")
-        OTHER = "OTHER", _("Other")
+        LOCAL = "Local", _("Local")
+        REMOTE = "Remote", _("Remote")
+        OTHER = "Other", _("Other")
 
     class StartReason(models.TextChoices):
-        LOCAL = "LOCAL", _("Local")
-        REMOTE = "REMOTE", _("Remote")
+        LOCAL = "Local", _("Local")
+        REMOTE = "Remote", _("Remote")
 
     user = models.ForeignKey("users.User", verbose_name=_("User"), on_delete=models.PROTECT)
     user_car = models.ForeignKey("common.UserCar", verbose_name=_("User Car"), null=True, blank=True,

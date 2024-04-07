@@ -3,7 +3,7 @@
 
 
 hello:
-	echo "Hello, UIC"
+	echo "Hello, Afsona"
 run:
 	python3 manage.py runserver 0.0.0.0:8000
 migrations:
@@ -14,5 +14,11 @@ createsuperuser:
 	python3 manage.py createsuperuser
 test:
 	pytest -vv -s
+
+ocpp_service:
+
+
+
+
 ## -B disable(pycache), -vv(show more information), -s(show print statements)
 
