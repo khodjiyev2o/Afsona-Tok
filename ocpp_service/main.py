@@ -21,5 +21,5 @@ async def websocket_endpoint(websocket: WebSocket, charger_identify: str):
         await manager.connect(websocket, charger_identify)
         while True:
             await websocket.receive_text()
-    except WebSocketDisconnect:
-        await manager.disconnect(charger_identify)
+    except WebSocketDisconnect as ex:
+        await manager.disconnect(charger_identify, str(ex))

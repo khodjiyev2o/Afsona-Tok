@@ -1,25 +1,33 @@
 import logging
 
+from django.db.models import Q
 from django.utils import timezone
 from ocpp.v16.enums import RegistrationStatus, AuthorizationStatus
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
-from apps.chargers.models import ChargePoint, ChargingTransaction, ChargeCommand
+from apps.chargers.models import ChargePoint, ChargingTransaction, ChargeCommand, Connector
 
 logger = logging.getLogger("telegram")
 
 
 class ChargerDisconnectAPIView(APIView):
     def post(self, request, *args, **kwargs):
-        data = request.data
-        print(kwargs)
-        return Response({}, status=200)
+        charger_id = kwargs.get("charger_identify")
+        reason = request.data.get("reason")
+
+        Connector.objects.filter(
+            Q(charge_point__charger_id=charger_id) & ~Q(status=Connector.Status.CHARGING)
+        ).update(
+            status=Connector.Status.UNAVAILABLE, last_status_reason=Connector.LastStatusReason.CHARGER_DISCONNECTED
+        )
+        logger.info(f"Disconnect: {charger_id}\nReason: {reason}")
+
+        return Response(data={}, status=200)
 
 
 class BootNotificationAPIView(APIView):
     def post(self, request, *args, **kwargs):
-        data = request.data
 
         return Response({"interval": 10, "status": RegistrationStatus.accepted}, status=200)
 

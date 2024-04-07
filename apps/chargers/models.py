@@ -56,10 +56,19 @@ class Connector(BaseModel):
         UNAVAILABLE = "Unavailable"
         FAULTED = "Faulted"
 
+    class LastStatusReason(models.TextChoices):
+        NORMAL = "normal", _("Normal")
+        CHARGER_DISCONNECTED = "charger_disconnected", _("Charge Disconnected")
+        MANUAL = "manual", _("Manual")
+
     name = models.CharField(max_length=40, null=True, verbose_name=_("Name"))
     connector_id = models.IntegerField(verbose_name=_("Connector Id within Charger"))
     standard = models.ForeignKey(ConnectionType, verbose_name=_("Connector's standard"), on_delete=models.PROTECT)
-    status = models.CharField(_("Статус"), choices=Status.choices, max_length=50, default=Status.UNAVAILABLE)
+    status = models.CharField(_("Status"), choices=Status.choices, max_length=50, default=Status.UNAVAILABLE)
+    last_status_reason = models.CharField(
+        max_length=30, choices=LastStatusReason.choices, default=LastStatusReason.NORMAL,
+        db_default=LastStatusReason.NORMAL, verbose_name=_("Last status reason")
+    )
 
     # FK
     charge_point = models.ForeignKey(ChargePoint, on_delete=models.PROTECT)
