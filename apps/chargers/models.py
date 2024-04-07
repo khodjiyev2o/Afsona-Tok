@@ -128,6 +128,11 @@ class ChargingTransaction(BaseModel):
     def consumer_kwh(self) -> float:
         return round((self.meter_on_start - self.meter_on_end) / 1000, 2)
 
+    def save(self, *args, **kwargs):
+        if not self.battery_percent_on_start:
+            self.battery_percent_on_start = self.battery_percent_on_end
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return f"{self.id}: {self.user} - {self.total_price}"
 
