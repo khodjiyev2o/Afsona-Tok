@@ -1,9 +1,4 @@
-from .Login.views import LoginAPIView
-from .LoginConfirm.serializers import LoginConfirmSerializer
-
-
-__all__ = [
-    "LoginAPIView",
-    "LoginConfirmSerializer"
-]
-
+from .Login import * # noqa
+from .LoginConfirm import * # noqa
+from .UpdateProfile import * # noqa
+from .ProfileDetail import * # noqa

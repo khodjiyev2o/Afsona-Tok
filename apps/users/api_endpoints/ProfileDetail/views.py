@@ -1,10 +1,10 @@
-from rest_framework.generics import UpdateAPIView
+from rest_framework.generics import RetrieveAPIView
 from rest_framework.permissions import IsAuthenticated
 
 from apps.users.api_endpoints.UpdateProfile.serializers import ProfileUpdateSerializer
 
 
-class ProfileUpdateView(UpdateAPIView):
+class ProfileDetailView(RetrieveAPIView):
     serializer_class = ProfileUpdateSerializer
     permission_classes = [IsAuthenticated]
 
@@ -12,4 +12,4 @@ class ProfileUpdateView(UpdateAPIView):
         return self.request.user
 
 
-__all__ = ["ProfileUpdateView"]
+__all__ = ["ProfileDetailView"]

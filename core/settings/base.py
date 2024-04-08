@@ -83,6 +83,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
 ]
 
 ROOT_URLCONF = "core.urls"
@@ -168,9 +169,12 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # CACHES
 CACHES = {
     "default": {
-        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "BACKEND": "django_redis.cache.RedisCache",
         "LOCATION": f"{env.str('REDIS_URL', 'redis://localhost:6379/0')}",
-        "KEY_PREFIX": "afsona",
+        "KEY_PREFIX": "tranzit-backend",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
     }
 }
 
@@ -230,4 +234,11 @@ MODELTRANSLATION_FALLBACK_LANGUAGES = {
 
 MODELTRANSLATION_PREPOPULATE_LANGUAGE = "ru"
 
+ESKIZ_EMAIL = env.str("ESKIZ_USER_EMAIL", "samandarkhodjiyev@gmail.com")
+ESKIZ_PASSWORD = env.str("ESKIZ_USER_PASSWORD", "b9LHEGCG9fppE4B2D7rEexqk4AgYVMIUr10JKXP3")
 
+
+# SWAGGER SETTINGS
+SWAGGER_SETTINGS = {
+    "SECURITY_DEFINITIONS": {"api_key": {"type": "apiKey", "in": "header", "name": "Authorization"}},
+}

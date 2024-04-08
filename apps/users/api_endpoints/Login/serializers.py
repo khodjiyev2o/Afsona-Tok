@@ -1,8 +1,6 @@
-from django.contrib.auth import get_user_model
+from phonenumber_field.validators import validate_international_phonenumber
 from rest_framework import serializers
 
 
-class LoginSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = get_user_model()
-        fields = ('phone', 'language')
+class LoginSmsSerializer(serializers.Serializer):
+    phone = serializers.CharField(validators=[validate_international_phonenumber])
