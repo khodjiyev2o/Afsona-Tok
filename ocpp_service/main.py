@@ -12,14 +12,14 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-# app.include_router(router)
+app.include_router(router)
 
 
 @app.websocket("/ocpp/ws/{charger_identify}")
-async def websocket_endpoint(websocket: WebSocket, charge_point_identify: str):
+async def websocket_endpoint(websocket: WebSocket, charger_identify: str):
     try:
-        await manager.connect(websocket, charge_point_identify)
+        await manager.connect(websocket, charger_identify)
         while True:
             await websocket.receive_text()
-    except WebSocketDisconnect:
-        await manager.disconnect(charge_point_identify)
+    except WebSocketDisconnect as ex:
+        await manager.disconnect(charger_identify, str(ex))

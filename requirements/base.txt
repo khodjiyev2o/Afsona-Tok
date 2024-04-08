@@ -27,3 +27,11 @@ pytest-factoryboy==2.5.1
 # phone number
 django-phonenumber-field==7.1.0
 phonenumbers==8.13.19
+
+
+# ocpp service
+ocpp==0.26.0
+aiohttp==3.9.3
+fastapi==0.110.1
+uvicorn==0.29.0
+pandantic==0.3.0

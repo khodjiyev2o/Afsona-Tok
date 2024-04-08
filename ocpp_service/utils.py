@@ -23,9 +23,12 @@ class ConnectionManager:
         ACTIVE_CONNECTIONS[connection.id] = connection
         await connection.start()
 
-    async def disconnect(self, charger_identify: str):
+    async def disconnect(self, charger_identify: str, reason: str) -> None:
         async with aiohttp.ClientSession() as session:
-            async with session.post(WEBSOCKET_DISCONNECT_CALLBACK_URL.format(charger_identify)) as response:
+            async with session.post(
+                    url=WEBSOCKET_DISCONNECT_CALLBACK_URL.format(charger_identify),
+                    json={'reason': reason}
+            ) as response:
                 await response.json()
 
 
