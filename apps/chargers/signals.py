@@ -8,7 +8,7 @@ telegram_logger = logging.getLogger('telegram')
 
 
 @receiver(post_save, sender=ChargingTransaction)
-def sent_logs_to_telegram_bot(sender, instance, **kwargs):
+def sent_logs_to_telegram_bot_while_charging(sender, instance, **kwargs):
     if instance.status == ChargingTransaction.Status.FINISHED:
         return
     telegram_logger.info(
@@ -21,7 +21,7 @@ def sent_logs_to_telegram_bot(sender, instance, **kwargs):
 
 
 @receiver(post_save, sender=ChargingTransaction)
-def sent_logs_to_telegram_bot(sender, instance, created, **kwargs):
+def sent_logs_to_telegram_bot_on_start(sender, instance, created, **kwargs):
     if not created:
         return
     telegram_logger.info(
