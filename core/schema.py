@@ -1,4 +1,4 @@
-from django.urls import re_path
+from django.urls import re_path, path, include
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 from rest_framework import permissions
@@ -16,7 +16,11 @@ schema_view = get_schema_view(
     ),
     public=True,
     generator_class=BothHttpAndHttpsSchemaGenerator,
-    permission_classes=(permissions.AllowAny,),
+    permission_classes=[permissions.AllowAny,],
+    patterns=[
+        path("api/v1/common/", include("apps.common.urls", namespace="common")),
+        path("api/v1/users/", include("apps.users.urls", namespace="users")),
+    ]
 )
 swagger_urlpatterns = [
     re_path(
