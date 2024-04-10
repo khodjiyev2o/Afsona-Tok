@@ -23,6 +23,8 @@ class ChargerDisconnectAPIView(APIView):
         ).update(
             status=Connector.Status.UNAVAILABLE, last_status_reason=Connector.LastStatusReason.CHARGER_DISCONNECTED
         )
+
+        ChargePoint.objects.filter(charger_id=charger_id).update(is_connected=False)
         logger.info(f"Disconnect: {charger_id}\nReason: {reason}")
 
         return Response(data={}, status=status.HTTP_200_OK)

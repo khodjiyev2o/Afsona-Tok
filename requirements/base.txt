@@ -42,3 +42,6 @@ websocket==0.2.1
 # caches
 django-redis==5.2.0
 redis==4.5.3
+
+# logging
+python-telegram-bot==13.15
