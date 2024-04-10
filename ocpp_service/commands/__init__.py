@@ -3,7 +3,7 @@ from fastapi import APIRouter, status
 from ocpp_service.commands.remote_start import remote_start_handler, RemoteStartResponse
 from ocpp_service.commands.remote_stop import remote_stop_handler, RemoteStopResponse
 
-router = APIRouter(prefix='/api/ocpp/commands')
+router = APIRouter(prefix='/ocpp/http/commands')
 
 
 router.add_api_route(
