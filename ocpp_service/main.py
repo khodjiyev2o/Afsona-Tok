@@ -4,7 +4,7 @@ from starlette.middleware.cors import CORSMiddleware
 from ocpp_service.commands import router
 from ocpp_service.utils import manager
 
-app = FastAPI(title="OCPP Controller Websocket Service")
+app = FastAPI(title="OCPP Controller Websocket Service", docs_url='/ocpp/http/docs')
 app.add_middleware(
     CORSMiddleware,
     allow_origins="*",
