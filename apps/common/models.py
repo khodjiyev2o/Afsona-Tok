@@ -66,16 +66,19 @@ class ConnectionType(BaseModel):
     icon = models.ImageField(_("Icon"), upload_to="icons/%Y/%m")
     max_voltage = models.IntegerField(verbose_name=_("Max Voltage"))
 
+    def __str__(self):
+        return self.name + " / " + self._type
+
 
 class UserCar(BaseModel):
-
     class STATE_NUMBER_TYPES(models.TextChoices):
         INDIVIDUAL = 'INDIVIDUAL', _('INDIVIDUAL')  # физическое лицо
         LEGAL = 'LEGAL', _('LEGAL')  # юридическое лицо
         DIPLOMATIC = 'DIPLOMATIC', _('DIPLOMATIC')  # Дипломатический
         OON = 'OON', _('OON')  # Организация Объединённых Наций
         InternationalResident = 'InternationalResident', _('InternationalResident')  # Международные резиденты
-        InternationalOrganization = 'InternationalOrganization', _('InternationalOrganization')  # Международные организации
+        InternationalOrganization = 'InternationalOrganization', _(
+            'InternationalOrganization')  # Международные организации
 
     vin = models.CharField(_("VIN"), max_length=100, null=True, blank=True)
     state_number = models.CharField(_("Гос.номер"), max_length=100, null=True, blank=True)
@@ -90,7 +93,9 @@ class UserCar(BaseModel):
         on_delete=models.CASCADE,
     )
     model = models.ForeignKey(CarModel, related_name="cars", on_delete=models.CASCADE, null=True, blank=True)
-    connector_type = models.ForeignKey(ConnectionType, on_delete=models.CASCADE)
+    connector_type = models.ManyToManyField(
+        to=ConnectionType, blank=True, verbose_name=_("Connector Types"), related_name="car_connector_types"
+    )
     user = models.ForeignKey("users.User", verbose_name=_("User"), related_name="cars", on_delete=models.CASCADE)
 
     def __str__(self):
@@ -116,7 +121,7 @@ class Country(BaseModel):
 
 class Region(BaseModel):
     name = models.CharField(_("Name"), max_length=255)
-    country = models.ForeignKey(Country, verbose_name=_("Country"), on_delete=models.PROTECT)
+    country = models.ForeignKey(Country, verbose_name=_("Country"), on_delete=models.PROTECT, related_name="regions")
 
     def __str__(self):
         return self.name
@@ -129,7 +134,7 @@ class Region(BaseModel):
 
 class District(BaseModel):
     name = models.CharField(_("Name"), max_length=50)
-    region = models.ForeignKey(to=Region, verbose_name=_("Region"), on_delete=models.PROTECT)
+    region = models.ForeignKey(to=Region, verbose_name=_("Region"), on_delete=models.PROTECT, related_name="districts")
 
     def __str__(self):
         return self.name

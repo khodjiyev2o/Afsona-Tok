@@ -39,8 +39,8 @@ class ChargePoint(BaseModel):
         return f"{self.name} - {self.charger_id}"
 
     class Meta:
-        verbose_name = _("ChargePoint")
-        verbose_name_plural = _("ChargePoints")
+        verbose_name = _("Charge Point")
+        verbose_name_plural = _("Charge Points")
         ordering = ["-id"]
 
 
