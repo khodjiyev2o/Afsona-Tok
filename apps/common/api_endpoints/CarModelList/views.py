@@ -8,7 +8,10 @@ class CarModelListView(generics.ListAPIView):
     serializer_class = CarModelListSerializer
 
     def get_queryset(self):
-        return CarModel.objects.filter(manufacturer__id=self.kwargs['manufacturer_id']).order_by('created_at')
+        if self.kwargs.get('manufacturer_id'):
+            return CarModel.objects.filter(manufacturer__id=self.kwargs['manufacturer_id']).order_by('created_at')
+        else:
+            return CarModel.objects.all().order_by('created_at')
 
 
 __all__ = ['CarModelListView']
