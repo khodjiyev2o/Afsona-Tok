@@ -1,0 +1,16 @@
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  Deploy:
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v3
+    - name: Deploy
+      run: |
+          whoami
+          cd /var/www/afsona.transitgroup.uz
+          git pull orgin main
+          systemctl restart afsona-gunicorn.service
