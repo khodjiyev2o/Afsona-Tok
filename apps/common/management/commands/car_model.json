@@ -1,0 +1,1802 @@
+[
+    {
+        "id": 1,
+        "model": "Aspark Owl",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Aspark_Owl%2C_IAA_2017%2C_Frankfurt_%281Y7A3341%29.jpg/320px-Aspark_Owl%2C_IAA_2017%2C_Frankfurt_%281Y7A3341%29.jpg",
+        "mark_id": 1
+    },
+    {
+        "id": 2,
+        "model": "Audi e-tron GT",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Audi_e-tron_GT_IMG_5689.jpg/320px-Audi_e-tron_GT_IMG_5689.jpg",
+        "mark_id": 2
+    },
+    {
+        "id": 3,
+        "model": "Audi Q4 e-tron",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/2021_Audi_Q4_e-tron_Sport_35.jpg/320px-2021_Audi_Q4_e-tron_Sport_35.jpg",
+        "mark_id": 2
+    },
+    {
+        "id": 4,
+        "model": "Audi Q8 e-tron",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/2020_Audi_e-Tron_Sport_50_Quattro.jpg/320px-2020_Audi_e-Tron_Sport_50_Quattro.jpg",
+        "mark_id": 2
+    },
+    {
+        "id": 5,
+        "model": "BMW i4",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/BMW_i4_IMG_6695.jpg/320px-BMW_i4_IMG_6695.jpg",
+        "mark_id": 3
+    },
+    {
+        "id": 6,
+        "model": "BMW i5",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/2023_BMW_i5_40_eDrive_M_Sport_Pro.jpg/320px-2023_BMW_i5_40_eDrive_M_Sport_Pro.jpg",
+        "mark_id": 3
+    },
+    {
+        "id": 7,
+        "model": "BMW i7",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/BMW_i7_xDrive60_1X7A7475.jpg/320px-BMW_i7_xDrive60_1X7A7475.jpg",
+        "mark_id": 3
+    },
+    {
+        "id": 7,
+        "model": "BMW iX",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/BMW_iX_IAA_2021_1X7A0204.jpg/320px-BMW_iX_IAA_2021_1X7A0204.jpg",
+        "mark_id": 3
+    },
+    {
+        "id": 9,
+        "model": "BMW iX1",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/BMW_U11_1X7A6826.jpg/320px-BMW_U11_1X7A6826.jpg",
+        "mark_id": 3
+    },
+    {
+        "id": 10,
+        "model": "BMW iX3",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/2018_BMW_X3_%28G01%29_xDrive30i_wagon_%282018-11-02%29_01.jpg/320px-2018_BMW_X3_%28G01%29_xDrive30i_wagon_%282018-11-02%29_01.jpg",
+        "mark_id": 3
+    },
+    {
+        "id": 11,
+        "model": "BrightDrop Zevo",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/2022_BrightDrop_EV600.jpg/320px-2022_BrightDrop_EV600.jpg",
+        "mark_id": 4
+    },
+    {
+        "id": 12,
+        "model": "Cadillac Lyriq",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/2023_Cadillac_Lyriq_in_Satin_Steel_Metallic%2C_front_left.jpg/320px-2023_Cadillac_Lyriq_in_Satin_Steel_Metallic%2C_front_left.jpg",
+        "mark_id": 4
+    },
+    {
+        "id": 13,
+        "model": "Chevrolet Blazer EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/2024_Chevrolet_Blazer_EV_SS_%28United_States%29_front_view.png/320px-2024_Chevrolet_Blazer_EV_SS_%28United_States%29_front_view.png",
+        "mark_id": 4
+    },
+    {
+        "id": 14,
+        "model": "Chevrolet Bolt EUV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/0_Chevrolet_Bolt_EUV_3.jpg/320px-0_Chevrolet_Bolt_EUV_3.jpg",
+        "mark_id": 4
+    },
+    {
+        "id": 15,
+        "model": "Chevrolet Bolt EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/2022_Chevrolet_Bolt_EV_%28United_States%29_front_view.jpg/320px-2022_Chevrolet_Bolt_EV_%28United_States%29_front_view.jpg",
+        "mark_id": 4
+    },
+    {
+        "id": 16,
+        "model": "Chevrolet Silverado EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/2024_Chevrolet_Silverado_EV_RST_First_Edition_front_view.png/320px-2024_Chevrolet_Silverado_EV_RST_First_Edition_front_view.png",
+        "mark_id": 4
+    },
+    {
+        "id": 17,
+        "model": "Citroën e-Berlingo",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Citroen_e-Berlingo_Auto_Zuerich_2021_IMG_0097.jpg/320px-Citroen_e-Berlingo_Auto_Zuerich_2021_IMG_0097.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 18,
+        "model": "Citroën ë-C3",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Citroen_C3_CC21_front_20230524_%28cropped%29.jpg/320px-Citroen_C3_CC21_front_20230524_%28cropped%29.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 19,
+        "model": "Citroën ë-C4",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Citroen_C4_%282020%29_IMG_4202.jpg/320px-Citroen_C4_%282020%29_IMG_4202.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 20,
+        "model": "Citroën ë-Jumper/Relay",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Fiat_Ducato_Kastenwagen_130_Multijet_%28III%2C_Facelift%29_%E2%80%93_Frontansicht%2C_13._Juli_2014%2C_D%C3%BCsseldorf.jpg/320px-Fiat_Ducato_Kastenwagen_130_Multijet_%28III%2C_Facelift%29_%E2%80%93_Frontansicht%2C_13._Juli_2014%2C_D%C3%BCsseldorf.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 21,
+        "model": "Citroën ë-Jumpy/Dispatch/SpaceTourer",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/2016_Citroen_Dispatch_1000_BlueHDi_X_S_1.6_Front.jpg/320px-2016_Citroen_Dispatch_1000_BlueHDi_X_S_1.6_Front.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 22,
+        "model": "Cupra Born",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Cupra_Born_IAA_2021_1X7A0212.jpg/320px-Cupra_Born_IAA_2021_1X7A0212.jpg",
+        "mark_id": 6
+    },
+    {
+        "id": 23,
+        "model": "Dacia Spring Electric",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/2023_Renault_Kwid_Iconic_%28Colombia%29_front_view_01.png/320px-2023_Renault_Kwid_Iconic_%28Colombia%29_front_view_01.png",
+        "mark_id": 7
+    },
+    {
+        "id": 24,
+        "model": "DS 3 Crossback E-Tense",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/DS_3_Crossback_PureTech_155_EAT8_So_Chic_%E2%80%93_f_25072020.jpg/320px-DS_3_Crossback_PureTech_155_EAT8_So_Chic_%E2%80%93_f_25072020.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 25,
+        "model": "Fiat e-Ducato",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Fiat_Ducato_Kastenwagen_130_Multijet_%28III%2C_Facelift%29_%E2%80%93_Frontansicht%2C_13._Juli_2014%2C_D%C3%BCsseldorf.jpg/320px-Fiat_Ducato_Kastenwagen_130_Multijet_%28III%2C_Facelift%29_%E2%80%93_Frontansicht%2C_13._Juli_2014%2C_D%C3%BCsseldorf.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 26,
+        "model": "Fiat e-Scudo/e-Ulysse",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/2016_Citroen_Dispatch_1000_BlueHDi_X_S_1.6_Front.jpg/320px-2016_Citroen_Dispatch_1000_BlueHDi_X_S_1.6_Front.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 27,
+        "model": "Fiat New 500",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Fiat-500-vorne2.jpg/320px-Fiat-500-vorne2.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 28,
+        "model": "Fisker Ocean",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Fisker_Ocean_Motorworld_Munich_1X7A0079.jpg/320px-Fisker_Ocean_Motorworld_Munich_1X7A0079.jpg",
+        "mark_id": 8
+    },
+    {
+        "id": 29,
+        "model": "Ford E-Transit",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/2016_Ford_Transit_350_2.2.jpg/320px-2016_Ford_Transit_350_2.2.jpg",
+        "mark_id": 9
+    },
+    {
+        "id": 30,
+        "model": "Ford F-150 Lightning",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/2022_Ford_F-150_Lightning_Lariat_in_Atlas_Blue_Metallic%2C_Front_Right%2C_08-06-2022.jpg/320px-2022_Ford_F-150_Lightning_Lariat_in_Atlas_Blue_Metallic%2C_Front_Right%2C_08-06-2022.jpg",
+        "mark_id": 9
+    },
+    {
+        "id": 31,
+        "model": "Ford Mustang Mach-E",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/2021_Ford_Mustang_Mach-E_Standard_Range_Front.jpg/320px-2021_Ford_Mustang_Mach-E_Standard_Range_Front.jpg",
+        "mark_id": 9
+    },
+    {
+        "id": 32,
+        "model": "Genesis Electrified G80",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Genesis_G80_IAA_2021_1X7A0229.jpg/320px-Genesis_G80_IAA_2021_1X7A0229.jpg",
+        "mark_id": 10
+    },
+    {
+        "id": 33,
+        "model": "Genesis Electrified GV70",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Genesis_GV70_IAA_2021_1X7A0228.jpg/320px-Genesis_GV70_IAA_2021_1X7A0228.jpg",
+        "mark_id": 10
+    },
+    {
+        "id": 34,
+        "model": "Genesis GV60",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Genesis_GV60_1X7A5760.jpg/320px-Genesis_GV60_1X7A5760.jpg",
+        "mark_id": 10
+    },
+    {
+        "id": 35,
+        "model": "GMC Hummer EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/2022_GMC_Hummer_EV_Truck_%28Black%29.jpg/320px-2022_GMC_Hummer_EV_Truck_%28Black%29.jpg",
+        "mark_id": 4
+    },
+    {
+        "id": 36,
+        "model": "Honda e",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Honda_e_Advance_%E2%80%93_f_18102020.jpg/320px-Honda_e_Advance_%E2%80%93_f_18102020.jpg",
+        "mark_id": 11
+    },
+    {
+        "id": 37,
+        "model": "Honda e:Ny1",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Honda_HR-V_Hybrid_1X7A0427.jpg/320px-Honda_HR-V_Hybrid_1X7A0427.jpg",
+        "mark_id": 11
+    },
+    {
+        "id": 38,
+        "model": "Hyundai Ioniq 5",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Hyundai_Ioniq_5_Uniq-Paket_%E2%80%93_f_27062021.jpg/320px-Hyundai_Ioniq_5_Uniq-Paket_%E2%80%93_f_27062021.jpg",
+        "mark_id": 12
+    },
+    {
+        "id": 39,
+        "model": "Hyundai Ioniq 6",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Hyundai_Ioniq_6_1X7A7258.jpg/320px-Hyundai_Ioniq_6_1X7A7258.jpg",
+        "mark_id": 12
+    },
+    {
+        "id": 40,
+        "model": "Hyundai Kona Electric",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Hyundai_Kona_%28SX2%29_1X7A0850.jpg/320px-Hyundai_Kona_%28SX2%29_1X7A0850.jpg",
+        "mark_id": 12
+    },
+    {
+        "id": 41,
+        "model": "Hyundai Porter2 Electric",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/00_hyundai_porter_3.jpg/320px-00_hyundai_porter_3.jpg",
+        "mark_id": 12
+    },
+    {
+        "id": 42,
+        "model": "Jaguar I-Pace",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/2018_Jaguar_I-Pace_EV400_AWD_Front.jpg/320px-2018_Jaguar_I-Pace_EV400_AWD_Front.jpg",
+        "mark_id": 13
+    },
+    {
+        "id": 43,
+        "model": "Jeep Avenger",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Jeep_Avenger_IMG_7888.jpg/320px-Jeep_Avenger_IMG_7888.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 44,
+        "model": "Kia Bongo EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/18_kia_bongo_3.jpg/320px-18_kia_bongo_3.jpg",
+        "mark_id": 14
+    },
+    {
+        "id": 45,
+        "model": "Kia EV6",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/2021_Kia_EV6_GT-Line_S.jpg/320px-2021_Kia_EV6_GT-Line_S.jpg",
+        "mark_id": 14
+    },
+    {
+        "id": 46,
+        "model": "Kia EV9",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Kia_EV9_IAA_2023_1X7A0694.jpg/320px-Kia_EV9_IAA_2023_1X7A0694.jpg",
+        "mark_id": 14
+    },
+    {
+        "id": 47,
+        "model": "Kia Niro EV/e-Niro",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Kia_Niro_%28SG2%29_PHEV_Leonberg_2022_1X7A0474.jpg/320px-Kia_Niro_%28SG2%29_PHEV_Leonberg_2022_1X7A0474.jpg",
+        "mark_id": 14
+    },
+    {
+        "id": 48,
+        "model": "Kia Ray EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/0_Kia_Ray_5.jpg/320px-0_Kia_Ray_5.jpg",
+        "mark_id": 14
+    },
+    {
+        "id": 49,
+        "model": "Kia Soul EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/2020_Kia_Soul_First_Edition_EV_Front.jpg/320px-2020_Kia_Soul_First_Edition_EV_Front.jpg",
+        "mark_id": 14
+    },
+    {
+        "id": 50,
+        "model": "Lexus RZ",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Lexus_RZ_450e_%28XEBM15%29_1X7A0836.jpg/320px-Lexus_RZ_450e_%28XEBM15%29_1X7A0836.jpg",
+        "mark_id": 15
+    },
+    {
+        "id": 51,
+        "model": "Lexus UX 300e",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Lexus_UX_250h_IMG_2810.jpg/320px-Lexus_UX_250h_IMG_2810.jpg",
+        "mark_id": 15
+    },
+    {
+        "id": 52,
+        "model": "Lotus Eletre",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Lotus_Eletre_010.jpg/320px-Lotus_Eletre_010.jpg",
+        "mark_id": 16
+    },
+    {
+        "id": 53,
+        "model": "Lotus Evija",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/2020_Lotus_Evija.jpg/320px-2020_Lotus_Evija.jpg",
+        "mark_id": 16
+    },
+    {
+        "id": 54,
+        "model": "Lucid Air",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/2022_Lucid_Air_Grand_Touring_in_Zenith_Red%2C_front_left.jpg/320px-2022_Lucid_Air_Grand_Touring_in_Zenith_Red%2C_front_left.jpg",
+        "mark_id": 17
+    },
+    {
+        "id": 55,
+        "model": "Mahindra XUV400",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Mahindra_XUV300.jpg/320px-Mahindra_XUV300.jpg",
+        "mark_id": 18
+    },
+    {
+        "id": 56,
+        "model": "Maserati Grecale Folgore",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Maserati_Grecale_GT_1X7A6371.jpg/320px-Maserati_Grecale_GT_1X7A6371.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 57,
+        "model": "Maserati GranTurismo Folgore",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Maserati_GranTurismo_-_Flickr_-_exfordy_%281%29.jpg/320px-Maserati_GranTurismo_-_Flickr_-_exfordy_%281%29.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 58,
+        "model": "Mazda MX-30",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/2021_Mazda_MX-30_Front.jpg/320px-2021_Mazda_MX-30_Front.jpg",
+        "mark_id": 19
+    },
+    {
+        "id": 59,
+        "model": "Mercedes-Benz EQA",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Mercedes-Benz_H243_IMG_5876.jpg/320px-Mercedes-Benz_H243_IMG_5876.jpg",
+        "mark_id": 20
+    },
+    {
+        "id": 60,
+        "model": "Mercedes-Benz EQB",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Mercedes-Benz_X243_300_1X7A0422.jpg/320px-Mercedes-Benz_X243_300_1X7A0422.jpg",
+        "mark_id": 20
+    },
+    {
+        "id": 61,
+        "model": "Mercedes-Benz EQC",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Mercedes-Benz_EQC_400_4MATIC_AMG_Line_%28N_293%29_%E2%80%93_f_02042021.jpg/320px-Mercedes-Benz_EQC_400_4MATIC_AMG_Line_%28N_293%29_%E2%80%93_f_02042021.jpg",
+        "mark_id": 20
+    },
+    {
+        "id": 62,
+        "model": "Mercedes-Benz EQE",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Mercedes-Benz_V295_350%2B_Classic-Days_2022_DSC_0018.jpg/320px-Mercedes-Benz_V295_350%2B_Classic-Days_2022_DSC_0018.jpg",
+        "mark_id": 20
+    },
+    {
+        "id": 63,
+        "model": "Mercedes-Benz EQE SUV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/EQE-300-SUV-Front_%28cropped%29.jpg/320px-EQE-300-SUV-Front_%28cropped%29.jpg",
+        "mark_id": 20
+    },
+    {
+        "id": 64,
+        "model": "Mercedes-Benz EQS",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Mercedes-Benz_V297_Classic-Days_2022_DSC_0016.jpg/320px-Mercedes-Benz_V297_Classic-Days_2022_DSC_0016.jpg",
+        "mark_id": 20
+    },
+    {
+        "id": 65,
+        "model": "Mercedes-Benz EQS SUV",
+        "logo": null,
+        "mark_id": 20
+    },
+    {
+        "id": 66,
+        "model": "Mercedes-Benz EQV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Mercedes-Benz_V_250_d_Exclusive_AMG_Line_Lang_%28V_447%29_%E2%80%93_Frontansicht%2C_29._Juni_2016%2C_D%C3%BCsseldorf.jpg/320px-Mercedes-Benz_V_250_d_Exclusive_AMG_Line_Lang_%28V_447%29_%E2%80%93_Frontansicht%2C_29._Juni_2016%2C_D%C3%BCsseldorf.jpg",
+        "mark_id": 20
+    },
+    {
+        "id": 67,
+        "model": "Mini Electric/Cooper SE",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Mini_Hatch_%28F56%29_Electric_IMG_2679.jpg/320px-Mini_Hatch_%28F56%29_Electric_IMG_2679.jpg",
+        "mark_id": 21
+    },
+    {
+        "id": 68,
+        "model": "Mitsubishi eK X EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Mitsubishi_eKwagon_2004.jpg/320px-Mitsubishi_eKwagon_2004.jpg",
+        "mark_id": 22
+    },
+    {
+        "id": 69,
+        "model": "Mitsubishi Minicab MiEV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Mitsubishi_Minicab_2000.jpg/320px-Mitsubishi_Minicab_2000.jpg",
+        "mark_id": 23
+    },
+    {
+        "id": 70,
+        "model": "Nissan Ariya",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/2023_Nissan_Ariya_Advance_Front.jpg/320px-2023_Nissan_Ariya_Advance_Front.jpg",
+        "mark_id": 24
+    },
+    {
+        "id": 71,
+        "model": "Nissan Townstar EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Renault_Kangoo_III_IMG_5862.jpg/320px-Renault_Kangoo_III_IMG_5862.jpg",
+        "mark_id": 24
+    },
+    {
+        "id": 72,
+        "model": "Nissan Leaf",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Nissan_Leaf_2018_%2831874639158%29_%28cropped%29.jpg/320px-Nissan_Leaf_2018_%2831874639158%29_%28cropped%29.jpg",
+        "mark_id": 24
+    },
+    {
+        "id": 73,
+        "model": "Nissan Sakura",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2022_Nissan_Sakura_G_ZAA-B6AW_%2820220819%29.jpg/320px-2022_Nissan_Sakura_G_ZAA-B6AW_%2820220819%29.jpg",
+        "mark_id": 22
+    },
+    {
+        "id": 74,
+        "model": "Opel/Vauxhall Combo-e",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Citroen_e-Berlingo_Auto_Zuerich_2021_IMG_0097.jpg/320px-Citroen_e-Berlingo_Auto_Zuerich_2021_IMG_0097.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 75,
+        "model": "Opel/Vauxhall Corsa Electric",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Opel_Corsa_F_IMG_8196.jpg/320px-Opel_Corsa_F_IMG_8196.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 76,
+        "model": "Opel/Vauxhall Mokka-e",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Opel_Mokka-e_IMG_6111.jpg/320px-Opel_Mokka-e_IMG_6111.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 77,
+        "model": "Opel/Vauxhall Movano-e",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Fiat_Ducato_Kastenwagen_130_Multijet_%28III%2C_Facelift%29_%E2%80%93_Frontansicht%2C_13._Juli_2014%2C_D%C3%BCsseldorf.jpg/320px-Fiat_Ducato_Kastenwagen_130_Multijet_%28III%2C_Facelift%29_%E2%80%93_Frontansicht%2C_13._Juli_2014%2C_D%C3%BCsseldorf.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 78,
+        "model": "Opel/Vauxhall Vivaro/Zafira-e",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/2016_Citroen_Dispatch_1000_BlueHDi_X_S_1.6_Front.jpg/320px-2016_Citroen_Dispatch_1000_BlueHDi_X_S_1.6_Front.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 79,
+        "model": "Peugeot e-208",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Peugeot_208_PureTech_130_EAT8_Allure_GT-Line_%28II%29_%E2%80%93_f_17102021.jpg/320px-Peugeot_208_PureTech_130_EAT8_Allure_GT-Line_%28II%29_%E2%80%93_f_17102021.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 80,
+        "model": "Peugeot e-2008",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Peugeot_2008_B_IMG_4196.jpg/320px-Peugeot_2008_B_IMG_4196.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 81,
+        "model": "Peugeot e-308/e-308 SW",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/2022_-_Peugeot_308_III_%28C%29_-_121.jpg/320px-2022_-_Peugeot_308_III_%28C%29_-_121.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 82,
+        "model": "Peugeot e-Boxer",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Fiat_Ducato_Kastenwagen_130_Multijet_%28III%2C_Facelift%29_%E2%80%93_Frontansicht%2C_13._Juli_2014%2C_D%C3%BCsseldorf.jpg/320px-Fiat_Ducato_Kastenwagen_130_Multijet_%28III%2C_Facelift%29_%E2%80%93_Frontansicht%2C_13._Juli_2014%2C_D%C3%BCsseldorf.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 83,
+        "model": "Peugeot e-Expert/e-Traveller",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/2016_Citroen_Dispatch_1000_BlueHDi_X_S_1.6_Front.jpg/320px-2016_Citroen_Dispatch_1000_BlueHDi_X_S_1.6_Front.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 84,
+        "model": "Peugeot e-Rifter",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Citroen_e-Berlingo_Auto_Zuerich_2021_IMG_0097.jpg/320px-Citroen_e-Berlingo_Auto_Zuerich_2021_IMG_0097.jpg",
+        "mark_id": 5
+    },
+    {
+        "id": 85,
+        "model": "Pininfarina Battista",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/2019_Automobili_Pininfarina_Battista_Front.jpg/320px-2019_Automobili_Pininfarina_Battista_Front.jpg",
+        "mark_id": 25
+    },
+    {
+        "id": 86,
+        "model": "Polestar 2",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Polestar_2_%E2%80%93_f_02042021.jpg/320px-Polestar_2_%E2%80%93_f_02042021.jpg",
+        "mark_id": 26
+    },
+    {
+        "id": 87,
+        "model": "Porsche Taycan",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/2020_Porsche_Taycan_4S_79kWh_Front.jpg/320px-2020_Porsche_Taycan_4S_79kWh_Front.jpg",
+        "mark_id": 27
+    },
+    {
+        "id": 88,
+        "model": "Renault Kangoo E-Tech Electric",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Renault_Kangoo_III_IMG_5862.jpg/320px-Renault_Kangoo_III_IMG_5862.jpg",
+        "mark_id": 28
+    },
+    {
+        "id": 89,
+        "model": "Renault Master Z.E./E-Tech Electric",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Renault_Master_III_%282019%29_IMG_4211.jpg/320px-Renault_Master_III_%282019%29_IMG_4211.jpg",
+        "mark_id": 28
+    },
+    {
+        "id": 90,
+        "model": "Renault Megane E-Tech Electric",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/2022_Renault_Megane_E-Tech_Techno_EV_Front.jpg/320px-2022_Renault_Megane_E-Tech_Techno_EV_Front.jpg",
+        "mark_id": 28
+    },
+    {
+        "id": 91,
+        "model": "Renault Twingo Z.E.",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Renault_Twingo_Dynamique_%28III%29_%E2%80%93_Frontansicht%2C_24._Oktober_2015%2C_M%C3%BCnster.jpg/320px-Renault_Twingo_Dynamique_%28III%29_%E2%80%93_Frontansicht%2C_24._Oktober_2015%2C_M%C3%BCnster.jpg",
+        "mark_id": 28
+    },
+    {
+        "id": 92,
+        "model": "Renault Zoe",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Renault_Zoe_R110_Z.E._50_Experience_%28Facelift%29_%E2%80%93_f_22112020.jpg/320px-Renault_Zoe_R110_Z.E._50_Experience_%28Facelift%29_%E2%80%93_f_22112020.jpg",
+        "mark_id": 28
+    },
+    {
+        "id": 93,
+        "model": "Rimac Nevera",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Rimac_Nevera.jpg/320px-Rimac_Nevera.jpg",
+        "mark_id": 29
+    },
+    {
+        "id": 94,
+        "model": "Rivian EDV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Rivian_EDV-500_front.jpg/320px-Rivian_EDV-500_front.jpg",
+        "mark_id": 30
+    },
+    {
+        "id": 95,
+        "model": "Rivian R1S",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Rivian_R1S_at_Hillsdale_Shopping_Center.jpg/320px-Rivian_R1S_at_Hillsdale_Shopping_Center.jpg",
+        "mark_id": 30
+    },
+    {
+        "id": 96,
+        "model": "Rivian R1T",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/2022_Rivian_R1T_%28in_Glacier_White%29%2C_front_6.21.22.jpg/320px-2022_Rivian_R1T_%28in_Glacier_White%29%2C_front_6.21.22.jpg",
+        "mark_id": 30
+    },
+    {
+        "id": 97,
+        "model": "Škoda Enyaq",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Skoda_Enyaq_iV_80_%E2%80%93_f1_03052021_%28colour_corrected%29.jpg/320px-Skoda_Enyaq_iV_80_%E2%80%93_f1_03052021_%28colour_corrected%29.jpg",
+        "mark_id": 31
+    },
+    {
+        "id": 98,
+        "model": "Smart #1",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Smart_%E2%99%AF1_Premium_%E2%80%93_f_12022023.jpg/320px-Smart_%E2%99%AF1_Premium_%E2%80%93_f_12022023.jpg",
+        "mark_id": 32
+    },
+    {
+        "id": 99,
+        "model": "Smart EQ fortwo",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/2016_Smart_Fortwo_Passion_Automatic_1.0_Front.jpg/320px-2016_Smart_Fortwo_Passion_Automatic_1.0_Front.jpg",
+        "mark_id": 32
+    },
+    {
+        "id": 100,
+        "model": "SsangYong Korando e-Motion",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/2021_SsangYong_Korando_%28C300%29_Front.jpg/320px-2021_SsangYong_Korando_%28C300%29_Front.jpg",
+        "mark_id": 33
+    },
+    {
+        "id": 101,
+        "model": "Subaru Solterra",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/2022_Toyota_bZ4X_%28cropped%29.jpg/320px-2022_Toyota_bZ4X_%28cropped%29.jpg",
+        "mark_id": 34
+    },
+    {
+        "id": 102,
+        "model": "Tata Nexon.ev",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Tata_Nexon_Blue_Dual_Tone.jpg/320px-Tata_Nexon_Blue_Dual_Tone.jpg",
+        "mark_id": 35
+    },
+    {
+        "id": 103,
+        "model": "Tata Tiago.ev",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/2022_Tata_Tiago_XZA%2B_front_20230512.jpg/320px-2022_Tata_Tiago_XZA%2B_front_20230512.jpg",
+        "mark_id": 35
+    },
+    {
+        "id": 104,
+        "model": "Tata Tigor EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/TATA_Tigor_at_Shillong_Peak_View_%28cropped%29.jpg/320px-TATA_Tigor_at_Shillong_Peak_View_%28cropped%29.jpg",
+        "mark_id": 35
+    },
+    {
+        "id": 105,
+        "model": "Tesla Model 3",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/2019_Tesla_Model_3_Performance_AWD_Front.jpg/320px-2019_Tesla_Model_3_Performance_AWD_Front.jpg",
+        "mark_id": 36
+    },
+    {
+        "id": 106,
+        "model": "Tesla Model S",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/2018_Tesla_Model_S_75D.jpg/320px-2018_Tesla_Model_S_75D.jpg",
+        "mark_id": 36
+    },
+    {
+        "id": 107,
+        "model": "Tesla Model X",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/2017_Tesla_Model_X_100D_Front.jpg/320px-2017_Tesla_Model_X_100D_Front.jpg",
+        "mark_id": 36
+    },
+    {
+        "id": 108,
+        "model": "Tesla Model Y",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Tesla_Model_Y_1X7A6211.jpg/320px-Tesla_Model_Y_1X7A6211.jpg",
+        "mark_id": 36
+    },
+    {
+        "id": 109,
+        "model": "Togg T10X",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Togg_T10X_%28cropped%29.jpg/320px-Togg_T10X_%28cropped%29.jpg",
+        "mark_id": 37
+    },
+    {
+        "id": 110,
+        "model": "Toyota bZ4X",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/2022_Toyota_bZ4X_%28cropped%29.jpg/320px-2022_Toyota_bZ4X_%28cropped%29.jpg",
+        "mark_id": 15
+    },
+    {
+        "id": 111,
+        "model": "Toyota Proace City Electric",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Citroen_e-Berlingo_Auto_Zuerich_2021_IMG_0097.jpg/320px-Citroen_e-Berlingo_Auto_Zuerich_2021_IMG_0097.jpg",
+        "mark_id": 15
+    },
+    {
+        "id": 112,
+        "model": "Toyota Proace Electric",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/2016_Citroen_Dispatch_1000_BlueHDi_X_S_1.6_Front.jpg/320px-2016_Citroen_Dispatch_1000_BlueHDi_X_S_1.6_Front.jpg",
+        "mark_id": 15
+    },
+    {
+        "id": 113,
+        "model": "VinFast VF e34",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/VF_e34_Future_Blue_%282%29.jpg/320px-VF_e34_Future_Blue_%282%29.jpg",
+        "mark_id": 38
+    },
+    {
+        "id": 114,
+        "model": "VinFast VF 5",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Newone_-_White_VinFast_VF_5%2C_Blue_VinFast_VF_9_and_Neptune_Grey_VinFast_VF_8_01_%28cropped%29.jpg/320px-Newone_-_White_VinFast_VF_5%2C_Blue_VinFast_VF_9_and_Neptune_Grey_VinFast_VF_8_01_%28cropped%29.jpg",
+        "mark_id": 38
+    },
+    {
+        "id": 115,
+        "model": "VinFast VF 8",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Vinfast_VF8_at_Hillsdale_4_%28cropped%29.jpg/320px-Vinfast_VF8_at_Hillsdale_4_%28cropped%29.jpg",
+        "mark_id": 38
+    },
+    {
+        "id": 116,
+        "model": "VinFast VF 9",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Vinfast_VF9_at_NYIAS_2022%2C_front_right.jpg/320px-Vinfast_VF9_at_NYIAS_2022%2C_front_right.jpg",
+        "mark_id": 38
+    },
+    {
+        "id": 117,
+        "model": "Volkswagen e-Crafter",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/2017_Volkswagen_Crafter_CR35_Trendline_TD_2.0_Front.jpg/320px-2017_Volkswagen_Crafter_CR35_Trendline_TD_2.0_Front.jpg",
+        "mark_id": 39
+    },
+    {
+        "id": 118,
+        "model": "Volkswagen e-Up!",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/2013_Volkswagen_Take_UP%21_1.0.jpg/320px-2013_Volkswagen_Take_UP%21_1.0.jpg",
+        "mark_id": 39
+    },
+    {
+        "id": 119,
+        "model": "Volkswagen ID.3",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Volkswagen_ID.3_IMG_5326.jpg/320px-Volkswagen_ID.3_IMG_5326.jpg",
+        "mark_id": 39
+    },
+    {
+        "id": 120,
+        "model": "Volkswagen ID.4",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/2020_Volkswagen_ID.4_Pro_%28Netherlands%29_front_view.jpg/320px-2020_Volkswagen_ID.4_Pro_%28Netherlands%29_front_view.jpg",
+        "mark_id": 39
+    },
+    {
+        "id": 121,
+        "model": "Volkswagen ID.5",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/2020_Volkswagen_ID.4_Pro_%28Netherlands%29_front_view.jpg/320px-2020_Volkswagen_ID.4_Pro_%28Netherlands%29_front_view.jpg",
+        "mark_id": 39
+    },
+    {
+        "id": 122,
+        "model": "Volkswagen ID.7",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Volkswagen_ID.7_IAA_2023_1X7A0374.jpg/320px-Volkswagen_ID.7_IAA_2023_1X7A0374.jpg",
+        "mark_id": 39
+    },
+    {
+        "id": 123,
+        "model": "Volkswagen ID. Buzz",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Volkswagen_ID._Buzz_1X7A6263.jpg/320px-Volkswagen_ID._Buzz_1X7A6263.jpg",
+        "mark_id": 39
+    },
+    {
+        "id": 124,
+        "model": "Volvo C40 Recharge",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_Volvo_XC40_First_Edition_T5_AWD_Automatic_2.0_Front.jpg/320px-2018_Volvo_XC40_First_Edition_T5_AWD_Automatic_2.0_Front.jpg",
+        "mark_id": 26
+    },
+    {
+        "id": 125,
+        "model": "Volvo XC40 Recharge",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/2018_Volvo_XC40_First_Edition_T5_AWD_Automatic_2.0_Front.jpg/320px-2018_Volvo_XC40_First_Edition_T5_AWD_Automatic_2.0_Front.jpg",
+        "mark_id": 26
+    },
+    {
+        "id": 126,
+        "model": "Aion Hyper GT",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Aion_Hyper_GT_003.jpg/320px-Aion_Hyper_GT_003.jpg",
+        "mark_id": 40
+    },
+    {
+        "id": 127,
+        "model": "Aion LX",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/2019_GAC_Aion_LX.jpg/320px-2019_GAC_Aion_LX.jpg",
+        "mark_id": 40
+    },
+    {
+        "id": 128,
+        "model": "Aion S",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Aion_S_IMG001.jpg/320px-Aion_S_IMG001.jpg",
+        "mark_id": 40
+    },
+    {
+        "id": 129,
+        "model": "Aion V",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/2021_GAC_Aion_V_Plus_front.jpg/320px-2021_GAC_Aion_V_Plus_front.jpg",
+        "mark_id": 40
+    },
+    {
+        "id": 130,
+        "model": "Aion Y",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/2021_GAC_Aion_Y_%28front%29.jpg/320px-2021_GAC_Aion_Y_%28front%29.jpg",
+        "mark_id": 40
+    },
+    {
+        "id": 131,
+        "model": "Aiways U5",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Aiways_U5_IMG_4449.jpg/320px-Aiways_U5_IMG_4449.jpg",
+        "mark_id": 41
+    },
+    {
+        "id": 132,
+        "model": "Aiways U6",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Always_U6_001.jpg/320px-Always_U6_001.jpg",
+        "mark_id": 41
+    },
+    {
+        "id": 133,
+        "model": "Arcfox Lite",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/BJEV_Arcfox_Lite%2C_front_8.11.18.jpg/320px-BJEV_Arcfox_Lite%2C_front_8.11.18.jpg",
+        "mark_id": 42
+    },
+    {
+        "id": 134,
+        "model": "Arcfox α-S",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Arcfox_%CE%B1-S_IMG001.jpg/320px-Arcfox_%CE%B1-S_IMG001.jpg",
+        "mark_id": 42
+    },
+    {
+        "id": 135,
+        "model": "Arcfox α-T",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Arcfox_Alpha-T_2022022101.jpg/320px-Arcfox_Alpha-T_2022022101.jpg",
+        "mark_id": 42
+    },
+    {
+        "id": 136,
+        "model": "Audi Q2L e-Tron",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/2017_Audi_Q2_Sport_TDi_1.6_Front.jpg/320px-2017_Audi_Q2_Sport_TDi_1.6_Front.jpg",
+        "mark_id": 2
+    },
+    {
+        "id": 137,
+        "model": "Audi Q5 e-tron",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Audi_Q5_e-tron_008_%28cropped%29.jpg/320px-Audi_Q5_e-tron_008_%28cropped%29.jpg",
+        "mark_id": 2
+    },
+    {
+        "id": 138,
+        "model": "Avatr 11",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/2022_Avatr_11_%28front%29.jpg/320px-2022_Avatr_11_%28front%29.jpg",
+        "mark_id": 43
+    },
+    {
+        "id": 139,
+        "model": "Baojun E100",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/%E5%AE%9D%E9%AA%8F%E7%89%8C%E4%BA%8C%E5%BA%A7%E5%B0%8F%E8%BD%A6_9731_1.jpg/320px-%E5%AE%9D%E9%AA%8F%E7%89%8C%E4%BA%8C%E5%BA%A7%E5%B0%8F%E8%BD%A6_9731_1.jpg",
+        "mark_id": 44
+    },
+    {
+        "id": 140,
+        "model": "Baojun E200/Wuling Nano EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Baojun_E200_IMG001.jpg/320px-Baojun_E200_IMG001.jpg",
+        "mark_id": 44
+    },
+    {
+        "id": 141,
+        "model": "Baojun E300/KiWi EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Baojun_E300_001.jpg/320px-Baojun_E300_001.jpg",
+        "mark_id": 44
+    },
+    {
+        "id": 142,
+        "model": "Baojun Yep",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/2023_Baojun_Yep.jpg/320px-2023_Baojun_Yep.jpg",
+        "mark_id": 44
+    },
+    {
+        "id": 143,
+        "model": "Bestune E01",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Bestune_E01_img01.jpg/320px-Bestune_E01_img01.jpg",
+        "mark_id": 45
+    },
+    {
+        "id": 144,
+        "model": "Bestune NAT",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/2021_FAW_Bestune_E05_front.jpg/320px-2021_FAW_Bestune_E05_front.jpg",
+        "mark_id": 45
+    },
+    {
+        "id": 145,
+        "model": "BJEV EC3",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/BJEV_EC3_001.jpg/320px-BJEV_EC3_001.jpg",
+        "mark_id": 42
+    },
+    {
+        "id": 146,
+        "model": "BJEV EC5/Senova X25",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Senova_X25_001_China_2016-04-13.jpg/320px-Senova_X25_001_China_2016-04-13.jpg",
+        "mark_id": 42
+    },
+    {
+        "id": 147,
+        "model": "BJEV EU5/Beijing EU5",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Beijing_U5_Plus_001.jpg/320px-Beijing_U5_Plus_001.jpg",
+        "mark_id": 42
+    },
+    {
+        "id": 148,
+        "model": "BJEV EU7/Beijing EU7",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Senova_Zhidao_IMG001.jpg/320px-Senova_Zhidao_IMG001.jpg",
+        "mark_id": 42
+    },
+    {
+        "id": 149,
+        "model": "BMW i3 (G28)",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/2019_BMW_318d_SE_Automatic_2.0_Front.jpg/320px-2019_BMW_318d_SE_Automatic_2.0_Front.jpg",
+        "mark_id": 3
+    },
+    {
+        "id": 150,
+        "model": "Buick Electra E5",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Buick_E5_001.jpg/320px-Buick_E5_001.jpg",
+        "mark_id": 4
+    },
+    {
+        "id": 151,
+        "model": "Buick Velite 6",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Buick_Velite_6_PHEV.jpg/320px-Buick_Velite_6_PHEV.jpg",
+        "mark_id": 4
+    },
+    {
+        "id": 152,
+        "model": "BYD Atto 3/Yuan Plus",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/BYD_Atto_3_1X7A6491.jpg/320px-BYD_Atto_3_1X7A6491.jpg",
+        "mark_id": 46
+    },
+    {
+        "id": 153,
+        "model": "BYD Dolphin",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/2021_BYD_Dolphin_EV_%28front%29.jpg/320px-2021_BYD_Dolphin_EV_%28front%29.jpg",
+        "mark_id": 46
+    },
+    {
+        "id": 154,
+        "model": "BYD e1",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/2009_BYD_F0_front_8.3.18.jpg/320px-2009_BYD_F0_front_8.3.18.jpg",
+        "mark_id": 46
+    },
+    {
+        "id": 155,
+        "model": "BYD e2",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/BYD_e2_010.jpg/320px-BYD_e2_010.jpg",
+        "mark_id": 46
+    },
+    {
+        "id": 156,
+        "model": "BYD e3",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/BYD_e2_010.jpg/320px-BYD_e2_010.jpg",
+        "mark_id": 46
+    },
+    {
+        "id": 157,
+        "model": "BYD e6",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/2014_BYD_E6.jpg/320px-2014_BYD_E6.jpg",
+        "mark_id": 46
+    },
+    {
+        "id": 158,
+        "model": "BYD Han",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/2020_BYD_Han_EV_front.jpg/320px-2020_BYD_Han_EV_front.jpg",
+        "mark_id": 46
+    },
+    {
+        "id": 159,
+        "model": "BYD Qin",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/BYD_Qin_Plus_DM-i_003.jpg/320px-BYD_Qin_Plus_DM-i_003.jpg",
+        "mark_id": 46
+    },
+    {
+        "id": 160,
+        "model": "BYD Seagull",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/2023_BYD_Seagull_%28front%29.jpg/320px-2023_BYD_Seagull_%28front%29.jpg",
+        "mark_id": 46
+    },
+    {
+        "id": 161,
+        "model": "BYD Seal",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/2022_BYD_Seal.jpg/320px-2022_BYD_Seal.jpg",
+        "mark_id": 46
+    },
+    {
+        "id": 162,
+        "model": "BYD Song",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/BYD_Song_Facelift_Shishi_01_2022-06-10.jpg/320px-BYD_Song_Facelift_Shishi_01_2022-06-10.jpg",
+        "mark_id": 46
+    },
+    {
+        "id": 163,
+        "model": "BYD Song Max",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/BYD_Song_Max_IMG001.jpg/320px-BYD_Song_Max_IMG001.jpg",
+        "mark_id": 46
+    },
+    {
+        "id": 164,
+        "model": "BYD T3",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/BYD_M3_DM_01_--_Auto_China_--_2014-04-23.jpg/320px-BYD_M3_DM_01_--_Auto_China_--_2014-04-23.jpg",
+        "mark_id": 46
+    },
+    {
+        "id": 165,
+        "model": "BYD Tang",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/BYD_Tang_DM-p_front_quarter_trimmed_2.jpg/320px-BYD_Tang_DM-p_front_quarter_trimmed_2.jpg",
+        "mark_id": 46
+    },
+    {
+        "id": 166,
+        "model": "BYD Yuan",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/2017_BYD_Yuan_Sport%2C_front_8.8.18.jpg/320px-2017_BYD_Yuan_Sport%2C_front_8.8.18.jpg",
+        "mark_id": 46
+    },
+    {
+        "id": 167,
+        "model": "Changan BenBen EV/BenBen E-Star",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Changan_Ben_Ben_E-Star_001.jpg/320px-Changan_Ben_Ben_E-Star_001.jpg",
+        "mark_id": 43
+    },
+    {
+        "id": 168,
+        "model": "Changan CS15EV/CS15 E-Pro",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Changan_CS15_Plus_IMG001.jpg/320px-Changan_CS15_Plus_IMG001.jpg",
+        "mark_id": 43
+    },
+    {
+        "id": 169,
+        "model": "Changan CS55 EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Changan_CS55_Plus_II_009.jpg/320px-Changan_CS55_Plus_II_009.jpg",
+        "mark_id": 43
+    },
+    {
+        "id": 170,
+        "model": "Changan Ruixing EM80",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Changan%28Chana%29_Ruixing_M80_front_8.16.18.jpg/320px-Changan%28Chana%29_Ruixing_M80_front_8.16.18.jpg",
+        "mark_id": 43
+    },
+    {
+        "id": 171,
+        "model": "Chery Arrizo 5e",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/2017_Chery_Arrizo_5.jpg/320px-2017_Chery_Arrizo_5.jpg",
+        "mark_id": 47
+    },
+    {
+        "id": 172,
+        "model": "Chery eQ1",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Chery_eQ1_001.jpg/320px-Chery_eQ1_001.jpg",
+        "mark_id": 47
+    },
+    {
+        "id": 173,
+        "model": "Chery eQ2",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Chery_Cowin_C3_front_8.16.18.jpg/320px-Chery_Cowin_C3_front_8.16.18.jpg",
+        "mark_id": 47
+    },
+    {
+        "id": 174,
+        "model": "Chery eQ7",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Chery_eQ7_001.jpg/320px-Chery_eQ7_001.jpg",
+        "mark_id": 47
+    },
+    {
+        "id": 175,
+        "model": "Chery QQ Ice Cream",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Chery_QQ_Ice_cream_2022-01-28-01.jpg/320px-Chery_QQ_Ice_cream_2022-01-28-01.jpg",
+        "mark_id": 47
+    },
+    {
+        "id": 176,
+        "model": "Chery Tiggo e",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/2018_Chery_Tiggo_5x%2C_front_8.6.18.jpg/320px-2018_Chery_Tiggo_5x%2C_front_8.6.18.jpg",
+        "mark_id": 47
+    },
+    {
+        "id": 177,
+        "model": "Chery Wujie Pro",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Chery_Wujie_Pro_001.jpg/320px-Chery_Wujie_Pro_001.jpg",
+        "mark_id": 47
+    },
+    {
+        "id": 178,
+        "model": "Chevrolet Menlo",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/CHEVROLET_MENLO_China_%283%29.jpg/320px-CHEVROLET_MENLO_China_%283%29.jpg",
+        "mark_id": 4
+    },
+    {
+        "id": 179,
+        "model": "Ciimo M-NV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Honda_HR-V_Hybrid_1X7A0427.jpg/320px-Honda_HR-V_Hybrid_1X7A0427.jpg",
+        "mark_id": 48
+    },
+    {
+        "id": 180,
+        "model": "Ciimo X-NV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Honda_HR-V_Hybrid_1X7A0427.jpg/320px-Honda_HR-V_Hybrid_1X7A0427.jpg",
+        "mark_id": 48
+    },
+    {
+        "id": 181,
+        "model": "Comsove MINIQ",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Www.wikipedia.org_screenshot_2018.png/320px-Www.wikipedia.org_screenshot_2018.png",
+        "mark_id": 49
+    },
+    {
+        "id": 182,
+        "model": "Denza D9",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Denza_D9_001.jpg/320px-Denza_D9_001.jpg",
+        "mark_id": 50
+    },
+    {
+        "id": 183,
+        "model": "Denza N8",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Denza_X_006.jpg/320px-Denza_X_006.jpg",
+        "mark_id": 50
+    },
+    {
+        "id": 184,
+        "model": "Dongfeng Aeolus EX1",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/2023_Renault_Kwid_Iconic_%28Colombia%29_front_view_01.png/320px-2023_Renault_Kwid_Iconic_%28Colombia%29_front_view_01.png",
+        "mark_id": 51
+    },
+    {
+        "id": 185,
+        "model": "Dongfeng Aeolus Yixuan",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/2019_Dongfeng_Aeolus_Yixuan_%28front%29.jpg/320px-2019_Dongfeng_Aeolus_Yixuan_%28front%29.jpg",
+        "mark_id": 51
+    },
+    {
+        "id": 186,
+        "model": "Dongfeng EM13",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/2014_Brilliance_Jinbei_Haixing_X30.jpg/320px-2014_Brilliance_Jinbei_Haixing_X30.jpg",
+        "mark_id": 51
+    },
+    {
+        "id": 187,
+        "model": "Dongfeng Fengon E1",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/2023_Renault_Kwid_Iconic_%28Colombia%29_front_view_01.png/320px-2023_Renault_Kwid_Iconic_%28Colombia%29_front_view_01.png",
+        "mark_id": 52
+    },
+    {
+        "id": 188,
+        "model": "Dongfeng Fengon E3/Seres E3",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Dongfeng_Fengon_500_Shishi_01_2022-11-04.jpg/320px-Dongfeng_Fengon_500_Shishi_01_2022-11-04.jpg",
+        "mark_id": 52
+    },
+    {
+        "id": 189,
+        "model": "Dongfeng Fengshen A60 EV/Aeolus E70",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/2017_Dongfeng-Fengshen_A60_%28facelift_II%29%2C_front_8.16.18.jpg/320px-2017_Dongfeng-Fengshen_A60_%28facelift_II%29%2C_front_8.16.18.jpg",
+        "mark_id": 51
+    },
+    {
+        "id": 190,
+        "model": "Dongfeng Fengxing T1",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/2023_Renault_Kwid_Iconic_%28Colombia%29_front_view_01.png/320px-2023_Renault_Kwid_Iconic_%28Colombia%29_front_view_01.png",
+        "mark_id": 53
+    },
+    {
+        "id": 191,
+        "model": "Dongfeng Ruitaite EM10",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Gonow_Xingwang_China_2015-04-06.jpg/320px-Gonow_Xingwang_China_2015-04-06.jpg",
+        "mark_id": 51
+    },
+    {
+        "id": 192,
+        "model": "Dongfeng Sokon EC31/EC35/EC36",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/2018_Dongfeng-Xiaokang_%28Sokon%29_C37%2C_front_8.8.18.jpg/320px-2018_Dongfeng-Xiaokang_%28Sokon%29_C37%2C_front_8.8.18.jpg",
+        "mark_id": 52
+    },
+    {
+        "id": 193,
+        "model": "Enovate ME5",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Enoreve_ME5_IMG001.jpg/320px-Enoreve_ME5_IMG001.jpg",
+        "mark_id": 54
+    },
+    {
+        "id": 194,
+        "model": "Enovate ME7",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Enovate_ME7_003.jpg/320px-Enovate_ME7_003.jpg",
+        "mark_id": 54
+    },
+    {
+        "id": 195,
+        "model": "Everus VE-1",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Honda_HR-V_Hybrid_1X7A0427.jpg/320px-Honda_HR-V_Hybrid_1X7A0427.jpg",
+        "mark_id": 55
+    },
+    {
+        "id": 196,
+        "model": "Farizon E5/E5L",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/2014_Brilliance_Jinbei_Haixing_X30.jpg/320px-2014_Brilliance_Jinbei_Haixing_X30.jpg",
+        "mark_id": 56
+    },
+    {
+        "id": 197,
+        "model": "Ford Territory EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/2018_JMC-Ford_Territory.jpg/320px-2018_JMC-Ford_Territory.jpg",
+        "mark_id": 9
+    },
+    {
+        "id": 198,
+        "model": "Geely Emgrand EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Geely_Emgrand_IV_004.jpg/320px-Geely_Emgrand_IV_004.jpg",
+        "mark_id": 57
+    },
+    {
+        "id": 199,
+        "model": "Geely Emgrand GSe",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Geely_Emgrand_S_IMG01.jpg/320px-Geely_Emgrand_S_IMG01.jpg",
+        "mark_id": 57
+    },
+    {
+        "id": 200,
+        "model": "Geometry A",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/2019_Geely_Geometry_A_%28front%29.jpg/320px-2019_Geely_Geometry_A_%28front%29.jpg",
+        "mark_id": 57
+    },
+    {
+        "id": 201,
+        "model": "Geometry C",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Geometry_C_012.jpg/320px-Geometry_C_012.jpg",
+        "mark_id": 57
+    },
+    {
+        "id": 202,
+        "model": "Geometry E",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/2022_Geely_Geometry_E_%28front%29.jpg/320px-2022_Geely_Geometry_E_%28front%29.jpg",
+        "mark_id": 57
+    },
+    {
+        "id": 203,
+        "model": "Great Wall Wingle 7 EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Great_Wall_Wingle_7_004.jpg/320px-Great_Wall_Wingle_7_004.jpg",
+        "mark_id": 58
+    },
+    {
+        "id": 204,
+        "model": "Hengchi 5\n",
+        "logo": null,
+        "mark_id": 59
+    },
+    {
+        "id": 205,
+        "model": "Higer H4E",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/NAC_Chang_Da_H9_001.jpg/320px-NAC_Chang_Da_H9_001.jpg",
+        "mark_id": 60
+    },
+    {
+        "id": 206,
+        "model": "HiPhi X",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/2021_HiPhi_X.jpg/320px-2021_HiPhi_X.jpg",
+        "mark_id": 61
+    },
+    {
+        "id": 207,
+        "model": "HiPhi Z",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/HiPhi_Z_03_China_2023-04-19.jpg/320px-HiPhi_Z_03_China_2023-04-19.jpg",
+        "mark_id": 61
+    },
+    {
+        "id": 208,
+        "model": "Honda e:NS1",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Honda_HR-V_Hybrid_1X7A0427.jpg/320px-Honda_HR-V_Hybrid_1X7A0427.jpg",
+        "mark_id": 11
+    },
+    {
+        "id": 209,
+        "model": "Honda e:NP1",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Honda_HR-V_Hybrid_1X7A0427.jpg/320px-Honda_HR-V_Hybrid_1X7A0427.jpg",
+        "mark_id": 11
+    },
+    {
+        "id": 210,
+        "model": "Hongqi E-HS3",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Hongqi_HS3_002.jpg/320px-Hongqi_HS3_002.jpg",
+        "mark_id": 45
+    },
+    {
+        "id": 211,
+        "model": "Hongqi E-HS9",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Hongqi_E-HS9_005.jpg/320px-Hongqi_E-HS9_005.jpg",
+        "mark_id": 45
+    },
+    {
+        "id": 212,
+        "model": "Hongqi E-QM5",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Hongqi_E-QM5_2021091903.jpg/320px-Hongqi_E-QM5_2021091903.jpg",
+        "mark_id": 45
+    },
+    {
+        "id": 213,
+        "model": "Hyundai Lafesta EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/HYUNDAI_LAFESTA_China_%286%29_%28cropped%29.jpg/320px-HYUNDAI_LAFESTA_China_%286%29_%28cropped%29.jpg",
+        "mark_id": 12
+    },
+    {
+        "id": 214,
+        "model": "Hyundai Mistra EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Hyundai_Mistra.jpg/320px-Hyundai_Mistra.jpg",
+        "mark_id": 12
+    },
+    {
+        "id": 215,
+        "model": "IM L7",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/IM_L7_IMG003.jpg/320px-IM_L7_IMG003.jpg",
+        "mark_id": 62
+    },
+    {
+        "id": 216,
+        "model": "JAC iC5/E J7/Sehol E50A",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Sehol_A5_IMG001.jpg/320px-Sehol_A5_IMG001.jpg",
+        "mark_id": 63
+    },
+    {
+        "id": 217,
+        "model": "JAC iEV6E",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/2013_JAC_Yueyue%2C_front_8.8.18.jpg/320px-2013_JAC_Yueyue%2C_front_8.8.18.jpg",
+        "mark_id": 63
+    },
+    {
+        "id": 218,
+        "model": "JAC iEV7S",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/JAC_Refine_S2_01_China_2016-04-03.jpg/320px-JAC_Refine_S2_01_China_2016-04-03.jpg",
+        "mark_id": 63
+    },
+    {
+        "id": 219,
+        "model": "JAC iEVA50",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/JAC_Heyue_facelift_--_Auto_China_--_2014-04-23.jpg/320px-JAC_Heyue_facelift_--_Auto_China_--_2014-04-23.jpg",
+        "mark_id": 63
+    },
+    {
+        "id": 220,
+        "model": "JAC iEVS4",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/JAC_Refine_S4_01_China_2019-03-14.jpg/320px-JAC_Refine_S4_01_China_2019-03-14.jpg",
+        "mark_id": 63
+    },
+    {
+        "id": 221,
+        "model": "JAC J3 EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Agencia_JAC_Tuxtla_Guti%C3%A9rez.jpg/320px-Agencia_JAC_Tuxtla_Guti%C3%A9rez.jpg",
+        "mark_id": 63
+    },
+    {
+        "id": 222,
+        "model": "Jetour X70S EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Jetour_X70_Plus_007.jpg/320px-Jetour_X70_Plus_007.jpg",
+        "mark_id": 64
+    },
+    {
+        "id": 223,
+        "model": "Kandi",
+        "logo": "https://upload.wikimedia.org/wikipedia/en/b/b4/Kandi_Technologies_logo.jpg",
+        "mark_id": 65
+    },
+    {
+        "id": 224,
+        "model": "Kandi",
+        "logo": "https://upload.wikimedia.org/wikipedia/en/b/b4/Kandi_Technologies_logo.jpg",
+        "mark_id": 65
+    },
+    {
+        "id": 225,
+        "model": "Kia K3 EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Kia_K3_BD_FL_Snow_White_Pearl_%2813%29_%28cropped%29.jpg/320px-Kia_K3_BD_FL_Snow_White_Pearl_%2813%29_%28cropped%29.jpg",
+        "mark_id": 14
+    },
+    {
+        "id": 226,
+        "model": "Leapmotor C11",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Leapmotor_C11_IMG001.jpg/320px-Leapmotor_C11_IMG001.jpg",
+        "mark_id": 66
+    },
+    {
+        "id": 227,
+        "model": "Leapmotor S01",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Leapmotor_S01_IMG001.jpg/320px-Leapmotor_S01_IMG001.jpg",
+        "mark_id": 66
+    },
+    {
+        "id": 228,
+        "model": "Leapmotor T03",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Leapmotor_T03_IMG001.jpg/320px-Leapmotor_T03_IMG001.jpg",
+        "mark_id": 66
+    },
+    {
+        "id": 229,
+        "model": "Maple 30X/Geometry EX3",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/2017_Geely_Yuanjing_X3_%28front%29.jpg/320px-2017_Geely_Yuanjing_X3_%28front%29.jpg",
+        "mark_id": 67
+    },
+    {
+        "id": 230,
+        "model": "Maple 80V",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/2019_Geely_Jiaji_%28front%29.jpg/320px-2019_Geely_Jiaji_%28front%29.jpg",
+        "mark_id": 67
+    },
+    {
+        "id": 231,
+        "model": "Maxus EG10",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Maxus_G10_001_China_2015-04-13.jpg/320px-Maxus_G10_001_China_2015-04-13.jpg",
+        "mark_id": 68
+    },
+    {
+        "id": 232,
+        "model": "Maxus Euniq 5",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Maxus_G50_01_China_2019-04-04.jpg/320px-Maxus_G50_01_China_2019-04-04.jpg",
+        "mark_id": 68
+    },
+    {
+        "id": 233,
+        "model": "Maxus Euniq 6",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Maxus_D60_001.jpg/320px-Maxus_D60_001.jpg",
+        "mark_id": 68
+    },
+    {
+        "id": 234,
+        "model": "Maxus Mifa 9",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Maxus_Mifa_9_IMG003.jpg/320px-Maxus_Mifa_9_IMG003.jpg",
+        "mark_id": 68
+    },
+    {
+        "id": 235,
+        "model": "Maxus T90 EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Maxus_T90_001.jpg/320px-Maxus_T90_001.jpg",
+        "mark_id": 68
+    },
+    {
+        "id": 236,
+        "model": "Mazda CX-30 EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Mazda_CX-30_Touring%2C_2020_front.jpg/320px-Mazda_CX-30_Touring%2C_2020_front.jpg",
+        "mark_id": 19
+    },
+    {
+        "id": 237,
+        "model": "MG4 EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/MG4_EV_IMG_7768.jpg/320px-MG4_EV_IMG_7768.jpg",
+        "mark_id": 68
+    },
+    {
+        "id": 238,
+        "model": "MG ZS EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/2018_MG_ZS_Exclusive_Turbo_Automatic_1.0_Front.jpg/320px-2018_MG_ZS_Exclusive_Turbo_Automatic_1.0_Front.jpg",
+        "mark_id": 68
+    },
+    {
+        "id": 239,
+        "model": "Mitsubishi Airtrek",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Misubishi_Airtrek_In_Guangzhou_Auto_Show_2021_%28cropped%29.jpg/320px-Misubishi_Airtrek_In_Guangzhou_Auto_Show_2021_%28cropped%29.jpg",
+        "mark_id": 69
+    },
+    {
+        "id": 240,
+        "model": "Modern IN",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Modern_In_IMG001.jpg/320px-Modern_In_IMG001.jpg",
+        "mark_id": 70
+    },
+    {
+        "id": 241,
+        "model": "NAC Chang Da H9",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/NAC_Chang_Da_H9_001.jpg/320px-NAC_Chang_Da_H9_001.jpg",
+        "mark_id": 71
+    },
+    {
+        "id": 242,
+        "model": "Neta Aya",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Neta_V_006.jpg/320px-Neta_V_006.jpg",
+        "mark_id": 72
+    },
+    {
+        "id": 243,
+        "model": "Neta GT",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Neta_GT_008.jpg/320px-Neta_GT_008.jpg",
+        "mark_id": 72
+    },
+    {
+        "id": 244,
+        "model": "Neta U",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Neta_U_01.jpg/320px-Neta_U_01.jpg",
+        "mark_id": 72
+    },
+    {
+        "id": 245,
+        "model": "Neta S",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Neta_S_008.jpg/320px-Neta_S_008.jpg",
+        "mark_id": 72
+    },
+    {
+        "id": 246,
+        "model": "Nio EC6",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/2020_NIO_EC6_%28front%29.jpg/320px-2020_NIO_EC6_%28front%29.jpg",
+        "mark_id": 73
+    },
+    {
+        "id": 247,
+        "model": "Nio EC7",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/NIO_EC7_003.jpg/320px-NIO_EC7_003.jpg",
+        "mark_id": 73
+    },
+    {
+        "id": 248,
+        "model": "Nio EP9",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Nio_EP9.jpg/320px-Nio_EP9.jpg",
+        "mark_id": 73
+    },
+    {
+        "id": 249,
+        "model": "Nio ES6",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/2023_NIO_ES6_%28front%29.jpg/320px-2023_NIO_ES6_%28front%29.jpg",
+        "mark_id": 73
+    },
+    {
+        "id": 250,
+        "model": "Nio ES7",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/NIO_ES7_IMG004.jpg/320px-NIO_ES7_IMG004.jpg",
+        "mark_id": 73
+    },
+    {
+        "id": 251,
+        "model": "Nio ES8",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/NIO_ES8_II_007.jpg/320px-NIO_ES8_II_007.jpg",
+        "mark_id": 73
+    },
+    {
+        "id": 252,
+        "model": "Nio ET5",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/NIO_ET5_IMG_8291.jpg/320px-NIO_ET5_IMG_8291.jpg",
+        "mark_id": 73
+    },
+    {
+        "id": 253,
+        "model": "Nio ET7",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/NIO_ET7_1X7A6679_%28cropped%29.jpg/320px-NIO_ET7_1X7A6679_%28cropped%29.jpg",
+        "mark_id": 73
+    },
+    {
+        "id": 254,
+        "model": "Nissan Sylphy Z.E.",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/2020_Nissan_Sentra_SV_in_Electric_Blue_Metallic%2C_front_left.jpg/320px-2020_Nissan_Sentra_SV_in_Electric_Blue_Metallic%2C_front_left.jpg",
+        "mark_id": 24
+    },
+    {
+        "id": 255,
+        "model": "Ora Ballet Cat",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/ORA_Ballet_Cat_IMG001.jpg/320px-ORA_Ballet_Cat_IMG001.jpg",
+        "mark_id": 74
+    },
+    {
+        "id": 256,
+        "model": "Ora Cherry Cat",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/2022_WEY_Macchiato.jpg/320px-2022_WEY_Macchiato.jpg",
+        "mark_id": 74
+    },
+    {
+        "id": 257,
+        "model": "Ora Good Cat/Funky Cat",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/ORA_Funky_Cat_1X7A7360.jpg/320px-ORA_Funky_Cat_1X7A7360.jpg",
+        "mark_id": 74
+    },
+    {
+        "id": 258,
+        "model": "Ora Lightning Cat/Next Cat/Grand Cat",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Ora_Lightning_Cat_003.jpg/320px-Ora_Lightning_Cat_003.jpg",
+        "mark_id": 74
+    },
+    {
+        "id": 259,
+        "model": "Oushang A600 EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Oushan_Changxing_003.jpg/320px-Oushan_Changxing_003.jpg",
+        "mark_id": 43
+    },
+    {
+        "id": 260,
+        "model": "Qiantu K50",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Qiantu_K50_001.jpg/320px-Qiantu_K50_001.jpg",
+        "mark_id": 75
+    },
+    {
+        "id": 261,
+        "model": "Radar RD6",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/2022_Radar_RD6_%28front%29.jpg/320px-2022_Radar_RD6_%28front%29.jpg",
+        "mark_id": 57
+    },
+    {
+        "id": 262,
+        "model": "Renault City K-ZE",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/2023_Renault_Kwid_Iconic_%28Colombia%29_front_view_01.png/320px-2023_Renault_Kwid_Iconic_%28Colombia%29_front_view_01.png",
+        "mark_id": 28
+    },
+    {
+        "id": 263,
+        "model": "Roewe Clever",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/2020_SAIC_Clever_EV360_%28front%29.jpg/320px-2020_SAIC_Clever_EV360_%28front%29.jpg",
+        "mark_id": 68
+    },
+    {
+        "id": 264,
+        "model": "Roewe Ei5/MG 5 EV/MG EP",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Roewe_i5_IMG001_%28cropped%29.jpg/320px-Roewe_i5_IMG001_%28cropped%29.jpg",
+        "mark_id": 68
+    },
+    {
+        "id": 265,
+        "model": "Roewe Ei6",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Roewe_i6_Max_IMG001.jpg/320px-Roewe_i6_Max_IMG001.jpg",
+        "mark_id": 68
+    },
+    {
+        "id": 266,
+        "model": "Roewe Ei6 Max",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Roewe_i6_Max_IMG001.jpg/320px-Roewe_i6_Max_IMG001.jpg",
+        "mark_id": 68
+    },
+    {
+        "id": 267,
+        "model": "Roewe ER6",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Roewe_i6_Max_IMG001.jpg/320px-Roewe_i6_Max_IMG001.jpg",
+        "mark_id": 68
+    },
+    {
+        "id": 268,
+        "model": "Roewe ERX5",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/2022_SAIC_Roewe_RX5_%28front%29.jpg/320px-2022_SAIC_Roewe_RX5_%28front%29.jpg",
+        "mark_id": 68
+    },
+    {
+        "id": 269,
+        "model": "Roewe Marvel R",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Roewe_Marvel_X_IMG002_%28cropped%29.jpg/320px-Roewe_Marvel_X_IMG002_%28cropped%29.jpg",
+        "mark_id": 68
+    },
+    {
+        "id": 270,
+        "model": "Roewe/MG Marvel X",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Roewe_Marvel_X_IMG002_%28cropped%29.jpg/320px-Roewe_Marvel_X_IMG002_%28cropped%29.jpg",
+        "mark_id": 68
+    },
+    {
+        "id": 271,
+        "model": "Sehol E20X",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Sehol_E20X_001.jpg/320px-Sehol_E20X_001.jpg",
+        "mark_id": 63
+    },
+    {
+        "id": 272,
+        "model": "Sehol X4",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Sehol_E40X_001.jpg/320px-Sehol_E40X_001.jpg",
+        "mark_id": 63
+    },
+    {
+        "id": 273,
+        "model": "Shenlan S7",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Shenlan_S7_011.jpg/320px-Shenlan_S7_011.jpg",
+        "mark_id": 43
+    },
+    {
+        "id": 274,
+        "model": "Shenlan SL03",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Shenlan_SL03_011.jpg/320px-Shenlan_SL03_011.jpg",
+        "mark_id": 43
+    },
+    {
+        "id": 275,
+        "model": "Singulato iS6",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Singulato_iS6_002.jpg/320px-Singulato_iS6_002.jpg",
+        "mark_id": 76
+    },
+    {
+        "id": 276,
+        "model": "SRM Shineray X30LEV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/2014_Brilliance_Jinbei_Haixing_X30.jpg/320px-2014_Brilliance_Jinbei_Haixing_X30.jpg",
+        "mark_id": 77
+    },
+    {
+        "id": 277,
+        "model": "Toyota C-HR EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Toyota_C-HR_Hybrid_2017_%28cropped%29.jpg/320px-Toyota_C-HR_Hybrid_2017_%28cropped%29.jpg",
+        "mark_id": 78
+    },
+    {
+        "id": 278,
+        "model": "Toyota IZOA EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Toyota_C-HR_Hybrid_2017_%28cropped%29.jpg/320px-Toyota_C-HR_Hybrid_2017_%28cropped%29.jpg",
+        "mark_id": 79
+    },
+    {
+        "id": 279,
+        "model": "Toyota bZ3",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/FAW-Toyota_BZ3_For_Guangzhou_International_Auto_Show_2022_%28cropped%29.jpg/320px-FAW-Toyota_BZ3_For_Guangzhou_International_Auto_Show_2022_%28cropped%29.jpg",
+        "mark_id": 79
+    },
+    {
+        "id": 280,
+        "model": "Trumpchi GE3",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/2018_GAC_Trumpchi_GE3.jpg/320px-2018_GAC_Trumpchi_GE3.jpg",
+        "mark_id": 40
+    },
+    {
+        "id": 281,
+        "model": "Trumpchi GS4 EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/2019_GAC_Trumpchi_GS4_270T_%28front%29.jpg/320px-2019_GAC_Trumpchi_GS4_270T_%28front%29.jpg",
+        "mark_id": 40
+    },
+    {
+        "id": 282,
+        "model": "Volkswagen e-Lavida",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/2019_SAIC-Volkswagen_Lavida.jpg/320px-2019_SAIC-Volkswagen_Lavida.jpg",
+        "mark_id": 39
+    },
+    {
+        "id": 283,
+        "model": "Volkswagen ID.6",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/2021_SAIC-Volkswagen_ID.6_X_%28front%29.jpg/320px-2021_SAIC-Volkswagen_ID.6_X_%28front%29.jpg",
+        "mark_id": 39
+    },
+    {
+        "id": 284,
+        "model": "Weltmeister E5",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/2021_Weltmeister_E5.jpg/320px-2021_Weltmeister_E5.jpg",
+        "mark_id": 80
+    },
+    {
+        "id": 285,
+        "model": "Weltmeister EX5",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/2019_Weltmeister_EX5_%28front%29.jpg/320px-2019_Weltmeister_EX5_%28front%29.jpg",
+        "mark_id": 80
+    },
+    {
+        "id": 286,
+        "model": "Weltmeister EX6",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Weltmeister_EX6_Plus_002.jpg/320px-Weltmeister_EX6_Plus_002.jpg",
+        "mark_id": 80
+    },
+    {
+        "id": 287,
+        "model": "Weltmeister W6",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Weltmeister_W6_IMG006.jpg/320px-Weltmeister_W6_IMG006.jpg",
+        "mark_id": 80
+    },
+    {
+        "id": 288,
+        "model": "Wuling Air EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/2022_Wuling_Air_EV%2C_Central_Surabaya.jpg/320px-2022_Wuling_Air_EV%2C_Central_Surabaya.jpg",
+        "mark_id": 44
+    },
+    {
+        "id": 289,
+        "model": "Wuling Hongguang Mini EV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/%E4%BA%94%E8%8F%B1%E5%AE%8F%E5%85%89mini_EV_9733_1.jpg/320px-%E4%BA%94%E8%8F%B1%E5%AE%8F%E5%85%89mini_EV_9733_1.jpg",
+        "mark_id": 44
+    },
+    {
+        "id": 290,
+        "model": "Xiaohu FEV",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Xiaohu_FEV_on_the_street.jpg/320px-Xiaohu_FEV_on_the_street.jpg",
+        "mark_id": 81
+    },
+    {
+        "id": 291,
+        "model": "XPeng G3/Identity X",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Xpeng_G3i_001.jpg/320px-Xpeng_G3i_001.jpg",
+        "mark_id": 82
+    },
+    {
+        "id": 292,
+        "model": "XPeng G6",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/XPeng_G6_001.jpg/320px-XPeng_G6_001.jpg",
+        "mark_id": 82
+    },
+    {
+        "id": 293,
+        "model": "XPeng G9",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/2022_XPeng_G9_%28front%29.jpg/320px-2022_XPeng_G9_%28front%29.jpg",
+        "mark_id": 82
+    },
+    {
+        "id": 294,
+        "model": "XPeng P5",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/XPeng_P5_2021112001.jpg/320px-XPeng_P5_2021112001.jpg",
+        "mark_id": 82
+    },
+    {
+        "id": 295,
+        "model": "XPeng P7",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/2021_XPeng_P7_%28front%29.jpg/320px-2021_XPeng_P7_%28front%29.jpg",
+        "mark_id": 82
+    },
+    {
+        "id": 296,
+        "model": "Yangwang U8",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Yangwang_U8_001.jpg/320px-Yangwang_U8_001.jpg",
+        "mark_id": 46
+    },
+    {
+        "id": 297,
+        "model": "Yangwang U9",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Yangwang_U9_001.jpg/320px-Yangwang_U9_001.jpg",
+        "mark_id": 46
+    },
+    {
+        "id": 298,
+        "model": "Zeekr 001",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/2022_Zeekr_001_%28front%29.jpg/320px-2022_Zeekr_001_%28front%29.jpg",
+        "mark_id": 57
+    },
+    {
+        "id": 299,
+        "model": "Zeekr 009",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Zeekr_009_01_China_2023-04-17.jpg/320px-Zeekr_009_01_China_2023-04-17.jpg",
+        "mark_id": 57
+    },
+    {
+        "id": 300,
+        "model": "Zeekr X",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/2023_Zeekr_X_%28front%29.jpg/320px-2023_Zeekr_X_%28front%29.jpg",
+        "mark_id": 57
+    }
+]
