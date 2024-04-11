@@ -23,15 +23,15 @@ SECRET_KEY = env.str("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", 'localhost', "afsona.transitgroup.uz", "46.101.212.188"]
+ALLOWED_HOSTS = ["127.0.0.1", 'localhost', "afsona.transitgroup.uz"]
 CSRF_TRUSTED_ORIGINS = [
     "http://afsona.transitgroup.uz",
-    "http://46.101.212.188",
     "https://afsona.transitgroup.uz"
 ]
 
 # Application definition
 DJANGO_APPS = [
+    "daphne",  # should add to the beginning
     "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -57,6 +57,7 @@ THIRD_PARTY_APPS = [
     "corsheaders",
     "modeltranslation",
     "fcm_django",
+    "channels"
 ]
 
 REST_FRAMEWORK = {
@@ -106,6 +107,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "core.wsgi.application"
+ASGI_APPLICATION = "core.asgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -237,6 +239,14 @@ MODELTRANSLATION_PREPOPULATE_LANGUAGE = "ru"
 ESKIZ_EMAIL = env.str("ESKIZ_USER_EMAIL", "samandarkhodjiyev@gmail.com")
 ESKIZ_PASSWORD = env.str("ESKIZ_USER_PASSWORD", "b9LHEGCG9fppE4B2D7rEexqk4AgYVMIUr10JKXP3")
 
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [env.str("REDIS_URL")],
+        },
+    },
+}
 
 # SWAGGER SETTINGS
 SWAGGER_SETTINGS = {
