@@ -25,20 +25,19 @@ class EchoConsumer(AsyncJsonWebsocketConsumer):
         }
         await self.send(text_data=json.dumps(data))
 
-
     async def send_transaction_data(self, event):
         money = event['money']
         battery_percent = event['battery_percent']
         consumed_khw = event['consumed_kwh']
 
-
         transaction_id = event['transaction_id']
         await self.send(
             text_data=json.dumps({
-            'type': "transaction":{
-                "transaction_id": transaction_id
-                "money": money,
-                "battery_percent": battery_percent,
-                "consumed_kwh": consumed_kwh
-            }
-        }))
+                'type': "transaction",
+                "data": {
+                    "transaction_id": transaction_id,
+                    "money": money,
+                    "battery_percent": battery_percent,
+                    "consumed_kwh": consumed_khw
+                }
+            }))
