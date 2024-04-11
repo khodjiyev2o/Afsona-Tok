@@ -42,7 +42,7 @@ def send_connector_status_to_websocket(sender, instance, **kwargs):
     channel_layer = get_channel_layer()
 
     payload = {
-        'type': 'connector_status',
+        'type': 'send_connector_status',
         'status': instance.status,
         'connector_id': instance.id
     }
