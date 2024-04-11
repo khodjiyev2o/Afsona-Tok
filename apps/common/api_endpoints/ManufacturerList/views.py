@@ -5,7 +5,7 @@ from apps.common.api_endpoints.ManufacturerList.serializers import ManufacturerL
 
 
 class ManufacturerListView(generics.ListAPIView):
-    queryset = Manufacturer.objects.all()
+    queryset = Manufacturer.objects.all().order_by('created_at')
     serializer_class = ManufacturerListSerializer
 
 

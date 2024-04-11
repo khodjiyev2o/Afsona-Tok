@@ -6,7 +6,7 @@ hello:
 	echo "Hello, Afsona"
 run:
 	export DJANGO_SETTINGS_MODULE=core.settings.develop
-	daphne -b 0.0.0.0 -p 8000   core.asgi:application
+	daphne -b 0.0.0.0 -p 8000  core.asgi:application
 migrations:
 	python3 manage.py makemigrations
 migrate:
