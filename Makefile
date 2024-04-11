@@ -5,7 +5,8 @@
 hello:
 	echo "Hello, Afsona"
 run:
-	python3 manage.py runserver 0.0.0.0:8000
+	export DJANGO_SETTINGS_MODULE=core.settings.develop
+	daphne -b 0.0.0.0 -p 8000   core.asgi:application
 migrations:
 	python3 manage.py makemigrations
 migrate:
@@ -16,6 +17,7 @@ test:
 	pytest -vv -s
 
 ocpp_service:
+	uvicorn ocpp_service.main:app --host 0.0.0.0 --port 8080 --workers 3
 
 
 

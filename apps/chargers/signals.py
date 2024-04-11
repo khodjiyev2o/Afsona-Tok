@@ -1,8 +1,11 @@
 import logging
 
+from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
+
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from apps.chargers.models import ChargingTransaction
+from apps.chargers.models import ChargingTransaction, Connector
 
 telegram_logger = logging.getLogger('telegram')
 
@@ -32,3 +35,15 @@ def sent_logs_to_telegram_bot_on_start(sender, instance, created, **kwargs):
                 User Balance: {instance.user.balance}
         """
     )
+
+
+@receiver(post_save, sender=Connector)
+def send_connector_status_to_websocket(sender, instance, **kwargs):
+    channel_layer = get_channel_layer()
+
+    payload = {
+        'type': 'connector_status',
+        'status': instance.status,
+        'connector_id': instance.id
+    }
+    async_to_sync(channel_layer.group_send)(group='connectors', message=payload)
