@@ -24,10 +24,6 @@ SECRET_KEY = env.str("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1", 'localhost', "afsona.transitgroup.uz"]
-CSRF_TRUSTED_ORIGINS = [
-    "http://afsona.transitgroup.uz",
-    "https://afsona.transitgroup.uz"
-]
 
 # Application definition
 DJANGO_APPS = [
