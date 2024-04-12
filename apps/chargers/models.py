@@ -33,7 +33,7 @@ class ChargePoint(BaseModel):
     max_electric_power = models.IntegerField(default=0, verbose_name=_("ChargePoint's Max electric power"))
 
     # FK
-    location = models.ForeignKey(to=Location, on_delete=models.PROTECT, verbose_name=_("Location"))
+    location = models.ForeignKey(to=Location, on_delete=models.PROTECT, verbose_name=_("Location"), related_name="chargers")
 
     def __str__(self):
         return f"{self.name} - {self.charger_id}"
@@ -71,7 +71,8 @@ class Connector(BaseModel):
     )
 
     # FK
-    charge_point = models.ForeignKey(ChargePoint, on_delete=models.PROTECT)
+    charge_point = models.ForeignKey(ChargePoint, on_delete=models.PROTECT, related_name='connectors',
+                                     verbose_name=_("Charge Point"))
 
     class Meta:
         unique_together = ("charge_point", "connector_id")

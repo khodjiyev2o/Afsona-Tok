@@ -3,7 +3,6 @@ from django.db.models import Count
 from django.utils.translation import gettext_lazy as _
 
 from apps.chargers.models import ChargePoint, Connector, Location, ChargingTransaction
-from django import forms
 
 from apps.common.models import ConnectionType
 
@@ -29,11 +28,11 @@ class LocationAdmin(admin.ModelAdmin):
 
     def get_queryset(self, request):
         queryset = super().get_queryset(request)
-        queryset = queryset.annotate(charge_points_count=Count('chargepoint'))
+        queryset = queryset.annotate(charge_points_count=Count('chargers'))
         return queryset
 
     def get_charge_points_count(self, obj):
-        return obj.chargepoint_set.count()
+        return obj.chargers.count()
 
     get_charge_points_count.short_description = _("Charge Points Count")
     get_charge_points_count.admin_order_field = 'charge_points_count'
@@ -63,7 +62,7 @@ class ChargePointAdmin(admin.ModelAdmin):
 
 @admin.register(Connector)
 class ConnectorAdmin(admin.ModelAdmin):
-    list_display = ('id', 'charge_point', 'connector_id', 'status', 'last_status_reason')
+    list_display = ('id', 'charge_point', 'connector_id', 'status', 'name', 'last_status_reason')
     list_filter = ('status', 'charge_point__charger_id', 'standard')
     search_fields = ('charge_point__name', 'charge_point__charger_id')
     search_help_text = _("Search by charge point's name and charger_id")
