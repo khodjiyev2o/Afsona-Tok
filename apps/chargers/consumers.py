@@ -1,17 +1,22 @@
 import json
+from decimal import Decimal
 
 from channels.generic.websocket import AsyncJsonWebsocketConsumer
 
 
 class EchoConsumer(AsyncJsonWebsocketConsumer):
     async def connect(self):
+        if not self.scope['user'].is_authenticated:
+            await self.close(code=4001, reason='User is not authenticated')
+
         await self.channel_layer.group_add('connectors', self.channel_name)
+        user_direct_group = f"user_id_{self.scope['user'].id}"
+        await self.channel_layer.group_add(user_direct_group, self.channel_name)
+
         await self.accept()
-        print("Connected to WebSocket and added to 'connectors' group")
 
     async def disconnect(self, close_code):
         await self.channel_layer.group_discard('connectors', self.channel_name)
-        print("Disconnected from WebSocket and removed from 'connectors' group")
 
     async def send_connector_status(self, event):
         status = event['status']
@@ -26,18 +31,23 @@ class EchoConsumer(AsyncJsonWebsocketConsumer):
         await self.send(text_data=json.dumps(data))
 
     async def send_transaction_data(self, event):
-        money = event['money']
-        battery_percent = event['battery_percent']
-        consumed_khw = event['consumed_kwh']
+        money: Decimal = event['money']
+        battery_percent: int = event['battery_percent']
+        consumed_khw: Decimal = event['consumed_kwh']
+        transaction_id: int = event['transaction_id']
+        status: str = event['status']
 
-        transaction_id = event['transaction_id']
-        await self.send(
-            text_data=json.dumps({
-                'type': "transaction",
+        data_json = json.dumps(
+            {
+                "type": "transaction",
                 "data": {
-                    "transaction_id": transaction_id,
-                    "money": money,
+                    "transaction_id": int(transaction_id),
+                    "money": str(money),
                     "battery_percent": battery_percent,
-                    "consumed_kwh": consumed_khw
+                    "consumed_kwh": consumed_khw,
+                    "status": str(status)
                 }
-            }))
+            }
+        )
+
+        await self.send(text_data=data_json)

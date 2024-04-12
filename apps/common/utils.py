@@ -25,5 +25,5 @@ def send_activation_code_via_sms(phone: str, cache_type: str, session: str, lang
 
     if "test" not in sys.argv:
         eskiz = EskizSMS(email=settings.ESKIZ_EMAIL, password=settings.ESKIZ_PASSWORD)
-        eskiz.send_sms(mobile_phone=phone[1:], message=get_message_by_language(language=language, code=code),
-                       from_whom="4546", callback_url=None)
+        # eskiz.send_sms(mobile_phone=phone[1:], message=get_message_by_language(language=language, code=code),
+        #                from_whom="4546", callback_url=None)

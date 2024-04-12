@@ -20,6 +20,7 @@ schema_view = get_schema_view(
     patterns=[
         path("api/v1/common/", include("apps.common.urls", namespace="common")),
         path("api/v1/users/", include("apps.users.urls", namespace="users")),
+        path('api/v1/changers/', include('apps.chargers.urls', namespace='chargers')),
     ]
 )
 swagger_urlpatterns = [
