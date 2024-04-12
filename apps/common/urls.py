@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .api_endpoints import FrontendTranslationView, ManufacturerListView, CarModelListView, ConnectionTypeListView
+from .api_endpoints import * # noqa
 
 app_name = 'common'
 
@@ -9,4 +9,5 @@ urlpatterns = [
     path("ConnectTypeList/", ConnectionTypeListView.as_view(), name="connection-type-list"),
     path("ManufacturerList/", ManufacturerListView.as_view(), name="manufacturer-list"),
     path("CarModelList/", CarModelListView.as_view(), name="car-model-list"),
+    path("UserCarAdd/", UserCarAddView.as_view(), name="user-car-add"),
 ]

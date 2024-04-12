@@ -65,6 +65,7 @@ class ConnectionType(BaseModel):
     _type = models.CharField(max_length=255, verbose_name=_("Type"), choices=AC_DC_TYPE_Choice.choices)
     icon = models.ImageField(_("Icon"), upload_to="icons/%Y/%m")
     max_voltage = models.IntegerField(verbose_name=_("Max Voltage"))
+    description = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.name + " / " + self._type
