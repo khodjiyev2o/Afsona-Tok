@@ -1,11 +1,14 @@
 from rest_framework import serializers
 
-from apps.chargers.models import ChargingTransaction
+from apps.chargers.models import ChargeCommand
 
 
-class StopChargingCommandSerializer(serializers.ModelSerializer):
-    transaction_id = serializers.IntegerField(source='id')
+class StopChargingCommandSerializer(serializers.Serializer):
+    transaction = serializers.IntegerField()
 
+
+class StopChargingCommandResponseSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ChargingTransaction
-        fields = ('transaction_id',)
+        model = ChargeCommand
+        fields = ('id', 'connector', 'user_car', 'is_delivered')
+        read_only_fields = ('id', 'is_delivered')

@@ -1,5 +1,8 @@
 import logging
 from decimal import Decimal
+from channels.layers import get_channel_layer
+
+from asgiref.sync import async_to_sync
 from django.db.models import Q
 from django.utils import timezone
 from ocpp.v16.enums import RegistrationStatus, AuthorizationStatus
@@ -183,6 +186,14 @@ class CommandCallbackAPIView(APIView):
         command.done_at = timezone.now()
         command.status = request.data.get('status')
         command.save(update_fields=['done_at', 'status'])
+
+        payload = {
+            'type': 'send_command_result',
+            'status': command.status,
+            'id': command.id
+        }
+        channel_layer = get_channel_layer()
+        async_to_sync(channel_layer.group_send)(group=f'user_id_{command.user_id}', message=payload)
 
         return Response(data={}, status=status.HTTP_200_OK)
 

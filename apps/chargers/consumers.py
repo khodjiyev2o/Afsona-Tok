@@ -4,7 +4,7 @@ from decimal import Decimal
 from channels.generic.websocket import AsyncJsonWebsocketConsumer
 
 
-class EchoConsumer(AsyncJsonWebsocketConsumer):
+class MobileJsonConsumer(AsyncJsonWebsocketConsumer):
     async def connect(self):
         if not self.scope['user'].is_authenticated:
             await self.close(code=4001, reason='User is not authenticated')
@@ -17,6 +17,7 @@ class EchoConsumer(AsyncJsonWebsocketConsumer):
 
     async def disconnect(self, close_code):
         await self.channel_layer.group_discard('connectors', self.channel_name)
+        await self.channel_layer.group_discard(f"user_id_{self.scope['user'].id}", self.channel_name)
 
     async def send_connector_status(self, event):
         status = event['status']
@@ -50,4 +51,16 @@ class EchoConsumer(AsyncJsonWebsocketConsumer):
             }
         )
 
+        await self.send(text_data=data_json)
+
+    async def send_command_result(self, event):
+        status = event['status']
+        command_id = event['id']
+        data_json = json.dumps({
+            "type": 'command_result',
+            "data": {
+                "command_id": command_id,
+                "status": status
+            }
+        })
         await self.send(text_data=data_json)

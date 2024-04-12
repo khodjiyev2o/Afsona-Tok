@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.db.models import Count
 from django.utils.translation import gettext_lazy as _
 
-from apps.chargers.models import ChargePoint, Connector, Location
+from apps.chargers.models import ChargePoint, Connector, Location, ChargingTransaction
 from django import forms
 
 from apps.common.models import ConnectionType
@@ -96,3 +96,10 @@ class ConnectionTypeAdmin(admin.ModelAdmin):
 
     get_linked_cars_count.short_description = _("Linked Cars Count")
     get_linked_cars_count.admin_order_field = 'car_count'
+
+
+@admin.register(ChargingTransaction)
+class ChargingTransactionAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'user_car', 'connector', 'created_at', 'end_time', 'status')
+    list_filter = ('status', 'user', 'connector')
+    search_help_text = _("Search by user's username and user car's plate")
