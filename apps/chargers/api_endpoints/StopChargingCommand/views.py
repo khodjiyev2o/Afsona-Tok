@@ -7,3 +7,6 @@ from .serializers import StopChargingCommandSerializer
 class StopChargingCommandView(CreateAPIView):
     queryset = ChargeCommand.objects.all()
     serializer_class = StopChargingCommandSerializer
+
+
+__all__ = ['StopChargingCommandView']

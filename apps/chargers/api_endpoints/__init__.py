@@ -1,8 +1,3 @@
-from .StartChargingCommand.views import StartChargingCommandView
-from .StopChargingCommand.views import StopChargingCommandView
-
-
-__all__ = [
-    "StartChargingCommandView",
-    "StopChargingCommandView"
-]
+from .StartChargingCommand import * # noqa
+from .StopChargingCommand import * # noqa
+from .MapLocationList import * # noqa
