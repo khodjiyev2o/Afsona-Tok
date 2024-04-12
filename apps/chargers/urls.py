@@ -7,5 +7,5 @@ app_name = 'chargers'
 
 urlpatterns = [
     path("StartChargingCommand/", StartChargingCommandView.as_view(), name="start-charging-command"),
-    path("StopChargingCommand/", StopChargingCommandView.as_view(), name="start-charging-command"),
+    path("StopChargingCommand/", StopChargingCommandView.as_view(), name="stop-charging-command"),
 ]

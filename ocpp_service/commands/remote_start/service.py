@@ -20,7 +20,6 @@ async def remote_start_handler(body: RemoteStartRequest, background_tasks: Backg
 
 
 async def send_command_to_charger(connection: OCPP16Controller, body: RemoteStartRequest):
-    await asyncio.sleep(2)
     response = await connection.send_remote_start_transaction_command(
         connector_id=body.connector_id, id_tag=body.id_tag
     )
