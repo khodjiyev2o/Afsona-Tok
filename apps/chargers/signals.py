@@ -1,4 +1,5 @@
 import logging
+from decimal import Decimal
 
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
@@ -6,14 +7,28 @@ from channels.layers import get_channel_layer
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from apps.chargers.models import ChargingTransaction, Connector
+from apps.ocpp_messages.views import PRICE
 
 telegram_logger = logging.getLogger('telegram')
 
 
 @receiver(post_save, sender=ChargingTransaction)
-def sent_logs_to_telegram_bot_while_charging(sender, instance, **kwargs):
+def sent_logs_to_telegram_bot_while_charging(sender, instance: ChargingTransaction, **kwargs):
     if instance.status == ChargingTransaction.Status.FINISHED:
         return
+
+    payload = {
+        'type': 'send_transaction_data',
+
+        'money': Decimal("12.845") * PRICE,
+        "transaction_id": instance.id,
+        "battery_percent": instance.battery_percent_on_end,
+        "consumed_kwh": instance.consumer_kwh,
+        "status": instance.status,
+    }
+    channel_layer = get_channel_layer()
+    async_to_sync(channel_layer.group_send)(group=f'user_id_{instance.user_id}', message=payload)
+
     telegram_logger.info(
         f"""MeterValues:
                 Transaction ID: {instance.id}

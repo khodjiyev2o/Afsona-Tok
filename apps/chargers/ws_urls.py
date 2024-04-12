@@ -3,5 +3,5 @@ from apps.chargers.consumers import MobileJsonConsumer
 
 
 websocket_urlpatterns = [
-    path('api/ws/v1/connectors/', MobileJsonConsumer.as_asgi()),
+    path('api/ws/v1/mobile/', MobileJsonConsumer.as_asgi()),
 ]
