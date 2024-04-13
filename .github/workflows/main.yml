@@ -13,5 +13,4 @@ jobs:
           whoami
           cd /var/www/afsona.transitgroup.uz
           git pull origin main
-          whoami
-          systemctl restart afsona-gunicorn.service
+          sudo /bin/systemctl restart afsona-gunicorn.service
