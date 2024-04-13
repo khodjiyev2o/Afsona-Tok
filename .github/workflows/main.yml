@@ -4,10 +4,6 @@ on:
       - main
   workflow_dispatch:
 
-defaults:
-  run:
-    working-directory: /var/www/afsona.transitgroup.uz
-
 jobs:
   Deploy:
     runs-on: self-hosted
@@ -18,12 +14,6 @@ jobs:
           cd /var/www/afsona.transitgroup.uz
           source venv/bin/activate
           git pull origin main
-
-    - name: Install dependencies
-      run: pip3 install -r requirements/production.txt
-
-    - name: Run migrations
-      run: python3 manage.py migrate
-
-    - name: Restart service
-      run: sudo /bin/systemctl restart afsona-gunicorn.service
+          pip3 install -r requirements/production.txt
+          python3 manage.py migrate
+          sudo /bin/systemctl restart afsona-gunicorn.service
