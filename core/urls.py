@@ -1,9 +1,27 @@
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.auth.forms import AuthenticationForm
 from django.urls import path, include
 
-from .schema import swagger_urlpatterns
+from captcha import fields
+
+from core.schema import swagger_urlpatterns
+
+
+class LoginForm(AuthenticationForm):
+    captcha = fields.ReCaptchaField()
+
+    def clean(self):
+        captcha = self.cleaned_data.get("captcha")
+        if not captcha:
+            return
+        return super().clean()
+
+
+admin.site.login_form = LoginForm
+admin.site.login_template = "login.html"
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),

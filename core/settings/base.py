@@ -54,6 +54,7 @@ THIRD_PARTY_APPS = [
     "corsheaders",
     "modeltranslation",
     "fcm_django",
+    "captcha",
     "channels"
 ]
 
@@ -293,3 +294,6 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainSlidingSerializer",
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
+
+RECAPTCHA_PUBLIC_KEY = '6LfToDgoAAAAACIY8N9T-ErIhc1Z-dkZWUSUj2IQ'
+RECAPTCHA_PRIVATE_KEY = '6LfToDgoAAAAALdclfq6rUacx-l-VE0DJP9j8Ht0'
