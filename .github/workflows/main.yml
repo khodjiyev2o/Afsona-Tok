@@ -3,6 +3,11 @@ on:
     branches:
       - main
   workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: /var/www/afsona.transitgroup.uz
+
 jobs:
   Deploy:
     runs-on: self-hosted
