@@ -16,4 +16,5 @@ jobs:
           git pull origin main
           pip3 install -r requirements/production.txt
           python3 manage.py migrate
+          python3 manage.py collectstatic --noinput
           sudo /bin/systemctl restart afsona-gunicorn.service
