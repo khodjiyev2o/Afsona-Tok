@@ -3,10 +3,14 @@ from datetime import timedelta
 from pathlib import Path
 
 import environ
-
+import sentry_sdk
 from django.utils.translation import gettext_lazy as _
 from firebase_admin import initialize_app
+from sentry_sdk.integrations.django import DjangoIntegration
+from sentry_sdk.integrations.fastapi import FastApiIntegration
+
 from core.jazzmin_conf import *  # noqa
+from utils.sentry_tg_bot import before_send_trigger
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -297,3 +301,11 @@ SIMPLE_JWT = {
 
 RECAPTCHA_PUBLIC_KEY = '6LfToDgoAAAAACIY8N9T-ErIhc1Z-dkZWUSUj2IQ'
 RECAPTCHA_PRIVATE_KEY = '6LfToDgoAAAAALdclfq6rUacx-l-VE0DJP9j8Ht0'
+
+sentry_sdk.init(
+    dsn=env.str("SENTRY_DSN", ''),
+    integrations=[DjangoIntegration(), FastApiIntegration()],
+    before_send=before_send_trigger,
+    traces_sample_rate=1.0,
+    profiles_sample_rate=1.0,
+)

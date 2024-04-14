@@ -2,7 +2,7 @@ from channels.auth import BaseMiddleware
 
 from typing import Union
 import os
-
+import sentry_sdk
 import jwt
 
 
@@ -47,7 +47,7 @@ class WebsocketJWTAuthMiddleware(BaseMiddleware):
                 verify=True
             )
         except jwt.PyJWTError as ex:
-            print(ex)
+            sentry_sdk.capture_exception(ex)
             return None
 
     async def __get_raw_token(self, scope) -> Union[str | None]:
