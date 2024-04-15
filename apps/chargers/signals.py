@@ -23,7 +23,7 @@ def sent_logs_to_telegram_bot_while_charging(sender, instance: ChargingTransacti
         'money': Decimal("12.845") * PRICE,
         "transaction_id": instance.id,
         "battery_percent": instance.battery_percent_on_end,
-        "consumed_kwh": instance.consumer_kwh,
+        "consumed_kwh": instance.consumed_kwh,
         "status": instance.status,
     }
     channel_layer = get_channel_layer()
@@ -33,7 +33,7 @@ def sent_logs_to_telegram_bot_while_charging(sender, instance: ChargingTransacti
         f"""MeterValues:
                 Transaction ID: {instance.id}
                 Battery Percent: {instance.battery_percent_on_end} %
-                Consumed KWh: {instance.consumer_kwh}
+                Consumed KWh: {instance.consumed_kwh}
         """
     )
 
@@ -46,8 +46,7 @@ def sent_logs_to_telegram_bot_on_start(sender, instance, created, **kwargs):
         f"""Start Transaction:
                 Transaction ID: {instance.id}
                 Meter Start: {instance.meter_on_start} %
-                User Phone: {instance.user.phone}
-                User Balance: {instance.user.balance}
+                User Phone: {instance.user}
         """
     )
 

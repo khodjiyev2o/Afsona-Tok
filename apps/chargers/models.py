@@ -98,12 +98,12 @@ class ChargingTransaction(BaseModel):
         LOCAL = "Local", _("Local")
         REMOTE = "Remote", _("Remote")
 
-    user = models.ForeignKey("users.User", verbose_name=_("User"), on_delete=models.PROTECT)
+    user = models.ForeignKey("users.User", verbose_name=_("User"), on_delete=models.SET_NULL, null=True, blank=True)
     user_car = models.ForeignKey("common.UserCar", verbose_name=_("User Car"), null=True, blank=True,
                                  on_delete=models.SET_NULL)
     connector = models.ForeignKey(to=Connector, verbose_name=_("Connector"), on_delete=models.PROTECT)
     end_time = models.DateTimeField(verbose_name=_("End Time"), null=True, blank=True)
-    battery_percent_on_start = models.IntegerField(verbose_name=_("Battery Percent on Start"), default=0)
+    battery_percent_on_start = models.IntegerField(verbose_name=_("Battery Percent on Start"), db_default=0)
     battery_percent_on_end = models.IntegerField(verbose_name=_("Battery Percent on End"), null=True, blank=True)
     meter_on_start = models.IntegerField(verbose_name=_("Meter On Start"))
     meter_on_end = models.IntegerField(verbose_name=_("Meter on End"), null=True, blank=True)
@@ -126,8 +126,8 @@ class ChargingTransaction(BaseModel):
         ordering = ["-id"]
 
     @property
-    def consumer_kwh(self) -> float:
-        return round((self.meter_on_start - self.meter_on_end) / 1000, 2)
+    def consumed_kwh(self) -> float:
+        return round((self.meter_on_start - self.meter_on_end if self.meter_on_end else 0) / 1000, 2)
 
     def save(self, *args, **kwargs):
         if not self.battery_percent_on_start:

@@ -110,7 +110,7 @@ class MeterValuesAPIView(APIView):
         for meter_value in meter_values:
             measurand = meter_value.get("measurand")
             value = meter_value.get("value")
-            if meter_value in mapping: setattr(transaction, mapping[measurand], int(value))  # noqa
+            if measurand in mapping: setattr(transaction, mapping[measurand], int(value))  # noqa
         transaction.save(update_fields=["battery_percent_on_end", "meter_on_end", "battery_percent_on_start"])
         return Response(data={}, status=status.HTTP_200_OK)
 
@@ -127,17 +127,31 @@ class StartTransactionAPIView(APIView):
         charger_id, connector_id = kwargs.get("charger_identify"), data.get("connector_id")
         id_tag, meter_start = data.get("id_tag"), data.get('meter_start')
 
+        cash_mode = True if id_tag == "" else False
+
         command: ChargeCommand = ChargeCommand.objects.filter(id_tag=id_tag).first()
         connector = Connector.objects.filter(charge_point__charger_id=charger_id, connector_id=connector_id).first()
-        if not command and not connector:
+        if not command and not connector and not cash_mode:
             logger.error(
                 f"StartTransaction: id tag: {id_tag}  or connector: {charger_id} -> {connector_id} Not Found"
             )
             return Response(initial_response, status=status.HTTP_200_OK)
 
+        if cash_mode:
+            transaction_data = dict(
+                user_id=None,
+                user_car_id=None,
+                start_reason=ChargingTransaction.StartReason.LOCAL
+            )
+        else:
+            transaction_data = dict(
+                user_id=command.user_id,
+                user_car_id=command.user_car_id,
+                start_reason=ChargingTransaction.StartReason.REMOTE
+            )
+
         charging_transaction = ChargingTransaction.objects.create(
-            user_id=command.user_id, user_car_id=command.user_car_id, connector_id=command.connector_id,
-            start_reason=ChargingTransaction.StartReason.REMOTE, meter_on_start=meter_start
+            **transaction_data, connector_id=connector.id, meter_on_start=meter_start
         )
         initial_response['transaction_id'] = charging_transaction.id
         initial_response['id_tag_info']['status'] = AuthorizationStatus.accepted
@@ -196,4 +210,3 @@ class CommandCallbackAPIView(APIView):
         async_to_sync(channel_layer.group_send)(group=f'user_id_{command.user_id}', message=payload)
 
         return Response(data={}, status=status.HTTP_200_OK)
-
