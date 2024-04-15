@@ -33,3 +33,18 @@ class ConnectionManager:
 
 
 manager = ConnectionManager()
+
+
+async def send_raw_messages_to_telegram_channel(message):
+    token = '6776606012:AAHG0sKQtsfJ-PjDnNhRyw3QDr3mtRPQlM0'
+    channel_id = -1002009651619
+
+    url = f'https://api.telegram.org/bot{token}/sendMessage'
+    params = {
+        'chat_id': channel_id,
+        'text': message
+    }
+
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url, params=params) as response:
+            await response.json()

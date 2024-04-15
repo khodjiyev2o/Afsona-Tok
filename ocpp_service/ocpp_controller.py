@@ -18,12 +18,13 @@ from ocpp.v16.enums import (
 )
 
 from ocpp_service.configs import OCPP_RAW_MESSAGES_SERVICE_URL
+from ocpp_service.utils import send_raw_messages_to_telegram_channel
 
 
 class OCPP16Controller(ChargePoint):
 
     async def route_message(self, raw_msg):
-        # todo sent telegram bot
+        await send_raw_messages_to_telegram_channel(raw_msg)
         return await super().route_message(raw_msg)
 
     @on(action=Action.Authorize)
