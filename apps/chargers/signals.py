@@ -20,10 +20,10 @@ def sent_logs_to_telegram_bot_while_charging(sender, instance: ChargingTransacti
     payload = {
         'type': 'send_transaction_data',
 
-        'money': Decimal("12.845") * PRICE,
-        "transaction_id": instance.id,
-        "battery_percent": instance.battery_percent_on_end,
-        "consumed_kwh": instance.consumed_kwh,
+        'money': str(Decimal("12.845") * PRICE),
+        "transaction_id": int(instance.id),
+        "battery_percent": int(instance.battery_percent_on_end),
+        "consumed_kwh": str(instance.consumed_kwh),
         "status": instance.status,
     }
     channel_layer = get_channel_layer()
