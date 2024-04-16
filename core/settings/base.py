@@ -28,7 +28,7 @@ SECRET_KEY = env.str("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", 'localhost', "afsona.transitgroup.uz"]
+ALLOWED_HOSTS = ["127.0.0.1", 'localhost', "afsona.transitgroup.uz", '46.101.212.188']
 
 # Application definition
 DJANGO_APPS = [
