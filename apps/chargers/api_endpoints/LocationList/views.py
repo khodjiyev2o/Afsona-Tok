@@ -1,12 +1,12 @@
 from rest_framework import generics
 from apps.chargers.models import Location
-from apps.chargers.api_endpoints.LocationDetail.serializers import LocationDetailSerializer
+from apps.chargers.api_endpoints.LocationList.serializers import LocationListSerializer
 
 
 class LocationListView(generics.ListAPIView):
     """List of locations, send user_latitude and user_longitude
     as query parameters to get distance from user location"""
-    serializer_class = LocationDetailSerializer
+    serializer_class = LocationListSerializer
     search_fields = ('name', 'address', 'district__name')
 
     def get_queryset(self):
