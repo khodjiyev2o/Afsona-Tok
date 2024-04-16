@@ -43,11 +43,14 @@ class LocationDetailSerializer(serializers.ModelSerializer):
 
     def get_distance(self, obj):
         # Retrieve user's location parameters from the request context or input
-        user_latitude = Decimal(self.context.get('user_latitude'))
-        user_longitude = Decimal(self.context.get('user_longitude'))
+        user_latitude = self.context.get('user_latitude')
+        user_longitude = self.context.get('user_longitude')
 
         # Calculate distance using Haversine formula
         if user_latitude is not None and user_longitude is not None:
+            user_latitude = Decimal(self.context.get('user_latitude'))
+            user_longitude = Decimal(self.context.get('user_longitude'))
+
             lat1 = radians(user_latitude)
             lon1 = radians(user_longitude)
             lat2 = radians(obj.latitude)
