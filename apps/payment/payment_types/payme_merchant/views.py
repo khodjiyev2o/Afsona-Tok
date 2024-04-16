@@ -30,12 +30,12 @@ class PaymeCallbackView(APIView):
     authentication_classes = (PaymeBasicAuthentication,)  # todo should use custom exception for 'AUTH_MESSAGE'
     permission_classes = (AllowAny,)
 
-    def dispatch(self, request, *args, **kwargs):
-        try:
-            return super().dispatch(request, args, kwargs)
-        except Exception as ex:  # should be pass all Exception
-            sentry_sdk.capture_exception(ex)
-            return Response(data=status_codes.INTERNAL_SERVER_ERROR_MESSAGE)
+    # def dispatch(self, request, *args, **kwargs):
+    #     try:
+    #         return super().dispatch(request, args, kwargs)
+    #     except Exception as ex:  # should be pass all Exception
+    #         sentry_sdk.capture_exception(ex)
+    #         return Response(data=status_codes.INTERNAL_SERVER_ERROR_MESSAGE)
 
     def post(self, request, *args, **kwargs):
 
@@ -89,11 +89,15 @@ class PaymeCallbackView(APIView):
 
     @classmethod
     def _create_transaction(cls, params: dict, credential_key: str) -> dict:
-        params_transaction_id = int(params.get('account', {}).get(credential_key, 0))
+        params_transaction_id = params.get('id', '0')
+        params_order_id = int(params.get('account', {}).get(credential_key, 0))
         params_amount = params.get('amount')
 
-        transaction = cls.__get_transaction(pk=params_transaction_id, remote_id=params_transaction_id)
+        transaction = cls.__get_transaction(pk=params_order_id)
         if transaction is None:
+            return status_codes.ORDER_NOT_FOUND_MESSAGE
+
+        if transaction.status == 'preauth' and transaction.remote_id != params_transaction_id:
             return status_codes.ORDER_NOT_FOUND_MESSAGE
 
         if transaction.status == PaymentTransaction.StatusType.ACCEPTED:
@@ -106,13 +110,14 @@ class PaymeCallbackView(APIView):
             return status_codes.INVALID_AMOUNT_MESSAGE
 
         transaction.remote_id = params.get('id')
-        transaction.save(update_fields=['remote_id'])
+        transaction.status = 'preauth'
+        transaction.save(update_fields=['remote_id', 'status'])
 
         return {
             "result": {
-                "create_time": timezone.now().timestamp() * 1000,
+                "create_time": transaction.created_at.timestamp() * 1000,
                 "transaction": transaction.remote_id,
-                "state": status_codes.TransactionStates.CREATED,
+                "state": cls.__get_transaction_state(transaction.status),
             }
         }
 
@@ -148,7 +153,7 @@ class PaymeCallbackView(APIView):
         return {
             "result": {
                 "create_time": transaction.created_at.timestamp() * 1000,
-                "perform_time": transaction.updated_at.timestamp() * 1000,
+                "perform_time": transaction.paid_at.timestamp() * 1000 if transaction.paid_at else 0,
                 "cancel_time": 0,
                 "transaction": transaction.remote_id,
                 "state": cls.__get_transaction_state(transaction.status),
@@ -165,12 +170,17 @@ class PaymeCallbackView(APIView):
         transaction = PaymentTransaction.objects.filter(
             payment_type=PaymentTransaction.PaymentType.PAYME, **kwargs,
         ).first()
+        transaction.created_at = timezone.now()
+        transaction.save()
+        transaction.refresh_from_db()
         return transaction
 
     @classmethod
     def __get_transaction_state(cls, transaction_status: str) -> int:
         transaction_state_mapping = {
             PaymentTransaction.StatusType.PENDING.value: status_codes.TransactionStates.CREATED,
-            PaymentTransaction.StatusType.ACCEPTED.value: status_codes.TransactionStates.CLOSED
+            PaymentTransaction.StatusType.ACCEPTED.value: status_codes.TransactionStates.CLOSED,
+
+            "preauth": status_codes.TransactionStates.CREATED
         }
         return transaction_state_mapping.get(transaction_status)

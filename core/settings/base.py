@@ -29,7 +29,7 @@ SECRET_KEY = env.str("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", 'localhost', "afsona.transitgroup.uz", '46.101.212.188']
+ALLOWED_HOSTS = ["127.0.0.1", 'localhost', "afsona.transitgroup.uz", '46.101.212.188', 'payme.jprq.app']
 
 # Application definition
 DJANGO_APPS = [
@@ -66,6 +66,7 @@ THIRD_PARTY_APPS = [
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": (
         'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
     ),
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework.authentication.SessionAuthentication",
