@@ -22,9 +22,9 @@ class PaymeBasicAuthentication(BasicAuthentication):
         try:
             username, *_, password = base64.b64decode(auth[1]).decode(HTTP_HEADER_ENCODING).partition(":")
         except (TypeError, UnicodeDecodeError, binascii.Error):
-            return False
+            return None, None
 
         if username == USERNAME and password in [PASSWORD, TEST_PASSWORD]:
-            return True
+            return True, None
 
         return None, None

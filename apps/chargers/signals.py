@@ -10,17 +10,18 @@ from apps.chargers.models import ChargingTransaction, Connector
 from apps.ocpp_messages.views import PRICE
 
 telegram_logger = logging.getLogger('telegram')
-
+from django.conf import settings
 
 @receiver(post_save, sender=ChargingTransaction)
 def sent_logs_to_telegram_bot_while_charging(sender, instance: ChargingTransaction, **kwargs):
     if instance.status == ChargingTransaction.Status.FINISHED:
         return
 
+    total_price_until_now: Decimal = Decimal(str(instance.consumed_kwh)) * settings.CHARGING_PRICE_PER_KWH
     payload = {
         'type': 'send_transaction_data',
 
-        'money': str(Decimal("12.845") * PRICE),
+        "money": str(round(total_price_until_now, 2)),
         "transaction_id": int(instance.id),
         "battery_percent": int(instance.battery_percent_on_end),
         "consumed_kwh": str(instance.consumed_kwh),

@@ -1,5 +1,6 @@
 import os
 from datetime import timedelta
+from decimal import Decimal
 from pathlib import Path
 
 import environ
@@ -63,9 +64,9 @@ THIRD_PARTY_APPS = [
 ]
 
 REST_FRAMEWORK = {
-    # "DEFAULT_RENDERER_CLASSES": (
-    #     'rest_framework.renderers.JSONRenderer',
-    # ),
+    "DEFAULT_RENDERER_CLASSES": (
+        'rest_framework.renderers.JSONRenderer',
+    ),
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework_simplejwt.authentication.JWTAuthentication",
@@ -304,9 +305,9 @@ SIMPLE_JWT = {
 RECAPTCHA_PUBLIC_KEY = '6LfToDgoAAAAACIY8N9T-ErIhc1Z-dkZWUSUj2IQ'
 RECAPTCHA_PRIVATE_KEY = '6LfToDgoAAAAALdclfq6rUacx-l-VE0DJP9j8Ht0'
 
-PAYME_MERCHANT_ID = env.str("PAYME_MERCHANT_ID")
-PAYME_TEST_SECRET_KEY = env.str("PAYME_TEST_SECRET_KEY")
-PAYME_SECRET_KEY = env.str("PAYME_TEST_SECRET_KEY")
+PAYME_MERCHANT_ID = env.str("PAYME_MERCHANT_ID", '')
+PAYME_TEST_SECRET_KEY = env.str("PAYME_TEST_SECRET_KEY", '')
+PAYME_SECRET_KEY = env.str("PAYME_SECRET_KEY", '')
 
 PAYMENTS_CREDENTIALS = {
     "payme": {
@@ -324,3 +325,5 @@ sentry_sdk.init(
     traces_sample_rate=1.0,
     profiles_sample_rate=1.0,
 )
+
+CHARGING_PRICE_PER_KWH = Decimal("2500")

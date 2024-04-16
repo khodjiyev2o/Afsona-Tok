@@ -129,6 +129,7 @@ UNABLE_TO_PERFORM_OPERATION_MESSAGE = {
     }
 }
 
+
 class TransactionStates(int, Enum):
     CREATED = 1
     CLOSED = 2

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from apps.payment.providers.payme_merchant.views import PaymeCallbackView
+from apps.payment.payment_types.payme_merchant.views import PaymeCallbackView
 
 app_name = 'payment'
 
