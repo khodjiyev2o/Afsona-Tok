@@ -241,9 +241,10 @@ MODELTRANSLATION_FALLBACK_LANGUAGES = {
 }
 
 MODELTRANSLATION_PREPOPULATE_LANGUAGE = "ru"
-
-ESKIZ_EMAIL = env.str("ESKIZ_USER_EMAIL", "u.shakhriyor27@gmail.com")
-ESKIZ_PASSWORD = env.str("ESKIZ_USER_PASSWORD", "SLIubboHI2uw0NMqoeObRmsZF4qqCL29FgP9cvLH")
+# u.shakhriyor27@gmail.com
+# SLIubboHI2uw0NMqoeObRmsZF4qqCL29FgP9cvLH
+ESKIZ_EMAIL = env.str("ESKIZ_USER_EMAIL", "samandarkhodjiyev@gmail.com")
+ESKIZ_PASSWORD = env.str("ESKIZ_USER_PASSWORD", "b9LHEGCG9fppE4B2D7rEexqk4AgYVMIUr10JKXP3")
 
 CHANNEL_LAYERS = {
     'default': {
