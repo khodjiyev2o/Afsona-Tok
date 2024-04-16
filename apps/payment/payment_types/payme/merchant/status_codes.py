@@ -129,8 +129,9 @@ UNABLE_TO_PERFORM_OPERATION_MESSAGE = {
     }
 }
 
+
 class TransactionStates(int, Enum):
     CREATED = 1
     CLOSED = 2
-    CANCELED = -1
-    PERFORM_CANCELED = -2
+    CANCELED_CREATED = -1
+    CANCELED_CLOSED = -2

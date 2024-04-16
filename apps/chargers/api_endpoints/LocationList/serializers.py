@@ -2,41 +2,16 @@ from math import radians, sin, cos, sqrt, atan2
 from decimal import Decimal
 
 from rest_framework import serializers
-from apps.chargers.models import Location, ChargePoint, Connector
-from apps.common.models import ConnectionType
+from apps.chargers.models import Location
 
 
-class ConnectionTypeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ConnectionType
-        fields = ('id', 'name', 'icon', 'max_voltage', '_type')
-
-
-class ConnectorListSerializer(serializers.ModelSerializer):
-    standard = ConnectionTypeSerializer()
-
-    class Meta:
-        model = Connector
-        fields = ('id', 'name', 'status', 'standard')
-
-
-class ChargersListSerializer(serializers.ModelSerializer):
-    connectors = ConnectorListSerializer(many=True)
-
-    class Meta:
-        model = ChargePoint
-        fields = ('id', 'name', 'charger_id', 'is_connected', 'max_electric_power', 'connectors')
-
-
-class LocationDetailSerializer(serializers.ModelSerializer):
-    distance = serializers.SerializerMethodField()
+class LocationListSerializer(serializers.ModelSerializer):
+    district = serializers.CharField(source="district.name")
     chargers_count = serializers.SerializerMethodField()
-    district = serializers.CharField(source='district.name')
-    chargers = ChargersListSerializer(many=True)
 
     class Meta:
         model = Location
-        fields = ('id', 'latitude', 'longitude', 'name', 'distance', 'address', 'chargers_count', 'district', 'chargers')
+        fields = ('id', 'name', 'address', 'district', 'latitude', 'longitude', 'chargers_count')
 
     def get_chargers_count(self, obj):
         return obj.chargers.count() or 0

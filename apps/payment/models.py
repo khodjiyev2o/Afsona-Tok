@@ -41,6 +41,7 @@ class Transaction(BaseModel):
         PENDING = 'pending', _('Pending')
         ACCEPTED = 'accepted', _('Accepted')
         REJECTED = 'rejected', _('Rejected')
+        CANCELED = 'canceled', _('Canceled')
 
     class PaymentType(models.TextChoices):
         CARD = 'CARD', _('CARD')
@@ -56,7 +57,10 @@ class Transaction(BaseModel):
     remote_id = models.CharField(_('Remote id'), max_length=255, null=True)
     tax_amount = models.DecimalField(_('TAX Amount'), max_digits=10, decimal_places=2, default=0.0, null=True,
                                      blank=True)
+    paid_at = models.DateTimeField(verbose_name=_("Paid at"), null=True, blank=True)
+    canceled_at = models.DateTimeField(verbose_name=_("Canceled at"), null=True, blank=True)
     payment_type = models.CharField(_("Payment Type"), choices=PaymentType.choices)
+    extra = models.JSONField(_('Extra'), null=True, blank=True)
 
     class Meta:
         db_table = 'Transaction'

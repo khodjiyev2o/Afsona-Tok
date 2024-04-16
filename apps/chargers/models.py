@@ -33,7 +33,8 @@ class ChargePoint(BaseModel):
     max_electric_power = models.IntegerField(default=0, verbose_name=_("ChargePoint's Max electric power"))
 
     # FK
-    location = models.ForeignKey(to=Location, on_delete=models.PROTECT, verbose_name=_("Location"), related_name="chargers")
+    location = models.ForeignKey(to=Location, on_delete=models.PROTECT, verbose_name=_("Location"),
+                                 related_name="chargers")
 
     def __str__(self):
         return f"{self.name} - {self.charger_id}"
@@ -119,6 +120,8 @@ class ChargingTransaction(BaseModel):
         max_length=40, verbose_name=_("Stop Reason"), choices=StopReason.choices, null=True, blank=True
     )
     is_limited = models.BooleanField(default=False, verbose_name=_("Is Limited"))
+    limited_money = models.DecimalField(verbose_name=_("Limited money"), null=True, blank=True, decimal_places=2,
+                                        max_digits=10)
 
     class Meta:
         verbose_name = _("ChargingTransaction")
@@ -155,3 +158,7 @@ class ChargeCommand(BaseModel):
 
     status = models.BooleanField(null=True, blank=True)
     done_at = models.DateTimeField(null=True, blank=True)
+
+    is_limited = models.BooleanField(db_default=False)
+    limited_money = models.DecimalField(verbose_name=_("Limited money"), null=True, blank=True, decimal_places=2,
+                                        max_digits=10)
