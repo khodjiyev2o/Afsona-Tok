@@ -71,7 +71,7 @@ class PaymeCallbackView(APIView):
         params_transaction_id = int(params.get('account', {}).get(credential_key, 0))
         params_amount = params.get('amount')
 
-        transaction = cls.__get_transaction(pk=params_transaction_id)
+        transaction = cls.__get_transaction(pk=int(params_transaction_id))
 
         if transaction is None:
             return status_codes.TRANSACTION_NOT_FOUND_MESSAGE
