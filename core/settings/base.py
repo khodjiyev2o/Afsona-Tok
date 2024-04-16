@@ -63,9 +63,9 @@ THIRD_PARTY_APPS = [
 ]
 
 REST_FRAMEWORK = {
-    "DEFAULT_RENDERER_CLASSES": (
-        'rest_framework.renderers.JSONRenderer',
-    ),
+    # "DEFAULT_RENDERER_CLASSES": (
+    #     'rest_framework.renderers.JSONRenderer',
+    # ),
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework_simplejwt.authentication.JWTAuthentication",
@@ -195,7 +195,7 @@ CELERY_TIMEZONE = "Asia/Tashkent"
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 
-FIREBASE_APP = initialize_app()
+# FIREBASE_APP = initialize_app()
 FCM_DJANGO_SETTINGS = {
     "DEFAULT_FIREBASE_APP": None,
     "APP_VERBOSE_NAME": _("Devices"),
@@ -303,6 +303,19 @@ SIMPLE_JWT = {
 
 RECAPTCHA_PUBLIC_KEY = '6LfToDgoAAAAACIY8N9T-ErIhc1Z-dkZWUSUj2IQ'
 RECAPTCHA_PRIVATE_KEY = '6LfToDgoAAAAALdclfq6rUacx-l-VE0DJP9j8Ht0'
+
+PAYME_MERCHANT_ID = env.str("PAYME_MERCHANT_ID")
+PAYME_TEST_SECRET_KEY = env.str("PAYME_TEST_SECRET_KEY")
+PAYME_SECRET_KEY = env.str("PAYME_TEST_SECRET_KEY")
+
+PAYMENTS_CREDENTIALS = {
+    "payme": {
+        "merchant_id": PAYME_MERCHANT_ID,
+        'test_secret_key': PAYME_TEST_SECRET_KEY,
+        'secret_key': PAYME_SECRET_KEY,
+        'credential_key': 'order_id'
+    }
+}
 
 sentry_sdk.init(
     dsn=env.str("SENTRY_DSN", ''),
