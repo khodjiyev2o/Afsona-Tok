@@ -8,6 +8,7 @@ app_name = 'chargers'
 urlpatterns = [
     path("StartChargingCommand/", StartChargingCommandView.as_view(), name="start-charging-command"),
     path("MapLocationList/", MapLocationListView.as_view(), name="map-location-list"),
+    path("LocationList/", LocationListView.as_view(), name="location-list"),
     path("StopChargingCommand/", StopChargingCommandView.as_view(), name="stop-charging-command"),
     path("LocationDetail/<int:pk>/", LocationDetailView.as_view(), name="location-detail"),
 ]
