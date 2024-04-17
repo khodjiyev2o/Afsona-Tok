@@ -33,19 +33,17 @@ class PaymeCallbackView(APIView):
 
     def dispatch(self, request, *args, **kwargs):
         try:
+            response = super().dispatch(request, *args, **kwargs)
             merchant_log = MerchantRequestLog.objects.create(
                 payment_type=PaymentTransaction.PaymentType.PAYME,
-                request_headers=json.dumps(request.headers),
-                request_body=json.dumps(request.data)
+                request_headers=self.request.headers,
+                request_body=self.request.data,
+                response_headers=response.headers,
+                response_status_code = response.status_code,
+                response_body = response.data,
             )
-
-            response = super().dispatch(request, args, kwargs)
-
-            merchant_log.response_headers = json.dumps(response.headers)
-            merchant_log.response_body = json.dumps(response.data)
-            merchant_log.response_status_code = response.status_code
-            merchant_log.save(update_fields=['response_headers', 'response_body', 'response_status_code'])
-
+        
+            return response
         except Exception as ex:  # should be pass all Exception
             sentry_sdk.capture_exception(ex)
             return Response(data=status_codes.INTERNAL_SERVER_ERROR_MESSAGE)
