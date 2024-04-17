@@ -38,7 +38,6 @@ class PaymeCallbackView(APIView):
                 payment_type=PaymentTransaction.PaymentType.PAYME,
                 request_headers=self.request.headers,
                 request_body=self.request.data,
-                response_headers=response.headers,
                 response_status_code = response.status_code,
                 response_body = response.data,
             )
