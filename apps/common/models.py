@@ -68,7 +68,7 @@ class ConnectionType(BaseModel):
     description = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        return self.name + " / " + self._type
+        return self.name
 
 
 class UserCar(BaseModel):
