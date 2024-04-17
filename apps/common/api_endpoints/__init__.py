@@ -4,3 +4,4 @@ from .CarModelList import * # noqa
 from .ConnectionTypeList import * # noqa
 from .UserCarAdd import * # noqa
 from .UserCarList import * # noqa
+from .MainSettings import * # noqa

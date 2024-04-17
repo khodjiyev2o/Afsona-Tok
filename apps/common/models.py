@@ -155,3 +155,14 @@ class Support(BaseModel):
     class Meta:
         verbose_name = _("Support")
         verbose_name_plural = _("Support")
+
+
+class MainSettings(BaseModel):
+    price = models.DecimalField(_('Price for 1 kwt of electricity'), max_digits=10, decimal_places=2)
+    user_minimum_balance = models.DecimalField(_('Price for 1 kwt of electricity'), max_digits=10, decimal_places=2)
+    ios_version = models.CharField(max_length=20)
+    android_version = models.CharField(max_length=20)
+
+    class Meta:
+        verbose_name = _("MainSettings")
+        verbose_name_plural = _("MainSettings")

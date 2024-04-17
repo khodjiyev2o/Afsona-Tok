@@ -60,6 +60,19 @@ class SupportAdmin(admin.ModelAdmin):
         return True
 
 
+@admin.register(models.MainSettings)
+class MainSettingsAdmin(admin.ModelAdmin):
+    list_display = ('price', 'user_minimum_balance', 'ios_version', 'android_version')
+
+    def has_add_permission(self, request):
+        if self.model.objects.count() > 0:
+            return False
+        return True
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+
 class LocationInline(admin.TabularInline):
     model = Location
     extra = 0
