@@ -105,6 +105,7 @@ class UserCar(BaseModel):
     class Meta:
         verbose_name = _("User Car")
         verbose_name_plural = _("User Cars")
+        unique_together = ['user', 'vin']
 
 
 class Country(BaseModel):
