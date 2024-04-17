@@ -83,7 +83,7 @@ class UserCar(BaseModel):
 
     vin = models.CharField(_("VIN"), max_length=100, null=True, blank=True)
     state_number = models.CharField(_("Гос.номер"), max_length=100, null=True, blank=True)
-    state_number_type = models.IntegerField(_("Type of State Number"), choices=STATE_NUMBER_TYPES.choices, null=True,
+    state_number_type = models.CharField(_("Type of State Number"), choices=STATE_NUMBER_TYPES.choices, null=True,
                                             blank=True)
     manufacturer = models.ForeignKey(
         Manufacturer,
