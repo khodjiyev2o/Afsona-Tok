@@ -71,3 +71,13 @@ class Transaction(BaseModel):
     def __str__(self):
         return f"{self.payment_type} | {self.id}"
 
+
+class MerchantRequestLog(BaseModel):
+    payment_type = models.CharField(max_length=50, verbose_name=_("Payment type"), choices=Transaction.PaymentType.choices)
+
+    request_headers = models.JSONField(verbose_name=_("Request Headers"), null=True)
+    request_body = models.JSONField(verbose_name=_("Request Headers"), null=True)
+
+    response_headers = models.JSONField(verbose_name=_("Request Headers"), null=True)
+    response_body = models.JSONField(verbose_name=_("Request Headers"), null=True)
+    response_status_code = models.PositiveSmallIntegerField(verbose_name=_("Response status code"), null=True)

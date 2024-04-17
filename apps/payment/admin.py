@@ -64,3 +64,19 @@ class TransactionModel(admin.ModelAdmin):
     colored_status.short_description = _("Status")
     colored_status.admin_order_field = "status"
 
+
+@admin.register(models.MerchantRequestLog)
+class MerchantRequestLogAdmin(admin.ModelAdmin):
+    list_display = ['payment_type', 'request_body', 'response_body']
+    list_filter = ['payment_type', 'created_at', 'updated_at']
+    date_hierarchy = 'created_at'
+    search_fields = ['request_body', 'response_body']
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_add_permission(self, request):
+        return False

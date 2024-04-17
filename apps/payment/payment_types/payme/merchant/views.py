@@ -1,3 +1,4 @@
+import json
 from typing import Union
 from django.utils import timezone
 from rest_framework import status
@@ -9,7 +10,7 @@ from apps.payment.payment_types.payme.merchant.auth import PaymeBasicAuthenticat
 from apps.payment.payment_types.payme.merchant import status_codes
 from apps.payment.payment_types.payme.merchant.serializers import PaymeCallbackSerializer
 import sentry_sdk
-from apps.payment.models import Transaction as PaymentTransaction
+from apps.payment.models import Transaction as PaymentTransaction, MerchantRequestLog
 from django.conf import settings
 
 
@@ -32,7 +33,19 @@ class PaymeCallbackView(APIView):
 
     def dispatch(self, request, *args, **kwargs):
         try:
-            return super().dispatch(request, args, kwargs)
+            merchant_log = MerchantRequestLog.objects.create(
+                payment_type=PaymentTransaction.PaymentType.PAYME,
+                request_headers=json.dumps(request.headers),
+                request_body=json.dumps(request.data)
+            )
+
+            response = super().dispatch(request, args, kwargs)
+
+            merchant_log.response_headers = json.dumps(response.headers)
+            merchant_log.response_body = json.dumps(response.data)
+            merchant_log.response_status_code = response.status_code
+            merchant_log.save(update_fields=['response_headers', 'response_body', 'response_status_code'])
+
         except Exception as ex:  # should be pass all Exception
             sentry_sdk.capture_exception(ex)
             return Response(data=status_codes.INTERNAL_SERVER_ERROR_MESSAGE)
