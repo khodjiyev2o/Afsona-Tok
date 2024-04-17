@@ -34,12 +34,12 @@ class PaymeCallbackView(APIView):
     def dispatch(self, request, *args, **kwargs):
         try:
             response = super().dispatch(request, *args, **kwargs)
-            merchant_log = MerchantRequestLog.objects.create(
+            MerchantRequestLog.objects.create(
                 payment_type=PaymentTransaction.PaymentType.PAYME,
                 request_headers=self.request.headers,
                 request_body=self.request.data,
-                response_status_code = response.status_code,
-                response_body = response.data,
+                response_status_code=response.status_code,
+                response_body=response.data,
             )
         
             return response
@@ -223,7 +223,7 @@ class PaymeCallbackView(APIView):
 
         state = transaction_state_mapping.get(transaction.status)
 
-        if state == status_codes.TransactionStates.CLOSED and transaction.paid_at is None:
+        if state == status_codes.TransactionStates.CANCELED_CREATED and transaction.paid_at:
             state = status_codes.TransactionStates.CANCELED_CLOSED
 
         return state

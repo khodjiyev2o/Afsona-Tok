@@ -24,7 +24,7 @@ class PaymeBasicAuthentication(BasicAuthentication):
         except (TypeError, UnicodeDecodeError, binascii.Error):
             return None, None
 
-        if username == USERNAME and password in [PASSWORD, TEST_PASSWORD]:
+        if username in ["Paycom", USERNAME] and password in [PASSWORD, TEST_PASSWORD]:
             return True, None
 
         return None, None

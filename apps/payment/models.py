@@ -54,7 +54,7 @@ class Transaction(BaseModel):
     user = models.ForeignKey("users.User", on_delete=models.PROTECT, related_name='transactions')
     amount = models.DecimalField(_('Amount'), max_digits=10, decimal_places=2)
     status = models.CharField(_('Status'), max_length=32, choices=StatusType.choices)
-    remote_id = models.CharField(_('Remote id'), max_length=255, null=True)
+    remote_id = models.CharField(_('Remote id'), max_length=255, null=True, blank=True)
     tax_amount = models.DecimalField(_('TAX Amount'), max_digits=10, decimal_places=2, default=0.0, null=True,
                                      blank=True)
     paid_at = models.DateTimeField(verbose_name=_("Paid at"), null=True, blank=True)
@@ -75,9 +75,9 @@ class Transaction(BaseModel):
 class MerchantRequestLog(BaseModel):
     payment_type = models.CharField(max_length=50, verbose_name=_("Payment type"), choices=Transaction.PaymentType.choices)
 
-    request_headers = models.JSONField(verbose_name=_("Request Headers"), null=True)
-    request_body = models.JSONField(verbose_name=_("Request Headers"), null=True)
+    request_headers = models.TextField(verbose_name=_("Request Headers"), null=True)
+    request_body = models.TextField(verbose_name=_("Request Body"), null=True)
 
-    response_headers = models.JSONField(verbose_name=_("Request Headers"), null=True)
-    response_body = models.JSONField(verbose_name=_("Request Headers"), null=True)
+    response_headers = models.TextField(verbose_name=_("Response Headers"), null=True)
+    response_body = models.TextField(verbose_name=_("Response Body"), null=True)
     response_status_code = models.PositiveSmallIntegerField(verbose_name=_("Response status code"), null=True)
