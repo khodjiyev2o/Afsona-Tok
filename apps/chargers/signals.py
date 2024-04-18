@@ -22,7 +22,7 @@ def sent_logs_to_telegram_bot_while_charging(sender, instance: ChargingTransacti
 
         "money": str(round(total_price_until_now, 2)),
         "transaction_id": int(instance.id),
-        "battery_percent": int(instance.battery_percent_on_end),
+        "battery_percent": instance.battery_percent_on_end if instance.battery_percent_on_end else 0,
         "consumed_kwh": str(instance.consumed_kwh),
         "status": instance.status,
     }

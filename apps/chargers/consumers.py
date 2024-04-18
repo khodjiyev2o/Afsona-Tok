@@ -40,7 +40,7 @@ class MobileJsonConsumer(AsyncJsonWebsocketConsumer):
 
         data_json = json.dumps(
             {
-                "type": "transaction_data",
+                "type": "meter_values_data",
                 "data": {
                     "transaction_id": int(transaction_id),
                     "money": str(money),
