@@ -10,7 +10,9 @@ class MapLocationListView(generics.ListAPIView):
 
     def get_queryset(self):
         queryset = self.queryset
-        connector_types = self.request.query_params.get('connector_types', [])
+        connector_types_str = self.request.query_params.get('connector_types', '')
+        connector_types = connector_types_str.split(',')
+
         if connector_types:
             queryset = Location.objects.filter(
                 chargers__connectors__standard__id__in=connector_types
