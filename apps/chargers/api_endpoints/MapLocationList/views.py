@@ -11,9 +11,9 @@ class MapLocationListView(generics.ListAPIView):
     def get_queryset(self):
         queryset = self.queryset
         connector_types_str = self.request.query_params.get('connector_types', '')
-        connector_types = connector_types_str.split(',')
 
-        if connector_types:
+        if connector_types_str:
+            connector_types = connector_types_str.split(',')
             queryset = Location.objects.filter(
                 chargers__connectors__standard__id__in=connector_types
             ).distinct().values('id', 'latitude', 'longitude')
