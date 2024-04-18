@@ -130,7 +130,8 @@ class ChargingTransaction(BaseModel):
 
     @property
     def consumed_kwh(self) -> float:
-        return round((self.meter_on_start - self.meter_on_end if self.meter_on_end else 0) / 1000, 2)
+        end = self.meter_on_end if self.meter_on_end else 0
+        return round((end - self.meter_on_start) / 1000, 2)
 
     # def save(self, *args, **kwargs):
     #     if not self.battery_percent_on_start:
