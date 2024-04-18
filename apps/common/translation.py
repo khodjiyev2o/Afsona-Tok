@@ -12,3 +12,7 @@ class FrontTranslationOptions(TranslationOptions):
 class ConnectionTypeTranslationOptions(TranslationOptions):
     fields = ("description",)
 
+
+@register(models.Instruction)
+class InstructionTranslationOptions(TranslationOptions):
+    fields = ("text",)

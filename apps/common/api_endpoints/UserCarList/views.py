@@ -8,9 +8,11 @@ from apps.common.api_endpoints.UserCarList.serializers import UserCarListSeriali
 class UserCarListView(generics.ListAPIView):
     serializer_class = UserCarListSerializer
     permission_classes = [IsAuthenticated]
+    queryset = UserCar.objects.all()
 
     def get_queryset(self):
-        return UserCar.objects.filter(user=self.request.user).select_related('manufacturer', 'model', 'connector_type')
+        queryset = super().get_queryset()
+        return queryset.filter(user=self.request.user).select_related('manufacturer', 'model')
 
 
 __all__ = ['UserCarListView']

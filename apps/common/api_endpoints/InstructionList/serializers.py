@@ -1,11 +1,10 @@
 from rest_framework import serializers
 
 from apps.common.api_endpoints.ConnectionTypeList.serializers import ConnectionTypeListSerializer
-from apps.common.models import UserCar, ConnectionType
+from apps.common.models import UserCar, ConnectionType, Instruction
 
 
 class UserCarConnectionTypeSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = ConnectionType
         fields = ('id', 'name', 'icon', "_type")
@@ -27,3 +26,9 @@ class UserCarListSerializer(serializers.ModelSerializer):
             'model',
             'connector_type',
         )
+
+
+class InstructionListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Instruction
+        fields = ('id', 'text', 'image')

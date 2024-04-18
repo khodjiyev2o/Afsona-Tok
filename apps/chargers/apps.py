@@ -6,4 +6,4 @@ class ChargersConfig(AppConfig):
     name = 'apps.chargers'
 
     def ready(self):
-        import apps.chargers.signals  # noqa
+        import apps.chargers.signals # noqa

@@ -2,6 +2,7 @@ from django.urls import path
 
 from .api_endpoints import * # noqa
 
+
 app_name = 'common'
 
 urlpatterns = [
@@ -12,4 +13,6 @@ urlpatterns = [
     path("UserCarAdd/", UserCarAddView.as_view(), name="user-car-add"),
     path("UserCarList/", UserCarListView.as_view(), name="user-car-list"),
     path("MainSettings/", MainSettingsView.as_view(), name="main-settings"),
+    path("SavedLocations/", SavedLocationAPIView.as_view(), name="saved-locations"),
+    path("InstructionList/", InstructionListAPIView.as_view(), name="instruction-list"),
 ]

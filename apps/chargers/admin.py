@@ -44,6 +44,7 @@ class ConnectorInline(admin.StackedInline):
     extra = 0
     can_delete = False
     show_change_link = True
+    readonly_fields = ('last_status_reason', 'connector_id', 'name', 'standard')
 
     def has_add_permission(self, request, obj):
         return False

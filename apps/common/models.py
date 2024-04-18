@@ -84,7 +84,7 @@ class UserCar(BaseModel):
     vin = models.CharField(_("VIN"), max_length=100, null=True, blank=True)
     state_number = models.CharField(_("Гос.номер"), max_length=100, null=True, blank=True)
     state_number_type = models.CharField(_("Type of State Number"), choices=STATE_NUMBER_TYPES.choices, null=True,
-                                            blank=True)
+                                         blank=True)
     manufacturer = models.ForeignKey(
         Manufacturer,
         verbose_name=_("Manufacturer"),
@@ -166,3 +166,30 @@ class MainSettings(BaseModel):
     class Meta:
         verbose_name = _("MainSettings")
         verbose_name_plural = _("MainSettings")
+
+
+class SavedLocation(BaseModel):
+    user = models.ForeignKey("users.User", verbose_name=_("User"), related_name="saved_locations",
+                             on_delete=models.CASCADE)
+    location = models.ForeignKey("chargers.Location", verbose_name=_("Location"), related_name="saved_locations",
+                                 on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.user.phone} - {self.location.name}"
+
+    class Meta:
+        verbose_name = _("Saved Location")
+        verbose_name_plural = _("Saved Locations")
+
+
+class Instruction(BaseModel):
+    order = models.PositiveSmallIntegerField(_("Order"), unique=True)
+    text = models.TextField(_("Text"))
+    image = models.FileField(_("Image"), upload_to='instructions/')
+
+    def __str__(self):
+        return f"{self.order} {self.text[:30]}"
+
+    class Meta:
+        verbose_name = _("Instruction")
+        verbose_name_plural = _("Instructions")
