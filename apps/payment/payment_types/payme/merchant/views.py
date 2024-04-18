@@ -1,3 +1,4 @@
+from datetime import datetime
 import json
 from typing import Union
 from django.utils import timezone
@@ -23,7 +24,7 @@ class PaymeCallbackView(APIView):
             "PerformTransaction": self._perform_transaction,
             "CheckTransaction": self._check_transaction,
             "CancelTransaction": self._cancel_transaction,
-            "GetStatement": None,
+            "GetStatement": self._get_statement,
             "SetFiscalData": None
         }
         self.credential_key = settings.PAYMENTS_CREDENTIALS['payme']['credential_key']
@@ -41,7 +42,7 @@ class PaymeCallbackView(APIView):
                 response_status_code=response.status_code,
                 response_body=response.data,
             )
-        
+
             return response
         except Exception as ex:  # should be pass all Exception
             sentry_sdk.capture_exception(ex)
@@ -205,6 +206,36 @@ class PaymeCallbackView(APIView):
                 "state": cls.__get_transaction_state(transaction),
             }
         }
+
+    @classmethod
+    def _get_statement(cls, params, credential_key: str) -> dict:
+        transactions_list: list[dict] = []
+        params_fom_datetime = datetime.fromtimestamp(params['from'])
+        params_to_datetime = datetime.fromtimestamp(params['to'])
+
+        queryset = PaymentTransaction.objects.filter(
+            created_at__gte=params_fom_datetime, created_at__lte=params_to_datetime,
+            payment_type=PaymentTransaction.PaymentType.PAYME,
+            remote_id__isnull=False
+        )
+
+        for transaction in queryset:
+            transactions_list.append(
+                {
+                    "id": transaction.remote_id,
+                    "amount": transaction.amount,
+                    "perform_time": transaction.paid_at.timestamp() * 1000 if transaction.paid_at else 0,
+                    "cancel_time": transaction.canceled_at.timestamp() * 1000 if transaction.canceled_at else 0,
+                    "create_time": transaction.created_at.timestamp() * 1000,
+                    "state": cls.__get_transaction_state(transaction),
+                    "reason": transaction.extra.get("payme_cancel_reason") if transaction.extra else None,
+                    "account": {
+                        credential_key: transaction.id
+                    }
+                }
+            )
+
+        return {"result": {"transactions": transactions_list}}
 
     @staticmethod
     def __get_transaction(**kwargs) -> Union[PaymentTransaction | None]:
