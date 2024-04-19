@@ -210,11 +210,11 @@ class PaymeCallbackView(APIView):
     @classmethod
     def _get_statement(cls, params, credential_key: str) -> dict:
         transactions_list: list[dict] = []
-        params_fom_datetime = datetime.fromtimestamp(params['from'] // 100)
-        params_to_datetime = datetime.fromtimestamp(params['to'] // 100)
+        params_from_datetime = datetime.fromtimestamp(params['from'] // 1000)
+        params_to_datetime = datetime.fromtimestamp(params['to'] // 1000)
 
         queryset = PaymentTransaction.objects.filter(
-            created_at__gte=params_fom_datetime, created_at__lte=params_to_datetime,
+            created_at__gte=params_from_datetime, created_at__lte=params_to_datetime,
             payment_type=PaymentTransaction.PaymentType.PAYME,
             remote_id__isnull=False
         )
