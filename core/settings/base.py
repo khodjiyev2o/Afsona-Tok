@@ -244,8 +244,8 @@ MODELTRANSLATION_FALLBACK_LANGUAGES = {
 
 MODELTRANSLATION_PREPOPULATE_LANGUAGE = "ru"
 
-ESKIZ_EMAIL = env.str("ESKIZ_USER_EMAIL", "samandarkhodjiyev@gmail.com")
-ESKIZ_PASSWORD = env.str("ESKIZ_USER_PASSWORD", "b9LHEGCG9fppE4B2D7rEexqk4AgYVMIUr10JKXP3")
+ESKIZ_EMAIL = env.str("ESKIZ_USER_EMAIL", "u.shakhriyor27@gmail.com")
+ESKIZ_PASSWORD = env.str("ESKIZ_USER_PASSWORD", "SLIubboHI2uw0NMqoeObRmsZF4qqCL29FgP9cvLH")
 
 CHANNEL_LAYERS = {
     'default': {
@@ -309,14 +309,24 @@ PAYME_MERCHANT_ID = env.str("PAYME_MERCHANT_ID", '')
 PAYME_TEST_SECRET_KEY = env.str("PAYME_TEST_SECRET_KEY", '')
 PAYME_SECRET_KEY = env.str("PAYME_SECRET_KEY", '')
 
-PAYMENTS_CREDENTIALS = {
+PAYMENT_CREDENTIALS = {
     "payme": {
+        "callback_url": "https://checkout.paycom.uz",
         "merchant_id": PAYME_MERCHANT_ID,
         'test_secret_key': PAYME_TEST_SECRET_KEY,
         'secret_key': PAYME_SECRET_KEY,
         'credential_key': 'order_id'
-    }
+    },
+    "click": {
+        "callback_url": "https://my.click.uz/services/pay",
+        "merchant_id": env.str("CLICK_MERCHANT_ID", ""),
+        "merchant_service_id": env.str("CLICK_MERCHANT_SERVICE_ID", ""),
+        "merchant_user_id": env.str("CLICK_MERCHANT_USER_ID", ""),
+        "secret_key": env.str("CLICK_SECRET_KEY", ""),
+    },
+
 }
+
 
 sentry_sdk.init(
     dsn=env.str("SENTRY_DSN", ''),

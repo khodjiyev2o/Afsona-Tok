@@ -27,7 +27,7 @@ class PaymeCallbackView(APIView):
             "GetStatement": self._get_statement,
             "SetFiscalData": None
         }
-        self.credential_key = settings.PAYMENTS_CREDENTIALS['payme']['credential_key']
+        self.credential_key = settings.PAYMENT_CREDENTIALS['payme']['credential_key']
 
     authentication_classes = (PaymeBasicAuthentication,)  # todo should use custom exception for 'AUTH_MESSAGE'
     permission_classes = (AllowAny,)

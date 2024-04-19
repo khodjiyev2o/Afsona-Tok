@@ -1,6 +1,10 @@
+import base64
+
 from django.db import models
-from apps.common.models import BaseModel
+from django.conf import settings
 from django.utils.translation import gettext_lazy as _
+
+from apps.common.models import BaseModel
 
 
 class UserCard(BaseModel):
@@ -53,7 +57,7 @@ class Transaction(BaseModel):
                              verbose_name=_('Card id'), null=True, blank=True)
     user = models.ForeignKey("users.User", on_delete=models.PROTECT, related_name='transactions')
     amount = models.DecimalField(_('Amount'), max_digits=10, decimal_places=2)
-    status = models.CharField(_('Status'), max_length=32, choices=StatusType.choices)
+    status = models.CharField(_('Status'), max_length=32, choices=StatusType.choices, default=StatusType.PENDING)
     remote_id = models.CharField(_('Remote id'), max_length=255, null=True, blank=True)
     tax_amount = models.DecimalField(_('TAX Amount'), max_digits=10, decimal_places=2, default=0.0, null=True,
                                      blank=True)
@@ -70,6 +74,26 @@ class Transaction(BaseModel):
 
     def __str__(self):
         return f"{self.payment_type} | {self.id}"
+
+    @property
+    def payment_url(self):
+        payment_url = ""
+        if self.payment_type == Transaction.PaymentType.PAYME:
+            merchant_id = settings.PAYME_MERCHANT_ID
+            params = f"m={merchant_id};ac.order_id={self.id};a={self.amount * 100};"
+            encode_params = base64.b64encode(params.encode("utf-8"))
+            encode_params = str(encode_params, "utf-8")
+            payment_url = f"{settings.PAYMENT_CREDENTIALS['payme']['callback_url']}/{encode_params}"
+        elif self.payment_type == Transaction.PaymentType.CLICK:
+            merchant_id = settings.PAYMENT_CREDENTIALS['click']["merchant_id"]
+            service_id = settings.PAYMENT_CREDENTIALS['click']["merchant_service_id"]
+            params = (
+                f"?service_id={service_id}&merchant_id={merchant_id}&"
+                f"amount={self.amount}&transaction_param={self.id}"
+            )
+            payment_url = f"{settings.PAYMENT_CREDENTIALS['click']['callback_url']}/{params}"
+
+        return payment_url
 
 
 class MerchantRequestLog(BaseModel):
