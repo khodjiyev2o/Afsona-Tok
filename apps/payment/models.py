@@ -75,6 +75,13 @@ class Transaction(BaseModel):
     def __str__(self):
         return f"{self.payment_type} | {self.id}"
 
+    def success_process(self):
+        self.user.balance += self.amount
+        self.user.save(update_fields=['balance'])
+
+        self.status = self.StatusType.ACCEPTED
+        self.save(update_fields=['status'])
+
     @property
     def payment_url(self):
         payment_url = ""
@@ -98,7 +105,7 @@ class Transaction(BaseModel):
 
 class MerchantRequestLog(BaseModel):
     payment_type = models.CharField(max_length=50, verbose_name=_("Payment type"), choices=Transaction.PaymentType.choices)
-
+    method_type = models.CharField(max_length=255, verbose_name=255, null=True, blank=True)
     request_headers = models.TextField(verbose_name=_("Request Headers"), null=True)
     request_body = models.TextField(verbose_name=_("Request Body"), null=True)
 

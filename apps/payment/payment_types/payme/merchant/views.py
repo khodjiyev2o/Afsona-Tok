@@ -37,6 +37,7 @@ class PaymeCallbackView(APIView):
             response = super().dispatch(request, *args, **kwargs)
             MerchantRequestLog.objects.create(
                 payment_type=PaymentTransaction.PaymentType.PAYME,
+                method_type=self.request.data.get('method', None),
                 request_headers=self.request.headers,
                 request_body=self.request.data,
                 response_status_code=response.status_code,
