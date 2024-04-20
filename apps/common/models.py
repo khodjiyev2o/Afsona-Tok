@@ -166,3 +166,27 @@ class MainSettings(BaseModel):
     class Meta:
         verbose_name = _("MainSettings")
         verbose_name_plural = _("MainSettings")
+
+
+class AppealTypeList(BaseModel):
+    name = models.CharField(_("Name"), max_length=255)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = _("Appeal Type")
+        verbose_name_plural = _("Appeal Types")
+
+
+class UserAppeal(BaseModel):
+    user = models.ForeignKey("users.User", verbose_name=_("User"), related_name="appeals", on_delete=models.CASCADE)
+    name = models.CharField(_("Name"), max_length=255)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = _("User Appeal")
+        verbose_name_plural = _("User Appeals")
+        

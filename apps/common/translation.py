@@ -12,3 +12,9 @@ class FrontTranslationOptions(TranslationOptions):
 class ConnectionTypeTranslationOptions(TranslationOptions):
     fields = ("description",)
 
+
+@register(models.AppealTypeList)
+class AppealTypeListTranslationOptions(TranslationOptions):
+    fields = ("name",)
+
+

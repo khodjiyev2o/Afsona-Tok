@@ -6,3 +6,5 @@ from .UserCarAdd import * # noqa
 from .UserCarList import * # noqa
 from .MainSettings import * # noqa
 from .UserCarDelete import * # noqa
+from .AppealTypeList import * # noqa
+from .UserAppealCreate import * # noqa

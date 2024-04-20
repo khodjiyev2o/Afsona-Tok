@@ -73,6 +73,18 @@ class MainSettingsAdmin(admin.ModelAdmin):
         return False
 
 
+@admin.register(models.AppealTypeList)
+class AppealTypeListAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name')
+    search_fields = ('name',)
+
+
+@admin.register(models.UserAppeal)
+class UserAppealAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'name')
+    search_fields = ('name', 'user__phone_number')
+
+
 class LocationInline(admin.TabularInline):
     model = Location
     extra = 0
