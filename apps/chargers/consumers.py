@@ -72,7 +72,7 @@ class MobileJsonConsumer(AsyncJsonWebsocketConsumer):
                 "location_name": event['location_name'],
                 "consumed_kwh": event['consumed_kwh'],
                 "total_price": event['total_price'],
-                "charging_duration_in_minute": event['duration_in_minute'],
+                "charging_duration_in_minute": event['charging_duration_in_minute'],
             }
         })
 
