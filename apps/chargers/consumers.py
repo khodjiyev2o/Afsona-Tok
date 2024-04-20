@@ -3,6 +3,8 @@ from decimal import Decimal
 
 from channels.generic.websocket import AsyncJsonWebsocketConsumer
 
+from apps.chargers.models import ChargingTransaction
+
 
 class MobileJsonConsumer(AsyncJsonWebsocketConsumer):
     async def connect(self):
@@ -31,7 +33,7 @@ class MobileJsonConsumer(AsyncJsonWebsocketConsumer):
         }
         await self.send(text_data=json.dumps(data))
 
-    async def send_transaction_data(self, event):
+    async def send_meter_values_data(self, event):
         money: Decimal = event['money']
         battery_percent: int = event['battery_percent']
         consumed_khw: Decimal = event['consumed_kwh']
@@ -54,13 +56,26 @@ class MobileJsonConsumer(AsyncJsonWebsocketConsumer):
         await self.send(text_data=data_json)
 
     async def send_command_result(self, event):
-        status = event['status']
-        command_id = event['id']
         data_json = json.dumps({
             "type": 'command_result',
             "data": {
-                "command_id": command_id,
-                "status": status
+                "command_id": event['id'],
+                "status": event['status']
             }
         })
+        await self.send(text_data=data_json)
+
+    async def send_transaction_cheque(self, event):
+        data_json = json.dumps({
+            "type": "transaction_cheque",
+            "data": {
+                "transaction_id": event['transaction_id'],
+                "charging_has_started_at": event['charging_has_started_at'],
+                "location_name": event['location_name'],
+                "consumed_kwh": event['consumed_kwh'],
+                "total_price": event['total_price'],
+                "charging_duration_in_minute": event['duration_in_minute'],
+            }
+        })
+
         await self.send(text_data=data_json)
