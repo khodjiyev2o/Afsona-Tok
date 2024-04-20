@@ -51,7 +51,7 @@ def send_stop_transaction_to_websocket(sender, instance: ChargingTransaction, cr
             "charging_has_started_at": instance.created_at.isoformat(),
             "location_name": instance.connector.charge_point.location.name,
             "consumed_kwh": str(instance.consumed_kwh),
-            "all_total_price": str(instance.total_price),
+            "total_price": str(instance.total_price),
             "charging_duration_in_minute": duration_in_minute,
         }
         channel_layer = get_channel_layer()
