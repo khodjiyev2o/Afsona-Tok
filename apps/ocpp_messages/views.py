@@ -84,14 +84,14 @@ class HeartbeatAPIView(APIView):
         charge_point: ChargePoint = ChargePoint.objects.filter(charger_id=charger_identify).first()
         if not charge_point:
             logger.error(msg=f"Heartbeat: {charger_identify} does not exists")
-            return Response(status=200)
+            return Response(data={}, status=200)
 
         charge_point.last_heartbeat = timezone.now()
         charge_point.is_connected = True
         charge_point.save(update_fields=['last_heartbeat', 'is_connected'])
 
         logger.info(f"Heartbeat:  {charger_identify}")
-        return Response(status=200)
+        return Response(data={}, status=200)
 
 
 class MeterValuesAPIView(APIView):
