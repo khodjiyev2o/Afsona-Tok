@@ -105,7 +105,7 @@ class ChargingTransaction(BaseModel):
     connector = models.ForeignKey(to=Connector, verbose_name=_("Connector"), on_delete=models.PROTECT)
     end_time = models.DateTimeField(verbose_name=_("End Time"), null=True, blank=True)
     battery_percent_on_start = models.IntegerField(verbose_name=_("Battery Percent on Start"), db_default=0)
-    battery_percent_on_end = models.IntegerField(verbose_name=_("Battery Percent on End"), null=True, blank=True)
+    battery_percent_on_end = models.IntegerField(verbose_name=_("Battery Percent on End"), db_default=0)
     meter_on_start = models.IntegerField(verbose_name=_("Meter On Start"))
     meter_on_end = models.IntegerField(verbose_name=_("Meter on End"), null=True, blank=True)
     meter_used = models.FloatField(verbose_name=_("Meter Used"), default=0)
@@ -133,10 +133,10 @@ class ChargingTransaction(BaseModel):
         end = self.meter_on_end if self.meter_on_end else 0
         return round((end - self.meter_on_start) / 1000, 2)
 
-    # def save(self, *args, **kwargs):
-    #     if not self.battery_percent_on_start:
-    #         self.battery_percent_on_start = self.battery_percent_on_end
-    #     super().save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        if not self.battery_percent_on_start:
+            self.battery_percent_on_start = self.battery_percent_on_end
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.id}: {self.user} - {self.total_price}"
