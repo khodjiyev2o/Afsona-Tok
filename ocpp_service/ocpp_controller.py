@@ -301,7 +301,7 @@ class OCPP16Controller(ChargePoint):
         try:
             return await self.call(payload=payload)
         except Exception:
-            return "Rejected"
+            return self._call_result.RemoteStopTransactionPayload(status=RemoteStartStopStatus.rejected)
 
     async def send_reverse_now_command(
             self, connector_id: int, expiry_date: str,
