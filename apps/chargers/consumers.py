@@ -3,8 +3,6 @@ from decimal import Decimal
 
 from channels.generic.websocket import AsyncJsonWebsocketConsumer
 
-from apps.chargers.models import ChargingTransaction
-
 
 class MobileJsonConsumer(AsyncJsonWebsocketConsumer):
     async def connect(self):
