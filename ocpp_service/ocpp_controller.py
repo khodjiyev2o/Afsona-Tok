@@ -38,7 +38,7 @@ async def send_raw_messages_to_telegram_channel(message):
 class OCPP16Controller(ChargePoint):
 
     async def route_message(self, raw_msg):
-        # await send_raw_messages_to_telegram_channel(f"{self.id}/\n{raw_msg}")
+        await send_raw_messages_to_telegram_channel(f"{self.id}/\n{raw_msg}")
         return await super().route_message(raw_msg)
 
     @on(action=Action.Authorize)
