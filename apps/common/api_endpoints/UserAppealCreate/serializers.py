@@ -6,5 +6,6 @@ class UserAppealCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserAppeal
         fields = (
+            "charge_point",
             "name",
         )

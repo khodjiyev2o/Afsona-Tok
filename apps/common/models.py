@@ -183,6 +183,10 @@ class AppealTypeList(BaseModel):
 
 
 class UserAppeal(BaseModel):
+    charge_point = models.ForeignKey(
+        "chargers.ChargePoint", verbose_name=_("Charge Point"),
+        related_name="appeals",  on_delete=models.SET_NULL, null=True, blank=True
+    )
     user = models.ForeignKey("users.User", verbose_name=_("User"), related_name="appeals", on_delete=models.CASCADE)
     name = models.CharField(_("Name"), max_length=255)
 
