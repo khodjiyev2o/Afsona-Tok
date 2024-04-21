@@ -162,6 +162,9 @@ class MainSettings(BaseModel):
     user_minimum_balance = models.DecimalField(_('User minimum balance'), max_digits=10, decimal_places=2)
     ios_version = models.CharField(max_length=20)
     android_version = models.CharField(max_length=20)
+    help_phone_number = models.CharField(max_length=20, verbose_name=_("Help Phone Number"), null=True)
+    help_email = models.EmailField(verbose_name=_("Help Email"), null=True)
+    help_telegram_link = models.CharField(max_length=255, verbose_name=_("Help Telegram Link"), null=True)
 
     class Meta:
         verbose_name = _("MainSettings")
@@ -189,4 +192,3 @@ class UserAppeal(BaseModel):
     class Meta:
         verbose_name = _("User Appeal")
         verbose_name_plural = _("User Appeals")
-        
