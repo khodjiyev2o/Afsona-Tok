@@ -12,4 +12,7 @@ urlpatterns = [
     path("StopChargingCommand/", StopChargingCommandView.as_view(), name="stop-charging-command"),
     path("LocationDetail/<int:pk>/", LocationDetailView.as_view(), name="location-detail"),
     path("ConnectorDetail/<int:pk>/", ConnectorDetailView.as_view(), name="connector-detail"),
+    path("ChargingTransactionList/", ChargingTransactionListAPIView.as_view(), name='charging-transaction-list'),
+    path("ChargingTransactionDetail/<int:pk>/", ChargingTransactionDetailAPIView.as_view(), name='charging-transaction-detail'),
+
 ]

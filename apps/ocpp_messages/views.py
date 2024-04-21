@@ -180,7 +180,9 @@ class StopTransactionAPIView(APIView):
         charging_transaction.status = ChargingTransaction.Status.FINISHED
         charging_transaction.end_time = timezone.now()
         charging_transaction.stop_reason = reason
-        charging_transaction.save(update_fields=['meter_on_start', 'meter_used', 'end_time'])
+        charging_transaction.save(update_fields=[
+            "meter_on_start", "meter_used", "total_price",  "status", "end_time", "stop_reason"
+        ])
 
         user = charging_transaction.user
         user.balance -= charging_transaction.total_price

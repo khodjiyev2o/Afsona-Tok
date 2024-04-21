@@ -4,3 +4,5 @@ from .MapLocationList import * # noqa
 from .LocationDetail import * # noqa
 from .LocationList import * # noqa
 from .ConnectorDetail import * # noqa
+from .ChargingTransactionList import * # noqa
+from .ChargingTransactionDetail import * # noqa

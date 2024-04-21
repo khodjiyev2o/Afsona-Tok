@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from apps.common.models import BaseModel, District, ConnectionType
+from django.utils import timezone
 
 
 class Location(BaseModel):
@@ -132,6 +133,12 @@ class ChargingTransaction(BaseModel):
     def consumed_kwh(self) -> float:
         end = self.meter_on_end if self.meter_on_end else 0
         return round((end - self.meter_on_start) / 1000, 2)
+
+    @property
+    def duration_in_minute(self) -> int:
+        end_time = self.end_time or timezone.now()
+        minute: int = int((end_time - self.created_at).total_seconds() // 60)
+        return minute
 
     def save(self, *args, **kwargs):
         if not self.battery_percent_on_start:

@@ -40,10 +40,8 @@ def send_meter_value_to_websocket(sender, instance: ChargingTransaction, **kwarg
 
 
 @receiver(post_save, sender=ChargingTransaction)
-def send_stop_transaction_to_websocket(sender, instance: ChargingTransaction, created, **kwargs):
+def send_stop_transaction_to_websocket(sender, instance: ChargingTransaction, **kwargs):
     if instance.status == ChargingTransaction.Status.FINISHED:
-        duration_in_minute = (instance.end_time - instance.created_at).total_seconds() // 60
-
         payload = {
             "type": "send_transaction_cheque",
 
@@ -52,7 +50,7 @@ def send_stop_transaction_to_websocket(sender, instance: ChargingTransaction, cr
             "location_name": instance.connector.charge_point.location.name,
             "consumed_kwh": str(instance.consumed_kwh),
             "total_price": str(instance.total_price),
-            "charging_duration_in_minute": duration_in_minute,
+            "charging_duration_in_minute": instance.duration_in_minute,
         }
         channel_layer = get_channel_layer()
         async_to_sync(channel_layer.group_send)(group=f'user_id_{instance.user_id}', message=payload)
