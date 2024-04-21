@@ -7,3 +7,4 @@ from .ConnectorDetail import * # noqa
 from .ChargingTransactionList import * # noqa
 from .ChargingTransactionDetail import * # noqa
 from .SavedLocationList import * # noqa
+from .InProgressChargingTransactionList import * # noqa
