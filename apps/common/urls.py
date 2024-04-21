@@ -16,4 +16,5 @@ urlpatterns = [
     path("UserCarList/", UserCarListView.as_view(), name="user-car-list"),
     path("UserCarDelete/<int:pk>/", UserCarDeleteView.as_view(), name="user-car-delete"),
     path("MainSettings/", MainSettingsView.as_view(), name="main-settings"),
+    path("SavedLocation/", SavedLocationAPIView.as_view(), name="saved-location"),
 ]

@@ -84,7 +84,7 @@ class UserCar(BaseModel):
     vin = models.CharField(_("VIN"), max_length=100, null=True, blank=True)
     state_number = models.CharField(_("Гос.номер"), max_length=100, null=True, blank=True)
     state_number_type = models.CharField(_("Type of State Number"), choices=STATE_NUMBER_TYPES.choices, null=True,
-                                            blank=True)
+                                         blank=True)
     manufacturer = models.ForeignKey(
         Manufacturer,
         verbose_name=_("Manufacturer"),
@@ -185,7 +185,7 @@ class AppealTypeList(BaseModel):
 class UserAppeal(BaseModel):
     charge_point = models.ForeignKey(
         "chargers.ChargePoint", verbose_name=_("Charge Point"),
-        related_name="appeals",  on_delete=models.SET_NULL, null=True, blank=True
+        related_name="appeals", on_delete=models.SET_NULL, null=True, blank=True
     )
     user = models.ForeignKey("users.User", verbose_name=_("User"), related_name="appeals", on_delete=models.CASCADE)
     name = models.CharField(_("Name"), max_length=255)
@@ -196,3 +196,17 @@ class UserAppeal(BaseModel):
     class Meta:
         verbose_name = _("User Appeal")
         verbose_name_plural = _("User Appeals")
+
+
+class SavedLocation(BaseModel):
+    user = models.ForeignKey("users.User", verbose_name=_("User"), related_name="saved_locations",
+                             on_delete=models.CASCADE)
+    location = models.ForeignKey("chargers.Location", verbose_name=_("Location"), related_name="saved_locations",
+                                 on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.user.phone} - {self.location.name}"
+
+    class Meta:
+        verbose_name = _("Saved Location")
+        verbose_name_plural = _("Saved Locations")
