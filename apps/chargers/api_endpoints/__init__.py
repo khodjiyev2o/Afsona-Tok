@@ -6,3 +6,4 @@ from .LocationList import * # noqa
 from .ConnectorDetail import * # noqa
 from .ChargingTransactionList import * # noqa
 from .ChargingTransactionDetail import * # noqa
+from .SavedLocationList import * # noqa
