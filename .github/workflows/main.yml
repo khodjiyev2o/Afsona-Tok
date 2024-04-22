@@ -18,4 +18,3 @@ jobs:
           python3 manage.py migrate
           python3 manage.py collectstatic --noinput
           sudo /bin/systemctl restart afsona-gunicorn.service
-          sudo /bin/systemctl restart afsona-ocpp.service
