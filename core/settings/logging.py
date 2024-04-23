@@ -26,7 +26,7 @@ LOGGING = {
             'propagate': True,
         },
         'telegram': {
-            'handlers': ['console', 'telegram_error', 'telegram_info'],
+            'handlers': ['console'],
             'level': 'INFO',
             'propagate': True,
         },
