@@ -1,7 +1,7 @@
 from django.urls import path
 
 
-from apps.ocpp_messages.views import *
+from apps.chargers.ocpp_messages.views import *
 
 app_name = 'ocpp_messages'
 

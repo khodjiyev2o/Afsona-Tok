@@ -1,19 +1,28 @@
 import logging
-from channels.layers import get_channel_layer
 
 from asgiref.sync import async_to_sync
+from channels.layers import get_channel_layer
 from django.utils import timezone
 from rest_framework import status
+from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
-from rest_framework.views import APIView
 
 from apps.chargers.models import ChargeCommand
+from apps.chargers.ocpp_messages.exceptions import CommandNotFoundException
+from apps.chargers.ocpp_messages.serializers import CommandCallbackSerializer
 
 logger = logging.getLogger("telegram")
 
 
-class CommandCallbackAPIView(APIView):
-    def post(self, request, *args, **kwargs):
+class CommandCallbackAPIView(CreateAPIView):
+    queryset = ChargeCommand.objects.all()
+    serializer_class = CommandCallbackSerializer
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        if not serializer.is_valid(raise_exception=False):
+            raise CommandNotFoundException(detail='44', code='44')
+
         id_tag = kwargs.get('id_tag')
         command: ChargeCommand = ChargeCommand.objects.filter(id_tag=id_tag).first()
 
@@ -30,6 +39,6 @@ class CommandCallbackAPIView(APIView):
             'id': command.id
         }
         channel_layer = get_channel_layer()
-        async_to_sync(channel_layer.group_send)(group=f'user_id_{command.user_id}', message=payload)
+        async_to_sync(channel_layer.group_send)(group=f'userQ_id_{command.user_id}', message=payload) # noqa
 
         return Response(data={}, status=status.HTTP_200_OK)

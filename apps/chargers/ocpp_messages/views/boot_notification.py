@@ -1,5 +1,4 @@
 import logging
-from decimal import Decimal
 
 from django.utils import timezone
 from ocpp.v16.enums import RegistrationStatus
@@ -8,6 +7,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from apps.chargers.models import ChargePoint
+
 
 logger = logging.getLogger("telegram")
 
