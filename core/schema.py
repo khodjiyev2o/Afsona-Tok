@@ -21,8 +21,9 @@ schema_view = get_schema_view(
         path("api/v1/common/", include("apps.common.urls", namespace="common")),
         path("api/v1/users/", include("apps.users.urls", namespace="users")),
         path('api/v1/chargers/', include('apps.chargers.urls', namespace='chargers')),
-        path("api/v1/ocpp_messages/", include("apps.ocpp_messages.urls", namespace="ocpp_messages")),
-        path("api/v1/payment/", include("apps.payment.urls", namespace="payment"))
+        path("api/v1/notification/", include("apps.notification.urls", namespace="notification")),
+        path("api/v1/payment/", include("apps.payment.urls", namespace="payment")),
+        path("api/v1/ocpp_messages/", include("apps.ocpp_messages.urls", namespace="ocpp_messages"))
     ]
 )
 swagger_urlpatterns = [
