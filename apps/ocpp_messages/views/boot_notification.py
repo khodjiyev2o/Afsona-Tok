@@ -11,8 +11,6 @@ from apps.chargers.models import ChargePoint
 
 logger = logging.getLogger("telegram")
 
-PRICE = Decimal('2000')
-
 
 class BootNotificationAPIView(APIView):
     def post(self, request, *args, **kwargs):
@@ -31,4 +29,3 @@ class BootNotificationAPIView(APIView):
         logger.info(f"BootNotification: {charger_id}")
         initial_response['status'] = RegistrationStatus.accepted
         return Response(initial_response, status=status.HTTP_200_OK)
-

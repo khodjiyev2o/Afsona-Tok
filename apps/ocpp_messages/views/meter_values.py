@@ -6,10 +6,11 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from apps.chargers.models import ChargingTransaction
+from apps.ocpp_messages.views.utils import get_price_from_settings
 
 logger = logging.getLogger("telegram")
 
-PRICE = Decimal('2000')
+PRICE = get_price_from_settings()
 
 
 class MeterValuesAPIView(APIView):

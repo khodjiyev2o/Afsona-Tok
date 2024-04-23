@@ -11,8 +11,6 @@ from apps.chargers.models import ChargePoint, Connector
 
 logger = logging.getLogger("telegram")
 
-PRICE = Decimal('2000')
-
 
 class HeartbeatAPIView(APIView):
     def post(self, request, *args, **kwargs):
