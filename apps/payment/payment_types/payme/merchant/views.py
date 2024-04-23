@@ -1,5 +1,4 @@
 from datetime import datetime
-import json
 from typing import Union
 from django.utils import timezone
 from rest_framework import status
@@ -198,7 +197,8 @@ class PaymeCallbackView(APIView):
         transaction.extra = {"payme_cancel_reason": reason}
         transaction.save(update_fields=['canceled_at', 'status', 'extra'])
 
-        # todo should minus transaction amount from user balance if reason is 5
+        if reason == 5:
+            transaction.cancel_process()
 
         return {
             "result": {

@@ -7,9 +7,9 @@ from django.conf import settings
 
 class PaymeBasicAuthentication(BasicAuthentication):
     def authenticate(self, request):
-        USERNAME = settings.PAYME_MERCHANT_ID
-        TEST_PASSWORD = settings.PAYME_TEST_SECRET_KEY
-        PASSWORD = settings.PAYME_SECRET_KEY
+        USERNAME = settings.PAYMENT_CREDENTIALS['payme']['merchant_id']
+        TEST_PASSWORD = settings.PAYMENT_CREDENTIALS['payme']['test_secret_key']
+        PASSWORD = settings.PAYMENT_CREDENTIALS['payme']['secret_key']
 
         auth = get_authorization_header(request).split()
 

@@ -20,13 +20,10 @@ class UserCard(BaseModel):
     status = models.CharField(_('Status'), max_length=16, choices=CardChoices.choices)
     user = models.ForeignKey('users.User', on_delete=models.PROTECT, related_name='user_cards')
     card_number = models.CharField(_('Card number'), max_length=32)
-    cid = models.CharField(max_length=255, verbose_name=_("Card Id"))
+    cid = models.TextField(verbose_name=_("Card Id"))
     expire_date = models.CharField(max_length=255, verbose_name=_("Expire Date"))
     is_confirmed = models.BooleanField(default=False, verbose_name=_("Is Confirmed"))
-    balance = models.CharField(_('Balance'), null=True, blank=True, max_length=255)
     vendor = models.CharField(_('Vendor'), max_length=32, choices=VendorType.choices, null=True, blank=True)
-    processing = models.CharField(_('Processing'), max_length=255, null=True, blank=True)
-    bank_id = models.CharField(_('Bank id'), null=True, blank=True)
 
     objects = models.Manager()
 
@@ -35,6 +32,7 @@ class UserCard(BaseModel):
         verbose_name = _('UserCard')
         verbose_name_plural = _('UserCards')
         ordering = ('card_number',)
+        unique_together = ['user', 'card_number', 'expire_date', 'status', 'cid']
 
     def __str__(self):
         return self.card_number
@@ -80,6 +78,13 @@ class Transaction(BaseModel):
         self.user.save(update_fields=['balance'])
 
         self.status = self.StatusType.ACCEPTED
+        self.save(update_fields=['status'])
+
+    def cancel_process(self):
+        self.user.balance -= self.amount
+        self.user.save(update_fields=['balance'])
+
+        self.status = self.StatusType.CANCELED
         self.save(update_fields=['status'])
 
     @property

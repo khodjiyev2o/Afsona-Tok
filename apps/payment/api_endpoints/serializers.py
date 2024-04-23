@@ -8,7 +8,6 @@ class TransactionCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaction
         fields = (
-            'card',
             'amount',
             'payment_type',
             'payment_url'

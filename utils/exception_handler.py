@@ -37,3 +37,9 @@ def custom_exception_handler(exc, context):
     if exception_class in handlers:
         return handlers[exception_class](exc, context)
     return response
+
+
+class PaymeTimeoutException(Exception):
+    """
+    Payme timeout exception that means that payme is working slowly.
+    """

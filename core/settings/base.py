@@ -77,7 +77,7 @@ REST_FRAMEWORK = {
         "rest_framework.filters.SearchFilter"
     ),
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
-    "DEFAULT_EXCEPTION_HANDLER": "utils.exception_handler.custom_exception_handler",
+    "EXCEPTION_HANDLER": "utils.exception_handler.custom_exception_handler",
     "PAGE_SIZE": 10,
 }
 
@@ -87,12 +87,12 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "django.middleware.locale.LocaleMiddleware",
 ]
 
 ROOT_URLCONF = "core.urls"
@@ -153,12 +153,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
-
+LANGUAGE_CODE = 'en'
 TIME_ZONE = "Asia/Tashkent"
 
 USE_I18N = True
-
+USE_L10N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
@@ -170,6 +169,11 @@ STATICFILES_DIRS = (BASE_DIR / "staticfiles",)
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale/',
+]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -305,17 +309,16 @@ SIMPLE_JWT = {
 RECAPTCHA_PUBLIC_KEY = '6LfToDgoAAAAACIY8N9T-ErIhc1Z-dkZWUSUj2IQ'
 RECAPTCHA_PRIVATE_KEY = '6LfToDgoAAAAALdclfq6rUacx-l-VE0DJP9j8Ht0'
 
-PAYME_MERCHANT_ID = env.str("PAYME_MERCHANT_ID", '')
-PAYME_TEST_SECRET_KEY = env.str("PAYME_TEST_SECRET_KEY", '')
-PAYME_SECRET_KEY = env.str("PAYME_SECRET_KEY", '')
 
 PAYMENT_CREDENTIALS = {
     "payme": {
         "callback_url": "https://checkout.paycom.uz",
-        "merchant_id": PAYME_MERCHANT_ID,
-        'test_secret_key': PAYME_TEST_SECRET_KEY,
-        'secret_key': PAYME_SECRET_KEY,
-        'credential_key': 'order_id'
+        "merchant_id": env.str("PAYME_MERCHANT_ID", ''),
+        'test_secret_key': env.str("PAYME_TEST_SECRET_KEY", ''),
+        'secret_key': env.str("PAYME_SECRET_KEY", ''),
+        'credential_key': 'order_id',
+        'subscribe_base_url': env.str("PAYME_SUBSCRIBE_BASE_URL", "https://checkout.test.paycom.uz/api/"),
+        "subscribe_paycom_id": env.str("PAYME_SUBSCRIBE_PAYCOM_ID", "5e730e8e0b852a417aa49ceb")
     },
     "click": {
         "callback_url": "https://my.click.uz/services/pay",
