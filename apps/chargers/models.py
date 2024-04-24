@@ -94,6 +94,7 @@ class ChargingTransaction(BaseModel):
     class StopReason(models.TextChoices):
         LOCAL = "Local", _("Local")
         REMOTE = "Remote", _("Remote")
+        CONNECTOR_ERROR = "ConnectorError", _("Connector Error")
         OTHER = "Other", _("Other")
 
     class StartReason(models.TextChoices):
