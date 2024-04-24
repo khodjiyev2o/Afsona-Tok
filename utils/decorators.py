@@ -5,7 +5,6 @@ from requests.exceptions import Timeout
 from requests.exceptions import RequestException
 
 from rest_framework.serializers import ValidationError
-from utils.exception_handler import PaymeTimeoutException
 
 
 def payme_request(func):

@@ -14,8 +14,7 @@ urlpatterns = [
     path("UserCardList/", UserCardListView.as_view(), name="user-card-list"),
     path("CardCreate/", UserCardCreateView.as_view(), name="user-card-create"),
     path("CardVerify/", UserCardVerifyAPIView.as_view(), name="user-card-verify"),
-    # path("DeleteCard/<str:card_id>/", api_endpoints.UserCardDeleteAPIView.as_view(), name="user_card_delete"),
-    # path("Transactions/", api_endpoints.TransactionListAPIView.as_view(), name="transactions"),
+    path("ReceiptPay/", ReceiptPayView.as_view(), name="receipt-pay"),
     path("CardIdentify/", CardIdentifyView.as_view(), name="card-identify"),
 
 
