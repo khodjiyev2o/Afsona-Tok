@@ -1,5 +1,6 @@
 import logging
 from decimal import Decimal
+from typing import Union
 
 from django.utils import timezone
 from ocpp.v16.enums import AuthorizationStatus
@@ -38,7 +39,8 @@ class StopTransactionAPIView(APIView):
         charging_transaction.status = ChargingTransaction.Status.FINISHED
         charging_transaction.end_time = timezone.now()
         charging_transaction.stop_reason = reason
-        charging_transaction.battery_percent_on_end = battery_percent_on_stop
+        charging_transaction.battery_percent_on_end = battery_percent_on_stop if battery_percent_on_stop else charging_transaction.battery_percent_on_end
+
         charging_transaction.save(update_fields=[
             "meter_on_start", "meter_used", "total_price",
             "status", "end_time", "stop_reason", 'battery_percent_on_end'
@@ -53,11 +55,11 @@ class StopTransactionAPIView(APIView):
         return Response(data=initial_response, status=status.HTTP_200_OK)
 
     @staticmethod
-    def get_battery_percent_on_stop(data: dict):
+    def get_battery_percent_on_stop(data: dict) -> Union[int, None]:
         transaction_data = data.get('transaction_data')
         for data in transaction_data:
             context = data.get('context')
             measurand = data.get('measurand')
             location = data.get('location')
             if all([context == 'Transaction.End', measurand == 'SoC', location == 'EV']):
-                return data.get('value')
+                return int(data.get('value'))
