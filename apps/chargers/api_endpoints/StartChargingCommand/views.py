@@ -1,3 +1,5 @@
+import time
+
 import requests
 from django.utils import timezone
 
@@ -26,21 +28,40 @@ class StartChargingCommandView(CreateAPIView):
             command=ChargeCommand.Commands.REMOTE_START_TRANSACTION,
             user_id=request.user.id
         )
-        response = requests.post(
-            f'http://localhost:8080/ocpp/http/commands/remote_start/',
-            json={
-                "id_tag": command.id_tag,
-                "charger_identify": command.connector.charge_point.charger_id,
-                "connector_id": command.connector.connector_id
-            }
-        )  # todo add try except for ocpp service down
+        is_delivered: bool = self._send_command_start_to_ocpp_service(command)
 
-        command.is_delivered = response.json().get('status')
+        command.is_delivered = is_delivered
         command.delivered_at = timezone.now()
         command.save(update_fields=['is_delivered', 'delivered_at'])
 
         serializer = self.get_serializer(command)
         return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+    @staticmethod
+    def _send_command_start_to_ocpp_service(command: ChargeCommand) -> bool:
+        timeout = 2
+        retry = 3
+        retry_delay = 0.2
+
+        url = 'http://localhost:8080/ocpp/http/commands/remote_start/'
+        payload = {
+            "id_tag": command.id_tag,
+            "charger_identify": command.connector.charge_point.charger_id,
+            "connector_id": command.connector.connector_id
+        }
+
+        for _ in range(retry):
+            try:
+                response = requests.post(url=url, json=payload, timeout=timeout)
+            except Exception as e:
+                time.sleep(retry_delay)
+                continue
+
+            is_delivered: bool = response.json().get('status')
+            if is_delivered:
+                return True
+            time.sleep(retry_delay)
+        return False
 
 
 __all__ = ['StartChargingCommandView']
