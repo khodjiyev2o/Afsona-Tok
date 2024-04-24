@@ -99,8 +99,8 @@ class ConnectionTypeAdmin(admin.ModelAdmin):
 
 @admin.register(ChargingTransaction)
 class ChargingTransactionAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'user_car', 'connector', 'created_at', 'end_time', 'status')
-    list_filter = ('status', 'user', 'connector')
+    list_display = ('id', 'user', 'connector', 'created_at', 'end_time', 'consumed_kwh', 'duration_in_minute', 'status')
+    list_filter = ('status', 'user', 'connector', 'start_reason', 'stop_reason')
     search_help_text = _("Search by user's username and user car's plate")
 
 
