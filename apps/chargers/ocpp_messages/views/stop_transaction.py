@@ -31,7 +31,7 @@ class StopTransactionAPIView(APIView):
 
         charging_transaction.meter_on_end = meter_stop
         charging_transaction.meter_used = round(
-            (charging_transaction.meter_on_start - charging_transaction.meter_on_end) / 1000, 2
+            (charging_transaction.meter_on_end - charging_transaction.meter_on_start) / 1000, 2
         )
         charging_transaction.total_price = PRICE * Decimal(str(charging_transaction.meter_used))
         charging_transaction.status = ChargingTransaction.Status.FINISHED

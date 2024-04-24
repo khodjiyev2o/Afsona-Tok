@@ -18,7 +18,7 @@ class MeterValuesAPIView(APIView):
         meter_values = request.data.get('meter_value', [{}])[0].get('sampled_value', [])
         transaction_id = request.data.get('transaction_id', None)
 
-        transaction = ChargingTransaction.objects.filter(
+        transaction: ChargingTransaction = ChargingTransaction.objects.filter(
             pk=transaction_id, status=ChargingTransaction.Status.IN_PROGRESS
         ).first()
         if not transaction:
@@ -31,4 +31,17 @@ class MeterValuesAPIView(APIView):
             value = meter_value.get("value")
             if measurand in mapping: setattr(transaction, mapping[measurand], int(value))  # noqa
         transaction.save(update_fields=["battery_percent_on_end", "meter_on_end", "battery_percent_on_start"])
+        if self.check_limit_reached(transaction):
+            ...
+            # todo: send stop transaction to ocpp service
+
         return Response(data={}, status=status.HTTP_200_OK)
+
+    @staticmethod
+    def check_limit_reached(transaction: ChargingTransaction) -> bool:
+        if not transaction.is_limited:
+            return False
+
+        money_until_now = Decimal(str(transaction.consumed_kwh)) * PRICE
+
+        return money_until_now >= transaction.limited_money
