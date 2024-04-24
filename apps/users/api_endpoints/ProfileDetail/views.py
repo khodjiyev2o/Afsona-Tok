@@ -1,11 +1,11 @@
 from rest_framework.generics import RetrieveAPIView
 from rest_framework.permissions import IsAuthenticated
 
-from apps.users.api_endpoints.UpdateProfile.serializers import ProfileUpdateSerializer
+from apps.users.api_endpoints.ProfileDetail.serializers import UserProfileSerializer
 
 
 class ProfileDetailView(RetrieveAPIView):
-    serializer_class = ProfileUpdateSerializer
+    serializer_class = UserProfileSerializer
     permission_classes = [IsAuthenticated]
 
     def get_object(self):
