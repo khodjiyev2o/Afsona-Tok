@@ -1,9 +1,7 @@
 from django.urls import path
-from .views import (
-    ChargerDisconnectAPIView, BootNotificationAPIView, HeartbeatAPIView,
-    MeterValuesAPIView, StatusNotificationAPIView, StartTransactionAPIView,
-    StopTransactionAPIView, CommandCallbackAPIView
-)
+
+
+from apps.chargers.ocpp_messages.views import *
 
 app_name = 'ocpp_messages'
 

@@ -30,7 +30,7 @@ urlpatterns = [
     path("api/v1/chargers/", include("apps.chargers.urls", namespace="chargers")),
     path("api/v1/payment/", include("apps.payment.urls", namespace="payment")),
     path("api/v1/notification/", include("apps.notification.urls", namespace="notification")),
-    path("api/v1/ocpp_messages/", include("apps.ocpp_messages.urls", namespace="ocpp_messages"))
+    path("api/v1/ocpp_messages/", include("apps.chargers.ocpp_messages.urls", namespace="ocpp_messages"))
 ]
 
 urlpatterns += swagger_urlpatterns
