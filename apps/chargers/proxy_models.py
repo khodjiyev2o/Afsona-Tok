@@ -11,6 +11,12 @@ class FinishedChargingTransactionProxy(ChargingTransaction):
         verbose_name = _('Finished Charging Transaction')
         verbose_name_plural = _('Finished Charging Transactions')
 
+    def __init__(self, *args, **kwargs):
+        """ Change the verbose names of the fields """
+        super().__init__(*args, **kwargs)
+        self._meta.get_field('created_at').verbose_name = _("Start Time")
+        self._meta.get_field('meter_used').verbose_name = _("Consumed kWh")
+
 
 class InProgressChargingTransactionProxy(ChargingTransaction):
     objects = InProgressChargingTransactionManager()
@@ -19,3 +25,8 @@ class InProgressChargingTransactionProxy(ChargingTransaction):
         proxy = True
         verbose_name = _('In Progress Charging Transaction')
         verbose_name_plural = _('In Progress Charging Transactions')
+
+    def __init__(self, *args, **kwargs):
+        """ Change the verbose names of the fields """
+        super().__init__(*args, **kwargs)
+        self._meta.get_field('created_at').verbose_name = _("Start Time")
