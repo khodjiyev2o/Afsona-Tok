@@ -21,6 +21,7 @@ class StopTransactionAPIView(APIView):
         transaction_id = request.data.get("transaction_id")
         meter_stop = request.data.get("meter_stop")
         reason = request.data.get('reason')
+        battery_percent_on_stop = self.get_battery_percent_on_stop(request.data)
 
         charging_transaction: ChargingTransaction = ChargingTransaction.objects.filter(
             pk=transaction_id, status=ChargingTransaction.Status.IN_PROGRESS
@@ -37,8 +38,10 @@ class StopTransactionAPIView(APIView):
         charging_transaction.status = ChargingTransaction.Status.FINISHED
         charging_transaction.end_time = timezone.now()
         charging_transaction.stop_reason = reason
+        charging_transaction.battery_percent_on_end = battery_percent_on_stop
         charging_transaction.save(update_fields=[
-            "meter_on_start", "meter_used", "total_price", "status", "end_time", "stop_reason"
+            "meter_on_start", "meter_used", "total_price",
+            "status", "end_time", "stop_reason", 'battery_percent_on_end'
         ])
 
         user = charging_transaction.user
@@ -48,3 +51,13 @@ class StopTransactionAPIView(APIView):
 
         initial_response['id_tag_info']['status'] = AuthorizationStatus.accepted
         return Response(data=initial_response, status=status.HTTP_200_OK)
+
+    @staticmethod
+    def get_battery_percent_on_stop(data: dict):
+        transaction_data = data.get('transaction_data')
+        for data in transaction_data:
+            context = data.get('context')
+            measurand = data.get('measurand')
+            location = data.get('location')
+            if all([context == 'Transaction.End', measurand == 'SoC', location == 'EV']):
+                return data.get('value')
