@@ -17,11 +17,11 @@ class UserCardAdmin(admin.ModelAdmin):
     list_per_page = 20
     ordering = ("-created_at",)
 
-    # def has_change_permission(self, request, obj=None):
-    #     return False
-    #
-    # def has_delete_permission(self, request, obj=None):
-    #     return False
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
 
 
 @admin.register(models.Transaction)
