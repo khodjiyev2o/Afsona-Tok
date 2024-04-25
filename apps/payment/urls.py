@@ -11,7 +11,7 @@ app_name = 'payment'
 
 urlpatterns = [
     path("TransactionCreate/", TransactionCreateView.as_view(), name="transaction-create"),
-    path("TransactionDetail/", TransactionDetailView.as_view(), name="transaction-detail"),
+    path("TransactionDetail/<int:pk>/", TransactionDetailView.as_view(), name="transaction-detail"),
     path("UserCardList/", UserCardListView.as_view(), name="user-card-list"),
     path("CardCreate/", UserCardCreateView.as_view(), name="user-card-create"),
     path("CardVerify/", UserCardVerifyAPIView.as_view(), name="user-card-verify"),

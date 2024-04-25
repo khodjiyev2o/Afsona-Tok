@@ -33,10 +33,21 @@ class LocationDetailSerializer(serializers.ModelSerializer):
     chargers_count = serializers.SerializerMethodField()
     district = serializers.CharField(source='district.name')
     chargers = ChargersListSerializer(many=True)
+    is_favourite = serializers.BooleanField(source="is_favourite")
 
     class Meta:
         model = Location
-        fields = ('id', 'latitude', 'longitude', 'name', 'distance', 'address', 'chargers_count', 'district', 'chargers')
+        fields = ('id',
+                  'latitude',
+                  'longitude',
+                  'name',
+                  'distance',
+                  'address',
+                  'chargers_count',
+                  'district',
+                  'chargers',
+                  'is_favourite'
+                  )
 
     def get_chargers_count(self, obj):
         return obj.chargers.count() or 0
