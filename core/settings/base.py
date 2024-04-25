@@ -313,8 +313,8 @@ PAYMENT_CREDENTIALS = {
         'test_secret_key': env.str("PAYME_TEST_SECRET_KEY", ''),
         'secret_key': env.str("PAYME_SECRET_KEY", ''),
         'credential_key': 'order_id',
-        'subscribe_base_url': env.str("PAYME_SUBSCRIBE_BASE_URL", "https://checkout.test.paycom.uz/api/"),
-        "subscribe_paycom_id": env.str("PAYME_SUBSCRIBE_PAYCOM_ID", "5e730e80b852a417aa49ceb")
+        'subscribe_base_url': env.str("PAYME_SUBSCRIBE_BASE_URL", ""),
+        "subscribe_paycom_id": env.str("PAYME_SUBSCRIBE_PAYCOM_ID", "")
     },
     "click": {
         "callback_url": "https://my.click.uz/services/pay",
