@@ -28,7 +28,7 @@ class PaymeSubscribeCards:
         self.headers: dict = {
             "X-Auth": paycom_id,
         }
-        print("paycom_id", paycom_id)
+
         self.__methods: dict = {
             "cards_check": "cards.check",
             "cards_create": "cards.create",
