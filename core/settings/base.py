@@ -173,7 +173,6 @@ LOCALE_PATHS = [
     BASE_DIR / 'locale/',
 ]
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -308,7 +307,6 @@ SIMPLE_JWT = {
 RECAPTCHA_PUBLIC_KEY = '6LfToDgoAAAAACIY8N9T-ErIhc1Z-dkZWUSUj2IQ'
 RECAPTCHA_PRIVATE_KEY = '6LfToDgoAAAAALdclfq6rUacx-l-VE0DJP9j8Ht0'
 
-
 PAYMENT_CREDENTIALS = {
     "payme": {
         "callback_url": "https://checkout.paycom.uz",
@@ -329,7 +327,6 @@ PAYMENT_CREDENTIALS = {
 
 }
 
-
 sentry_sdk.init(
     dsn=env.str("SENTRY_DSN", ''),
     integrations=[DjangoIntegration(), FastApiIntegration()],
@@ -339,3 +336,6 @@ sentry_sdk.init(
 )
 
 CHARGING_PRICE_PER_KWH = Decimal("2500")
+
+OCPP_SERVER_START_URL = env.str("OCPP_SERVER_START_URL", "http://localhost:8080")
+OCPP_SERVER_STOP_URL = env.str("OCPP_SERVER_STOP_URL", "http://localhost:8080")

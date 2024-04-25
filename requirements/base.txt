@@ -56,3 +56,6 @@ python-telegram-bot==13.15
 # captcha
 django-recaptcha==3.0.0
 
+
+# celery
+celery==5.4.0
