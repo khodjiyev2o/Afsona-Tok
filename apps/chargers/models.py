@@ -1,6 +1,9 @@
+import time
+import requests
+from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
+import sentry_sdk
 from apps.common.models import BaseModel, District, ConnectionType
 from django.utils import timezone
 
@@ -94,6 +97,7 @@ class ChargingTransaction(BaseModel):
     class StopReason(models.TextChoices):
         LOCAL = "Local", _("Local")
         REMOTE = "Remote", _("Remote")
+        CONNECTOR_ERROR = "ConnectorError", _("Connector Error")
         OTHER = "Other", _("Other")
 
     class StartReason(models.TextChoices):
@@ -154,6 +158,15 @@ class ChargeCommand(BaseModel):
         REMOTE_START_TRANSACTION = "REMOTE_START_TRANSACTION", _("Remote start transaction")
         REMOTE_STOP_TRANSACTION = "REMOTE_STOP_TRANSACTION", _("Remote start transaction")
 
+    class Initiator(models.TextChoices):
+        USER = "USER", _("User")
+        SYSTEM = "SYSTEM", _("System")
+
+    initiator = models.CharField(
+        max_length=50, choices=Initiator, db_default=Initiator.USER,
+        verbose_name=_("Initiator"), editable=False
+    )
+
     user_car = models.ForeignKey("common.UserCar", verbose_name=_("User Car"), null=True, blank=True,
                                  on_delete=models.SET_NULL)
     connector = models.ForeignKey(to=Connector, on_delete=models.PROTECT, verbose_name=_("Connector"))
@@ -170,3 +183,40 @@ class ChargeCommand(BaseModel):
     is_limited = models.BooleanField(db_default=False)
     limited_money = models.DecimalField(verbose_name=_("Limited money"), null=True, blank=True, decimal_places=2,
                                         max_digits=10)
+
+    def send_command_start_to_ocpp_service(self) -> bool:
+        payload = {
+            "id_tag": self.id_tag,
+            "charger_identify": self.connector.charge_point.charger_id,
+            "connector_id": self.connector.connector_id
+        }
+
+        is_delivered: bool = self.__send_command(url=settings.OCPP_SERVER_START_URL, payload=payload)
+        return is_delivered
+
+    def send_command_stop_to_ocpp_service(self) -> bool:
+        payload = {
+            "transaction_id": self.id,
+            "charger_identify": self.connector.charge_point.charger_id,
+            "id_tag": self.id_tag
+        }
+        is_delivered: bool = self.__send_command(url=settings.OCPP_SERVER_STOP_URL, payload=payload)
+        return is_delivered
+
+    @staticmethod
+    def __send_command(url: str, payload: dict) -> bool:
+        timeout, retry, retry_delay = 2, 3, 0.2
+
+        for _ in range(retry):
+            try:
+                response = requests.post(url=url, json=payload, timeout=timeout)
+            except Exception as e:
+                sentry_sdk.capture_exception(e)
+                time.sleep(retry_delay)
+                continue
+
+            is_delivered: bool = response.json().get('status')
+            if is_delivered:
+                return True
+            time.sleep(retry_delay)
+        return False

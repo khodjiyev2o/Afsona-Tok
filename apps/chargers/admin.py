@@ -2,8 +2,8 @@ from django.contrib import admin
 from django.db.models import Count
 from django.utils.translation import gettext_lazy as _
 
-from apps.chargers.models import ChargePoint, Connector, Location, ChargingTransaction, ChargeCommand
-
+from apps.chargers.models import ChargePoint, Connector, Location, ChargeCommand
+from apps.chargers.proxy_models import InProgressChargingTransactionProxy, FinishedChargingTransactionProxy
 from apps.common.models import ConnectionType
 
 
@@ -97,12 +97,17 @@ class ConnectionTypeAdmin(admin.ModelAdmin):
     get_linked_cars_count.admin_order_field = 'car_count'
 
 
-@admin.register(ChargingTransaction)
-class ChargingTransactionAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'connector', 'created_at', 'end_time', 'consumed_kwh', 'duration_in_minute',
-                    'total_price', 'status')
-    list_filter = ('status', 'user', 'connector', 'start_reason', 'stop_reason')
+@admin.register(ChargeCommand)
+class ChargeCommandAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'user_car', 'connector', 'created_at', 'status', 'id_tag')
+    list_filter = ('status', 'user', 'connector')
     search_help_text = _("Search by user's username and user car's plate")
+
+
+@admin.register(InProgressChargingTransactionProxy)
+class ChargingTransactionAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'connector', 'created_at', 'consumed_kwh', 'duration_in_minute')
+    list_filter = ('user', 'connector', 'start_reason')
 
     def has_add_permission(self, request, obj=None):
         return False
@@ -110,12 +115,26 @@ class ChargingTransactionAdmin(admin.ModelAdmin):
     def has_change_permission(self, request, obj=None):
         return False
 
-    # def has_delete_permission(self, request, obj=None):
-    #     return False
+    def has_delete_permission(self, request, obj=None):
+        return True  # todo make False
 
 
-@admin.register(ChargeCommand)
-class ChargeCommandAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'user_car', 'connector', 'created_at', 'status', 'id_tag')
-    list_filter = ('status', 'user', 'connector')
+@admin.register(FinishedChargingTransactionProxy)
+class ChargingTransactionAdmin(admin.ModelAdmin):
+    list_display = (
+        'id', 'user', 'connector',
+        'created_at', 'end_time', 'meter_used',
+        'duration_in_minute', 'total_price'
+    )
+    list_filter = ('user', 'connector', 'start_reason', 'stop_reason')
     search_help_text = _("Search by user's username and user car's plate")
+    date_hierarchy = 'created_at'
+
+    def has_add_permission(self, request, obj=None):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return True  # todo make False

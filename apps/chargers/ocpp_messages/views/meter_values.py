@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 
 from apps.chargers.models import ChargingTransaction
 from apps.chargers.ocpp_messages.views.utils import get_price_from_settings
+from apps.chargers.tasks import send_remote_stop_command_to_ocpp_service
 
 logger = logging.getLogger("telegram")
 
@@ -32,8 +33,7 @@ class MeterValuesAPIView(APIView):
             if measurand in mapping: setattr(transaction, mapping[measurand], int(value))  # noqa
         transaction.save(update_fields=["battery_percent_on_end", "meter_on_end", "battery_percent_on_start"])
         if self.check_limit_reached(transaction):
-            ...
-            # todo: send stop transaction to ocpp service
+            send_remote_stop_command_to_ocpp_service.delay(transaction.id)
 
         return Response(data={}, status=status.HTTP_200_OK)
 

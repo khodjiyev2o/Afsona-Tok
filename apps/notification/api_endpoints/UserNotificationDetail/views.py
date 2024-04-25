@@ -17,7 +17,7 @@ class UserNotificationDetailView(RetrieveAPIView):
 
         if not instance.is_read:
             instance.is_read = True
-            instance.save(is_read=True, update_fields=['is_read'])
+            instance.save(update_fields=['is_read'])
         return instance
 
 

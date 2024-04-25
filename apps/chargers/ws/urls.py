@@ -1,5 +1,5 @@
 from django.urls import path
-from apps.chargers.consumers import MobileJsonConsumer
+from apps.chargers.ws.consumers import MobileJsonConsumer
 
 
 websocket_urlpatterns = [

@@ -1,13 +1,13 @@
 import os
 from pathlib import Path
 
+import environ
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
 from django.core.asgi import get_asgi_application
 
-from apps.chargers.ws_auth import WebsocketJWTAuthMiddleware
-from apps.chargers.ws_urls import websocket_urlpatterns
-import environ
+from apps.chargers.ws import WebsocketJWTAuthMiddleware
+from apps.chargers.ws import websocket_urlpatterns
 
 
 def get_application():
