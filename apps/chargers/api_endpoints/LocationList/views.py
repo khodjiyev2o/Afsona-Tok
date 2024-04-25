@@ -15,8 +15,7 @@ class LocationListView(generics.ListAPIView):
 
     def get_queryset(self):
         return Location.objects.select_related('district').prefetch_related(
-            'chargers', 'chargers__connectors').annotate(is_favourite=Exists(
-            queryset=SavedLocation.objects.filter(user_id=self.request.user.id)))
+            'chargers', 'chargers__connectors')
 
     def get_serializer_context(self):
         # Get latitude and longitude from request parameters
