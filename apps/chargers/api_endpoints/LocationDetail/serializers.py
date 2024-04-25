@@ -33,7 +33,7 @@ class LocationDetailSerializer(serializers.ModelSerializer):
     chargers_count = serializers.SerializerMethodField()
     district = serializers.CharField(source='district.name')
     chargers = ChargersListSerializer(many=True)
-    is_favourite = serializers.BooleanField(source="is_favourite")
+    is_favourite = serializers.BooleanField()
 
     class Meta:
         model = Location
