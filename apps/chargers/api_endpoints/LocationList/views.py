@@ -1,5 +1,9 @@
+from django.db.models import Exists
 from rest_framework import generics
+
 from apps.chargers.models import Location
+from apps.common.models import SavedLocation
+
 from apps.chargers.api_endpoints.LocationList.serializers import LocationListSerializer
 
 
@@ -10,7 +14,9 @@ class LocationListView(generics.ListAPIView):
     search_fields = ('name', 'address', 'district__name')
 
     def get_queryset(self):
-        return Location.objects.select_related('district').prefetch_related('chargers', 'chargers__connectors')
+        return Location.objects.select_related('district').prefetch_related(
+            'chargers', 'chargers__connectors').annotate(is_favourite=Exists(
+            queryset=SavedLocation.objects.filter(user_id=self.request.user.id)))
 
     def get_serializer_context(self):
         # Get latitude and longitude from request parameters
