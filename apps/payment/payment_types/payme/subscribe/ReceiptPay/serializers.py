@@ -38,15 +38,16 @@ class ReceiptCreateAndPaySerializer(serializers.ModelSerializer):
         client = PaymeSubscribeReceipts(
             base_url=settings.PAYMENT_CREDENTIALS['payme']['subscribe_base_url'],
             paycom_id=settings.PAYMENT_CREDENTIALS['payme']['subscribe_paycom_id'],
-            paycom_key=settings.PAYMENT_CREDENTIALS['payme']['credential_key']
+            paycom_key=settings.PAYMENT_CREDENTIALS['payme']['secret_key']
         )
         transaction = Transaction.objects.create(
-            user=user, card=self.validated_data['card'], amount=self.validated_data['amount']
+            user=user, card=self.validated_data['card'], amount=self.validated_data['amount'],
+            payment_type=Transaction.PaymentType.CARD
         )
 
         response = client.receipts_create(
             amount=int(transaction.amount * 100),
-            order_id=f"{transaction.id}",
+            order_id=transaction.id,
         )
 
         if response.get('error', None):
@@ -56,9 +57,8 @@ class ReceiptCreateAndPaySerializer(serializers.ModelSerializer):
             invoice_id=response['result']['receipt']['_id'],
             token=self.validated_data['card'].cid,
         )
-        print("res2", response2)
 
         if response2.get('error', None):
             raise ValidationError(detail={"payme": response2['error']['message']}, code=f"{response2['error']['code']}")
 
-        return 0
+        return {"status": Transaction.StatusType.ACCEPTED}

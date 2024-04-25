@@ -1,6 +1,13 @@
+import sentry_sdk
+
 from datetime import datetime
 from typing import Union
+
+from django.conf import settings
+from django.db import transaction
 from django.utils import timezone
+
+
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -9,9 +16,7 @@ from rest_framework.views import APIView
 from apps.payment.payment_types.payme.merchant.auth import PaymeBasicAuthentication
 from apps.payment.payment_types.payme.merchant import status_codes
 from apps.payment.payment_types.payme.merchant.serializers import PaymeCallbackSerializer
-import sentry_sdk
 from apps.payment.models import Transaction as PaymentTransaction, MerchantRequestLog
-from django.conf import settings
 
 
 class PaymeCallbackView(APIView):
@@ -149,6 +154,7 @@ class PaymeCallbackView(APIView):
         transaction.status = PaymentTransaction.StatusType.ACCEPTED
         transaction.paid_at = timezone.now()
         transaction.save(update_fields=['status', 'paid_at'])
+        transaction.success_process()
 
         return {"result": {
             "transaction": transaction.remote_id,
@@ -241,8 +247,9 @@ class PaymeCallbackView(APIView):
     @staticmethod
     def __get_transaction(**kwargs) -> Union[PaymentTransaction | None]:
         transaction = PaymentTransaction.objects.filter(
-            payment_type=PaymentTransaction.PaymentType.PAYME, **kwargs,
+            payment_type__in=[PaymentTransaction.PaymentType.PAYME, PaymentTransaction.PaymentType.CARD], **kwargs,
         ).last()
+
         return transaction
 
     @classmethod
