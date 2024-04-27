@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-27 10:50+0500\n"
-"PO-Revision-Date: 2024-04-27 11:09+0500\n"
+"PO-Revision-Date: 2024-04-27 19:47+0500\n"
 "Last-Translator: None None <>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -25,31 +25,31 @@ msgstr "Поиск по имени и адресу"
 
 #: apps/chargers/admin.py:37
 msgid "Charge Points Count"
-msgstr ""
+msgstr "Количество зарядных станций"
 
 #: apps/chargers/admin.py:58
 msgid "Search by name and charger_id"
-msgstr ""
+msgstr "Поиск по имени и charge_id"
 
 #: apps/chargers/admin.py:68
 msgid "Search by charge point's name and charger_id"
-msgstr ""
+msgstr "Поиск по названию точки зарядки и charge_id"
 
 #: apps/chargers/admin.py:77 apps/common/admin.py:105 apps/common/admin.py:172
 msgid "Search by name"
-msgstr ""
+msgstr "Поиск по имени"
 
 #: apps/chargers/admin.py:90
 msgid "Linked Connector Count"
-msgstr ""
+msgstr "Количество связанных соединителей"
 
 #: apps/chargers/admin.py:96
 msgid "Linked Cars Count"
-msgstr ""
+msgstr "Количество связанных автомобилей"
 
 #: apps/chargers/admin.py:104 apps/chargers/admin.py:130
 msgid "Search by user's username and user car's plate"
-msgstr ""
+msgstr "Поиск по имени пользователя и номеру автомобиля пользователя"
 
 #: apps/chargers/models.py:12 apps/common/models.py:147
 msgid "District"
@@ -69,244 +69,244 @@ msgstr "Адресс"
 
 #: apps/chargers/models.py:15
 msgid "Longitude"
-msgstr ""
+msgstr "Долгота"
 
 #: apps/chargers/models.py:16
 msgid "Latitude"
-msgstr ""
+msgstr "Широта"
 
 #: apps/chargers/models.py:23 apps/chargers/models.py:107
 #: apps/chargers/models.py:162 apps/chargers/models.py:173
 #: apps/common/models.py:100 apps/common/models.py:191
 #: apps/common/models.py:203 apps/users/models.py:42
 msgid "User"
-msgstr ""
+msgstr "Пользователь"
 
 #: apps/chargers/models.py:24 apps/chargers/models.py:40
 #: apps/common/models.py:205
 msgid "Location"
-msgstr ""
+msgstr "Локация"
 
 #: apps/chargers/models.py:32
 msgid "Charger ID"
-msgstr ""
+msgstr "ID зарядной станции"
 
 #: apps/chargers/models.py:33
 msgid "Last Boot Notification"
-msgstr ""
+msgstr "Уведомление о последней загрузке"
 
 #: apps/chargers/models.py:35
 msgid "is Connected"
-msgstr ""
+msgstr "Подключен"
 
 #: apps/chargers/models.py:37
 msgid "ChargePoint's Max electric power"
-msgstr ""
+msgstr "Максимальная электрическая мощность аппарата"
 
 #: apps/chargers/models.py:47 apps/chargers/models.py:80
 #: apps/common/models.py:188
 msgid "Charge Point"
-msgstr ""
+msgstr "Зарядная станция"
 
 #: apps/chargers/models.py:48
 msgid "Charge Points"
-msgstr ""
+msgstr "Зарядные станции"
 
 #: apps/chargers/models.py:65
 msgid "Normal"
-msgstr ""
+msgstr "Нормальный"
 
 #: apps/chargers/models.py:66
 msgid "Charge Disconnected"
-msgstr ""
+msgstr "Зарядка отключена"
 
 #: apps/chargers/models.py:67
 msgid "Manual"
-msgstr ""
+msgstr "Ручной"
 
 #: apps/chargers/models.py:70
 msgid "Connector Id within Charger"
-msgstr ""
+msgstr "Идентификатор разъема в зарядном устройстве"
 
 #: apps/chargers/models.py:71
 msgid "Connector's standard"
-msgstr ""
+msgstr "Стандарт разъема"
 
 #: apps/chargers/models.py:72 apps/chargers/models.py:119
 #: apps/payment/admin.py:61 apps/payment/models.py:20
 #: apps/payment/models.py:58
 msgid "Status"
-msgstr ""
+msgstr "Статус"
 
 #: apps/chargers/models.py:75
 msgid "Last status reason"
-msgstr ""
+msgstr "Причина последнего статуса"
 
 #: apps/chargers/models.py:84 apps/chargers/models.py:110
 #: apps/chargers/models.py:172
 msgid "Connector"
-msgstr ""
+msgstr "Разъем"
 
 #: apps/chargers/models.py:85
 msgid "Connectors"
-msgstr ""
+msgstr "Разъемы"
 
 #: apps/chargers/models.py:94
 msgid "In Progress"
-msgstr ""
+msgstr "В процессе"
 
 #: apps/chargers/models.py:95
 msgid "Finished"
-msgstr ""
+msgstr "Законченный"
 
 #: apps/chargers/models.py:98 apps/chargers/models.py:104
 msgid "Local"
-msgstr ""
+msgstr "Локально"
 
 #: apps/chargers/models.py:99 apps/chargers/models.py:105
 msgid "Remote"
-msgstr ""
+msgstr "Дистанционно"
 
 #: apps/chargers/models.py:100
 msgid "Connector Error"
-msgstr ""
+msgstr "Ошибка коннектора"
 
 #: apps/chargers/models.py:101
 msgid "Other"
-msgstr ""
+msgstr "Другое"
 
 #: apps/chargers/models.py:108 apps/chargers/models.py:170
 #: apps/common/models.py:107
 msgid "User Car"
-msgstr ""
+msgstr "Машина пользователя"
 
 #: apps/chargers/models.py:111
 msgid "End Time"
-msgstr ""
+msgstr "Время окончания"
 
 #: apps/chargers/models.py:112
 msgid "Battery Percent on Start"
-msgstr ""
+msgstr "Процент заряда батареи при запуске"
 
 #: apps/chargers/models.py:113
 msgid "Battery Percent on End"
-msgstr ""
+msgstr "Процент заряда батареи в конце"
 
 #: apps/chargers/models.py:114
 msgid "Meter On Start"
-msgstr ""
+msgstr "Счетчик при запуске"
 
 #: apps/chargers/models.py:115
 msgid "Meter on End"
-msgstr ""
+msgstr "Счетчик в конце"
 
 #: apps/chargers/models.py:116
 msgid "Meter Used"
-msgstr ""
+msgstr "Используемый киловатт"
 
 #: apps/chargers/models.py:117
 msgid "Total Price"
-msgstr ""
+msgstr "Общая сумма"
 
 #: apps/chargers/models.py:122
 msgid "Start Reason"
-msgstr ""
+msgstr "Причина запуска"
 
 #: apps/chargers/models.py:125
 msgid "Stop Reason"
-msgstr ""
+msgstr "Причина остановки"
 
 #: apps/chargers/models.py:127
 msgid "Is Limited"
-msgstr ""
+msgstr "Ограничено"
 
 #: apps/chargers/models.py:128 apps/chargers/models.py:184
 msgid "Limited money"
-msgstr ""
+msgstr "Ограниченные деньги"
 
 #: apps/chargers/models.py:132
 msgid "ChargingTransaction"
-msgstr ""
+msgstr "Транзакция зарядного аппарата"
 
 #: apps/chargers/models.py:133
 msgid "ChargingTransactions"
-msgstr ""
+msgstr "Транзакции зарядных аппаратов"
 
 #: apps/chargers/models.py:158 apps/chargers/models.py:159
 msgid "Remote start transaction"
-msgstr ""
+msgstr "Удаленный запуск транзакции"
 
 #: apps/chargers/models.py:163
 msgid "System"
-msgstr ""
+msgstr "Система"
 
 #: apps/chargers/models.py:167
 msgid "Initiator"
-msgstr ""
+msgstr "Инициатор"
 
 #: apps/chargers/models.py:174
 msgid "Command"
-msgstr ""
+msgstr "Команда"
 
 #: apps/chargers/models.py:175
 msgid "Unique Id tag of command"
-msgstr ""
+msgstr "Уникальный идентификатор команды"
 
 #: apps/chargers/proxy_models.py:11
 msgid "Finished Charging Transaction"
-msgstr ""
+msgstr "Завершенная транзакция аппарата"
 
 #: apps/chargers/proxy_models.py:12
 msgid "Finished Charging Transactions"
-msgstr ""
+msgstr "Завершенные транзакции аппаратов"
 
 #: apps/chargers/proxy_models.py:17 apps/chargers/proxy_models.py:32
 msgid "Start Time"
-msgstr ""
+msgstr "Время начала"
 
 #: apps/chargers/proxy_models.py:18
 msgid "Consumed kWh"
-msgstr ""
+msgstr "Потребленный кВтч"
 
 #: apps/chargers/proxy_models.py:26
 msgid "In Progress Charging Transaction"
-msgstr ""
+msgstr "Выполняемые транзакции аппарата"
 
 #: apps/chargers/proxy_models.py:27
 msgid "In Progress Charging Transactions"
-msgstr ""
+msgstr "Выполняемые транзакции аппарата"
 
 #: apps/common/admin.py:118
 msgid "Location Count"
-msgstr ""
+msgstr "Количество местоположений"
 
 #: apps/common/admin.py:139
 msgid "Search by Region and Country's name"
-msgstr ""
+msgstr "Поиск по названию региона и страны"
 
 #: apps/common/admin.py:152
 msgid "Regions Count"
-msgstr ""
+msgstr "Количество регионов"
 
 #: apps/common/mixins.py:24
 msgid "General "
-msgstr ""
+msgstr "Общий"
 
 #: apps/common/models.py:8
 msgid "Created at"
-msgstr ""
+msgstr "Создан в"
 
 #: apps/common/models.py:9
 msgid "Updated at"
-msgstr ""
+msgstr "Обновлено в"
 
 #: apps/common/models.py:16
 msgid "Key"
-msgstr ""
+msgstr "Ключ"
 
 #: apps/common/models.py:17
 msgid "Text"
-msgstr ""
+msgstr "Текст"
 
 #: apps/common/models.py:20
 msgid "Frontend translation"
@@ -318,23 +318,23 @@ msgstr ""
 
 #: apps/common/models.py:29 apps/common/models.py:66
 msgid "Icon"
-msgstr ""
+msgstr "Иконка"
 
 #: apps/common/models.py:36 apps/common/models.py:44 apps/common/models.py:90
 msgid "Manufacturer"
-msgstr ""
+msgstr "Производитель"
 
 #: apps/common/models.py:37
 msgid "Manufacturers"
-msgstr ""
+msgstr "Производители"
 
 #: apps/common/models.py:55
 msgid "Car model"
-msgstr ""
+msgstr "Модель машины"
 
 #: apps/common/models.py:56
 msgid "Car models"
-msgstr ""
+msgstr "Модель машин"
 
 #: apps/common/models.py:61
 msgid "AC"
@@ -346,23 +346,23 @@ msgstr ""
 
 #: apps/common/models.py:65
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 #: apps/common/models.py:67
 msgid "Max Voltage"
-msgstr ""
+msgstr "Макс. напряжение"
 
 #: apps/common/models.py:76
 msgid "INDIVIDUAL"
-msgstr ""
+msgstr "ИНДИВИДУАЛЬНЫЙ"
 
 #: apps/common/models.py:77
 msgid "LEGAL"
-msgstr ""
+msgstr "ЮРИДИЧЕСКИЙ"
 
 #: apps/common/models.py:78
 msgid "DIPLOMATIC"
-msgstr ""
+msgstr "ДИПЛОМАТИЧЕСКИЙ"
 
 #: apps/common/models.py:79
 msgid "OON"
@@ -370,11 +370,11 @@ msgstr ""
 
 #: apps/common/models.py:80
 msgid "InternationalResident"
-msgstr ""
+msgstr "Международный Резидент"
 
 #: apps/common/models.py:82
 msgid "InternationalOrganization"
-msgstr ""
+msgstr "Международная организация"
 
 #: apps/common/models.py:84
 msgid "VIN"
@@ -386,15 +386,15 @@ msgstr ""
 
 #: apps/common/models.py:86
 msgid "Type of State Number"
-msgstr ""
+msgstr "Тип государственного номера"
 
 #: apps/common/models.py:98
 msgid "Connector Types"
-msgstr ""
+msgstr "Типы разъемов"
 
 #: apps/common/models.py:108
 msgid "User Cars"
-msgstr ""
+msgstr "Автомобили Пользователей"
 
 #: apps/common/models.py:113
 msgid "ISO code"
@@ -402,79 +402,79 @@ msgstr ""
 
 #: apps/common/models.py:121 apps/common/models.py:127
 msgid "Country"
-msgstr ""
+msgstr "Страна"
 
 #: apps/common/models.py:122
 msgid "Countries"
-msgstr ""
+msgstr "Страны"
 
 #: apps/common/models.py:134 apps/common/models.py:140
 msgid "Region"
-msgstr ""
+msgstr "Регион"
 
 #: apps/common/models.py:135
 msgid "Regions"
-msgstr ""
+msgstr "Регионы"
 
 #: apps/common/models.py:148
 msgid "Districts"
-msgstr ""
+msgstr "Районы"
 
 #: apps/common/models.py:152
 msgid "Telegram Link"
-msgstr ""
+msgstr "Ссылка на телеграмм"
 
 #: apps/common/models.py:153 apps/users/models.py:24
 msgid "Phone number"
-msgstr ""
+msgstr "Телефон номер"
 
 #: apps/common/models.py:154
 msgid "Email"
-msgstr ""
+msgstr "Эмейл"
 
 #: apps/common/models.py:157 apps/common/models.py:158
 msgid "Support"
-msgstr ""
+msgstr "Поддержка"
 
 #: apps/common/models.py:162
 msgid "Price for 1 kwt of electricity"
-msgstr ""
+msgstr "Цена за 1 кВтч электроэнергии"
 
 #: apps/common/models.py:163
 msgid "User minimum balance"
-msgstr ""
+msgstr "Минимальный баланс пользователя"
 
 #: apps/common/models.py:166
 msgid "Help Phone Number"
-msgstr ""
+msgstr "Номер телефона справки"
 
 #: apps/common/models.py:167
 msgid "Help Email"
-msgstr ""
+msgstr "Электронной почте"
 
 #: apps/common/models.py:168
 msgid "Help Telegram Link"
-msgstr ""
+msgstr "Telegram Ссылка"
 
 #: apps/common/models.py:171 apps/common/models.py:172
 msgid "MainSettings"
-msgstr ""
+msgstr "Основные настройки"
 
 #: apps/common/models.py:182
 msgid "Appeal Type"
-msgstr ""
+msgstr "Тип Жалобы"
 
 #: apps/common/models.py:183
 msgid "Appeal Types"
-msgstr ""
+msgstr "Тип Жалоб"
 
 #: apps/common/models.py:198
 msgid "User Appeal"
-msgstr ""
+msgstr "Жалоба Пользователя"
 
 #: apps/common/models.py:199
 msgid "User Appeals"
-msgstr ""
+msgstr "Жалобы Пользователей"
 
 #: apps/common/models.py:212
 msgid "Saved Location"
@@ -486,67 +486,67 @@ msgstr ""
 
 #: apps/notification/models.py:8
 msgid "Title"
-msgstr ""
+msgstr "Имя"
 
 #: apps/notification/models.py:9
 msgid "Description"
-msgstr ""
+msgstr "Описание"
 
 #: apps/notification/models.py:10
 msgid "Is for everyone"
-msgstr ""
+msgstr "Подходит для всех"
 
 #: apps/notification/models.py:11 apps/users/models.py:43
 msgid "Users"
-msgstr ""
+msgstr "Пользователи"
 
 #: apps/notification/models.py:15
 msgid "Notification"
-msgstr ""
+msgstr "Уведомление"
 
 #: apps/notification/models.py:16
 msgid "Notifications"
-msgstr ""
+msgstr "Уведомления"
 
 #: apps/notification/models.py:25
 msgid "User notification"
-msgstr ""
+msgstr "Уведомление пользователя"
 
 #: apps/notification/models.py:27
 msgid "User id"
-msgstr ""
+msgstr "Id Пользователя"
 
 #: apps/notification/models.py:28
 msgid "Is sent"
-msgstr ""
+msgstr "Отправлено"
 
 #: apps/notification/models.py:29
 msgid "Is read"
-msgstr ""
+msgstr "Прочитано"
 
 #: apps/notification/models.py:30
 msgid "Sent At"
-msgstr ""
+msgstr "Отправлено в "
 
 #: apps/notification/models.py:34
 msgid "UserNotification"
-msgstr ""
+msgstr "Уведомление пользователя"
 
 #: apps/notification/models.py:35
 msgid "UserNotifications"
-msgstr ""
+msgstr "Уведомление пользователей"
 
 #: apps/payment/models.py:12 apps/payment/models.py:43
 msgid "Pending"
-msgstr ""
+msgstr "В ожидании"
 
 #: apps/payment/models.py:13
 msgid "Active"
-msgstr ""
+msgstr "Активный"
 
 #: apps/payment/models.py:14
 msgid "Deleted"
-msgstr ""
+msgstr "Удалено"
 
 #: apps/payment/models.py:17
 msgid "Humo"
@@ -558,7 +558,7 @@ msgstr ""
 
 #: apps/payment/models.py:22
 msgid "Card number"
-msgstr ""
+msgstr "Номер карты"
 
 #: apps/payment/models.py:23
 msgid "Card Id"
@@ -566,11 +566,11 @@ msgstr ""
 
 #: apps/payment/models.py:24
 msgid "Expire Date"
-msgstr ""
+msgstr "Годен до"
 
 #: apps/payment/models.py:25
 msgid "Is Confirmed"
-msgstr ""
+msgstr "Подтверждено"
 
 #: apps/payment/models.py:26
 msgid "Vendor"
@@ -578,23 +578,23 @@ msgstr ""
 
 #: apps/payment/models.py:32
 msgid "UserCard"
-msgstr ""
+msgstr "Карта пользователя"
 
 #: apps/payment/models.py:33
 msgid "UserCards"
-msgstr ""
+msgstr "Карты пользователей"
 
 #: apps/payment/models.py:44
 msgid "Accepted"
-msgstr ""
+msgstr "Принял"
 
 #: apps/payment/models.py:45
 msgid "Rejected"
-msgstr ""
+msgstr "Отклоненный"
 
 #: apps/payment/models.py:46
 msgid "Canceled"
-msgstr ""
+msgstr "Отменено"
 
 #: apps/payment/models.py:49
 msgid "CARD"
@@ -618,7 +618,7 @@ msgstr ""
 
 #: apps/payment/models.py:57
 msgid "Amount"
-msgstr ""
+msgstr "Сумма"
 
 #: apps/payment/models.py:59
 msgid "Remote id"
@@ -630,31 +630,31 @@ msgstr ""
 
 #: apps/payment/models.py:62
 msgid "Paid at"
-msgstr ""
+msgstr "Оплачено в"
 
 #: apps/payment/models.py:63
 msgid "Canceled at"
-msgstr ""
+msgstr "Отменено в"
 
 #: apps/payment/models.py:64
 msgid "Payment Type"
-msgstr ""
+msgstr "Способ оплаты"
 
 #: apps/payment/models.py:65
 msgid "Extra"
-msgstr ""
+msgstr "Дополнительный"
 
 #: apps/payment/models.py:69
 msgid "Transaction"
-msgstr ""
+msgstr "Транзакция"
 
 #: apps/payment/models.py:70
 msgid "Transactions"
-msgstr ""
+msgstr "Транзакции"
 
 #: apps/payment/models.py:113
 msgid "Payment type"
-msgstr ""
+msgstr "Способ оплаты"
 
 #: apps/payment/models.py:115
 msgid "Request Headers"
@@ -726,27 +726,27 @@ msgstr ""
 
 #: apps/users/models.py:22
 msgid "Full Name"
-msgstr ""
+msgstr "Полное имя"
 
 #: apps/users/models.py:23
 msgid "Date of Birth"
-msgstr ""
+msgstr "Дата рождения"
 
 #: apps/users/models.py:25
 msgid "Photo"
-msgstr ""
+msgstr "Фото"
 
 #: apps/users/models.py:26
 msgid "Balance"
-msgstr ""
+msgstr "Баланс"
 
 #: apps/users/models.py:27
 msgid "Language"
-msgstr ""
+msgstr "Язык"
 
 #: core/settings/base.py:204
 msgid "Devices"
-msgstr ""
+msgstr "Устройства"
 
 #: templates/login.html:15
 #, python-format
@@ -754,11 +754,13 @@ msgid ""
 "You are authenticated as %(username)s, but are not authorized to access this"
 " page. Would you like to login to a different account?"
 msgstr ""
+"Вы прошли аутентификацию как %(username)s, но не имеете права доступа к этой"
+" странице. Хотите войти в другую учетную запись?"
 
 #: templates/login.html:71
 msgid "Forgotten your password or username?"
-msgstr ""
+msgstr "Забыли свой пароль или имя пользователя?"
 
 #: templates/login.html:79
 msgid "Log in"
-msgstr ""
+msgstr "Авторизоваться"
