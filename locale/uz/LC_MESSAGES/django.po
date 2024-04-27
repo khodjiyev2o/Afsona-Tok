@@ -1,0 +1,761 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-27 10:50+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+#: apps/chargers/admin.py:26
+msgid "Search by name and address"
+msgstr ""
+
+#: apps/chargers/admin.py:37
+msgid "Charge Points Count"
+msgstr ""
+
+#: apps/chargers/admin.py:58
+msgid "Search by name and charger_id"
+msgstr ""
+
+#: apps/chargers/admin.py:68
+msgid "Search by charge point's name and charger_id"
+msgstr ""
+
+#: apps/chargers/admin.py:77 apps/common/admin.py:105 apps/common/admin.py:172
+msgid "Search by name"
+msgstr ""
+
+#: apps/chargers/admin.py:90
+msgid "Linked Connector Count"
+msgstr ""
+
+#: apps/chargers/admin.py:96
+msgid "Linked Cars Count"
+msgstr ""
+
+#: apps/chargers/admin.py:104 apps/chargers/admin.py:130
+msgid "Search by user's username and user car's plate"
+msgstr ""
+
+#: apps/chargers/models.py:12 apps/common/models.py:147
+msgid "District"
+msgstr ""
+
+#: apps/chargers/models.py:13 apps/chargers/models.py:31
+#: apps/chargers/models.py:69 apps/common/models.py:28 apps/common/models.py:41
+#: apps/common/models.py:64 apps/common/models.py:114 apps/common/models.py:126
+#: apps/common/models.py:139 apps/common/models.py:176
+#: apps/common/models.py:192
+msgid "Name"
+msgstr ""
+
+#: apps/chargers/models.py:14
+msgid "Address"
+msgstr ""
+
+#: apps/chargers/models.py:15
+msgid "Longitude"
+msgstr ""
+
+#: apps/chargers/models.py:16
+msgid "Latitude"
+msgstr ""
+
+#: apps/chargers/models.py:23 apps/chargers/models.py:107
+#: apps/chargers/models.py:162 apps/chargers/models.py:173
+#: apps/common/models.py:100 apps/common/models.py:191
+#: apps/common/models.py:203 apps/users/models.py:42
+msgid "User"
+msgstr ""
+
+#: apps/chargers/models.py:24 apps/chargers/models.py:40
+#: apps/common/models.py:205
+msgid "Location"
+msgstr ""
+
+#: apps/chargers/models.py:32
+msgid "Charger ID"
+msgstr ""
+
+#: apps/chargers/models.py:33
+msgid "Last Boot Notification"
+msgstr ""
+
+#: apps/chargers/models.py:35
+msgid "is Connected"
+msgstr ""
+
+#: apps/chargers/models.py:37
+msgid "ChargePoint's Max electric power"
+msgstr ""
+
+#: apps/chargers/models.py:47 apps/chargers/models.py:80
+#: apps/common/models.py:188
+msgid "Charge Point"
+msgstr ""
+
+#: apps/chargers/models.py:48
+msgid "Charge Points"
+msgstr ""
+
+#: apps/chargers/models.py:65
+msgid "Normal"
+msgstr ""
+
+#: apps/chargers/models.py:66
+msgid "Charge Disconnected"
+msgstr ""
+
+#: apps/chargers/models.py:67
+msgid "Manual"
+msgstr ""
+
+#: apps/chargers/models.py:70
+msgid "Connector Id within Charger"
+msgstr ""
+
+#: apps/chargers/models.py:71
+msgid "Connector's standard"
+msgstr ""
+
+#: apps/chargers/models.py:72 apps/chargers/models.py:119
+#: apps/payment/admin.py:61 apps/payment/models.py:20 apps/payment/models.py:58
+msgid "Status"
+msgstr ""
+
+#: apps/chargers/models.py:75
+msgid "Last status reason"
+msgstr ""
+
+#: apps/chargers/models.py:84 apps/chargers/models.py:110
+#: apps/chargers/models.py:172
+msgid "Connector"
+msgstr ""
+
+#: apps/chargers/models.py:85
+msgid "Connectors"
+msgstr ""
+
+#: apps/chargers/models.py:94
+msgid "In Progress"
+msgstr ""
+
+#: apps/chargers/models.py:95
+msgid "Finished"
+msgstr ""
+
+#: apps/chargers/models.py:98 apps/chargers/models.py:104
+msgid "Local"
+msgstr ""
+
+#: apps/chargers/models.py:99 apps/chargers/models.py:105
+msgid "Remote"
+msgstr ""
+
+#: apps/chargers/models.py:100
+msgid "Connector Error"
+msgstr ""
+
+#: apps/chargers/models.py:101
+msgid "Other"
+msgstr ""
+
+#: apps/chargers/models.py:108 apps/chargers/models.py:170
+#: apps/common/models.py:107
+msgid "User Car"
+msgstr ""
+
+#: apps/chargers/models.py:111
+msgid "End Time"
+msgstr ""
+
+#: apps/chargers/models.py:112
+msgid "Battery Percent on Start"
+msgstr ""
+
+#: apps/chargers/models.py:113
+msgid "Battery Percent on End"
+msgstr ""
+
+#: apps/chargers/models.py:114
+msgid "Meter On Start"
+msgstr ""
+
+#: apps/chargers/models.py:115
+msgid "Meter on End"
+msgstr ""
+
+#: apps/chargers/models.py:116
+msgid "Meter Used"
+msgstr ""
+
+#: apps/chargers/models.py:117
+msgid "Total Price"
+msgstr ""
+
+#: apps/chargers/models.py:122
+msgid "Start Reason"
+msgstr ""
+
+#: apps/chargers/models.py:125
+msgid "Stop Reason"
+msgstr ""
+
+#: apps/chargers/models.py:127
+msgid "Is Limited"
+msgstr ""
+
+#: apps/chargers/models.py:128 apps/chargers/models.py:184
+msgid "Limited money"
+msgstr ""
+
+#: apps/chargers/models.py:132
+msgid "ChargingTransaction"
+msgstr ""
+
+#: apps/chargers/models.py:133
+msgid "ChargingTransactions"
+msgstr ""
+
+#: apps/chargers/models.py:158 apps/chargers/models.py:159
+msgid "Remote start transaction"
+msgstr ""
+
+#: apps/chargers/models.py:163
+msgid "System"
+msgstr ""
+
+#: apps/chargers/models.py:167
+msgid "Initiator"
+msgstr ""
+
+#: apps/chargers/models.py:174
+msgid "Command"
+msgstr ""
+
+#: apps/chargers/models.py:175
+msgid "Unique Id tag of command"
+msgstr ""
+
+#: apps/chargers/proxy_models.py:11
+msgid "Finished Charging Transaction"
+msgstr ""
+
+#: apps/chargers/proxy_models.py:12
+msgid "Finished Charging Transactions"
+msgstr ""
+
+#: apps/chargers/proxy_models.py:17 apps/chargers/proxy_models.py:32
+msgid "Start Time"
+msgstr ""
+
+#: apps/chargers/proxy_models.py:18
+msgid "Consumed kWh"
+msgstr ""
+
+#: apps/chargers/proxy_models.py:26
+msgid "In Progress Charging Transaction"
+msgstr ""
+
+#: apps/chargers/proxy_models.py:27
+msgid "In Progress Charging Transactions"
+msgstr ""
+
+#: apps/common/admin.py:118
+msgid "Location Count"
+msgstr ""
+
+#: apps/common/admin.py:139
+msgid "Search by Region and Country's name"
+msgstr ""
+
+#: apps/common/admin.py:152
+msgid "Regions Count"
+msgstr ""
+
+#: apps/common/mixins.py:24
+msgid "General "
+msgstr ""
+
+#: apps/common/models.py:8
+msgid "Created at"
+msgstr ""
+
+#: apps/common/models.py:9
+msgid "Updated at"
+msgstr ""
+
+#: apps/common/models.py:16
+msgid "Key"
+msgstr ""
+
+#: apps/common/models.py:17
+msgid "Text"
+msgstr ""
+
+#: apps/common/models.py:20
+msgid "Frontend translation"
+msgstr ""
+
+#: apps/common/models.py:21
+msgid "Frontend translations"
+msgstr ""
+
+#: apps/common/models.py:29 apps/common/models.py:66
+msgid "Icon"
+msgstr ""
+
+#: apps/common/models.py:36 apps/common/models.py:44 apps/common/models.py:90
+msgid "Manufacturer"
+msgstr ""
+
+#: apps/common/models.py:37
+msgid "Manufacturers"
+msgstr ""
+
+#: apps/common/models.py:55
+msgid "Car model"
+msgstr ""
+
+#: apps/common/models.py:56
+msgid "Car models"
+msgstr ""
+
+#: apps/common/models.py:61
+msgid "AC"
+msgstr ""
+
+#: apps/common/models.py:62
+msgid "DC"
+msgstr ""
+
+#: apps/common/models.py:65
+msgid "Type"
+msgstr ""
+
+#: apps/common/models.py:67
+msgid "Max Voltage"
+msgstr ""
+
+#: apps/common/models.py:76
+msgid "INDIVIDUAL"
+msgstr ""
+
+#: apps/common/models.py:77
+msgid "LEGAL"
+msgstr ""
+
+#: apps/common/models.py:78
+msgid "DIPLOMATIC"
+msgstr ""
+
+#: apps/common/models.py:79
+msgid "OON"
+msgstr ""
+
+#: apps/common/models.py:80
+msgid "InternationalResident"
+msgstr ""
+
+#: apps/common/models.py:82
+msgid "InternationalOrganization"
+msgstr ""
+
+#: apps/common/models.py:84
+msgid "VIN"
+msgstr ""
+
+#: apps/common/models.py:85
+msgid "Гос.номер"
+msgstr ""
+
+#: apps/common/models.py:86
+msgid "Type of State Number"
+msgstr ""
+
+#: apps/common/models.py:98
+msgid "Connector Types"
+msgstr ""
+
+#: apps/common/models.py:108
+msgid "User Cars"
+msgstr ""
+
+#: apps/common/models.py:113
+msgid "ISO code"
+msgstr ""
+
+#: apps/common/models.py:121 apps/common/models.py:127
+msgid "Country"
+msgstr ""
+
+#: apps/common/models.py:122
+msgid "Countries"
+msgstr ""
+
+#: apps/common/models.py:134 apps/common/models.py:140
+msgid "Region"
+msgstr ""
+
+#: apps/common/models.py:135
+msgid "Regions"
+msgstr ""
+
+#: apps/common/models.py:148
+msgid "Districts"
+msgstr ""
+
+#: apps/common/models.py:152
+msgid "Telegram Link"
+msgstr ""
+
+#: apps/common/models.py:153 apps/users/models.py:24
+msgid "Phone number"
+msgstr ""
+
+#: apps/common/models.py:154
+msgid "Email"
+msgstr ""
+
+#: apps/common/models.py:157 apps/common/models.py:158
+msgid "Support"
+msgstr ""
+
+#: apps/common/models.py:162
+msgid "Price for 1 kwt of electricity"
+msgstr ""
+
+#: apps/common/models.py:163
+msgid "User minimum balance"
+msgstr ""
+
+#: apps/common/models.py:166
+msgid "Help Phone Number"
+msgstr ""
+
+#: apps/common/models.py:167
+msgid "Help Email"
+msgstr ""
+
+#: apps/common/models.py:168
+msgid "Help Telegram Link"
+msgstr ""
+
+#: apps/common/models.py:171 apps/common/models.py:172
+msgid "MainSettings"
+msgstr ""
+
+#: apps/common/models.py:182
+msgid "Appeal Type"
+msgstr ""
+
+#: apps/common/models.py:183
+msgid "Appeal Types"
+msgstr ""
+
+#: apps/common/models.py:198
+msgid "User Appeal"
+msgstr ""
+
+#: apps/common/models.py:199
+msgid "User Appeals"
+msgstr ""
+
+#: apps/common/models.py:212
+msgid "Saved Location"
+msgstr ""
+
+#: apps/common/models.py:213
+msgid "Saved Locations"
+msgstr ""
+
+#: apps/notification/models.py:8
+msgid "Title"
+msgstr ""
+
+#: apps/notification/models.py:9
+msgid "Description"
+msgstr ""
+
+#: apps/notification/models.py:10
+msgid "Is for everyone"
+msgstr ""
+
+#: apps/notification/models.py:11 apps/users/models.py:43
+msgid "Users"
+msgstr ""
+
+#: apps/notification/models.py:15
+msgid "Notification"
+msgstr ""
+
+#: apps/notification/models.py:16
+msgid "Notifications"
+msgstr ""
+
+#: apps/notification/models.py:25
+msgid "User notification"
+msgstr ""
+
+#: apps/notification/models.py:27
+msgid "User id"
+msgstr ""
+
+#: apps/notification/models.py:28
+msgid "Is sent"
+msgstr ""
+
+#: apps/notification/models.py:29
+msgid "Is read"
+msgstr ""
+
+#: apps/notification/models.py:30
+msgid "Sent At"
+msgstr ""
+
+#: apps/notification/models.py:34
+msgid "UserNotification"
+msgstr ""
+
+#: apps/notification/models.py:35
+msgid "UserNotifications"
+msgstr ""
+
+#: apps/payment/models.py:12 apps/payment/models.py:43
+msgid "Pending"
+msgstr ""
+
+#: apps/payment/models.py:13
+msgid "Active"
+msgstr ""
+
+#: apps/payment/models.py:14
+msgid "Deleted"
+msgstr ""
+
+#: apps/payment/models.py:17
+msgid "Humo"
+msgstr ""
+
+#: apps/payment/models.py:18
+msgid "Uzcard"
+msgstr ""
+
+#: apps/payment/models.py:22
+msgid "Card number"
+msgstr ""
+
+#: apps/payment/models.py:23
+msgid "Card Id"
+msgstr ""
+
+#: apps/payment/models.py:24
+msgid "Expire Date"
+msgstr ""
+
+#: apps/payment/models.py:25
+msgid "Is Confirmed"
+msgstr ""
+
+#: apps/payment/models.py:26
+msgid "Vendor"
+msgstr ""
+
+#: apps/payment/models.py:32
+msgid "UserCard"
+msgstr ""
+
+#: apps/payment/models.py:33
+msgid "UserCards"
+msgstr ""
+
+#: apps/payment/models.py:44
+msgid "Accepted"
+msgstr ""
+
+#: apps/payment/models.py:45
+msgid "Rejected"
+msgstr ""
+
+#: apps/payment/models.py:46
+msgid "Canceled"
+msgstr ""
+
+#: apps/payment/models.py:49
+msgid "CARD"
+msgstr ""
+
+#: apps/payment/models.py:50
+msgid "CLICK"
+msgstr ""
+
+#: apps/payment/models.py:51
+msgid "PAYME"
+msgstr ""
+
+#: apps/payment/models.py:52
+msgid "UZUM"
+msgstr ""
+
+#: apps/payment/models.py:55
+msgid "Card id"
+msgstr ""
+
+#: apps/payment/models.py:57
+msgid "Amount"
+msgstr ""
+
+#: apps/payment/models.py:59
+msgid "Remote id"
+msgstr ""
+
+#: apps/payment/models.py:60
+msgid "TAX Amount"
+msgstr ""
+
+#: apps/payment/models.py:62
+msgid "Paid at"
+msgstr ""
+
+#: apps/payment/models.py:63
+msgid "Canceled at"
+msgstr ""
+
+#: apps/payment/models.py:64
+msgid "Payment Type"
+msgstr ""
+
+#: apps/payment/models.py:65
+msgid "Extra"
+msgstr ""
+
+#: apps/payment/models.py:69
+msgid "Transaction"
+msgstr ""
+
+#: apps/payment/models.py:70
+msgid "Transactions"
+msgstr ""
+
+#: apps/payment/models.py:113
+msgid "Payment type"
+msgstr ""
+
+#: apps/payment/models.py:115
+msgid "Request Headers"
+msgstr ""
+
+#: apps/payment/models.py:116
+msgid "Request Body"
+msgstr ""
+
+#: apps/payment/models.py:118
+msgid "Response Headers"
+msgstr ""
+
+#: apps/payment/models.py:119
+msgid "Response Body"
+msgstr ""
+
+#: apps/payment/models.py:120
+msgid "Response status code"
+msgstr ""
+
+#: apps/payment/payment_types/click_merchant/Complete/views.py:25
+#: apps/payment/payment_types/click_merchant/Prepare/views.py:23
+msgid "SIGN CHECK FAILED!"
+msgstr ""
+
+#: apps/payment/payment_types/click_merchant/provider.py:29
+#: apps/payment/payment_types/click_merchant/provider.py:52
+msgid "Action not found"
+msgstr ""
+
+#: apps/payment/payment_types/click_merchant/provider.py:32
+#: apps/payment/payment_types/click_merchant/provider.py:55
+msgid "Order does not exist"
+msgstr ""
+
+#: apps/payment/payment_types/click_merchant/provider.py:79
+msgid "Transaction ID not match"
+msgstr ""
+
+#: apps/payment/payment_types/click_merchant/provider.py:81
+msgid "Transaction not found"
+msgstr ""
+
+#: apps/payment/payment_types/click_merchant/provider.py:102
+#: apps/payment/payment_types/click_merchant/provider.py:140
+msgid "Already paid"
+msgstr ""
+
+#: apps/payment/payment_types/click_merchant/provider.py:104
+msgid "Transaction cancelled or failed"
+msgstr ""
+
+#: apps/payment/payment_types/click_merchant/provider.py:128
+msgid "Incorrect parameter amount"
+msgstr ""
+
+#: apps/users/models.py:15
+msgid "English"
+msgstr ""
+
+#: apps/users/models.py:16
+msgid "Russian"
+msgstr ""
+
+#: apps/users/models.py:17
+msgid "Uzbek"
+msgstr ""
+
+#: apps/users/models.py:22
+msgid "Full Name"
+msgstr ""
+
+#: apps/users/models.py:23
+msgid "Date of Birth"
+msgstr ""
+
+#: apps/users/models.py:25
+msgid "Photo"
+msgstr ""
+
+#: apps/users/models.py:26
+msgid "Balance"
+msgstr ""
+
+#: apps/users/models.py:27
+msgid "Language"
+msgstr ""
+
+#: core/settings/base.py:204
+msgid "Devices"
+msgstr ""
+
+#: templates/login.html:15
+#, python-format
+msgid ""
+"You are authenticated as %(username)s, but are not authorized to access this "
+"page. Would you like to login to a different account?"
+msgstr ""
+
+#: templates/login.html:71
+msgid "Forgotten your password or username?"
+msgstr ""
+
+#: templates/login.html:79
+msgid "Log in"
+msgstr ""
