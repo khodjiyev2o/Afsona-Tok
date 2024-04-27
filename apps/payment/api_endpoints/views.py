@@ -14,10 +14,19 @@ class TransactionCreateView(generics.CreateAPIView):
         serializer.save(user=self.request.user)
 
 
+class TransactionListView(generics.ListAPIView):
+    serializer_class = TransactionDetailSerializer
+    queryset = Transaction.objects.all()
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        return self.queryset.filter(user=self.request.user, status=Transaction.StatusType.ACCEPTED)
+
+
 class TransactionDetailView(generics.RetrieveAPIView):
     serializer_class = TransactionDetailSerializer
     queryset = Transaction.objects.all()
     permission_classes = [IsAuthenticated]
 
 
-__all__ = ['TransactionCreateView', 'TransactionDetailView']
+__all__ = ['TransactionCreateView', 'TransactionDetailView', 'TransactionListView']
