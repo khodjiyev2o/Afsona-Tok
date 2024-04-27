@@ -194,9 +194,9 @@ class ChargeCommand(BaseModel):
         is_delivered: bool = self.__send_command(url=settings.OCPP_SERVER_START_URL, payload=payload)
         return is_delivered
 
-    def send_command_stop_to_ocpp_service(self) -> bool:
+    def send_command_stop_to_ocpp_service(self, transaction_id: int) -> bool:
         payload = {
-            "transaction_id": self.id,
+            "transaction_id": transaction_id,
             "charger_identify": self.connector.charge_point.charger_id,
             "id_tag": self.id_tag
         }

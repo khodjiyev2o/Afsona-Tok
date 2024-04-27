@@ -297,6 +297,7 @@ class OCPP16Controller(ChargePoint):
             return self._call_result.RemoteStartTransactionPayload(status=RemoteStartStopStatus.rejected)
 
     async def send_remote_stop_transaction_command(self, transaction_id: int):
+        await send_raw_messages_to_telegram_channel(f"Stop tr \n{transaction_id}")
         payload = call.RemoteStopTransactionPayload(transaction_id=transaction_id)
         try:
             return await self.call(payload=payload)
