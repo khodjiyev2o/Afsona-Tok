@@ -20,7 +20,8 @@ class TransactionListView(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        return self.queryset.filter(user=self.request.user, status=Transaction.StatusType.ACCEPTED)
+        return self.queryset.filter(user=self.request.user,
+                                    status=Transaction.StatusType.ACCEPTED).order_by('-created_at')
 
 
 class TransactionDetailView(generics.RetrieveAPIView):
