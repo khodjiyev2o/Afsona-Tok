@@ -34,6 +34,6 @@ class CommandCallbackAPIView(CreateAPIView):
             'id': command.id
         }
         channel_layer = get_channel_layer()
-        async_to_sync(channel_layer.group_send)(group=f'userQ_id_{command.user_id}', message=payload) # noqa
+        async_to_sync(channel_layer.group_send)(group=f'user_id_{command.user_id}', message=payload) # noqa
 
         return Response(data={}, status=status.HTTP_200_OK)
