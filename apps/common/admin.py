@@ -22,7 +22,7 @@ class ManufacturerAdmin(admin.ModelAdmin):
     list_per_page = 20
 
     def image_preview(self, obj):
-        if obj.file:
+        if obj.icon:
             try:
                 obj
             except Exception:
@@ -30,7 +30,7 @@ class ManufacturerAdmin(admin.ModelAdmin):
 
             return mark_safe(
                 '<img src="{0}" width="100" height="100" style="object-fit:contain" />'.format(
-                    obj.file.url
+                    obj.icon.url
                 )
             )
         else:
