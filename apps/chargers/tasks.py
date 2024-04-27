@@ -18,7 +18,7 @@ def send_remote_stop_command_to_ocpp_service(transaction_id: int):
         id_tag=generate_id_tag()
     )
 
-    is_delivered = command.send_command_start_to_ocpp_service()
+    is_delivered = command.send_command_stop_to_ocpp_service(transaction.id)
     command.is_delivered = is_delivered
     command.delivered_at = timezone.now()
     command.save(update_fields=['is_delivered', 'delivered_at'])
