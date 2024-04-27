@@ -1,0 +1,2 @@
+from .schema import ChangeAvailabilityRequest, ChangeAvailabilityResponse
+from .service import change_availability_handler

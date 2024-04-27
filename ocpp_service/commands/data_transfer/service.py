@@ -4,7 +4,7 @@ import aiohttp
 from fastapi import BackgroundTasks
 from ocpp.v16.enums import RemoteStartStopStatus
 
-from ocpp_service.commands.remote_start.schema import RemoteStartRequest, RemoteStartResponse
+from ocpp_service.commands.remote_start_transaction.schema import RemoteStartRequest, RemoteStartResponse
 from ocpp_service.configs import ACTIVE_CONNECTIONS, WEBSOCKET_COMMAND_CALLBACK_URL
 from ocpp_service.ocpp_controller import OCPP16Controller
 
