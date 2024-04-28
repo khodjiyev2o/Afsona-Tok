@@ -208,7 +208,7 @@ class ChargeCommand(BaseModel):
 
     @staticmethod
     def __send_command(url: str, payload: dict, retry=3, timeout=3) -> bool:
-        retry_delay = 0.2
+        retry_delay = 0.1
 
         for _ in range(retry):
             try:
