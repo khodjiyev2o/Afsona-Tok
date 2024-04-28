@@ -7,3 +7,4 @@ class ProfileUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ("full_name", "date_of_birth", "photo", "language")
+        read_only_fields = ("phone", "balance")
