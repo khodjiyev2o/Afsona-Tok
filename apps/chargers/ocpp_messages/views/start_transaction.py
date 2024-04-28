@@ -45,7 +45,9 @@ class StartTransactionAPIView(APIView):
             transaction_data = dict(
                 user_id=command.user_id,
                 user_car_id=command.user_car_id,
-                start_reason=ChargingTransaction.StartReason.REMOTE
+                start_reason=ChargingTransaction.StartReason.REMOTE,
+                is_limited=command.is_limited,
+                limited_money=command.limited_money
             )
 
         charging_transaction = ChargingTransaction.objects.create(

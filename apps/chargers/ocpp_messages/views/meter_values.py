@@ -42,6 +42,11 @@ class MeterValuesAPIView(APIView):
         if not transaction.is_limited:
             return False
 
+        user_balance_reached = False
         money_until_now = Decimal(str(transaction.consumed_kwh)) * PRICE
 
-        return money_until_now >= transaction.limited_money
+        is_limit_reached = money_until_now >= transaction.limited_money
+        if transaction.user: user_balance_reached = money_until_now >= transaction.user.balance # noqa
+
+        return is_limit_reached or user_balance_reached
+

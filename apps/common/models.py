@@ -100,8 +100,7 @@ class UserCar(BaseModel):
     user = models.ForeignKey("users.User", verbose_name=_("User"), related_name="cars", on_delete=models.CASCADE)
 
     def __str__(self):
-        # return f"{self.id}-{self.manufacturer.name}-{self.model.name}"
-        return f"{self.id}"
+        return f"{self.id}-{self.model.manufacturer.name}-{self.model.name}"
 
     class Meta:
         verbose_name = _("User Car")
