@@ -18,6 +18,11 @@ class Location(BaseModel):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = _("Location")
+        verbose_name_plural = _("Locations")
+        ordering = ["-id"]
+
 
 class UserFavouriteLocation(BaseModel):
     user = models.ForeignKey("users.User", verbose_name=_("User"), on_delete=models.CASCADE)
