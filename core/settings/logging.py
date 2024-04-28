@@ -13,7 +13,7 @@ class TelegramHandler(logging.Handler):
     def emit(self, record):
         log_entry = self.format(record)
         bot = telegram.Bot(token=self.telegram_bot_token)
-        bot.send_message(chat_id=self.telegram_chat_id, text=log_entry, message_thread_id=self.message_thread_id)
+        bot.send_message(chat_id=self.telegram_chat_id, text=log_entry)
 
 
 LOGGING = {
@@ -26,7 +26,7 @@ LOGGING = {
             'propagate': True,
         },
         'telegram': {
-            'handlers': ['console', 'telegram_info', 'telegram_error'],
+            'handlers': ['console', 'telegram_error'],
             'level': 'INFO',
             'propagate': True,
         },
@@ -55,7 +55,7 @@ LOGGING = {
     },
     'formatters': {
         'verbose': {
-            'format': '{filename}  {levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'format': '{filename} {message}',
             'style': '{',
         },
     },
