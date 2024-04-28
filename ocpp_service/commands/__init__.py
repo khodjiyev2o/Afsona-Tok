@@ -64,11 +64,3 @@ router.add_api_route(
     description="Remote Stop Transaction"
 )
 
-router.add_api_route(
-    path="/change_configuration/",
-    endpoint=change_availability_handler,
-    response_model=ChangeAvailabilityResponse,
-    status_code=status.HTTP_200_OK,
-    methods=['POST'],
-    description="Change configuration"
-)
