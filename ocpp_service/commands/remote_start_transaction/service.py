@@ -10,7 +10,9 @@ from ocpp_service.utils import send_raw_messages_to_telegram_channel
 
 async def remote_start_handler(body: RemoteStartRequest, background_tasks: BackgroundTasks) -> RemoteStartResponse:
     if body.charger_identify not in ACTIVE_CONNECTIONS:
-        await send_raw_messages_to_telegram_channel(body.charger_identify, ACTIVE_CONNECTIONS)
+        await send_raw_messages_to_telegram_channel(
+            body.charger_identify, str((ACTIVE_CONNECTIONS, id(ACTIVE_CONNECTIONS)))
+        )
         return RemoteStartResponse(status=False)
 
     connection: OCPP16Controller = ACTIVE_CONNECTIONS[body.charger_identify]

@@ -56,6 +56,9 @@ class ConnectionManager:
         await websocket.accept(subprotocol='ocpp1.6')
         connection = OCPP16Controller(charger_identify, SocketAdapterAndLogger(websocket))
         ACTIVE_CONNECTIONS[connection.id] = connection
+        await send_raw_messages_to_telegram_channel(
+            connection.id, str((ACTIVE_CONNECTIONS, id(ACTIVE_CONNECTIONS)))
+        )
         await connection.start()
 
     async def disconnect(self, charger_identify: str, reason: str) -> None:
