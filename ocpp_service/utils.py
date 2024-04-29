@@ -57,7 +57,9 @@ class ConnectionManager:
         connection = OCPP16Controller(charger_identify, SocketAdapterAndLogger(websocket))
         ACTIVE_CONNECTIONS[connection.id] = connection
         await send_raw_messages_to_telegram_channel(
-            connection.id, str((ACTIVE_CONNECTIONS, id(ACTIVE_CONNECTIONS)))
+            charger_id=connection.id,
+            message="set : " + str((ACTIVE_CONNECTIONS, id(ACTIVE_CONNECTIONS))),
+            sms_type='out'
         )
         await connection.start()
 
