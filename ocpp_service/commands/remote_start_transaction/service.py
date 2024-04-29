@@ -1,5 +1,3 @@
-import asyncio
-
 import aiohttp
 from fastapi import BackgroundTasks
 from ocpp.v16.enums import RemoteStartStopStatus
@@ -7,10 +5,12 @@ from ocpp.v16.enums import RemoteStartStopStatus
 from ocpp_service.commands.remote_start_transaction.schema import RemoteStartRequest, RemoteStartResponse
 from ocpp_service.configs import ACTIVE_CONNECTIONS, WEBSOCKET_COMMAND_CALLBACK_URL
 from ocpp_service.ocpp_controller import OCPP16Controller
+from ocpp_service.utils import send_raw_messages_to_telegram_channel
 
 
 async def remote_start_handler(body: RemoteStartRequest, background_tasks: BackgroundTasks) -> RemoteStartResponse:
     if body.charger_identify not in ACTIVE_CONNECTIONS:
+        await send_raw_messages_to_telegram_channel(body.charger_identify, ACTIVE_CONNECTIONS)
         return RemoteStartResponse(status=False)
 
     connection: OCPP16Controller = ACTIVE_CONNECTIONS[body.charger_identify]
