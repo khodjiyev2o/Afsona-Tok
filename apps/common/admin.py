@@ -50,16 +50,6 @@ class UserCarAdmin(admin.ModelAdmin):
     search_fields = ["vin", "model"]
 
 
-@admin.register(models.Support)
-class SupportAdmin(admin.ModelAdmin):
-    list_display = ('id', 'telegram_link', 'email', 'phone_number')
-
-    def has_add_permission(self, request):
-        if self.model.objects.count() > 0:
-            return False
-        return True
-
-
 @admin.register(models.MainSettings)
 class MainSettingsAdmin(admin.ModelAdmin):
     list_display = ('price', 'user_minimum_balance', 'ios_version', 'android_version')

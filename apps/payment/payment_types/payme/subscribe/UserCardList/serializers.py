@@ -9,6 +9,7 @@ class UserCardListSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserCard
         fields = (
+            'id',
             'card_number',
             'expire_date',
             'vendor'
