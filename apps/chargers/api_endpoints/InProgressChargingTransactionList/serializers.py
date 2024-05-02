@@ -1,3 +1,6 @@
+from decimal import Decimal
+
+from django.conf import settings
 from rest_framework import serializers
 from apps.chargers.models import ChargingTransaction, Connector
 from apps.common.models import UserCar, ConnectionType
@@ -30,7 +33,17 @@ class InProgressChargingTransactionListSerializer(serializers.ModelSerializer):
     car = InProgressCarSerializer(source='user_car')
     battery_percent = serializers.IntegerField(source='battery_percent_on_end')
     connector = InProgressConnectorSerializer()
+    money = serializers.SerializerMethodField()
+    consumed_kwh = serializers.SerializerMethodField()
 
     class Meta:
         model = ChargingTransaction
-        fields = ('id', 'connector', 'car', 'battery_percent')
+        fields = ('id', 'connector', 'car', 'battery_percent', 'money', 'consumed_kwh')
+
+    def get_money(self, obj):
+        money = Decimal(str(obj.consumed_kwh)) * settings.CHARGING_PRICE_PER_KWH
+        # todo i will refactor
+        return str(round(money, 2))
+
+    def get_consumed_kwh(self, obj):
+        return obj.consumed_kwh
