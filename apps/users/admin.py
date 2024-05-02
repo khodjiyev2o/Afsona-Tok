@@ -13,5 +13,5 @@ class UserAdmin(admin.ModelAdmin):
         "full_name",
         "phone",
     )
-    readonly_fields = ("id", "created_at",  "is_staff", "is_superuser")
-    exclude = ("last_login", "updated_at", "password", "is_active")
+    readonly_fields = ("id", "created_at", "balance", )
+    exclude = ("last_login", "updated_at", "password", "is_active", "email")
