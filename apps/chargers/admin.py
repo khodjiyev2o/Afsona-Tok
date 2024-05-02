@@ -1,9 +1,11 @@
 from django.contrib import admin
 from django.db.models import Count
 from django.utils.translation import gettext_lazy as _
+from import_export.admin import ExportActionMixin
 
-from apps.chargers.models import ChargePoint, Connector, Location, ChargeCommand
+from apps.chargers.models import ChargePoint, Connector, Location, ChargeCommand, ChargingTransaction
 from apps.chargers.proxy_models import InProgressChargingTransactionProxy, FinishedChargingTransactionProxy
+from apps.chargers.resources import ChargingTransactionResource
 from apps.common.models import ConnectionType
 
 
@@ -120,7 +122,8 @@ class ChargingTransactionAdmin(admin.ModelAdmin):
 
 
 @admin.register(FinishedChargingTransactionProxy)
-class ChargingTransactionAdmin(admin.ModelAdmin):
+class ChargingTransactionAdmin(ExportActionMixin, admin.ModelAdmin):
+    resource_classes = (ChargingTransactionResource,)
     list_display = (
         'id', 'user', 'connector',
         'created_at', 'end_time', 'meter_used',

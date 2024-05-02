@@ -60,7 +60,8 @@ THIRD_PARTY_APPS = [
     "modeltranslation",
     "fcm_django",
     "captcha",
-    "channels"
+    "channels",
+    "import_export"
 ]
 
 REST_FRAMEWORK = {
@@ -345,3 +346,6 @@ CHARGING_PRICE_PER_KWH = Decimal("2500")
 
 OCPP_SERVER_START_URL = env.str("OCPP_SERVER_START_URL", "http://localhost:8080")
 OCPP_SERVER_STOP_URL = env.str("OCPP_SERVER_STOP_URL", "http://localhost:8080")
+
+
+IMPORT_EXPORT_SKIP_ADMIN_ACTION_EXPORT_UI = True
