@@ -91,11 +91,12 @@ class Transaction(BaseModel):
     def payment_url(self):
         payment_url = ""
         if self.payment_type == Transaction.PaymentType.PAYME:
-            merchant_id = settings.PAYME_MERCHANT_ID
+            merchant_id = settings.PAYMENT_CREDENTIALS['payme']['merchant_id']
             params = f"m={merchant_id};ac.order_id={self.id};a={self.amount * 100};"
             encode_params = base64.b64encode(params.encode("utf-8"))
             encode_params = str(encode_params, "utf-8")
             payment_url = f"{settings.PAYMENT_CREDENTIALS['payme']['callback_url']}/{encode_params}"
+
         elif self.payment_type == Transaction.PaymentType.CLICK:
             merchant_id = settings.PAYMENT_CREDENTIALS['click']["merchant_id"]
             service_id = settings.PAYMENT_CREDENTIALS['click']["merchant_service_id"]

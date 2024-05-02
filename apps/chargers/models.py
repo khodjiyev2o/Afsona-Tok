@@ -18,6 +18,11 @@ class Location(BaseModel):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = _("Location")
+        verbose_name_plural = _("Locations")
+        ordering = ["-id"]
+
 
 class UserFavouriteLocation(BaseModel):
     user = models.ForeignKey("users.User", verbose_name=_("User"), on_delete=models.CASCADE)
@@ -194,18 +199,21 @@ class ChargeCommand(BaseModel):
         is_delivered: bool = self.__send_command(url=settings.OCPP_SERVER_START_URL, payload=payload)
         return is_delivered
 
-    def send_command_stop_to_ocpp_service(self) -> bool:
+    def send_command_stop_to_ocpp_service(self, transaction_id: int, retry=3, timeout=3) -> bool:
         payload = {
-            "transaction_id": self.id,
+            "transaction_id": transaction_id,
             "charger_identify": self.connector.charge_point.charger_id,
             "id_tag": self.id_tag
         }
-        is_delivered: bool = self.__send_command(url=settings.OCPP_SERVER_STOP_URL, payload=payload)
+        is_delivered: bool = self.__send_command(
+            url=settings.OCPP_SERVER_STOP_URL, payload=payload,
+            retry=retry, timeout=timeout
+        )
         return is_delivered
 
     @staticmethod
-    def __send_command(url: str, payload: dict) -> bool:
-        timeout, retry, retry_delay = 2, 3, 0.2
+    def __send_command(url: str, payload: dict, retry=3, timeout=3) -> bool:
+        retry_delay = 0.1
 
         for _ in range(retry):
             try:

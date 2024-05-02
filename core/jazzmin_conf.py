@@ -1,6 +1,7 @@
 from typing import Any, Dict  # noqa: F401
 
 JAZZMIN_SETTINGS = {
+    "language_chooser": True,
     "custom_css": "css/logo.css",
     # title of the window (Will default to current_admin_site.site_title if absent or None)
     "site_title": "Afsona Tok Admin",

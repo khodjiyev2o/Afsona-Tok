@@ -64,10 +64,10 @@ class TransactionModel(admin.ModelAdmin):
 
 @admin.register(models.MerchantRequestLog)
 class MerchantRequestLogAdmin(admin.ModelAdmin):
-    list_display = ['payment_type', 'method_type', 'request_body', 'response_body', 'created_at']
+    list_display = ['id', 'payment_type', 'method_type', 'created_at']
     list_filter = ['payment_type', 'created_at', 'updated_at']
     date_hierarchy = 'created_at'
-    search_fields = ['request_body', 'response_body']
+    search_fields = ['request_body', 'response_body', 'payment_type', 'method_type']
 
     def has_delete_permission(self, request, obj=None):
         return False

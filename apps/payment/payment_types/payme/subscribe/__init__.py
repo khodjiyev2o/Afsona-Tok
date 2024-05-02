@@ -3,3 +3,4 @@ from .CardCreate import * # noqa
 from .CardVerify import * # noqa
 from .ReceiptPay import * # noqa
 from .UserCardList import * # noqa
+from .UserCardDelete import * # noqa

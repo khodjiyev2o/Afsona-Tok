@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ["127.0.0.1", 'localhost', "afsona.transitgroup.uz", '46.101.212
 DJANGO_APPS = [
     "daphne",  # should add to the beginning
     "jazzmin",
+    'rosetta',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -211,6 +212,12 @@ FCM_DJANGO_SETTINGS = {
 }
 
 #  MODEL TRANSLATIONS
+
+
+def gettext(s):
+    return s
+
+
 LANGUAGES = (
     ("uz", "Uzbek"),
     ("ru", "Russian"),

@@ -20,26 +20,10 @@ from ocpp.v16.enums import (
 from ocpp_service.configs import OCPP_RAW_MESSAGES_SERVICE_URL
 
 
-async def send_raw_messages_to_telegram_channel(message):
-    token = '6776606012:AAHG0sKQtsfJ-PjDnNhRyw3QDr3mtRPQlM0'
-    channel_id = -1002009651619
-
-    url = f'https://api.telegram.org/bot{token}/sendMessage'
-    params = {
-        'chat_id': channel_id,
-        'text': message
-    }
-
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url, params=params) as response:
-            await response.json()
-
-
 class OCPP16Controller(ChargePoint):
-
-    async def route_message(self, raw_msg):
-        await send_raw_messages_to_telegram_channel(f"{self.id}\n{raw_msg}")
-        return await super().route_message(raw_msg)
+    @on(action='SecurityEventNotification')
+    async def security_event_notification(self, **kwargs):
+        return self._call_result.StatusNotificationPayload()
 
     @on(action=Action.Authorize)
     async def on_authorize(self, **kwargs):
@@ -238,10 +222,6 @@ class OCPP16Controller(ChargePoint):
     async def send_change_change_availability_command(self, connector_id: int, availability_type: AvailabilityType):
         payload = call.ChangeAvailabilityPayload(connector_id=connector_id, type=availability_type)
         return await self.call(payload=payload)
-
-    async def send_change_configration_command(self, key: str, value: str):
-        payload = call.ChangeConfigurationPayload(key=key, value=value)
-        return await self.call(payload)
 
     async def send_clear_cache_command(self):
         payload = call.ClearCachePayload()

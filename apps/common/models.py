@@ -100,12 +100,12 @@ class UserCar(BaseModel):
     user = models.ForeignKey("users.User", verbose_name=_("User"), related_name="cars", on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.id}-{self.manufacturer.name}-{self.model.name}"
+        return f"{self.id}-{self.model.manufacturer.name}-{self.model.name}"
 
     class Meta:
         verbose_name = _("User Car")
         verbose_name_plural = _("User Cars")
-        unique_together = ['user', 'vin']
+        # unique_together = ['user', 'vin']
 
 
 class Country(BaseModel):
@@ -145,16 +145,6 @@ class District(BaseModel):
         ordering = ['-id']
         verbose_name = _("District")
         verbose_name_plural = _("Districts")
-
-
-class Support(BaseModel):
-    telegram_link = models.CharField(max_length=255, verbose_name=_("Telegram Link"))
-    phone_number = PhoneNumberField(_("Phone number"), max_length=255)
-    email = models.EmailField(verbose_name=_("Email"))
-
-    class Meta:
-        verbose_name = _("Support")
-        verbose_name_plural = _("Support")
 
 
 class MainSettings(BaseModel):

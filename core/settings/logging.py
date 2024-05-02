@@ -12,8 +12,11 @@ class TelegramHandler(logging.Handler):
 
     def emit(self, record):
         log_entry = self.format(record)
-        bot = telegram.Bot(token=self.telegram_bot_token)
-        bot.send_message(chat_id=self.telegram_chat_id, text=log_entry, message_thread_id=self.message_thread_id)
+        try:
+            bot = telegram.Bot(token=self.telegram_bot_token)
+            bot.send_message(chat_id=self.telegram_chat_id, text=log_entry)
+        except Exception as e:
+            print(e)
 
 
 LOGGING = {
@@ -22,12 +25,12 @@ LOGGING = {
     'loggers': {
         'django': {
             'handlers': ['console'],
-            'level': 'INFO',
+            'level': 'DEBUG',
             'propagate': True,
         },
         'telegram': {
-            'handlers': ['console'],
-            'level': 'INFO',
+            'handlers': ['console', 'telegram_error'],
+            'level': 'DEBUG',
             'propagate': True,
         },
     },
@@ -40,22 +43,20 @@ LOGGING = {
             'level': 'INFO',
             'class': 'core.settings.logging.TelegramHandler',
             'telegram_bot_token': environ.get('TELEGRAM_BOT_TOKEN', ''),
-            'telegram_chat_id': environ.get('TELEGRAM_GROUP_ID', ''),
-            'message_thread_id': environ.get('INFO_LOG_TOPIC_ID', ''),
+            'telegram_chat_id': environ.get('ERROR_LOG_CHANNEL_ID', ''),
             'formatter': 'verbose',
         },
         'telegram_error': {
             'level': 'ERROR',
             'class': 'core.settings.logging.TelegramHandler',
             'telegram_bot_token': environ.get('TELEGRAM_BOT_TOKEN', ''),
-            'telegram_chat_id': environ.get('TELEGRAM_GROUP_ID', ''),
-            'message_thread_id': environ.get('ERROR_LOG_TOPIC_ID', ''),
+            'telegram_chat_id': environ.get('ERROR_LOG_CHANNEL_ID', ''),
             'formatter': 'verbose',
         },
     },
     'formatters': {
         'verbose': {
-            'format': '{filename}  {levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'format': '{filename} {message}',
             'style': '{',
         },
     },
