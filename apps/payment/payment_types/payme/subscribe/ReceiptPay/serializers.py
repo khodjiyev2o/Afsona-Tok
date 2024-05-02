@@ -16,12 +16,13 @@ class ReceiptCreateAndPaySerializer(serializers.ModelSerializer):
             'amount',
             'card',
             'status',
+            'created_at',
         )
-        extra_kwargs = {"amount": {"write_only": True}, "card": {"write_only": True}, "status": {"read_only": True}}
+        extra_kwargs = {"created_at": {"read_only": True}, "card": {"write_only": True}, "status": {"read_only": True}}
 
     def validate(self, attrs):
-        if attrs['amount'] < 10000:
-            raise serializers.ValidationError({"amount": "Amount should be 10000"}, code="not_enough")
+        # if attrs['amount'] < 10000:
+        #     raise serializers.ValidationError({"amount": "Amount should be 10000"}, code="not_enough")
 
         user_card = UserCard.objects.filter(
             user=self.context["request"].user, id=attrs["card"].id, status=UserCard.CardChoices.ACTIVE
@@ -61,4 +62,5 @@ class ReceiptCreateAndPaySerializer(serializers.ModelSerializer):
         if response2.get('error', None):
             raise ValidationError(detail={"payme": response2['error']['message']}, code=f"{response2['error']['code']}")
 
-        return {"status": Transaction.StatusType.ACCEPTED}
+        return {"status": Transaction.StatusType.ACCEPTED, 'created_at': transaction.created_at,
+                'amount': transaction.amount}
