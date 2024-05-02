@@ -33,7 +33,7 @@ class TransactionModel(admin.ModelAdmin):
         "user",
         "amount",
         "payment_type",
-        "remote_id",
+        "created_at",
         "colored_status",
     )
     list_filter = ("created_at", 'payment_type')

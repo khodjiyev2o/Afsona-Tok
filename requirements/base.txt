@@ -61,3 +61,7 @@ django-recaptcha==3.0.0
 celery==5.4.0
 
 django-rosetta==0.10.0
+
+
+# Export Charging History
+django-import-export==4.0.0

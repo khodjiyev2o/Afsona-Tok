@@ -24,5 +24,6 @@ class TransactionDetailSerializer(serializers.ModelSerializer):
             'id',
             'amount',
             'payment_type',
-            'status'
+            'status',
+            'created_at'
         )

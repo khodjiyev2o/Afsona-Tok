@@ -4,11 +4,10 @@ from os import environ
 
 
 class TelegramHandler(logging.Handler):
-    def __init__(self, telegram_bot_token, telegram_chat_id, message_thread_id, *args, **kwargs):
+    def __init__(self, telegram_bot_token, telegram_chat_id,  *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.telegram_bot_token = telegram_bot_token
         self.telegram_chat_id = telegram_chat_id
-        self.message_thread_id = message_thread_id
 
     def emit(self, record):
         log_entry = self.format(record)
@@ -25,12 +24,12 @@ LOGGING = {
     'loggers': {
         'django': {
             'handlers': ['console'],
-            'level': 'DEBUG',
+            'level': 'INFO',
             'propagate': True,
         },
         'telegram': {
             'handlers': ['console', 'telegram_error'],
-            'level': 'DEBUG',
+            'level': 'ERROR',
             'propagate': True,
         },
     },
