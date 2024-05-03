@@ -133,6 +133,11 @@ class ChargingTransaction(BaseModel):
     limited_money = models.DecimalField(verbose_name=_("Limited money"), null=True, blank=True, decimal_places=2,
                                         max_digits=10)
 
+    start_command = models.ForeignKey(
+        "ChargeCommand", on_delete=models.PROTECT, related_name='start_command_transaction',
+        verbose_name=_("Start Command"), null=True, blank=True
+    )
+
     class Meta:
         verbose_name = _("ChargingTransaction")
         verbose_name_plural = _("ChargingTransactions")

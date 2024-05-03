@@ -47,7 +47,8 @@ class StartTransactionAPIView(APIView):
                 user_car_id=command.user_car_id,
                 start_reason=ChargingTransaction.StartReason.REMOTE,
                 is_limited=command.is_limited,
-                limited_money=command.limited_money
+                limited_money=command.limited_money,
+                start_command_id=command.id
             )
 
         charging_transaction = ChargingTransaction.objects.create(

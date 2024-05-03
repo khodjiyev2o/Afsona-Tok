@@ -38,7 +38,7 @@ class InProgressChargingTransactionListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ChargingTransaction
-        fields = ('id', 'connector', 'car', 'battery_percent', 'money', 'consumed_kwh')
+        fields = ('id', 'connector', 'car', 'battery_percent', 'money', 'consumed_kwh', 'start_command_id')
 
     def get_money(self, obj):
         money = Decimal(str(obj.consumed_kwh)) * settings.CHARGING_PRICE_PER_KWH
