@@ -64,7 +64,6 @@ class ConnectionManager:
         await connection.start()
 
     async def disconnect(self, charger_identify: str, reason: str) -> None:
-        del ACTIVE_CONNECTIONS[charger_identify]
         async with aiohttp.ClientSession() as session:
             async with session.post(
                     url=WEBSOCKET_DISCONNECT_CALLBACK_URL.format(charger_identify),
