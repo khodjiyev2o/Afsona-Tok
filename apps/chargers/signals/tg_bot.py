@@ -4,7 +4,7 @@ from decimal import Decimal
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
+from apps.chargers.tasks import send_report_on_stop_transaction_task
 from apps.chargers.models import ChargingTransaction
 
 telegram_logger = logging.getLogger('telegram')
@@ -40,11 +40,4 @@ def send_start_transaction_to_telegram(sender, instance, created, **kwargs):
 @receiver(post_save, sender=ChargingTransaction)
 def send_stop_transaction_to_telegram(sender, instance, created, **kwargs):
     if instance.status == ChargingTransaction.Status.FINISHED:
-        telegram_logger.info(
-            f"""Stop Transaction:
-                    Transaction ID: {instance.id}
-                    Meter Stop: {instance.meter_on_end} %
-                    Consumed KWh: {instance.consumed_kwh}
-                    Price: {Decimal(str(instance.consumed_kwh)) * settings.CHARGING_PRICE_PER_KWH}
-            """
-        )
+        send_report_on_stop_transaction_task.delay(instance.id)

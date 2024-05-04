@@ -1,5 +1,6 @@
 from django.utils import timezone
 from celery import shared_task
+from telegram.bot import Bot
 
 from apps.chargers.models import ChargeCommand, ChargingTransaction
 from apps.chargers.utils import generate_id_tag
@@ -26,3 +27,24 @@ def send_remote_stop_command_to_ocpp_service(transaction_id: int):
     command.save(update_fields=['is_delivered', 'delivered_at'])
 
     return str(dict(command=command.id, is_delivered=is_delivered, delivered_at=command.delivered_at))
+
+
+@shared_task
+def send_report_on_stop_transaction_task(transaction_id: int):
+    transaction: ChargingTransaction = ChargingTransaction.objects.get(pk=transaction_id)
+    bot = Bot(token='6776606012:AAHG0sKQtsfJ-PjDnNhRyw3QDr3mtRPQlM0')
+
+    user = str(transaction.user.phone) if transaction.user else "Cash mode"
+
+    message = f"""Transaction ID: {transaction.id}
+Started at: {transaction.created_at.strftime("%B %d, %Y, %I:%M %p")}
+Duration: {transaction.end_time - transaction.created_at}
+Consumed kWh: {transaction.meter_used} 
+Location: {transaction.connector.charge_point.name} - {transaction.connector.name}
+Total Price: {transaction.total_price}
+Client: {user}"""
+
+    bot.send_message(chat_id='-1002102673622', text=message)
+
+    return str(dict(transaction=transaction.id, report_sent=True))
+
