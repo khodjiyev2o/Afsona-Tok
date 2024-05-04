@@ -32,7 +32,7 @@ class StopTransactionAPIView(APIView):
         return response
 
     def post(self, request, *args, **kwargs):
-        initial_response = dict(id_tag_info=dict(status=AuthorizationStatus.invalid, id_tag=None, expiry_date=None))
+        initial_response = dict(id_tag_info=dict(status=AuthorizationStatus.invalid.value, id_tag=None, expiry_date=None))
         transaction_id = request.data.get("transaction_id")
         meter_stop = request.data.get("meter_stop")
         reason = request.data.get('reason')
@@ -65,7 +65,7 @@ class StopTransactionAPIView(APIView):
             user.balance -= charging_transaction.total_price
             user.save(update_fields=['balance'])
 
-        initial_response['id_tag_info']['status'] = AuthorizationStatus.accepted
+        initial_response['id_tag_info']['status'] = AuthorizationStatus.accepted.value
         return Response(data=initial_response, status=status.HTTP_200_OK)
 
     @staticmethod

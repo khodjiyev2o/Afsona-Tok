@@ -2,10 +2,11 @@ import json
 import logging
 from decimal import Decimal
 
+from django.utils import timezone
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from django.utils import timezone
+
 from apps.chargers.models import Connector, ChargingTransaction, OCPPServiceRequestResponseLogs
 from apps.chargers.ocpp_messages.views.utils import get_price_from_settings
 

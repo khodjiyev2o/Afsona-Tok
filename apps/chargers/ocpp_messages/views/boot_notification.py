@@ -14,7 +14,7 @@ logger = logging.getLogger("telegram")
 
 class BootNotificationAPIView(APIView):
     def post(self, request, *args, **kwargs):
-        initial_response = {"interval": 10, "status": RegistrationStatus.rejected}
+        initial_response = {"interval": 10, "status": RegistrationStatus.rejected.value}
         charger_id = kwargs.get("charger_identify")
         charge_point: ChargePoint = ChargePoint.objects.filter(charger_id=charger_id).first()
 
@@ -30,5 +30,5 @@ class BootNotificationAPIView(APIView):
         charge_point.save(update_fields=['is_connected', 'last_boot_notification'])
 
         logger.info(f"BootNotification: {charger_id}")
-        initial_response['status'] = RegistrationStatus.accepted
+        initial_response['status'] = RegistrationStatus.accepted.value
         return Response(initial_response, status=status.HTTP_200_OK)

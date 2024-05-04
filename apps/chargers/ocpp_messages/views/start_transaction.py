@@ -32,7 +32,7 @@ class StartTransactionAPIView(APIView):
         initial_response = {
             "transaction_id": -1,
             "id_tag_info":
-                {"status": AuthorizationStatus.invalid, "id_tag": None, "expiry_date": None}
+                {"status": AuthorizationStatus.invalid.value, "id_tag": None, "expiry_date": None}
         }
 
         charger_id, connector_id = kwargs.get("charger_identify"), data.get("connector_id")
@@ -68,5 +68,5 @@ class StartTransactionAPIView(APIView):
             **transaction_data, connector_id=connector.id, meter_on_start=meter_start
         )
         initial_response['transaction_id'] = charging_transaction.id
-        initial_response['id_tag_info']['status'] = AuthorizationStatus.accepted
+        initial_response['id_tag_info']['status'] = AuthorizationStatus.accepted.value
         return Response(initial_response, status=status.HTTP_200_OK)
