@@ -37,11 +37,11 @@ def send_report_on_stop_transaction_task(transaction_id: int):
     user = str(transaction.user.phone) if transaction.user else "Cash mode"
 
     message = f"""Transaction ID: {transaction.id}
-Started at: {transaction.created_at.strftime("%B %d, %Y, %I:%M %p")}
-Duration: {transaction.end_time - transaction.created_at}
-Consumed kWh: {transaction.meter_used} 
-Location: {transaction.connector.charge_point.name} - {transaction.connector.name}
-Total Price: {transaction.total_price}
+Boshlangan vaqt: {transaction.created_at.strftime("%B %d, %Y, %I:%M %p")}
+Davomiyligi: {transaction.end_time - transaction.created_at}
+Ishlatilingan kWh: {transaction.meter_used} 
+Address : {transaction.connector.charge_point.name} - {transaction.connector.name}
+Narxi: {transaction.total_price}
 Client: {user}"""
 
     bot.send_message(chat_id='-1002102673622', text=message)
