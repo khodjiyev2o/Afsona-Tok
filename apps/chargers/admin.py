@@ -1,3 +1,5 @@
+import json
+
 from django.contrib import admin
 from django.db.models import Count
 from django.utils.translation import gettext_lazy as _
@@ -145,9 +147,81 @@ class ChargingTransactionAdmin(ExportActionMixin, admin.ModelAdmin):
 
 @admin.register(OCPPServiceRequestResponseLogs)
 class OCPPServiceRequestResponseLogAdmin(admin.ModelAdmin):
-    list_display = ('id', 'charger_id', 'request_action', 'request_body', 'response_body', 'created_at')
+    def __init__(self, model, admin_site, *args, **kwargs):
+        super().__init__(model, admin_site,)
+        self.request_body_formatting_mapping = {
+            "StartTransaction": self.__format_start_transaction,
+            "MeterValues": self.__format_meter_values,
+            "StopTransaction": self.__format_stop_transaction,
+            "StatusNotification": self.__format_status_notification
+        }
+
+    list_display = ('id', 'charger_id', 'request_action', 'format_request_body', 'response_body', 'created_at')
     list_filter = ('request_action', 'charger_id')
     search_fields = ('charger_id', 'request_action')
     search_help_text = _("Search by charger_id and request_action")
     date_hierarchy = 'created_at'
 
+    def has_add_permission(self, request, obj=None):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def format_request_body(self, obj):
+        format_method = self.request_body_formatting_mapping.get(obj.request_action)
+        if callable(format_method):
+            return format_method(json.loads(obj.request_body.replace("'", "\"")))
+        return obj.request_body
+
+    format_request_body.short_description = _("Request Body")
+
+    @staticmethod
+    def __format_meter_values(data: dict) -> dict:
+        meter_values = data.get('meter_value', [{}])[0].get('sampled_value', [])
+
+        result_data = {}
+
+        for meter_value in meter_values:
+            measurand = meter_value.get("measurand")
+            value = meter_value.get("value")
+            result_data[measurand] = value
+
+        return result_data
+
+    @staticmethod
+    def __format_start_transaction(data: dict) -> dict:
+        data.__delitem__("meter_start")
+        data.__delitem__("reservation_id")
+        data.__delitem__("timestamp")
+
+        cash_mode = True if data.get('id_tag') == "" else False
+        data.setdefault("cash_mode", cash_mode)
+        return data
+
+    @staticmethod
+    def __format_stop_transaction(data: dict) -> dict:
+        transaction_id = data.get("transaction_id")
+        meter_stop = data.get("meter_stop")
+        reason = data.get('reason')
+
+        return {
+            "transaction_id": transaction_id,
+            "meter_stop": meter_stop,
+            "reason": reason,
+        }
+
+    @staticmethod
+    def __format_status_notification(data: dict) -> dict:
+        connector_id = data.get("connector_id")
+        connector_status = data.get("status")
+        error_code = data.get("error_code")
+
+        return {
+            "connector_id": connector_id,
+            "status": connector_status,
+            "error_code": error_code
+        }
