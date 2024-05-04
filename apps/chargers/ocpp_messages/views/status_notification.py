@@ -35,8 +35,8 @@ class StatusNotificationAPIView(APIView):
 
         if error_code != "NoError":
             logger.error(f"StatusNotification: Charger {charger_identify} -> {connector_id} -> {error_code}")
-        if connector.status == Connector.Status.FAULTED:
-            self.stop_in_progress_transaction_on_faulted(connector)
+        # if connector.status == Connector.Status.FAULTED:
+        #     self.stop_in_progress_transaction_on_faulted(connector)
 
         return Response(data={}, status=status.HTTP_200_OK)
 
