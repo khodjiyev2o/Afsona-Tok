@@ -1,4 +1,5 @@
 from django.contrib.auth.models import BaseUserManager
+from django.contrib.auth.hashers import make_password
 
 
 class UserManager(BaseUserManager):
@@ -6,8 +7,8 @@ class UserManager(BaseUserManager):
         if not phone:
             raise ValueError("User must have a phone!")
         user = self.model(phone=phone, **extra_fields)
-        user.set_password(password)
-        user.save()
+        user.password = make_password(password)
+        user.save(using=self._db)
         return user
 
     def create_superuser(self, phone, password):
