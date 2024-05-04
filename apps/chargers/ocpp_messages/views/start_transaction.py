@@ -39,6 +39,7 @@ class StartTransactionAPIView(APIView):
         id_tag, meter_start = data.get("id_tag"), data.get('meter_start')
 
         cash_mode = True if id_tag == "" else False
+        id_tag_already_used: bool = True
 
         command: ChargeCommand = ChargeCommand.objects.filter(id_tag=id_tag).first()
         connector = Connector.objects.filter(charge_point__charger_id=charger_id, connector_id=connector_id).first()
@@ -48,7 +49,10 @@ class StartTransactionAPIView(APIView):
             )
             return Response(initial_response, status=status.HTTP_200_OK)
 
-        if cash_mode:
+        if command:
+            id_tag_already_used = bool(ChargingTransaction.objects.filter(start_command_id=command.id, status=ChargingTransaction.Status.FINISHED).exists())
+
+        if cash_mode or id_tag_already_used:
             transaction_data = dict(
                 user_id=None,
                 user_car_id=None,
