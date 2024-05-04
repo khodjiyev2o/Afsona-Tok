@@ -1,3 +1,4 @@
+import json
 import logging
 from decimal import Decimal
 
@@ -5,7 +6,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.utils import timezone
-from apps.chargers.models import Connector, ChargingTransaction
+from apps.chargers.models import Connector, ChargingTransaction, OCPPServiceRequestResponseLogs
 from apps.chargers.ocpp_messages.views.utils import get_price_from_settings
 
 logger = logging.getLogger("telegram")
@@ -14,6 +15,19 @@ PRICE = get_price_from_settings()
 
 
 class StatusNotificationAPIView(APIView):
+    def dispatch(self, request, *args, **kwargs):
+        data = request.body.decode('utf-8')
+        charger_id = request.resolver_match.captured_kwargs.get('charger_identify')
+
+        response = super().dispatch(request, *args, **kwargs)
+        OCPPServiceRequestResponseLogs.objects.create(
+            charger_id=charger_id,
+            request_action="StatusNotification",
+            request_body=json.loads(data),
+            response_body=response.data
+        )
+        return response
+
     def post(self, request, *args, **kwargs):
         charger_identify = kwargs.get("charger_identify")
         connector_id = request.data.get("connector_id")

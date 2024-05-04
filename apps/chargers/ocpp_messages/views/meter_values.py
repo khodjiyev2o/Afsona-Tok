@@ -1,3 +1,4 @@
+import json
 import logging
 from decimal import Decimal
 
@@ -5,7 +6,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from apps.chargers.models import ChargingTransaction
+from apps.chargers.models import ChargingTransaction, OCPPServiceRequestResponseLogs
 from apps.chargers.ocpp_messages.views.utils import get_price_from_settings
 from apps.chargers.tasks import send_remote_stop_command_to_ocpp_service
 
@@ -15,6 +16,19 @@ PRICE = get_price_from_settings()
 
 
 class MeterValuesAPIView(APIView):
+    def dispatch(self, request, *args, **kwargs):
+        data = request.body.decode('utf-8')
+        charger_id = request.resolver_match.captured_kwargs.get('charger_identify')
+
+        response = super().dispatch(request, *args, **kwargs)
+        OCPPServiceRequestResponseLogs.objects.create(
+            charger_id=charger_id,
+            request_action="MeterValues",
+            request_body=json.loads(data),
+            response_body=response.data
+        )
+        return response
+
     def post(self, request, *args, **kwargs):
         meter_values = request.data.get('meter_value', [{}])[0].get('sampled_value', [])
         transaction_id = request.data.get('transaction_id', None)
@@ -39,14 +53,11 @@ class MeterValuesAPIView(APIView):
 
     @staticmethod
     def check_limit_reached(transaction: ChargingTransaction) -> bool:
-        if not transaction.is_limited:
-            return False
-
         user_balance_reached = False
+        is_limit_reached = False
         money_until_now = Decimal(str(transaction.consumed_kwh)) * PRICE
 
-        is_limit_reached = money_until_now >= transaction.limited_money
-        if transaction.user: user_balance_reached = money_until_now >= transaction.user.balance # noqa
+        if transaction.is_limited: is_limit_reached = money_until_now >= transaction.limited_money  # noqa
+        if transaction.user: user_balance_reached = money_until_now >= transaction.user.balance  # noqa
 
         return is_limit_reached or user_balance_reached
-

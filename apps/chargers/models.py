@@ -233,3 +233,18 @@ class ChargeCommand(BaseModel):
                 return True
             time.sleep(retry_delay)
         return False
+
+
+class OCPPServiceRequestResponseLogs(BaseModel):
+    charger_id = models.CharField(max_length=50, verbose_name=_("Charger ID"))
+    request_action = models.CharField(max_length=50, verbose_name=_("Request Action"))
+    request_body = models.TextField(verbose_name=_("Request"), null=True, blank=True)
+    response_body = models.TextField(verbose_name=_("Response"), null=True, blank=True)
+
+    class Meta:
+        verbose_name = _("OCPP Service Request Response Log")
+        verbose_name_plural = _("OCPP Service Request Response Logs")
+        ordering = ["-id"]
+
+    def __str__(self):
+        return f"{self.id}"

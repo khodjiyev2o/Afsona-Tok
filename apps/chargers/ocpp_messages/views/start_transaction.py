@@ -1,3 +1,4 @@
+import json
 import logging
 from decimal import Decimal
 
@@ -6,14 +7,26 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from apps.chargers.models import ChargingTransaction, ChargeCommand, Connector
+from apps.chargers.models import ChargingTransaction, ChargeCommand, Connector, OCPPServiceRequestResponseLogs
 
 logger = logging.getLogger("telegram")
 
-PRICE = Decimal('2000')
-
 
 class StartTransactionAPIView(APIView):
+
+    def dispatch(self, request, *args, **kwargs):
+        data = request.body.decode('utf-8')
+        charger_id = request.resolver_match.captured_kwargs.get('charger_identify')
+
+        response = super().dispatch(request, *args, **kwargs)
+        OCPPServiceRequestResponseLogs.objects.create(
+            charger_id=charger_id,
+            request_action="StartTransaction",
+            request_body=json.loads(data),
+            response_body=response.data
+        )
+        return response
+
     def post(self, request, *args, **kwargs):
         data = request.data
         initial_response = {

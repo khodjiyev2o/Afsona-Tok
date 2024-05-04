@@ -3,7 +3,7 @@ from django.db.models import Count
 from django.utils.translation import gettext_lazy as _
 from import_export.admin import ExportActionMixin
 
-from apps.chargers.models import ChargePoint, Connector, Location, ChargeCommand, ChargingTransaction
+from apps.chargers.models import ChargePoint, Connector, Location, ChargeCommand, OCPPServiceRequestResponseLogs
 from apps.chargers.proxy_models import InProgressChargingTransactionProxy, FinishedChargingTransactionProxy
 from apps.chargers.resources import ChargingTransactionResource
 from apps.common.models import ConnectionType
@@ -141,3 +141,13 @@ class ChargingTransactionAdmin(ExportActionMixin, admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         return True  # todo make False
+
+
+@admin.register(OCPPServiceRequestResponseLogs)
+class OCPPServiceRequestResponseLogAdmin(admin.ModelAdmin):
+    list_display = ('id', 'charger_id', 'request_action', 'request_body', 'response_body', 'created_at')
+    list_filter = ('request_action', 'charger_id')
+    search_fields = ('charger_id', 'request_action')
+    search_help_text = _("Search by charger_id and request_action")
+    date_hierarchy = 'created_at'
+

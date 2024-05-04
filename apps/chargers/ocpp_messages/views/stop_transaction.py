@@ -1,3 +1,4 @@
+import json
 import logging
 from decimal import Decimal
 from typing import Union
@@ -8,7 +9,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from apps.chargers.models import ChargingTransaction
+from apps.chargers.models import ChargingTransaction, OCPPServiceRequestResponseLogs
 from apps.chargers.ocpp_messages.views.utils import get_price_from_settings
 
 logger = logging.getLogger("telegram")
@@ -17,6 +18,19 @@ PRICE = get_price_from_settings()
 
 
 class StopTransactionAPIView(APIView):
+    def dispatch(self, request, *args, **kwargs):
+        data = request.body.decode('utf-8')
+        charger_id = request.resolver_match.captured_kwargs.get('charger_identify')
+
+        response = super().dispatch(request, *args, **kwargs)
+        OCPPServiceRequestResponseLogs.objects.create(
+            charger_id=charger_id,
+            request_action="StopTransaction",
+            request_body=json.loads(data),
+            response_body=response.data
+        )
+        return response
+
     def post(self, request, *args, **kwargs):
         initial_response = dict(id_tag_info=dict(status=AuthorizationStatus.invalid, id_tag=None, expiry_date=None))
         transaction_id = request.data.get("transaction_id")
