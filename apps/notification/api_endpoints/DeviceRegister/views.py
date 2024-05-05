@@ -2,6 +2,8 @@ from fcm_django.models import FCMDevice
 from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import IsAuthenticated
 
+from apps.notification.api_endpoints.DeviceRegister.serializers import DeviceRegisterSerializer
+
 
 class DeviceRegisterView(CreateAPIView):
     queryset = FCMDevice.objects.all()
