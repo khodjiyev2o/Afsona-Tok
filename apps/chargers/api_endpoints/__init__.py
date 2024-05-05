@@ -8,3 +8,4 @@ from .ChargingTransactionList import * # noqa
 from .ChargingTransactionDetail import * # noqa
 from .SavedLocationList import * # noqa
 from .InProgressChargingTransactionList import * # noqa
+from .DeepLinkChargerDetail import * # noqa
