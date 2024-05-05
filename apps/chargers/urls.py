@@ -17,5 +17,5 @@ urlpatterns = [
     path("ChargingTransactionDetail/<int:pk>/", ChargingTransactionDetailAPIView.as_view(), name='charging-transaction-detail'),
     path('SavedLocationList/', SavedLocationListView.as_view(), name='saved-location-list'),
     path("InProgressChargingTransactionList/", InProgressChargingTransactionListAPIView.as_view()),
-    path("DeepLinkChargerDetail/<str:charger_id>/", QRChargerDetailView.as_view(), name='qr-charger-detail'),
+    path("QRChargerDetail/<str:charger_id>/", QRChargerDetailView.as_view(), name='qr-charger-detail'),
 ]
