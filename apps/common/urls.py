@@ -19,5 +19,5 @@ urlpatterns = [
     path("SavedLocation/", SavedLocationAPIView.as_view(), name="saved-location"),
     path("StaticPage/", ListStaticPageAPIView.as_view(), name="static-page-list"),
     path("StaticPage/<int:pk>/", DetailStaticPageAPIView.as_view(), name="static-page-detail"),
-
+    path("AppRedirect/<str:content>/<str:content_id>/", AppRedirectAPIView.as_view(), name="AppRedirect"),
 ]
