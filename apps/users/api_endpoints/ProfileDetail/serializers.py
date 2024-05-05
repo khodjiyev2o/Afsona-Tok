@@ -4,7 +4,7 @@ from apps.notification.models import UserNotification
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
-    notification_cout = serializers.SerializerMethodField()
+    notification_count = serializers.SerializerMethodField()
 
     class Meta:
         model = User
