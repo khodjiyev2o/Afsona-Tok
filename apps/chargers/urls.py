@@ -16,5 +16,6 @@ urlpatterns = [
     path("ChargingTransactionList/", ChargingTransactionListAPIView.as_view(), name='charging-transaction-list'),
     path("ChargingTransactionDetail/<int:pk>/", ChargingTransactionDetailAPIView.as_view(), name='charging-transaction-detail'),
     path('SavedLocationList/', SavedLocationListView.as_view(), name='saved-location-list'),
-    path("InProgressChargingTransactionList/", InProgressChargingTransactionListAPIView.as_view())
+    path("InProgressChargingTransactionList/", InProgressChargingTransactionListAPIView.as_view()),
+    path("DeepLinkChargerDetail/<str:charger_id>/", DeepLinkChargerDetailView.as_view(), name='deep-link-charger-detail'),
 ]
