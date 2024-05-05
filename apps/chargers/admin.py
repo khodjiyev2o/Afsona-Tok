@@ -7,7 +7,7 @@ from import_export.admin import ExportActionMixin
 
 from apps.chargers.models import ChargePoint, Connector, Location, ChargeCommand, OCPPServiceRequestResponseLogs
 from apps.chargers.proxy_models import InProgressChargingTransactionProxy, FinishedChargingTransactionProxy
-from apps.chargers.resources import ChargingTransactionResource
+from apps.chargers.resources import FinishedChargingTransactionProxyResource
 from apps.common.models import ConnectionType
 
 
@@ -125,7 +125,7 @@ class ChargingTransactionAdmin(admin.ModelAdmin):
 
 @admin.register(FinishedChargingTransactionProxy)
 class ChargingTransactionAdmin(ExportActionMixin, admin.ModelAdmin):
-    resource_classes = (ChargingTransactionResource,)
+    resource_classes = (FinishedChargingTransactionProxyResource,)
     list_display = (
         'id', 'user', 'connector',
         'created_at', 'end_time', 'meter_used',
@@ -144,11 +144,15 @@ class ChargingTransactionAdmin(ExportActionMixin, admin.ModelAdmin):
     def has_delete_permission(self, request, obj=None):
         return True  # todo make False
 
+    def get_export_filename(self, request, queryset, file_format):
+        """ Custom export filename for FinishedChargingTransactionProxy """
+        return super().get_export_filename(request, queryset, file_format)
+
 
 @admin.register(OCPPServiceRequestResponseLogs)
 class OCPPServiceRequestResponseLogAdmin(admin.ModelAdmin):
     def __init__(self, model, admin_site, *args, **kwargs):
-        super().__init__(model, admin_site,)
+        super().__init__(model, admin_site, )
         self.request_body_formatting_mapping = {
             "StartTransaction": self.__format_start_transaction,
             "MeterValues": self.__format_meter_values,
