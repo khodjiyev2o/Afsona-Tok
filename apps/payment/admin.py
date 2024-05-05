@@ -1,7 +1,10 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
+from import_export.admin import ExportActionMixin
+
 from apps.payment import models
 from django.utils.translation import gettext_lazy as _
+from apps.payment.resources import PaymentTransactionResource
 
 
 @admin.register(models.UserCard)
@@ -17,15 +20,19 @@ class UserCardAdmin(admin.ModelAdmin):
     list_per_page = 20
     ordering = ("-created_at",)
 
-    # def has_change_permission(self, request, obj=None):
-    #     return False
-    #
-    # def has_delete_permission(self, request, obj=None):
-    #     return False
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_add_permission(self, request):
+        return False
 
 
 @admin.register(models.Transaction)
-class TransactionModel(admin.ModelAdmin):
+class TransactionModel(ExportActionMixin, admin.ModelAdmin):
+    resource_classes = (PaymentTransactionResource,)
     search_fields = ("id",)
     list_display = (
         "id",
@@ -41,11 +48,11 @@ class TransactionModel(admin.ModelAdmin):
     ordering = ("-created_at",)
     date_hierarchy = 'created_at'
 
-    # def has_change_permission(self, request, obj=None):
-    #     return False
-    #
-    # def has_delete_permission(self, request, obj=None):
-    #     return False
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
 
     def colored_status(self, obj):
         colors = {

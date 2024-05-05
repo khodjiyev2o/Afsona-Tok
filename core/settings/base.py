@@ -6,7 +6,7 @@ from pathlib import Path
 import environ
 import sentry_sdk
 from django.utils.translation import gettext_lazy as _
-from firebase_admin import initialize_app
+from import_export.formats.base_formats import XLSX
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.fastapi import FastApiIntegration
 
@@ -351,6 +351,8 @@ OCPP_SERVER_STOP_URL = env.str("OCPP_SERVER_STOP_URL", "http://localhost:8080")
 
 
 IMPORT_EXPORT_SKIP_ADMIN_ACTION_EXPORT_UI = True
+IMPORT_EXPORT_SKIP_ADMIN_CONFIRM = True
+EXPORT_FORMATS = [XLSX]
 
 
 CKEDITOR_CONFIGS = {

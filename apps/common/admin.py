@@ -172,3 +172,19 @@ class CountryAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_at'
     ordering = ('name',)
     inlines = (RegionsInline,)
+
+
+@admin.register(models.SavedLocation)
+class SavedLocationAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'location')
+    search_fields = ('user__phone_number', 'location__name')
+    autocomplete_fields = ('user', 'location')
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_add_permission(self, request):
+        return False
