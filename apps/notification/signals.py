@@ -39,5 +39,4 @@ def create_user_notification(sender, instance, action, **kwargs):
             )
             users_id = [notification_user.user.id for notification_user in notification_users]
             devices = FCMDevice.objects.filter(user__in=users_id)
-            d = devices.send_message(message)
-            print(d)
+            devices.send_message(message)
