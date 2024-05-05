@@ -9,8 +9,9 @@ class CarModelListView(generics.ListAPIView):
     search_fields = ['name']
 
     def get_queryset(self):
-        if self.kwargs.get('manufacturer_id'):
-            return CarModel.objects.filter(manufacturer__id=self.kwargs['manufacturer_id']).order_by('created_at')
+        if self.request.query_params.get('manufacturer_id'):
+            return CarModel.objects.filter(manufacturer__id=self.request.query_params.get('manufacturer_id')
+                                           ).order_by('created_at')
         else:
             return CarModel.objects.all().order_by('created_at')
 
