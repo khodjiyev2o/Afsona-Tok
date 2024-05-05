@@ -1,4 +1,4 @@
-from django.db.models import Exists
+from django.db.models import Exists, OuterRef
 from rest_framework import generics
 from apps.chargers.models import Location
 from apps.common.models import SavedLocation
@@ -15,7 +15,9 @@ class SavedLocationListView(generics.ListAPIView):
         queryset = (
             queryset.select_related('district')
             .prefetch_related('chargers', 'chargers__connectors')
-            .annotate(used=Exists(queryset=SavedLocation.objects.filter(user_id=self.request.user.id)))
+            .annotate(used=Exists(queryset=SavedLocation.objects.filter(
+                user_id=self.request.user.id, location_id=OuterRef('id')
+            )))
         )
         return queryset
 
