@@ -1,10 +1,10 @@
 from rest_framework import generics
 
-from apps.chargers.api_endpoints.DeepLinkChargerDetail.serializers import ChargersDetailSerializer
+from apps.chargers.api_endpoints.QRChargerDetail.serializers import ChargersDetailSerializer
 from apps.chargers.models import ChargePoint
 
 
-class DeepLinkChargerDetailView(generics.RetrieveAPIView):
+class QRChargerDetailView(generics.RetrieveAPIView):
     """Detail of location, send user_latitude and user_longitude
     as query parameters to get distance from user location"""
     serializer_class = ChargersDetailSerializer
@@ -13,4 +13,4 @@ class DeepLinkChargerDetailView(generics.RetrieveAPIView):
     lookup_url_kwarg = 'charger_id'
 
 
-__all__ = ['DeepLinkChargerDetailView']
+__all__ = ['QRChargerDetailView']
