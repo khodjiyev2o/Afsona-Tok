@@ -9,7 +9,7 @@ class ProfileDetailView(RetrieveAPIView):
     permission_classes = [IsAuthenticated]
 
     def get_object(self):
-        return self.request.user
+        return self.request.user.prefetch_related("user_notifications")
 
 
 __all__ = ["ProfileDetailView"]
