@@ -6,6 +6,7 @@ from apps.common.api_endpoints.CarModelList.serializers import CarModelListSeria
 class CarModelListView(generics.ListAPIView):
     """Send manufacturer_id in query params to get list of car models"""
     serializer_class = CarModelListSerializer
+    search_fields = ['name']
 
     def get_queryset(self):
         if self.kwargs.get('manufacturer_id'):
