@@ -1,5 +1,5 @@
 from rest_framework import generics
-from django.db.models import Exists
+from django.db.models import Exists, OuterRef
 
 from apps.chargers.models import Location
 from apps.common.models import SavedLocation
@@ -15,7 +15,7 @@ class LocationDetailView(generics.RetrieveAPIView):
     def get_queryset(self):
         return Location.objects.select_related('district').prefetch_related(
             'chargers', 'chargers__connectors').annotate(is_favorite=Exists(
-            queryset=SavedLocation.objects.filter(user_id=self.request.user.id)))
+            queryset=SavedLocation.objects.filter(user_id=self.request.user.id, location_id=OuterRef('id'))))
 
     def get_serializer_context(self):
         # Get latitude and longitude from request parameters
