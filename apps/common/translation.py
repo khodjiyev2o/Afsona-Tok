@@ -18,3 +18,6 @@ class AppealTypeListTranslationOptions(TranslationOptions):
     fields = ("name",)
 
 
+@register(models.StaticPage)
+class StaticPageTranslationOptions(TranslationOptions):
+    fields = ("title", "content")
