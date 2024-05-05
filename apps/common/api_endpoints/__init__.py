@@ -10,3 +10,4 @@ from .AppealTypeList import * # noqa
 from .UserAppealCreate import * # noqa
 from .UserCarEdit import * # noqa
 from .SavedLocation import * # noqa
+from .StaticPage import * # noqq

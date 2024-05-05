@@ -28,6 +28,7 @@ admin.site.login_template = "login.html"
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("i18n/", include("django.conf.urls.i18n")),
+    path("ckeditor/", include("ckeditor_uploader.urls")),
     path("api/v1/common/", include("apps.common.urls", namespace="common")),
     path("api/v1/users/", include("apps.users.urls", namespace="users")),
     path("api/v1/chargers/", include("apps.chargers.urls", namespace="chargers")),

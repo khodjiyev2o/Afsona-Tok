@@ -7,6 +7,15 @@ from django.utils.translation import gettext_lazy as _
 from apps.chargers.models import Location
 
 
+@admin.register(models.StaticPage)
+class StaticPageAdmin(admin.ModelAdmin):
+    list_display = (
+        "title",
+    )
+    list_display_links = ("title",)
+    search_fields = ("title", "content")
+
+
 @admin.register(models.FrontendTranslation)
 class FrontTranslationAdmin(admin.ModelAdmin):
     list_display = ("id", "key", "text", "created_at", "updated_at")

@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from phonenumber_field.modelfields import PhoneNumberField
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class BaseModel(models.Model):
@@ -200,3 +200,16 @@ class SavedLocation(BaseModel):
     class Meta:
         verbose_name = _("Saved Location")
         verbose_name_plural = _("Saved Locations")
+
+
+class StaticPage(BaseModel):
+    title = models.CharField(_("title"), max_length=255)
+    content = RichTextUploadingField(_("content"))
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = _("Static page")
+        verbose_name_plural = _("Static pages")
+

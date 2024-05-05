@@ -29,7 +29,7 @@ SECRET_KEY = env.str("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", 'localhost', "afsona.transitgroup.uz", '46.101.212.188', 'payme.jprq.app']
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 DJANGO_APPS = [
@@ -54,6 +54,8 @@ CUSTOM_APPS = [
 
 THIRD_PARTY_APPS = [
     "rest_framework",
+    "ckeditor",
+    "ckeditor_uploader",
     "rest_framework_simplejwt",
     "drf_yasg",
     "corsheaders",
@@ -349,3 +351,14 @@ OCPP_SERVER_STOP_URL = env.str("OCPP_SERVER_STOP_URL", "http://localhost:8080")
 
 
 IMPORT_EXPORT_SKIP_ADMIN_ACTION_EXPORT_UI = True
+
+
+CKEDITOR_CONFIGS = {
+    "default": {
+        "toolbar": "full",
+        "height": 400,
+        "width": 550,
+    },
+}
+
+CKEDITOR_UPLOAD_PATH = "uploads/"

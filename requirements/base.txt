@@ -65,3 +65,6 @@ django-rosetta==0.10.0
 
 # Export Charging History
 django-import-export==4.0.0
+
+# ckeditor
+django-ckeditor==6.7.0
