@@ -43,7 +43,7 @@ class TransactionModel(ExportActionMixin, admin.ModelAdmin):
         "created_at",
         "colored_status",
     )
-    list_filter = ("created_at", 'payment_type')
+    list_filter = ("created_at", 'payment_type', 'status')
     list_per_page = 20
     ordering = ("-created_at",)
     date_hierarchy = 'created_at'
