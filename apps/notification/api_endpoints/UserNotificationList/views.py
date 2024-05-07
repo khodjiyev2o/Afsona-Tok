@@ -10,7 +10,7 @@ class UserNotificationListView(generics.ListAPIView):
 
     def filter_queryset(self, queryset):
         queryset = super().filter_queryset(queryset)
-        return queryset.filter(user_id=self.request.user.id)
+        return queryset.filter(user_id=self.request.user.id).order_by("-created_at")
 
 
 __all__ = ['UserNotificationListView']
