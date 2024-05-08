@@ -3,12 +3,12 @@ from django.db.models.fields import DecimalField
 from django.db.models.functions import Coalesce
 
 from apps.payment.models import Transaction as PaymentTransaction
-from apps.chargers.models import ChargingTransaction
+from apps.chargers.proxy_models import FinishedChargingTransactionProxy
 from django.utils import timezone
 
 
 def dashboard(request):
-    charge_today = ChargingTransaction.objects.aggregate(
+    charge_today = FinishedChargingTransactionProxy.objects.aggregate(
         today_total_price=Coalesce(
             Sum('total_price', filter=Q(created_at__date=timezone.now().date())),
             0, output_field=DecimalField()
@@ -80,15 +80,15 @@ def dashboard(request):
         "total_sale": {
             'today': {
                 "sum": charge_today['today_total_price'],
-                'kwh': charge_today['today_meter_used']
+                'kwh': round(charge_today['today_meter_used'], 2)
             },
             'week': {
                 "sum": charge_today['week_total_price'],
-                'kwh': charge_today['week_meter_used']
+                'kwh': round(charge_today['week_meter_used'], 2)
             },
             'month': {
                 "sum": charge_today['month_total_price'],
-                'kwh': charge_today['month_meter_used']
+                'kwh': round(charge_today['month_meter_used'], 2)
             }
         },
         "deposit_topup": {
