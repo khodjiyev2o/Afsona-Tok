@@ -63,15 +63,15 @@ def dashboard(request):
 
     payment = PaymentTransaction.objects.aggregate(
         today_total_price=Coalesce(
-            Sum('amount', filter=Q(created_at__date=timezone.now().date())),
+            Sum('amount', filter=Q(created_at__date=timezone.now().date(), status=PaymentTransaction.StatusType.ACCEPTED)),
             0, output_field=DecimalField()
         ),
         week_total_price=Coalesce(
-            Sum('amount', filter=Q(created_at__week=timezone.now().isocalendar()[1])),
+            Sum('amount', filter=Q(created_at__week=timezone.now().isocalendar()[1], status=PaymentTransaction.StatusType.ACCEPTED)),
             0, output_field=DecimalField()
         ),
         month_total_price=Coalesce(
-            Sum('amount', filter=Q(created_at__month=timezone.now().month)),
+            Sum('amount', filter=Q(created_at__month=timezone.now().month, status=PaymentTransaction.StatusType.ACCEPTED)),
             0, output_field=DecimalField()
         ),
     )

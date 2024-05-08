@@ -1,6 +1,5 @@
 import os
 from datetime import timedelta
-from decimal import Decimal
 from pathlib import Path
 
 import environ
@@ -42,6 +41,7 @@ DJANGO_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.humanize"
 ]
 
 CUSTOM_APPS = [
@@ -345,7 +345,6 @@ sentry_sdk.init(
     profiles_sample_rate=1.0,
 )
 
-CHARGING_PRICE_PER_KWH = Decimal("2500")
 
 OCPP_SERVER_START_URL = env.str("OCPP_SERVER_START_URL", "http://localhost:8080")
 OCPP_SERVER_STOP_URL = env.str("OCPP_SERVER_STOP_URL", "http://localhost:8080")

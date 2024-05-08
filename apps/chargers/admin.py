@@ -1,4 +1,5 @@
 import json
+from decimal import Decimal
 
 from django.contrib import admin
 from django.db.models import Count
@@ -109,7 +110,7 @@ class ChargeCommandAdmin(admin.ModelAdmin):
 
 
 @admin.register(InProgressChargingTransactionProxy)
-class ChargingTransactionAdmin(admin.ModelAdmin):
+class InProgressChargingTransactionAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'connector', 'created_at', 'consumed_kwh', 'duration_in_minute')
     list_filter = ('user', 'connector', 'start_reason')
 
@@ -117,14 +118,18 @@ class ChargingTransactionAdmin(admin.ModelAdmin):
         return False
 
     def has_change_permission(self, request, obj=None):
-        return True  # todo make False
+        result = super().has_delete_permission(request, obj)
+        is_too_long_time = obj.duration_in_minute > (60 * 2.5)
+        return result and is_too_long_time
 
     def has_delete_permission(self, request, obj=None):
-        return True  # todo make False
+        result = super().has_delete_permission(request, obj)
+        is_too_long_time = obj.duration_in_minute > (60 * 2.5)
+        return result and is_too_long_time
 
 
 @admin.register(FinishedChargingTransactionProxy)
-class ChargingTransactionAdmin(ExportActionMixin, admin.ModelAdmin):
+class FinishedChargingTransactionAdmin(ExportActionMixin, admin.ModelAdmin):
     resource_classes = (FinishedChargingTransactionProxyResource,)
     list_display = (
         'id', 'user', 'connector',
@@ -142,7 +147,9 @@ class ChargingTransactionAdmin(ExportActionMixin, admin.ModelAdmin):
         return False
 
     def has_delete_permission(self, request, obj=None):
-        return True  # todo make False
+        result = super().has_delete_permission(request, obj)
+        is_invalid_row = obj.total_price > Decimal('20000')
+        return result and is_invalid_row
 
     def get_export_filename(self, request, queryset, file_format):
         """ Custom export filename for FinishedChargingTransactionProxy """
@@ -187,11 +194,13 @@ class OCPPServiceRequestResponseLogAdmin(admin.ModelAdmin):
     def __format_meter_values(data: dict) -> dict:
         meter_values = data.get('meter_value', [{}])[0].get('sampled_value', [])
 
-        result_data = {}
-
+        result_data = {'transaction_id': data.get('transaction_id')}
+        measurand_list = ['Energy.Active.Import.Register', 'SoC']
         for meter_value in meter_values:
             measurand = meter_value.get("measurand")
             value = meter_value.get("value")
+            if measurand not in measurand_list:
+                continue
             result_data[measurand] = value
 
         return result_data

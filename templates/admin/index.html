@@ -1,5 +1,5 @@
 {% extends "admin/base_site.html" %}
-{% load i18n static jazzmin %}
+{% load i18n static jazzmin humanize %}
 {% get_jazzmin_ui_tweaks as jazzmin_ui %}
 
 {% block bodyclass %}{{ block.super }} dashboard{% endblock %}
@@ -27,12 +27,10 @@
                         <div class="card-header">
                             <h6 class="m-0 text-center">Bugungi Tok Sotuvi</h6>
                         </div>
-                        <div class="card-body text-center text-bold"
-                             style="padding: 0.7rem;font-size: 100%"
-                            >
+                        <div class="card-body text-center text-bold" style="padding: 0.7rem;font-size: 100%">
                             <div class="row">
                                 <div class="col-8">
-                                    {{ total_sale.today.sum }}
+                                    {{ total_sale.today.sum|intcomma }}
                                 </div>
                                 <div class="col-4">
                                     so'm
@@ -44,7 +42,7 @@
                         >
                             <div class="row">
                                 <div class="col-8">
-                                    {{ total_sale.today.kwh }}
+                                    {{ total_sale.today.kwh|intcomma }}
                                 </div>
                                 <div class="col-4">
                                     kWh
@@ -58,12 +56,10 @@
                         <div class="card-header">
                             <h6 class="m-0 text-center">Haftalik Tok Sotuvi</h6>
                         </div>
-                        <div class="card-body text-center text-bold"
-                             style="padding: 0.7rem;font-size: 100%"
-                            >
+                        <div class="card-body text-center text-bold" style="padding: 0.7rem;font-size: 100%">
                             <div class="row">
                                 <div class="col-8">
-                                    {{ total_sale.week.sum }}
+                                    {{ total_sale.week.sum|intcomma }}
                                 </div>
                                 <div class="col-4">
                                     so'm
@@ -75,7 +71,7 @@
                         >
                             <div class="row">
                                 <div class="col-8">
-                                    {{ total_sale.week.kwh }}
+                                    {{ total_sale.week.kwh|intcomma }}
                                 </div>
                                 <div class="col-4">
                                     kWh
@@ -94,7 +90,7 @@
                             >
                             <div class="row">
                                 <div class="col-8">
-                                    {{ total_sale.month.sum }}
+                                    {{ total_sale.month.sum|intcomma }}
                                 </div>
                                 <div class="col-4">
                                     so'm
@@ -106,7 +102,7 @@
 
                             <div class="row">
                                 <div class="col-8">
-                                    {{ total_sale.month.kwh }}
+                                    {{ total_sale.month.kwh|intcomma }}
                                 </div>
                                 <div class="col-4">
                                     kWh
@@ -127,7 +123,7 @@
                         >
                         <div class="row">
                             <div class="col-8">
-                                {{ deposit_topup.today }}
+                                {{ deposit_topup.today|intcomma }}
                             </div>
                             <div class="col-4">
                                 so'm
@@ -146,7 +142,7 @@
                         >
                         <div class="row">
                             <div class="col-8">
-                                {{ deposit_topup.week }}
+                                {{ deposit_topup.week|intcomma }}
                             </div>
                             <div class="col-4">
                                 so'm
@@ -165,7 +161,7 @@
                         >
                         <div class="row">
                             <div class="col-8">
-                                {{ deposit_topup.month }}
+                                {{ deposit_topup.month|intcomma }}
                             </div>
                             <div class="col-4">
                                 so'm
@@ -188,7 +184,7 @@
                                <i class="fas fa-mobile-alt"></i> 
                             </div>
                             <div class="col-7">
-                                {{ total_sale_percent.today.mobile }}
+                                {{ total_sale_percent.today.mobile|intcomma }}
                             </div>
                             <div class="col-3">
                                 so'm
@@ -201,7 +197,7 @@
                                 <i class="fas fa-money-bill"></i>
                             </div>
                             <div class="col-7">
-                                {{ total_sale_percent.today.cash }}
+                                {{ total_sale_percent.today.cash|intcomma }}
                             </div>
                             <div class="col-3">
                                 so'm
@@ -222,7 +218,7 @@
                                    <i class="fas fa-mobile-alt"></i> 
                                 </div>
                                 <div class="col-7">
-                                    {{ total_sale_percent.week.mobile }}   
+                                    {{ total_sale_percent.week.mobile|intcomma }}   
                                 </div>
                                 <div class="col-3">
                                     so'm
@@ -235,7 +231,7 @@
                                     <i class="fas fa-money-bill"></i>
                                 </div>
                                 <div class="col-7">
-                                    {{ total_sale_percent.week.cash }}
+                                    {{ total_sale_percent.week.cash|intcomma }}
                                 </div>
                                 <div class="col-3">
                                     so'm
@@ -256,7 +252,7 @@
                                    <i class="fas fa-mobile-alt"></i> 
                                 </div>
                                 <div class="col-7">
-                                    {{ total_sale_percent.month.mobile }}
+                                    {{ total_sale_percent.month.mobile|intcomma }}
                                 </div>
                                 <div class="col-3">
                                     so'm
@@ -269,7 +265,7 @@
                                     <i class="fas fa-money-bill"></i>
                                 </div>
                                 <div class="col-7">
-                                    {{ total_sale_percent.month.cash }} 
+                                    {{ total_sale_percent.month.cash|intcomma }} 
                                 </div>
                                 <div class="col-3">
                                     so'm
