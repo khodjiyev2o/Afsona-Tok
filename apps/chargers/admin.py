@@ -119,13 +119,11 @@ class InProgressChargingTransactionAdmin(admin.ModelAdmin):
 
     def has_change_permission(self, request, obj=None):
         result = super().has_delete_permission(request, obj)
-        is_too_long_time = obj.duration_in_minute > (60 * 2.5)
-        return result and is_too_long_time
+        return result and True
 
     def has_delete_permission(self, request, obj=None):
         result = super().has_delete_permission(request, obj)
-        is_too_long_time = obj.duration_in_minute > (60 * 2.5)
-        return result and is_too_long_time
+        return result and True
 
 
 @admin.register(FinishedChargingTransactionProxy)
@@ -148,8 +146,7 @@ class FinishedChargingTransactionAdmin(ExportActionMixin, admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         result = super().has_delete_permission(request, obj)
-        is_invalid_row = obj.total_price > Decimal('20000')
-        return result and is_invalid_row
+        return result and True
 
     def get_export_filename(self, request, queryset, file_format):
         """ Custom export filename for FinishedChargingTransactionProxy """
