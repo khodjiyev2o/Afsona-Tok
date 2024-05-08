@@ -44,6 +44,6 @@ class UserAdmin(BaseUserAdmin):
         "full_name",
         "phone",
     )
-    readonly_fields = ("id", "created_at")
+    readonly_fields = ("id", "created_at", "balance")
     exclude = ("last_login", "updated_at", "password", "is_active", "email")
     ordering = ("-created_at",)
