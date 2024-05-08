@@ -35,15 +35,15 @@ def send_report_on_stop_transaction_task(transaction_id: int):
     transaction: ChargingTransaction = ChargingTransaction.objects.get(pk=transaction_id)
     bot = Bot(token='6776606012:AAHG0sKQtsfJ-PjDnNhRyw3QDr3mtRPQlM0')
 
-    user = str(transaction.user.phone) if transaction.user else "Cash mode"
+    user = str(transaction.user.phone) if transaction.user else "Naxt pul"
 
     message = f"""Transaction ID: {transaction.id}
-Boshlangan vaqt: {transaction.created_at.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime("%B %d, %Y, %H:%M:%S")}
-Davomiyligi: {transaction.end_time - transaction.created_at}
-Ishlatilingan kWh: {transaction.meter_used} 
-Address : {transaction.connector.charge_point.name} - {transaction.connector.name}
-Narxi: {transaction.total_price}
-Client: {user}"""
+                    Boshlangan vaqt: {transaction.created_at.astimezone(pytz.timezone(settings.TIME_ZONE)).strftime("%B %d, %Y, %H:%M:%S")}
+                    Davomiyligi: {transaction.end_time - transaction.created_at}
+                    Ishlatilingan kWh: {transaction.meter_used} 
+                    Address : {transaction.connector.charge_point.name} - {transaction.connector.name}
+                    Narxi: {transaction.total_price}
+                    Klient: {user}"""
 
     bot.send_message(chat_id='-1002102673622', text=message)
 

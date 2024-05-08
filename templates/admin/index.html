@@ -1,0 +1,283 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static jazzmin humanize %}
+{% get_jazzmin_ui_tweaks as jazzmin_ui %}
+
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+
+{% block content_title %} {% trans 'Dashboard' %} {% endblock %}
+
+{% block breadcrumbs %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a></li>
+        <li class="breadcrumb-item">{% trans 'Dashboard' %}</li>
+    </ol>
+{% endblock %}
+
+
+{% block content %}
+    {% get_side_menu using="app_list" as dashboard_list %}
+    {% if dashboard_list %}
+        {% widthratio dashboard_list|length 2 1 as middle %}
+    {% endif %}
+
+    <div class="col-lg-12 col-12">
+        <div class="row">
+            <div class="col-md-4 mb-4 col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="m-0 text-center">Bugungi Tok Sotuvi</h6>
+                        </div>
+                        <div class="card-body text-center text-bold" style="padding: 0.7rem;font-size: 100%">
+                            <div class="row">
+                                <div class="col-8">
+                                    {{ total_sale.today.sum|intcomma }}
+                                </div>
+                                <div class="col-4">
+                                    so'm
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body text-center text-bold"
+                             style="padding: 0.7rem;font-size: 100%;border-top: #0c0a10 solid 0.2rem"
+                        >
+                            <div class="row">
+                                <div class="col-8">
+                                    {{ total_sale.today.kwh|intcomma }}
+                                </div>
+                                <div class="col-4">
+                                    kWh
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-md-4 mb-4 col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="m-0 text-center">Haftalik Tok Sotuvi</h6>
+                        </div>
+                        <div class="card-body text-center text-bold" style="padding: 0.7rem;font-size: 100%">
+                            <div class="row">
+                                <div class="col-8">
+                                    {{ total_sale.week.sum|intcomma }}
+                                </div>
+                                <div class="col-4">
+                                    so'm
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body text-center text-bold"
+                             style="padding: 0.7rem;font-size: 100%;border-top: #0c0a10 solid 0.2rem"
+                        >
+                            <div class="row">
+                                <div class="col-8">
+                                    {{ total_sale.week.kwh|intcomma }}
+                                </div>
+                                <div class="col-4">
+                                    kWh
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-md-4 mb-4 col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="m-0 text-center">Oylik Tok Sotuvi</h6>
+                        </div>
+                        <div class="card-body text-center text-bold"
+                             style="padding: 0.7rem;font-size: 100%"
+                            >
+                            <div class="row">
+                                <div class="col-8">
+                                    {{ total_sale.month.sum|intcomma }}
+                                </div>
+                                <div class="col-4">
+                                    so'm
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body text-center text-bold"
+                             style="padding: 0.7rem;font-size: 100%;border-top: #0c0a10 solid 0.2rem">
+
+                            <div class="row">
+                                <div class="col-8">
+                                    {{ total_sale.month.kwh|intcomma }}
+                                </div>
+                                <div class="col-4">
+                                    kWh
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            <div class="col-md-4 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h6 class="m-0 text-center">Bugungi Deposit Tushum</h6>
+                    </div>
+                    <div class="card-body text-center text-bold"
+                         style="padding: 0.7rem;font-size: 100%"
+                        >
+                        <div class="row">
+                            <div class="col-8">
+                                {{ deposit_topup.today|intcomma }}
+                            </div>
+                            <div class="col-4">
+                                so'm
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4  col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h6 class="m-0 text-center">Haftalik Deposit Tushum</h6>
+                    </div>
+                    <div class="card-body text-center text-bold"
+                         style="padding: 0.7rem;font-size: 100%"
+                        >
+                        <div class="row">
+                            <div class="col-8">
+                                {{ deposit_topup.week|intcomma }}
+                            </div>
+                            <div class="col-4">
+                                so'm
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4  col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h6 class="m-0 text-center">Oylik Deposit Tushum</h6>
+                    </div>
+                    <div class="card-body text-center text-bold"
+                         style="padding: 0.7rem;font-size: 100%"
+                        >
+                        <div class="row">
+                            <div class="col-8">
+                                {{ deposit_topup.month|intcomma }}
+                            </div>
+                            <div class="col-4">
+                                so'm
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-4 mt-4 col-sm-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h6 class="m-0 text-center">Bugungi Tok Sotuvi</h6>
+                    </div>
+                    <div class="card-body text-center text-bold" style="padding: 0.7rem;font-size: 100%">
+                        <div class="row">
+                            <div class="col-1">
+                               <i class="fas fa-mobile-alt"></i> 
+                            </div>
+                            <div class="col-7">
+                                {{ total_sale_percent.today.mobile|intcomma }}
+                            </div>
+                            <div class="col-3">
+                                so'm
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body text-center text-bold"  style="padding: 0.7rem;font-size: 100%;border-top: #0c0a10 solid 0.2rem">
+                        <div class="row">
+                            <div class="col-1">
+                                <i class="fas fa-money-bill"></i>
+                            </div>
+                            <div class="col-7">
+                                {{ total_sale_percent.today.cash|intcomma }}
+                            </div>
+                            <div class="col-3">
+                                so'm
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mt-4 col-sm-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="m-0 text-center">Haftalik Tok Sotuvi</h6>
+                        </div>
+                        <div class="card-body text-center text-bold" style="padding: 0.7rem;font-size: 100%">
+                             
+                            <div class="row">
+                                <div class="col-1">
+                                   <i class="fas fa-mobile-alt"></i> 
+                                </div>
+                                <div class="col-7">
+                                    {{ total_sale_percent.week.mobile|intcomma }}   
+                                </div>
+                                <div class="col-3">
+                                    so'm
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body text-center text-bold" style="padding: 0.7rem;font-size: 100%;border-top: #0c0a10 solid 0.2rem">
+                            <div class="row">
+                                <div class="col-1">
+                                    <i class="fas fa-money-bill"></i>
+                                </div>
+                                <div class="col-7">
+                                    {{ total_sale_percent.week.cash|intcomma }}
+                                </div>
+                                <div class="col-3">
+                                    so'm
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-md-4 mt-4 col-sm-12">
+                <div class="card">
+                        <div class="card-header">
+                            <h6 class="m-0 text-center">Oylik Tok Sotuvi</h6>
+                        </div>
+                        <div class="card-body text-center text-bold" style="padding: 0.7rem;font-size: 100%">
+                             
+                            <div class="row">
+                                <div class="col-1">
+                                   <i class="fas fa-mobile-alt"></i> 
+                                </div>
+                                <div class="col-7">
+                                    {{ total_sale_percent.month.mobile|intcomma }}
+                                </div>
+                                <div class="col-3">
+                                    so'm
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body text-center text-bold" style="padding: 0.7rem;font-size: 100%;border-top: #0c0a10 solid 0.2rem">
+                            <div class="row">
+                                <div class="col-1">
+                                    <i class="fas fa-money-bill"></i>
+                                </div>
+                                <div class="col-7">
+                                    {{ total_sale_percent.month.cash|intcomma }} 
+                                </div>
+                                <div class="col-3">
+                                    so'm
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="container">
+</div>
+        </div>
+
+    </div>
+    
+{% endblock %}

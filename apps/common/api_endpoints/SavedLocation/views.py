@@ -17,9 +17,11 @@ class SavedLocationAPIView(generics.CreateAPIView):
             user=self.request.user, location=serializer.validated_data['location'],
             defaults={'location': serializer.validated_data['location'], 'user': self.request.user}
         )
-        if not created: instance.delete() # noqa
+        if not created:
+            instance.delete() # noqa
 
-        status_code = {True: status.HTTP_201_CREATED, False: status.HTTP_204_NO_CONTENT}
+        status_code = {True: status.HTTP_201_CREATED,
+                       False: status.HTTP_204_NO_CONTENT}
         return Response(data=serializer.data, status=status_code[created])
 
 

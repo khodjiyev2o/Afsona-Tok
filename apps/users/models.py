@@ -10,7 +10,6 @@ from apps.users.managers import UserManager
 
 
 class User(AbstractUser, BaseModel):
-
     class UserLanguages(models.TextChoices):
         ENGLISH = "en", _("English")
         RUSSIAN = "ru", _("Russian")
@@ -41,3 +40,23 @@ class User(AbstractUser, BaseModel):
     class Meta:
         verbose_name = _("User")
         verbose_name_plural = _("Users")
+
+
+class AllTransactionHistory(BaseModel):
+    """ Implementing a postgres view for all transaction history"""
+
+    class Actions(models.TextChoices):
+        PAYMENT = "payment", _("Payment")
+        CHARGE = "charge", _("Charging")
+
+    action = models.CharField(_("Action"), max_length=20, choices=Actions.choices)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    amount = models.DecimalField(_("Amount"), max_digits=10, decimal_places=2, default=0)
+
+    class Meta:
+        managed = False  # for ignore auto migrations
+        db_table = 'all_transaction_postgres_view'  # for use in select query
+
+        verbose_name = _("All Transaction History")
+        verbose_name_plural = _("All Transaction History")
+        ordering = ['-created_at']

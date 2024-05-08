@@ -1,11 +1,12 @@
 import logging
 from decimal import Decimal
 
-from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from apps.chargers.tasks import send_report_on_stop_transaction_task
+
 from apps.chargers.models import ChargingTransaction
+from apps.chargers.ocpp_messages.views.utils import get_price_from_settings
+from apps.chargers.tasks import send_report_on_stop_transaction_task
 
 telegram_logger = logging.getLogger('telegram')
 
@@ -14,13 +15,13 @@ telegram_logger = logging.getLogger('telegram')
 def send_meter_value_to_telegram(sender, instance: ChargingTransaction, **kwargs):
     if instance.status == ChargingTransaction.Status.FINISHED:
         return
-
+    PRICE = get_price_from_settings()
     telegram_logger.info(
         f"""MeterValues:
                 Transaction ID: {instance.id}
                 Battery Percent: {instance.battery_percent_on_end} %
                 Consumed KWh: {instance.consumed_kwh}
-                Price until now: {Decimal(str(instance.consumed_kwh)) * settings.CHARGING_PRICE_PER_KWH}
+                Price until now: {Decimal(str(instance.consumed_kwh)) * PRICE}
         """
     )
 

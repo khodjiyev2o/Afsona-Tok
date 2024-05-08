@@ -11,4 +11,4 @@ class DeviceRegisterView(CreateAPIView):
     permission_classes = [IsAuthenticated]
 
     def perform_create(self, serializer):
-        serializer.save(name=self.request.user.first_name, user=self.request.user)
+        serializer.save(name=self.request.user.full_name, user=self.request.user)

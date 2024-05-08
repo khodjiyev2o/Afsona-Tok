@@ -1,6 +1,5 @@
 import os
 from datetime import timedelta
-from decimal import Decimal
 from pathlib import Path
 
 import environ
@@ -42,6 +41,7 @@ DJANGO_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.humanize"
 ]
 
 CUSTOM_APPS = [
@@ -112,6 +112,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "core.context_processors.dashboard"
             ],
         },
     },
@@ -274,7 +275,7 @@ SWAGGER_SETTINGS = {
 
 # SIMPLE JWT SETTINGS
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=1),
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=24),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1, hours=12),
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": False,
@@ -344,7 +345,6 @@ sentry_sdk.init(
     profiles_sample_rate=1.0,
 )
 
-CHARGING_PRICE_PER_KWH = Decimal("2500")
 
 OCPP_SERVER_START_URL = env.str("OCPP_SERVER_START_URL", "http://localhost:8080")
 OCPP_SERVER_STOP_URL = env.str("OCPP_SERVER_STOP_URL", "http://localhost:8080")

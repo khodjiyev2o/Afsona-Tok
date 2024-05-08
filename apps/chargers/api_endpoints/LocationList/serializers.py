@@ -38,8 +38,7 @@ class LocationListSerializer(serializers.ModelSerializer):
             c = 2 * atan2(sqrt(a), sqrt(1 - a))
             radius_earth = 6371  # Radius of the Earth in kilometers
             distance_km = radius_earth * c
-            distance_meters = distance_km * 1000  # Convert to meters
 
-            return distance_meters
+            return distance_km
         else:
             return None
