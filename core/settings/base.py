@@ -5,6 +5,7 @@ from pathlib import Path
 import environ
 import sentry_sdk
 from django.utils.translation import gettext_lazy as _
+from firebase_admin import initialize_app
 from import_export.formats.base_formats import XLSX
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.fastapi import FastApiIntegration
@@ -203,7 +204,7 @@ CELERY_TIMEZONE = "Asia/Tashkent"
 CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 
-# FIREBASE_APP = initialize_app()
+FIREBASE_APP = initialize_app()
 FCM_DJANGO_SETTINGS = {
     "DEFAULT_FIREBASE_APP": None,
     "APP_VERBOSE_NAME": _("Devices"),
