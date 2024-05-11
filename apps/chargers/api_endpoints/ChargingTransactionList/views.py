@@ -6,7 +6,7 @@ from apps.chargers.models import ChargingTransaction
 
 class ChargingTransactionListAPIView(generics.ListAPIView):
     serializer_class = ChargingTransactionListSerializer
-    queryset = ChargingTransaction.objects.all()
+    queryset = ChargingTransaction.objects.all().order_by('-created_at')
 
     def get_queryset(self):
         queryset = super().get_queryset()
