@@ -134,7 +134,7 @@ class FinishedChargingTransactionAdmin(ExportActionMixin, admin.ModelAdmin):
         'created_at', 'end_time', 'meter_used',
         'duration_in_minute', 'total_price'
     )
-    list_filter = ('user', 'connector__charge_point', 'start_reason', 'stop_reason')
+    list_filter = ('user', 'connector__charge_point', 'start_reason', 'stop_reason', 'created_at')
     search_help_text = _("Search by user's username and user car's plate")
     date_hierarchy = 'created_at'
 
