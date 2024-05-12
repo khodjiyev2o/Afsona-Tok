@@ -40,6 +40,7 @@ class ChargePoint(BaseModel):
     is_connected = models.BooleanField(default=False, verbose_name=_("is Connected"))
     is_visible_in_mobile = models.BooleanField(default=True)
     max_electric_power = models.IntegerField(default=0, verbose_name=_("ChargePoint's Max electric power"))
+    order = models.IntegerField(default=0, verbose_name=_("Order"))
 
     # FK
     location = models.ForeignKey(to=Location, on_delete=models.PROTECT, verbose_name=_("Location"),
@@ -51,7 +52,7 @@ class ChargePoint(BaseModel):
     class Meta:
         verbose_name = _("Charge Point")
         verbose_name_plural = _("Charge Points")
-        ordering = ["-id"]
+        ordering = ["order"]
 
 
 class Connector(BaseModel):
