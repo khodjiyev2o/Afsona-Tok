@@ -1,11 +1,11 @@
 import json
-from decimal import Decimal
 
 from django.contrib import admin
 from django.db.models import Count
 from django.utils.translation import gettext_lazy as _
 from import_export.admin import ExportActionMixin
 
+from apps.chargers.filter import DateTimeRangeFilter
 from apps.chargers.models import ChargePoint, Connector, Location, ChargeCommand, OCPPServiceRequestResponseLogs
 from apps.chargers.proxy_models import InProgressChargingTransactionProxy, FinishedChargingTransactionProxy
 from apps.chargers.resources import FinishedChargingTransactionProxyResource
@@ -134,7 +134,11 @@ class FinishedChargingTransactionAdmin(ExportActionMixin, admin.ModelAdmin):
         'created_at', 'end_time', 'meter_used',
         'duration_in_minute', 'total_price'
     )
-    list_filter = ('user', 'connector__charge_point', 'start_reason', 'stop_reason')
+    list_filter = (
+        ('user', admin.filters.RelatedFieldListFilter),
+        ('connector__charge_point', admin.filters.RelatedFieldListFilter),
+        ('created_at', DateTimeRangeFilter),
+    )
     search_help_text = _("Search by user's username and user car's plate")
     date_hierarchy = 'created_at'
 
@@ -145,12 +149,22 @@ class FinishedChargingTransactionAdmin(ExportActionMixin, admin.ModelAdmin):
         return False
 
     def has_delete_permission(self, request, obj=None):
-        result = super().has_delete_permission(request, obj)
-        return result and True
+        return False
 
     def get_export_filename(self, request, queryset, file_format):
         """ Custom export filename for FinishedChargingTransactionProxy """
         return super().get_export_filename(request, queryset, file_format)
+
+    class Meta:
+        js = (
+            'admin/js/core.js',
+            'admin/js/admin/RelatedObjectLookup.js',
+            'admin/js/vendor/jquery/jquery.js',
+            'admin/js/jquery.init.js',
+            'admin/js/jquery.actions.js',
+            'admin/js/calendar.js',
+            'admin/js/admin/DateTimeShortcuts.js',
+        )
 
 
 @admin.register(OCPPServiceRequestResponseLogs)
