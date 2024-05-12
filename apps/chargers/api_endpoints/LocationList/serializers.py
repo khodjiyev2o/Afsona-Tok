@@ -8,10 +8,11 @@ from apps.chargers.models import Location
 class LocationListSerializer(serializers.ModelSerializer):
     district = serializers.CharField(source="district.name")
     chargers_count = serializers.SerializerMethodField()
+    distance = serializers.SerializerMethodField()
 
     class Meta:
         model = Location
-        fields = ('id', 'name', 'address', 'district', 'latitude', 'longitude', 'chargers_count')
+        fields = ('id', 'name', 'address', 'district', 'latitude', 'longitude', 'chargers_count', 'distance')
 
     def get_chargers_count(self, obj):
         return obj.chargers.count() or 0
