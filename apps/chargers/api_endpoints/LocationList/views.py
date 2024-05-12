@@ -1,5 +1,5 @@
 from rest_framework import generics
-
+from rest_framework.response import Response
 from apps.chargers.models import Location
 
 from apps.chargers.api_endpoints.LocationList.serializers import LocationListSerializer
@@ -14,6 +14,17 @@ class LocationListView(generics.ListAPIView):
     def get_queryset(self):
         return Location.objects.select_related('district').prefetch_related(
             'chargers', 'chargers__connectors')
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        page = self.paginate_queryset(queryset)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            sorted_data = sorted(serializer.data, key=lambda x: x['distance'])
+            return self.get_paginated_response(sorted_data)
+        serializer = self.get_serializer(queryset, many=True)
+        sorted_data = sorted(serializer.data, key=lambda x: x['distance'])
+        return Response(sorted_data)
 
     def get_serializer_context(self):
         # Get latitude and longitude from request parameters
