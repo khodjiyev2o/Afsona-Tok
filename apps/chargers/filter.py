@@ -18,7 +18,7 @@ class DateTimeRangeFilter(admin.filters.FieldListFilter):
     def choices(self, changelist):
         yield {
             'selected': self.lookup_val_from_date is None and self.lookup_val_to_date is None,
-            'query_string': changelist.get_query_string(remove=[self.lookup_kwarg_from_date, self.lookup_val_to_date]),
+            'query_string': '',
             'display': _('All'),
         }
 
