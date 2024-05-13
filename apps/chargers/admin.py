@@ -1,15 +1,23 @@
+import io
 import json
 
-from django.contrib import admin
+import pandas as pd
+from django.contrib import admin, messages
+from django.core.exceptions import FieldError, PermissionDenied
 from django.db.models import Count
+from django.forms import MultipleHiddenInput, MultipleChoiceField
+from django.http import HttpResponse
+from django.template.response import TemplateResponse
 from django.utils.translation import gettext_lazy as _
 from import_export.admin import ExportActionMixin
-
+from openpyxl import Workbook
 from apps.chargers.filter import DateTimeRangeFilter
 from apps.chargers.models import ChargePoint, Connector, Location, ChargeCommand, OCPPServiceRequestResponseLogs
 from apps.chargers.proxy_models import InProgressChargingTransactionProxy, FinishedChargingTransactionProxy
 from apps.chargers.resources import FinishedChargingTransactionProxyResource
 from apps.common.models import ConnectionType
+from openpyxl.utils.dataframe import dataframe_to_rows
+import openpyxl
 
 
 class ChargePointInline(admin.TabularInline):
@@ -155,6 +163,55 @@ class FinishedChargingTransactionAdmin(ExportActionMixin, admin.ModelAdmin):
     def get_export_filename(self, request, queryset, file_format):
         """ Custom export filename for FinishedChargingTransactionProxy """
         return super().get_export_filename(request, queryset, file_format)
+
+    def get_export_data(self, file_format, request, queryset, **kwargs):
+        return super().get_export_data(file_format, request, queryset, **kwargs)
+
+    def export_action(self, request):
+        if not self.has_export_permission(request):
+            raise PermissionDenied
+
+        form_type = self.get_export_form_class()
+        formats = self.get_export_formats()
+        form = form_type(
+            formats,
+            self.get_export_resource_classes(request),
+            data=request.POST or None,
+        )
+        form.fields["export_items"] = MultipleChoiceField(
+            widget=MultipleHiddenInput,
+            required=False,
+            choices=[(o.id, o.id) for o in self.model.objects.all()],
+        )
+        if form.is_valid():
+            file_format = formats[int(form.cleaned_data["format"])]()
+
+            if "export_items" in form.changed_data:
+                queryset = self.model.objects.filter(
+                    pk__in=form.cleaned_data["export_items"]
+                )
+            else:
+                queryset = self.get_export_queryset(request)
+            try:
+                df = pd.DataFrame(list(queryset.values()))
+                numeric_columns = ['total_price', 'meter_used']
+                df[numeric_columns] = df[numeric_columns].apply(pd.to_numeric, errors='coerce')
+                buffer = io.BytesIO()
+                df.to_excel(buffer, index=False)
+                buffer.seek(0)
+                content_type = file_format.get_content_type()
+                response = HttpResponse(buffer.getvalue(), content_type=content_type)
+                response["Content-Disposition"] = 'attachment; filename="%s"' % (
+                    self.get_export_filename(request, queryset, file_format),
+                )
+
+                return response
+            except FieldError as e:
+                messages.error(request, str(e))
+
+        context = self.init_request_context_data(request, form)
+        request.current_app = self.admin_site.name
+        return TemplateResponse(request, [self.export_template_name], context=context)
 
     class Meta:
         js = (
