@@ -194,6 +194,9 @@ class FinishedChargingTransactionAdmin(ExportActionMixin, admin.ModelAdmin):
                 queryset = self.get_export_queryset(request)
             try:
                 df = pd.DataFrame(list(queryset.values()))
+                df['connector__charge_point__charger_id'] = df['connector__charge_point_id'] + ' - ' + df[
+                    'connector__charge_point__name']
+                df.drop(columns=['connector__charge_point__name'], inplace=True)
                 numeric_columns = ['total_price', 'meter_used']
                 df[numeric_columns] = df[numeric_columns].apply(pd.to_numeric, errors='coerce')
                 buffer = io.BytesIO()
