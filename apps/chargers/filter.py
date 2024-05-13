@@ -21,3 +21,11 @@ class DateTimeRangeFilter(admin.filters.FieldListFilter):
             'query_string': changelist.get_query_string(remove=[self.lookup_kwarg_from_date, self.lookup_val_to_date]),
             'display': _('All'),
         }
+
+    def queryset(self, request, queryset):
+        if self.lookup_val_from_date and self.lookup_val_to_date:
+            return queryset.filter(
+                created_at__date__gte=self.lookup_val_from_date,
+                created_at__date__lte=self.lookup_val_to_date
+            )
+        return queryset
