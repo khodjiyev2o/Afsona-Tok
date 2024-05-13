@@ -136,6 +136,7 @@ class FinishedChargingTransactionAdmin(ExportActionMixin, admin.ModelAdmin):
     )
     list_filter = (
         ('user', admin.filters.RelatedFieldListFilter),
+        ('connector__charge_point__location', admin.filters.RelatedFieldListFilter),
         ('connector__charge_point', admin.filters.RelatedFieldListFilter),
         ('created_at', DateTimeRangeFilter),
     )
