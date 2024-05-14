@@ -33,6 +33,7 @@ def send_meter_value_to_websocket(sender, instance: ChargingTransaction, **kwarg
 
         "money": str(round(total_price_until_now, 2)),
         "transaction_id": int(instance.id),
+        "start_command_id": instance.start_command_id,
         "battery_percent": int(instance.battery_percent_on_end),
         "consumed_kwh": str(instance.consumed_kwh),
         "status": instance.status,

@@ -37,11 +37,13 @@ class MobileJsonConsumer(AsyncJsonWebsocketConsumer):
         consumed_khw: Decimal = event['consumed_kwh']
         transaction_id: int = event['transaction_id']
         status: str = event['status']
+        start_command_id: int = event['start_command_id']
 
         data_json = json.dumps(
             {
                 "type": "meter_values_data",
                 "data": {
+                    'start_command_id': start_command_id,
                     "transaction_id": int(transaction_id),
                     "money": str(money),
                     "battery_percent": battery_percent,
