@@ -15,4 +15,4 @@ async def unlock_connector_handler(body: UnlockConnectorRequest) -> UnlockConnec
         connector_id=body.connector_id
     )
 
-    return UnlockConnectorResponse(status=result.status.value)
+    return UnlockConnectorResponse(status=result.status)

@@ -16,4 +16,4 @@ async def trigger_message_handler(body: TriggerMessageRequest) -> TriggerMessage
         connector_id=body.connector_id,
     )
 
-    return TriggerMessageResponse(status=result.status.value)
+    return TriggerMessageResponse(status=result.status)

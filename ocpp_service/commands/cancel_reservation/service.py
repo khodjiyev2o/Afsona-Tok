@@ -14,4 +14,4 @@ async def cancel_reservation_handler(body: CancelReservationRequest) -> CancelRe
     result: CancelReservationPayload = await connection.send_cancel_reservation_command(
         reservation_id=body.reservation_id
     )
-    return CancelReservationResponse(status=result.status.value)
+    return CancelReservationResponse(status=result.status)

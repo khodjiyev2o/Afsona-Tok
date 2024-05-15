@@ -18,4 +18,4 @@ async def reserve_now_handler(body: ReserveNowRequest) -> ReserveNowResponse:
         reservation_id=body.reservation_id
     )
 
-    return ReserveNowResponse(status=result.status.value)
+    return ReserveNowResponse(status=result.status)

@@ -16,4 +16,4 @@ async def change_availability_handler(body: ChangeAvailabilityRequest) -> Change
         availability_type=body.availability_type
     )
 
-    return ChangeAvailabilityResponse(status=result.status.value)
+    return ChangeAvailabilityResponse(status=result.status)

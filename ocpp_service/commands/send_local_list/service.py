@@ -17,4 +17,4 @@ async def send_local_list_handler(body: SendLocalListRequest) -> SendLocalListRe
         update_type=body.update_type
     )
 
-    return SendLocalListResponse(status=result.status.value)
+    return SendLocalListResponse(status=result.status)

@@ -15,4 +15,4 @@ async def change_configuration_handler(body: ChangeConfigurationRequest) -> Chan
         key=body.key, value=body.value
     )
 
-    return ChangeConfigurationResponse(status=result.status.value)
+    return ChangeConfigurationResponse(status=result.status)

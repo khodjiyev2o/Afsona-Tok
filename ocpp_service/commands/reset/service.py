@@ -15,4 +15,4 @@ async def reset_handler(body: ResetRequest) -> ResetResponse:
         reset_type=body.reset_type
     )
 
-    return ResetResponse(status=result.status.value)
+    return ResetResponse(status=result.status)

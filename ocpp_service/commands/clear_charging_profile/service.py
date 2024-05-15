@@ -18,4 +18,4 @@ async def clear_charging_profile_handler(body: ClearChargingProfileRequest) -> C
         stack_level=body.stack_level
     )
 
-    return ClearChargingProfileResponse(status=result.status.value)
+    return ClearChargingProfileResponse(status=result.status)

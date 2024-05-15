@@ -16,4 +16,4 @@ async def set_charging_profile_handler(body: SetChargingProfileRequest) -> SetCh
         cs_charging_profiles=body.cs_charging_profiles
     )
 
-    return SetChargingProfileResponse(status=result.status.value)
+    return SetChargingProfileResponse(status=result.status)

@@ -17,4 +17,4 @@ async def data_transfer_handler(body: DataTransferRequest) -> DataTransferRespon
         data=body.data
     )
 
-    return DataTransferResponse(status=result.status.value, data=result.data)
+    return DataTransferResponse(status=result.status, data=result.data)

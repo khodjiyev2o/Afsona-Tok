@@ -13,4 +13,4 @@ async def clear_cache_handler(body: ClearClearCacheRequest) -> ClearClearCacheRe
 
     result: ClearCachePayload = await connection.send_clear_cache_command()
 
-    return ClearClearCacheResponse(status=result.status.value)
+    return ClearClearCacheResponse(status=result.status)

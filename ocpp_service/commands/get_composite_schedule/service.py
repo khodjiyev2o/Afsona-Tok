@@ -18,7 +18,7 @@ async def get_composite_schedule_handler(body: GetCompositeScheduleRequest) -> G
     )
 
     return GetCompositeScheduleResponse(
-        status=result.status.value,
+        status=result.status,
         connector_id=result.connector_id,
         schedule_start=result.schedule_start,
         charging_schedule=result.charging_schedule
