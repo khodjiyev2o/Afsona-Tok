@@ -1,2 +1,2 @@
-from .service import change_configuration_handler
 from .schema import ChangeConfigurationRequest, ChangeConfigurationResponse
+from .service import change_configuration_handler

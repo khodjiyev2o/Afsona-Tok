@@ -1,2 +1,2 @@
-from .schema import RemoteStartRequest, RemoteStartResponse
-from .service import remote_start_handler
+from .schema import UpdateFirmwareRequest, UpdateFirmwareResponse
+from .service import update_firmware_handler

@@ -1,11 +1,16 @@
+from typing import Optional, Any
+
 from pandantic import BaseModel
 
 
-class RemoteStartRequest(BaseModel):
-    id_tag: str
+class DataTransferRequest(BaseModel):
     charger_identify: str
-    connector_id: int
+
+    vendor_id: str
+    message_id: Optional[str] = None
+    data: Optional[Any] = None
 
 
-class RemoteStartResponse(BaseModel):
-    status: bool
+class DataTransferResponse(BaseModel):
+    status: str
+    data: Optional[Any] = None

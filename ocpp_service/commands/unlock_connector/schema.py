@@ -1,11 +1,11 @@
 from pandantic import BaseModel
 
 
-class RemoteStartRequest(BaseModel):
-    id_tag: str
+class UnlockConnectorRequest(BaseModel):
     charger_identify: str
+
     connector_id: int
 
 
-class RemoteStartResponse(BaseModel):
-    status: bool
+class UnlockConnectorResponse(BaseModel):
+    status: str

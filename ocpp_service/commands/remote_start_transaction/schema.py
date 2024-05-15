@@ -2,8 +2,9 @@ from pandantic import BaseModel
 
 
 class RemoteStartRequest(BaseModel):
-    id_tag: str
     charger_identify: str
+
+    id_tag: str
     connector_id: int
 
 

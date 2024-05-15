@@ -1,33 +1,20 @@
-import asyncio
-
-import aiohttp
-from fastapi import BackgroundTasks
-from ocpp.v16.enums import RemoteStartStopStatus
-
-from ocpp_service.commands.remote_start_transaction.schema import RemoteStartRequest, RemoteStartResponse
-from ocpp_service.configs import ACTIVE_CONNECTIONS, WEBSOCKET_COMMAND_CALLBACK_URL
+from ocpp_service.configs import ACTIVE_CONNECTIONS
 from ocpp_service.ocpp_controller import OCPP16Controller
+from .schema import UpdateFirmwareRequest, UpdateFirmwareResponse
+from ocpp.v16.call_result import UpdateFirmwarePayload
 
 
-async def remote_start_handler(body: RemoteStartRequest, background_tasks: BackgroundTasks) -> RemoteStartResponse:
+async def update_firmware_handler(body: UpdateFirmwareRequest) -> UpdateFirmwareResponse:
     if body.charger_identify not in ACTIVE_CONNECTIONS:
-        return RemoteStartResponse(status=False)
+        return UpdateFirmwareResponse(status="not_connected")
 
     connection: OCPP16Controller = ACTIVE_CONNECTIONS[body.charger_identify]
-    background_tasks.add_task(send_command_to_charger, connection=connection, body=body)
 
-    return RemoteStartResponse(status=True)
-
-
-async def send_command_to_charger(connection: OCPP16Controller, body: RemoteStartRequest):
-    response = await connection.send_remote_start_transaction_command(
-        connector_id=body.connector_id, id_tag=body.id_tag
+    await connection.send_update_firmware_command(
+        location=body.location,
+        retries=body.retries,
+        retrieve_date=body.retrieve_date,
+        retry_interval=body.retry_interval
     )
-    async with aiohttp.ClientSession(
-            timeout=aiohttp.ClientTimeout(total=2), headers={"Content-Type": "application/json"}
-    ) as session:
-        async with session.post(
-                url=WEBSOCKET_COMMAND_CALLBACK_URL.format(body.id_tag),
-                json={"status": response.status == RemoteStartStopStatus.accepted}
-        ) as response:
-            await response.json()
+
+    return UpdateFirmwareResponse(status="Applied")

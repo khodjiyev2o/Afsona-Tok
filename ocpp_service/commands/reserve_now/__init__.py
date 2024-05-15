@@ -1,2 +1,2 @@
-from .schema import RemoteStartRequest, RemoteStartResponse
-from .service import remote_start_handler
+from .schema import ReserveNowRequest, ReserveNowResponse
+from .service import reserve_now_handler

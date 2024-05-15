@@ -1,17 +1,12 @@
-from enum import Enum
-
+from ocpp.v16.enums import ResetType
 from pandantic import BaseModel
-
-
-class ResetTypeEnum(Enum):
-    soft = 'Soft'
-    hard = 'Hard'
 
 
 class ResetRequest(BaseModel):
     charger_identify: str
-    reset_type: ResetTypeEnum
+
+    reset_type: ResetType
 
 
 class ResetResponse(BaseModel):
-    status: bool
+    status: str

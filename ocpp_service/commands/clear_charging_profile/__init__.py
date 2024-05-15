@@ -1,2 +1,2 @@
-from .schema import RemoteStartRequest, RemoteStartResponse
-from .service import remote_start_handler
+from .schema import ClearChargingProfileRequest, ClearChargingProfileResponse
+from .service import clear_charging_profile_handler

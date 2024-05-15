@@ -1,11 +1,15 @@
+from typing import Optional
+
+from ocpp.v16.enums import MessageTrigger
 from pandantic import BaseModel
 
 
-class RemoteStartRequest(BaseModel):
-    id_tag: str
+class TriggerMessageRequest(BaseModel):
     charger_identify: str
-    connector_id: int
+
+    trigger_message: MessageTrigger
+    connector_id: Optional[int] = None
 
 
-class RemoteStartResponse(BaseModel):
-    status: bool
+class TriggerMessageResponse(BaseModel):
+    status: str

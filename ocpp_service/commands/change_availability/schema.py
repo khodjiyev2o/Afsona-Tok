@@ -10,4 +10,4 @@ class ChangeAvailabilityRequest(BaseModel):
 
 
 class ChangeAvailabilityResponse(BaseModel):
-    status: bool
+    status: str

@@ -115,8 +115,8 @@ class ChargingTransaction(BaseModel):
                                  on_delete=models.SET_NULL)
     connector = models.ForeignKey(to=Connector, verbose_name=_("Connector"), on_delete=models.PROTECT)
     end_time = models.DateTimeField(verbose_name=_("End Time"), null=True, blank=True)
-    battery_percent_on_start = models.IntegerField(verbose_name=_("Battery Percent on Start"), db_default=0)
-    battery_percent_on_end = models.IntegerField(verbose_name=_("Battery Percent on End"), db_default=0)
+    battery_percent_on_start = models.IntegerField(verbose_name=_("Battery Percent on Start"), default=0, db_default=0)
+    battery_percent_on_end = models.IntegerField(verbose_name=_("Battery Percent on End"), default=0, db_default=0)
     meter_on_start = models.IntegerField(verbose_name=_("Meter On Start"))
     meter_on_end = models.IntegerField(verbose_name=_("Meter on End"), null=True, blank=True)
     meter_used = models.FloatField(verbose_name=_("Meter Used"), default=0)
@@ -156,7 +156,7 @@ class ChargingTransaction(BaseModel):
         return minute
 
     def save(self, *args, **kwargs):
-        if not self.battery_percent_on_start:
+        if not self.battery_percent_on_start and self.battery_percent_on_end:
             self.battery_percent_on_start = self.battery_percent_on_end
         super().save(*args, **kwargs)
 

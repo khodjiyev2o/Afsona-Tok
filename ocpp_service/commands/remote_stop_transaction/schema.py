@@ -2,8 +2,9 @@ from pandantic import BaseModel
 
 
 class RemoteStopRequest(BaseModel):
-    transaction_id: int
     charger_identify: str
+
+    transaction_id: int
     id_tag: str
 
 

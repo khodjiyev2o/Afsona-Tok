@@ -6,5 +6,5 @@ class ClearClearCacheRequest(BaseModel):
 
 
 class ClearClearCacheResponse(BaseModel):
-    status: bool
+    status: str
 

@@ -1,11 +1,14 @@
 from pandantic import BaseModel
 
 
-class RemoteStartRequest(BaseModel):
-    id_tag: str
+class UpdateFirmwareRequest(BaseModel):
     charger_identify: str
-    connector_id: int
+
+    location: str
+    retries: int
+    retrieve_date: str
+    retry_interval: int
 
 
-class RemoteStartResponse(BaseModel):
-    status: bool
+class UpdateFirmwareResponse(BaseModel):
+    status: str

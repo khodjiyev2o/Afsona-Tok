@@ -21,10 +21,6 @@ from ocpp_service.configs import OCPP_RAW_MESSAGES_SERVICE_URL
 
 
 class OCPP16Controller(ChargePoint):
-    @on(action='SecurityEventNotification')
-    async def security_event_notification(self, **kwargs):
-        return self._call_result.StatusNotificationPayload()
-
     @on(action=Action.Authorize)
     async def on_authorize(self, **kwargs):
         """
@@ -78,30 +74,6 @@ class OCPP16Controller(ChargePoint):
         )
         return payload
 
-    @on(action=Action.CancelReservation)
-    async def on_cancel_reservation(self, **kwargs):
-        response = await self.__send_request(sms_type='cancel_reservation', data=kwargs)
-        payload = self._call_result.CancelReservationPayload(
-            status=response.get('status', CancelReservationStatus.rejected)
-        )
-        return payload
-
-    @on(action=Action.ChangeConfiguration)
-    async def on_change_availability(self, **kwargs):
-        response = await self.__send_request(sms_type='change_availability', data=kwargs)
-        return self._call_result.ChangeAvailabilityPayload(status=response.get("status", AvailabilityStatus.rejected))
-
-    @on(action=Action.ChangeConfiguration)
-    async def on_change_configuration(self, **kwargs):
-        response = await self.__send_request(sms_type='change_configuration', data=kwargs)
-        return self._call_result.ChangeConfigurationPayload(
-            status=response.get("status", ConfigurationStatus.not_supported))
-
-    @on(action=Action.ClearCache)
-    async def on_clear_cache(self, **kwargs):
-        response = await self.__send_request(sms_type='clear_cache', data=kwargs)
-        await self._call_result.ClearCachePayload(status=response.get('status', ClearCacheStatus.rejected))
-
     @on(action=Action.DataTransfer)
     async def on_data_transfer(self, **kwargs):
         response = await self.__send_request(sms_type='data_transfer', data=kwargs)
@@ -122,34 +94,6 @@ class OCPP16Controller(ChargePoint):
         await self.__send_request(sms_type='firmware_status_notification', data=kwargs)  # there is no arg from response
         return self._call_result.FirmwareStatusNotificationPayload()
 
-    @on(action=Action.GetCompositeSchedule)
-    async def on_get_composite_schedule(self, **kwargs):
-        response = await self.__send_request(sms_type='get_composite_schedule', data=kwargs)
-        return self._call_result.GetCompositeSchedulePayload(
-            status=response.get("status", GetCompositeScheduleStatus.rejected),
-            connector_id=response.get('connector_id', None),
-            schedule_start=response.get('schedule_start', None),
-            charging_schedule=response.get('charging_schedule', None)
-        )
-
-    @on(action=Action.GetConfiguration)
-    async def on_get_configuration(self, **kwargs):
-        response = await self.__send_request(sms_type='get_configuration', data=kwargs)
-        return self._call_result.GetConfigurationPayload(
-            configuration_key=response.get('configuration_key', None),
-            unknown_key=response.get('unknown_key', None)
-        )
-
-    @on(action=Action.GetDiagnostics)
-    async def on_get_diagnostics(self, **kwargs):
-        response = await self.__send_request(sms_type='get_diagnostics', data=kwargs)
-        return self._call_result.GetDiagnosticsPayload(file_name=response.get('file_name', None))
-
-    @on(action=Action.GetLocalListVersion)
-    async def on_get_local_list_version(self, **kwargs):
-        response = await self.__send_request(sms_type='get_local_list_version', data=kwargs)
-        return self._call_result.GetLocalListVersionPayload(list_version=response.get('list_version', 1))
-
     @on(action=Action.Heartbeat)
     async def on_heartbeat(self, **kwargs):
         await self.__send_request(sms_type='heartbeat')  # there is no arg from response
@@ -159,16 +103,6 @@ class OCPP16Controller(ChargePoint):
     async def on_meter_values(self, **kwargs):
         await self.__send_request(sms_type='meter_values', data=kwargs)  # there is no arg from response
         return self._call_result.MeterValuesPayload()
-
-    @on(action=Action.ReserveNow)
-    async def on_reserve_now(self, **kwargs):
-        response = await self.__send_request(sms_type='reserve_now', data=kwargs)
-        return self._call_result.ReserveNowPayload(status=response.get('status', ReservationStatus.rejected))
-
-    @on(action=Action.Reset)
-    async def on_reset_charger(self, **kwargs):
-        response = await self.__send_request(sms_type='reset', data=kwargs)
-        return self._call_result.ResetPayload(status=response.get('status', ResetStatus.rejected))
 
     @on(action=Action.StartTransaction)
     async def on_start_transaction(self, **kwargs):
@@ -197,23 +131,6 @@ class OCPP16Controller(ChargePoint):
                 expiry_date=response['id_tag_info'].get('expiry_date', None)
             ) if response.get('id_tag_info') else None
         )
-
-    @on(action=Action.TriggerMessage)
-    async def on_trigger_message(self, **kwargs):
-        response = await self.__send_request(sms_type='trigger_message', data=kwargs)
-        return self._call_result.TriggerMessagePayload(
-            status=response.get('status', TriggerMessageStatus.not_implemented)
-        )
-
-    @on(action=Action.UnlockConnector)
-    async def on_unlock_connector(self, **kwargs):
-        response = await self.__send_request(sms_type='unlock_connector', data=kwargs)
-        return self._call_result.UnlockConnectorPayload(status=response.get('status', UnlockStatus.not_supported))
-
-    @on(action=Action.UpdateFirmware)
-    async def on_update_firmware(self, **kwargs):
-        await self.__send_request(sms_type='update_firmware', data=kwargs)
-        return self._call_result.UpdateFirmwarePayload()  # there is no arg from response
 
     async def send_cancel_reservation_command(self, reservation_id: int):
         payload = call.CancelReservationPayload(reservation_id=reservation_id)
@@ -302,7 +219,7 @@ class OCPP16Controller(ChargePoint):
         )
         return await self.call(payload=payload)
 
-    async def send_charging_profile_command(self, connector_id: int, cs_charging_profiles: dict):
+    async def send_set_charging_profile_command(self, connector_id: int, cs_charging_profiles: dict):
         payload = call.SetChargingProfilePayload(connector_id=connector_id, cs_charging_profiles=cs_charging_profiles)
         return await self.call(payload=payload)
 
@@ -312,6 +229,16 @@ class OCPP16Controller(ChargePoint):
 
     async def send_unlock_connector_command(self, connector_id):
         payload = call.UnlockConnectorPayload(connector_id=connector_id)
+        return await self.call(payload=payload)
+
+    async def send_update_firmware_command(self, location: str, retries: int, retrieve_date: str, retry_interval: int):
+        payload = call.UpdateFirmwarePayload(
+            location=location, retries=retries, retrieve_date=retrieve_date, retry_interval=retry_interval
+        )
+        return await self.call(payload=payload)
+
+    async def send_get_configuration_command(self, keys: list[str]):
+        payload = call.GetConfigurationPayload(key=keys)
         return await self.call(payload=payload)
 
     async def __send_request(self, sms_type: str, data: dict = None) -> dict:

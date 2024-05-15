@@ -1,11 +1,16 @@
+from typing import Optional
+
 from pandantic import BaseModel
 
 
-class RemoteStartRequest(BaseModel):
-    id_tag: str
+class ClearChargingProfileRequest(BaseModel):
     charger_identify: str
-    connector_id: int
+
+    charger_profile_id: Optional[int] = None
+    connector_id: Optional[int] = None
+    charging_profile_purpose: Optional[str] = None
+    stack_level: Optional[int] = None
 
 
-class RemoteStartResponse(BaseModel):
-    status: bool
+class ClearChargingProfileResponse(BaseModel):
+    status: str
