@@ -17,6 +17,10 @@ class LocationListView(generics.ListAPIView):
 
     def list(self, request, *args, **kwargs):
         queryset = self.get_queryset()
+        if 'search' in request.query_params:
+            search = request.query_params.get('search')
+            queryset = queryset.filter(name__icontains=search)
+
         page = self.paginate_queryset(queryset)
         if page is not None:
             serializer = self.get_serializer(page, many=True)
