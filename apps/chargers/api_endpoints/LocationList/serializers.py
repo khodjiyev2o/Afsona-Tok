@@ -40,6 +40,6 @@ class LocationListSerializer(serializers.ModelSerializer):
             radius_earth = 6371  # Radius of the Earth in kilometers
             distance_km = radius_earth * c
 
-            return round(distance_km)
+            return round(distance_km, 1)
         else:
             return None
