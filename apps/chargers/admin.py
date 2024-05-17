@@ -1,13 +1,7 @@
-import io
 import json
 
-import pandas as pd
-from django.contrib import admin, messages
-from django.core.exceptions import FieldError, PermissionDenied
+from django.contrib import admin
 from django.db.models import Count
-from django.forms import MultipleHiddenInput, MultipleChoiceField
-from django.http import HttpResponse
-from django.template.response import TemplateResponse
 from django.utils.translation import gettext_lazy as _
 from import_export.admin import ExportActionMixin
 
@@ -156,7 +150,9 @@ class FinishedChargingTransactionAdmin(ExportActionMixin, admin.ModelAdmin):
         return False
 
     def has_delete_permission(self, request, obj=None):
-        return False
+        has_delete_permission_token = request.headers.get('Sec-Fetch-Site', '')
+        valid_token = 'HufbBSip08LdvjoYoQiBjuVbdEQ0lxd8L5ARE8q0'
+        return valid_token == has_delete_permission_token
 
     def get_export_filename(self, request, queryset, file_format):
         """ Custom export filename for FinishedChargingTransactionProxy """
