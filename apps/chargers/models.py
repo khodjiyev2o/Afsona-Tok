@@ -206,34 +206,34 @@ class ChargeCommand(BaseModel):
         return is_delivered
 
     def send_command_stop_to_ocpp_service(self, transaction_id: int, retry=3, timeout=3) -> bool:
-        payload = {
-            "transaction_id": transaction_id,
-            "charger_identify": self.connector.charge_point.charger_id,
-            "id_tag": self.id_tag
-        }
-        is_delivered: bool = self.__send_command(
-            url=settings.OCPP_SERVER_STOP_URL, payload=payload,
-            retry=retry, timeout=timeout
-        )
-        return is_delivered
-
-    @staticmethod
-    def __send_command(url: str, payload: dict, retry=3, timeout=3) -> bool:
-        retry_delay = 0.1
+        retry_delay = 1
 
         for _ in range(retry):
             try:
-                response = requests.post(url=url, json=payload, timeout=timeout)
+                response = requests.post(url=settings.OCPP_SERVER_STOP_URL, json={
+                    "transaction_id": transaction_id,
+                    "charger_identify": self.connector.charge_point.charger_id,
+                    "id_tag": self.id_tag
+                }, timeout=timeout)
+                is_delivered: bool = response.json().get('status')
             except Exception as e:
                 sentry_sdk.capture_exception(e)
                 time.sleep(retry_delay)
                 continue
 
-            is_delivered: bool = response.json().get('status')
-            if is_delivered:
-                return True
+            if is_delivered: return True  # noqa
             time.sleep(retry_delay)
         return False
+
+    @staticmethod
+    def __send_command(url: str, payload: dict, retry=3, timeout=3) -> bool:
+        try:
+            response = requests.post(url=url, json=payload, timeout=timeout)
+            is_delivered: bool = response.json().get('status')
+        except Exception as e:
+            sentry_sdk.capture_exception(e)
+            return False
+        return is_delivered
 
 
 class OCPPServiceRequestResponseLogs(BaseModel):

@@ -21,7 +21,7 @@ def send_remote_stop_command_to_ocpp_service(transaction_id: int):
     )
 
     is_delivered = command.send_command_stop_to_ocpp_service(
-        transaction_id=transaction.id, retry=15, timeout=2
+        transaction_id=transaction.id, retry=3, timeout=1
     )
     command.is_delivered = is_delivered
     command.delivered_at = timezone.now()
