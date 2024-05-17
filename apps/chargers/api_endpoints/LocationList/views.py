@@ -1,3 +1,4 @@
+from django.db.models import Q
 from rest_framework import generics
 from rest_framework.response import Response
 from apps.chargers.models import Location
@@ -17,9 +18,15 @@ class LocationListView(generics.ListAPIView):
 
     def list(self, request, *args, **kwargs):
         queryset = self.get_queryset()
+
         if 'search' in request.query_params:
             search = request.query_params.get('search')
-            queryset = queryset.filter(name__icontains=search)
+            if search:
+                queryset = queryset.filter(
+                    Q(name__icontains=search) |
+                    Q(address__icontains=search) |
+                    Q(district__name__icontains=search)
+                )
 
         page = self.paginate_queryset(queryset)
         if page is not None:
