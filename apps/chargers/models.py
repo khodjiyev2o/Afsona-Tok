@@ -202,7 +202,20 @@ class ChargeCommand(BaseModel):
             "connector_id": self.connector.connector_id
         }
 
-        is_delivered: bool = self.__send_command(url=settings.OCPP_SERVER_START_URL, payload=payload)
+        try:
+            response = requests.post(url=settings.OCPP_SERVER_STOP_URL, json=payload, timeout=3)
+            is_delivered: bool = response.json().get('status')
+
+            OCPPServiceRequestResponseLogs.objects.create(
+                charger_id=payload.get("charger_identify"),
+                request_action="RemoteStartTransaction",
+                request_body=str(payload),
+                response_body=str(response.json())
+            )
+        except Exception as e:
+            sentry_sdk.capture_exception(e)
+            return False
+
         return is_delivered
 
     def send_command_stop_to_ocpp_service(self, transaction_id: int, retry=3, timeout=3) -> bool:
@@ -210,12 +223,20 @@ class ChargeCommand(BaseModel):
 
         for _ in range(retry):
             try:
-                response = requests.post(url=settings.OCPP_SERVER_STOP_URL, json={
+                payload = {
                     "transaction_id": transaction_id,
                     "charger_identify": self.connector.charge_point.charger_id,
                     "id_tag": self.id_tag
-                }, timeout=timeout)
+                }
+                response = requests.post(url=settings.OCPP_SERVER_STOP_URL, json=payload, timeout=timeout)
                 is_delivered: bool = response.json().get('status')
+
+                OCPPServiceRequestResponseLogs.objects.create(
+                    charger_id=payload.get("charger_identify"),
+                    request_action="RemoteStopTransaction",
+                    request_body=str(payload),
+                    response_body=str(response.json())
+                )
             except Exception as e:
                 sentry_sdk.capture_exception(e)
                 time.sleep(retry_delay)
@@ -224,16 +245,6 @@ class ChargeCommand(BaseModel):
             if is_delivered: return True  # noqa
             time.sleep(retry_delay)
         return False
-
-    @staticmethod
-    def __send_command(url: str, payload: dict, retry=3, timeout=3) -> bool:
-        try:
-            response = requests.post(url=url, json=payload, timeout=timeout)
-            is_delivered: bool = response.json().get('status')
-        except Exception as e:
-            sentry_sdk.capture_exception(e)
-            return False
-        return is_delivered
 
 
 class OCPPServiceRequestResponseLogs(BaseModel):

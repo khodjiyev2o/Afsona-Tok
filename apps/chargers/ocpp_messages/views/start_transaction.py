@@ -38,6 +38,12 @@ class StartTransactionAPIView(APIView):
         charger_id, connector_id = kwargs.get("charger_identify"), data.get("connector_id")
         id_tag, meter_start = data.get("id_tag"), data.get('meter_start')
 
+        in_progress_transaction = ChargingTransaction.objects.filter(status=ChargingTransaction.Status.IN_PROGRESS, start_command__id_tag=id_tag).first()
+        if in_progress_transaction:
+            initial_response['transaction_id'] = in_progress_transaction.id
+            initial_response['id_tag_info']['status'] = AuthorizationStatus.accepted.value
+            return Response(initial_response, status=status.HTTP_200_OK)
+
         cash_mode = True if id_tag == "" else False
         id_tag_already_used: bool = True
 
