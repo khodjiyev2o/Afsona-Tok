@@ -167,7 +167,7 @@ class ChargingTransaction(BaseModel):
 class ChargeCommand(BaseModel):
     class Commands(models.TextChoices):
         REMOTE_START_TRANSACTION = "REMOTE_START_TRANSACTION", _("Remote start transaction")
-        REMOTE_STOP_TRANSACTION = "REMOTE_STOP_TRANSACTION", _("Remote start transaction")
+        REMOTE_STOP_TRANSACTION = "REMOTE_STOP_TRANSACTION", _("Remote stop transaction")
 
     class Initiator(models.TextChoices):
         USER = "USER", _("User")
