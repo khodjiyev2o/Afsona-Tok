@@ -203,7 +203,7 @@ class ChargeCommand(BaseModel):
         }
 
         try:
-            response = requests.post(url=settings.OCPP_SERVER_STOP_URL, json=payload, timeout=3)
+            response = requests.post(url=settings.OCPP_SERVER_START_URL, json=payload, timeout=3)
             is_delivered: bool = response.json().get('status')
 
             OCPPServiceRequestResponseLogs.objects.create(
