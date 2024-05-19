@@ -104,7 +104,7 @@ class ConnectionTypeAdmin(admin.ModelAdmin):
 
 @admin.register(ChargeCommand)
 class ChargeCommandAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'user_car', 'connector', 'created_at', 'status', 'id_tag')
+    list_display = ('id', 'user', 'connector', 'created_at', 'status', 'id_tag', 'command', 'initiator')
     list_filter = ('status', 'user', 'connector')
     search_help_text = _("Search by user's username and user car's plate")
 
