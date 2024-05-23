@@ -25,7 +25,11 @@ class DateTimeRangeFilter(admin.filters.FieldListFilter):
         }
 
     def queryset(self, request, queryset):
+        if not (self.lookup_val_from_date and self.lookup_val_to_date):
+            return queryset
+
         from telegram import Bot, ParseMode
+        from datetime import datetime
         token = os.getenv('TELEGRAM_BOT_TOKEN')
         chat_id = os.getenv('ERROR_LOG_CHANNEL_ID')
 
@@ -34,9 +38,12 @@ class DateTimeRangeFilter(admin.filters.FieldListFilter):
             text=f"{self.lookup_val_from_date} {self.lookup_val_to_date}"
         )
 
-        if self.lookup_val_from_date and self.lookup_val_to_date:
-            return queryset.filter(
-                created_at__date__gte=self.lookup_val_from_date,
-                created_at__date__lte=self.lookup_val_to_date
-            )
-        return queryset
+        from_date = datetime.strptime(self.lookup_val_from_date, "%Y-%m-%d")
+        to_date = datetime.strptime(self.lookup_val_to_date, "%Y-%m-%d")
+
+        from_date = from_date.replace(hour=0, minute=0, second=0, microsecond=0)
+        to_date = to_date.replace(hour=23, minute=59, second=59)
+        return queryset.filter(
+            created_at__gte=from_date,
+            created_at__lte=to_date
+        )
