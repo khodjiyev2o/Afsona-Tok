@@ -25,8 +25,8 @@ class DateTimeRangeFilter(admin.filters.FieldListFilter):
         }
 
     def queryset(self, request, queryset):
-        lookup_val_from_date = request.query_params.get(self.lookup_kwarg_from_date, None)
-        lookup_val_to_date = request.query_params.get(self.lookup_kwarg_to_date, None)
+        lookup_val_from_date = request.GET.get(self.lookup_kwarg_from_date, None)
+        lookup_val_to_date = request.GET.get(self.lookup_kwarg_to_date, None)
 
         if not (lookup_val_from_date and lookup_val_to_date):
             return queryset
