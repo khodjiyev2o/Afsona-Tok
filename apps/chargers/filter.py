@@ -25,7 +25,10 @@ class DateTimeRangeFilter(admin.filters.FieldListFilter):
         }
 
     def queryset(self, request, queryset):
-        if not (self.lookup_val_from_date and self.lookup_val_to_date):
+        lookup_val_from_date = request.query_params.get(self.lookup_kwarg_from_date, None)
+        lookup_val_to_date = request.query_params.get(self.lookup_kwarg_to_date, None)
+
+        if not (lookup_val_from_date and lookup_val_to_date):
             return queryset
 
         from telegram import Bot, ParseMode
@@ -35,11 +38,11 @@ class DateTimeRangeFilter(admin.filters.FieldListFilter):
 
         Bot(token=token).send_message(
             chat_id=chat_id, parse_mode=ParseMode.HTML,
-            text=f"{self.lookup_val_from_date} {self.lookup_val_to_date}"
+            text=f"{lookup_val_from_date} {lookup_val_to_date}"
         )
 
-        from_date = datetime.strptime(self.lookup_val_from_date, "%Y-%m-%d")
-        to_date = datetime.strptime(self.lookup_val_to_date, "%Y-%m-%d")
+        from_date = datetime.strptime(lookup_val_from_date, "%Y-%m-%d")
+        to_date = datetime.strptime(lookup_val_to_date, "%Y-%m-%d")
 
         from_date = from_date.replace(hour=0, minute=0, second=0, microsecond=0)
         to_date = to_date.replace(hour=23, minute=59, second=59)
