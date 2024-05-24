@@ -29,11 +29,11 @@ class ChargerDisconnectAPIView(APIView):
         charger_id = kwargs.get("charger_identify")
         reason = request.data.get("reason")
 
-        Connector.objects.filter(
-            Q(charge_point__charger_id=charger_id) & ~Q(status=Connector.Status.CHARGING)
-        ).update(
-            status=Connector.Status.UNAVAILABLE, last_status_reason=Connector.LastStatusReason.CHARGER_DISCONNECTED
-        )
+        # Connector.objects.filter(
+        #     Q(charge_point__charger_id=charger_id) & ~Q(status=Connector.Status.CHARGING)
+        # ).update(
+        #     status=Connector.Status.UNAVAILABLE, last_status_reason=Connector.LastStatusReason.CHARGER_DISCONNECTED
+        # )
 
         ChargePoint.objects.filter(charger_id=charger_id).update(is_connected=False)
         logger.info(f"Disconnect: {charger_id}\nReason: {reason}")

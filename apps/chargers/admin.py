@@ -135,7 +135,7 @@ class InProgressChargingTransactionAdmin(admin.ModelAdmin):
 
     def get_price_until_now(self, obj: InProgressChargingTransactionProxy):
         PRICE = get_price_from_settings()
-        return Decimal(str(obj.consumed_kwh)) * PRICE
+        return round(Decimal(str(obj.consumed_kwh)) * PRICE, 2)
 
     get_price_until_now.short_description = _("Price until now")
 

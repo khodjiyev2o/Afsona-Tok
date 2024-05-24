@@ -26,7 +26,7 @@ def send_connector_status_to_websocket(sender, instance, **kwargs):
 def send_meter_value_to_websocket(sender, instance: ChargingTransaction, **kwargs):
     if instance.status == ChargingTransaction.Status.FINISHED:
         return
-    PRICE =  get_price_from_settings()
+    PRICE = get_price_from_settings()
     total_price_until_now: Decimal = Decimal(str(instance.consumed_kwh)) * PRICE
     payload = {
         "type": 'send_meter_values_data',  # method name in the consumer: apps/chargers/consumers.py:36
