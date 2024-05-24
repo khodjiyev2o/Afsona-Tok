@@ -16,7 +16,7 @@ schema_view = get_schema_view(
     ),
     public=True,
     generator_class=BothHttpAndHttpsSchemaGenerator,
-    permission_classes=[permissions.AllowAny,],
+    permission_classes=[permissions.IsAuthenticated,],
     patterns=[
         path("api/v1/common/", include("apps.common.urls", namespace="common")),
         path("api/v1/users/", include("apps.users.urls", namespace="users")),
