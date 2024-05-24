@@ -1,3 +1,4 @@
+import json
 import logging
 
 from django.db.models import Q
@@ -5,12 +6,25 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from apps.chargers.models import ChargePoint, Connector
+from apps.chargers.models import ChargePoint, Connector, OCPPServiceRequestResponseLogs
 
 logger = logging.getLogger("telegram")
 
 
 class ChargerDisconnectAPIView(APIView):
+    def dispatch(self, request, *args, **kwargs):
+        data = request.body.decode('utf-8')
+        charger_id = request.resolver_match.captured_kwargs.get('charger_identify')
+
+        response = super().dispatch(request, *args, **kwargs)
+        OCPPServiceRequestResponseLogs.objects.create(
+            charger_id=charger_id,
+            request_action="Disconnect",
+            request_body=json.loads(data),
+            response_body=response.data
+        )
+        return response
+
     def post(self, request, *args, **kwargs):
         charger_id = kwargs.get("charger_identify")
         reason = request.data.get("reason")
