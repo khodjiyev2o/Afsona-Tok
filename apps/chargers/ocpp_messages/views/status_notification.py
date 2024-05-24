@@ -39,14 +39,11 @@ class StatusNotificationAPIView(APIView):
             charge_point__charger_id=charger_identify, connector_id=connector_id
         ).first()
         if not connector:
-            logger.error(
-                f"StatusNotification: Charger {charger_identify} -> {connector_id} -> {connector_status} Not Found"
-            )
             return Response(data={}, status=status.HTTP_200_OK)
 
         connector.status = connector_status
         connector.last_status_reason = Connector.LastStatusReason.NORMAL
-        connector.save(update_fields=['status', 'last_status_reason'])
+        connector.save(update_fields=['status', 'last_status_reason', 'updated_at'])
 
         if error_code != "NoError":
             logger.error(f"StatusNotification: Charger {charger_identify} -> {connector_id} -> {error_code}")

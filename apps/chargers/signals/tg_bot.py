@@ -1,10 +1,13 @@
 import logging
+import os
 from decimal import Decimal
 
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from telegram.bot import Bot
+from telegram.parsemode import ParseMode
 
-from apps.chargers.models import ChargingTransaction
+from apps.chargers.models import ChargingTransaction, Connector
 from apps.chargers.ocpp_messages.views.utils import get_price_from_settings
 from apps.chargers.tasks import send_report_on_stop_transaction_task
 
@@ -42,3 +45,22 @@ def send_start_transaction_to_telegram(sender, instance, created, **kwargs):
 def send_stop_transaction_to_telegram(sender, instance, created, **kwargs):
     if instance.status == ChargingTransaction.Status.FINISHED:
         send_report_on_stop_transaction_task.delay(instance.id)
+
+
+@receiver(post_save, sender=Connector)
+def send_stop_transaction_to_telegram(sender, instance, **kwargs):
+    if instance.status in [
+        Connector.Status.AVAILABLE,
+        Connector.Status.PREPARING,
+        Connector.Status.CHARGING,
+        Connector.Status.FINISHING
+    ]:
+        return
+
+    token = os.getenv('TELEGRAM_BOT_TOKEN')
+    chat_id = os.getenv('ERROR_LOG_CHANNEL_ID')
+
+    Bot(token=token).send_message(
+        chat_id=chat_id, parse_mode=ParseMode.HTML,
+        text=f"Connector ID: {instance.id} has status: {instance.status}"
+    )
