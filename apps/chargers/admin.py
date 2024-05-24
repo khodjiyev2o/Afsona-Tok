@@ -52,6 +52,8 @@ class ConnectorInline(admin.StackedInline):
 
     def has_add_permission(self, request, obj):
         return False
+    fields = ('name', 'connector_id', 'status', 'standard', 'last_status_reason', 'updated_at')
+    readonly_fields = ('last_status_reason', 'updated_at')
 
 
 @admin.register(ChargePoint)
