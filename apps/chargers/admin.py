@@ -1,4 +1,5 @@
 import json
+from decimal import Decimal
 
 from django.contrib import admin
 from django.db.models import Count
@@ -7,6 +8,7 @@ from import_export.admin import ExportActionMixin
 
 from apps.chargers.filter import DateTimeRangeFilter
 from apps.chargers.models import ChargePoint, Connector, Location, ChargeCommand, OCPPServiceRequestResponseLogs
+from apps.chargers.ocpp_messages.views.utils import get_price_from_settings
 from apps.chargers.proxy_models import InProgressChargingTransactionProxy, FinishedChargingTransactionProxy
 from apps.chargers.resources import FinishedChargingTransactionProxyResource
 from apps.common.models import ConnectionType
@@ -52,6 +54,7 @@ class ConnectorInline(admin.StackedInline):
 
     def has_add_permission(self, request, obj):
         return False
+
     fields = ('name', 'connector_id', 'status', 'standard', 'last_status_reason', 'updated_at')
     readonly_fields = ('last_status_reason', 'updated_at')
 
@@ -113,7 +116,10 @@ class ChargeCommandAdmin(admin.ModelAdmin):
 
 @admin.register(InProgressChargingTransactionProxy)
 class InProgressChargingTransactionAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'connector', 'created_at', 'consumed_kwh', 'duration_in_minute')
+    list_display = (
+        'id', 'user', 'connector', 'created_at',
+        'consumed_kwh', 'get_price_until_now', 'duration_in_minute'
+    )
     list_filter = ('user', 'connector', 'start_reason')
 
     def has_add_permission(self, request, obj=None):
@@ -126,6 +132,12 @@ class InProgressChargingTransactionAdmin(admin.ModelAdmin):
     def has_delete_permission(self, request, obj=None):
         result = super().has_delete_permission(request, obj)
         return result and True
+
+    def get_price_until_now(self, obj: InProgressChargingTransactionProxy):
+        PRICE = get_price_from_settings()
+        return Decimal(str(obj.consumed_kwh)) * PRICE
+
+    get_price_until_now.short_description = _("Price until now")
 
 
 @admin.register(FinishedChargingTransactionProxy)

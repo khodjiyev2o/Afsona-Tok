@@ -155,11 +155,6 @@ class ChargingTransaction(BaseModel):
         minute: int = int((end_time - self.created_at).total_seconds() // 60)
         return minute
 
-    def save(self, *args, **kwargs):
-        if not self.battery_percent_on_start and self.battery_percent_on_end:
-            self.battery_percent_on_start = self.battery_percent_on_end
-        super().save(*args, **kwargs)
-
     def __str__(self):
         return f"{self.id}: {self.user} - {self.total_price}"
 
