@@ -1,4 +1,5 @@
 from decimal import Decimal
+import pytz
 
 from django.dispatch import receiver
 from django.conf import settings
@@ -45,11 +46,12 @@ def send_meter_value_to_websocket(sender, instance: ChargingTransaction, **kwarg
 @receiver(post_save, sender=ChargingTransaction)
 def send_stop_transaction_to_websocket(sender, instance: ChargingTransaction, **kwargs):
     if instance.status == ChargingTransaction.Status.FINISHED:
+        created_at_iso_format = instance.created_at.astimezone(pytz.timezone(settings.TIME_ZONE)).isoformat()
         payload = {
             "type": "send_transaction_cheque",
 
             "transaction_id": instance.id,
-            "charging_has_started_at": instance.created_at.isoformat(),
+            "charging_has_started_at": created_at_iso_format,
             "location_name": instance.connector.charge_point.location.name,
             "consumed_kwh": str(instance.consumed_kwh),
             "total_price": str(instance.total_price),
