@@ -12,9 +12,9 @@ env = environ.Env()
 
 def get_message_by_language(language, code):
     messages = {
-        "uz": f"Afsona Tok uchun tasdiqlash kodi: {code} LMTl9QwgutH",
-        "ru": f"Код подтверждения для Afsona Tok: {code} LMTl9QwgutH",
-        "en": f"Verification code for Afsona Tok: {code} LMTl9QwgutH",
+        "uz": f"Afsona Tok ilova ga ro‘yxatdan o‘tish uchun tasdiqlash kodi: {code} LMTl9QwgutH",
+        "ru": f"Код подтверждения регистрации в приложении Афсона Ток: {code} LMTl9QwgutH",
+        "en": f"Confirmation code for registration to Afsona Tok application: {code} LMTl9QwgutH",
     }
     return messages[language]
 
