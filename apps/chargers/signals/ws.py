@@ -8,8 +8,6 @@ from django.db.models.signals import post_save
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 
-from apps.chargers.ocpp_messages.views.utils import get_price_from_settings
-
 
 @receiver(post_save, sender=Connector)
 def send_connector_status_to_websocket(sender, instance, **kwargs):
@@ -27,8 +25,7 @@ def send_connector_status_to_websocket(sender, instance, **kwargs):
 def send_meter_value_to_websocket(sender, instance: ChargingTransaction, **kwargs):
     if instance.status == ChargingTransaction.Status.FINISHED:
         return
-    PRICE = get_price_from_settings()
-    total_price_until_now: Decimal = Decimal(str(instance.consumed_kwh)) * PRICE
+    total_price_until_now: Decimal = Decimal(str(instance.consumed_kwh)) * instance.price_per_kwh
     payload = {
         "type": 'send_meter_values_data',  # method name in the consumer: apps/chargers/consumers.py:36
 

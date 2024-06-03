@@ -1,6 +1,5 @@
 import json
 import logging
-from decimal import Decimal
 
 from ocpp.v16.enums import AuthorizationStatus
 from rest_framework import status
@@ -48,7 +47,9 @@ class StartTransactionAPIView(APIView):
         id_tag_already_used: bool = True
 
         command: ChargeCommand = ChargeCommand.objects.filter(id_tag=id_tag).first()
-        connector = Connector.objects.filter(charge_point__charger_id=charger_id, connector_id=connector_id).first()
+        connector: Connector = Connector.objects.filter(
+            charge_point__charger_id=charger_id, connector_id=connector_id
+        ).first()
         if not command and not connector and not cash_mode:
             logger.error(
                 f"StartTransaction: id tag: {id_tag}  or connector: {charger_id} -> {connector_id} Not Found"
@@ -71,11 +72,13 @@ class StartTransactionAPIView(APIView):
                 start_reason=ChargingTransaction.StartReason.REMOTE,
                 is_limited=command.is_limited,
                 limited_money=command.limited_money,
-                start_command_id=command.id
+                start_command_id=command.id,
+
             )
 
         charging_transaction = ChargingTransaction.objects.create(
-            **transaction_data, connector_id=connector.id, meter_on_start=meter_start
+            **transaction_data, price_per_kwh=connector.charge_point.price_per_kwh,
+            connector_id=connector.id, meter_on_start=meter_start
         )
         initial_response['transaction_id'] = charging_transaction.id
         initial_response['id_tag_info']['status'] = AuthorizationStatus.accepted.value

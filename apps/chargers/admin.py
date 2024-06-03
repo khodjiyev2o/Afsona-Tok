@@ -8,7 +8,6 @@ from import_export.admin import ExportActionMixin
 
 from apps.chargers.filter import DateTimeRangeFilter
 from apps.chargers.models import ChargePoint, Connector, Location, ChargeCommand, OCPPServiceRequestResponseLogs
-from apps.chargers.ocpp_messages.views.utils import get_price_from_settings
 from apps.chargers.proxy_models import InProgressChargingTransactionProxy, FinishedChargingTransactionProxy
 from apps.chargers.resources import FinishedChargingTransactionProxyResource
 from apps.common.models import ConnectionType
@@ -134,8 +133,7 @@ class InProgressChargingTransactionAdmin(admin.ModelAdmin):
         return result and True
 
     def get_price_until_now(self, obj: InProgressChargingTransactionProxy):
-        PRICE = get_price_from_settings()
-        return round(Decimal(str(obj.consumed_kwh)) * PRICE, 2)
+        return round(Decimal(str(obj.consumed_kwh)) * obj.price_per_kwh, 2)
 
     get_price_until_now.short_description = _("Price until now")
 

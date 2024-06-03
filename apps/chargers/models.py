@@ -41,6 +41,9 @@ class ChargePoint(BaseModel):
     is_visible_in_mobile = models.BooleanField(default=True)
     max_electric_power = models.IntegerField(default=0, verbose_name=_("ChargePoint's Max electric power"))
     order = models.IntegerField(default=0, verbose_name=_("Order"))
+    price_per_kwh = models.DecimalField(
+        verbose_name=_('Price for 1 kwt of electricity'), max_digits=10, decimal_places=2, default=2500
+    )
 
     # FK
     location = models.ForeignKey(to=Location, on_delete=models.PROTECT, verbose_name=_("Location"),
@@ -137,6 +140,9 @@ class ChargingTransaction(BaseModel):
     start_command = models.ForeignKey(
         "ChargeCommand", on_delete=models.PROTECT, related_name='start_command_transaction',
         verbose_name=_("Start Command"), null=True, blank=True
+    )
+    price_per_kwh = models.DecimalField(
+        verbose_name=_('Price for 1 kwt of electricity'), max_digits=10, decimal_places=2, default=2500
     )
 
     class Meta:

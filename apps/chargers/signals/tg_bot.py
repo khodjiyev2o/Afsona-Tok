@@ -19,7 +19,7 @@ def send_stop_transaction_to_telegram(sender, instance, created, **kwargs):
 
 
 @receiver(post_save, sender=Connector)
-def send_connector_error_status_to_telegram(sender, instance, **kwargs):
+def send_connector_error_status_to_telegram(sender, instance: Connector, **kwargs):
     if instance.status in [
         Connector.Status.AVAILABLE,
         Connector.Status.PREPARING,
@@ -33,5 +33,5 @@ def send_connector_error_status_to_telegram(sender, instance, **kwargs):
 
     Bot(token=token).send_message(
         chat_id=chat_id, parse_mode=ParseMode.HTML,
-        text=f"Connector ID: {instance.id} has status: {instance.status}"
+        text=f"Connector {instance.status}: {instance.charge_point} - {instance.name}"
     )

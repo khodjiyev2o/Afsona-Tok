@@ -7,12 +7,9 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from apps.chargers.models import ChargingTransaction, OCPPServiceRequestResponseLogs
-from apps.chargers.ocpp_messages.views.utils import get_price_from_settings
 from apps.chargers.tasks import send_remote_stop_command_to_ocpp_service
 
 logger = logging.getLogger("telegram")
-
-PRICE = get_price_from_settings()
 
 
 class MeterValuesAPIView(APIView):
@@ -63,7 +60,7 @@ class MeterValuesAPIView(APIView):
     def check_limit_reached(transaction: ChargingTransaction) -> bool:
         user_balance_reached = False
         is_limit_reached = False
-        money_until_now = Decimal(str(transaction.consumed_kwh)) * PRICE
+        money_until_now = Decimal(str(transaction.consumed_kwh)) * transaction.price_per_kwh
 
         if transaction.is_limited: is_limit_reached = money_until_now >= transaction.limited_money  # noqa
         if transaction.user: user_balance_reached = money_until_now >= transaction.user.balance  # noqa

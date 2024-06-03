@@ -43,7 +43,7 @@ class MobileJsonConsumer(AsyncJsonWebsocketConsumer):
             {
                 "type": "meter_values_data",
                 "data": {
-                    'start_command_id': start_command_id,
+                    "start_command_id": start_command_id,
                     "transaction_id": int(transaction_id),
                     "money": str(money),
                     "battery_percent": battery_percent,

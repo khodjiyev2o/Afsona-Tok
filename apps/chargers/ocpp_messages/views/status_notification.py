@@ -8,11 +8,10 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from apps.chargers.models import Connector, ChargingTransaction, OCPPServiceRequestResponseLogs
-from apps.chargers.ocpp_messages.views.utils import get_price_from_settings
 
 logger = logging.getLogger("telegram")
 
-PRICE = get_price_from_settings()
+
 
 
 class StatusNotificationAPIView(APIView):
@@ -54,7 +53,7 @@ class StatusNotificationAPIView(APIView):
 
     @staticmethod
     def stop_in_progress_transaction_on_faulted(connector: Connector):
-        charging_transaction = ChargingTransaction.objects.filter(
+        charging_transaction: ChargingTransaction = ChargingTransaction.objects.filter(
             status=ChargingTransaction.Status.IN_PROGRESS,
             connector=connector
         ).last()
@@ -64,7 +63,7 @@ class StatusNotificationAPIView(APIView):
         charging_transaction.meter_used = round(
             (charging_transaction.meter_on_end - charging_transaction.meter_on_start) / 1000, 2
         )
-        charging_transaction.total_price = PRICE * Decimal(str(charging_transaction.meter_used))
+        charging_transaction.total_price = charging_transaction.price_per_kwh * Decimal(str(charging_transaction.meter_used))
         charging_transaction.status = ChargingTransaction.Status.FINISHED
         charging_transaction.end_time = timezone.now()
         charging_transaction.stop_reason = ChargingTransaction.StopReason.CONNECTOR_ERROR

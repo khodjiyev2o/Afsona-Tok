@@ -3,7 +3,6 @@ from decimal import Decimal
 from rest_framework import serializers
 
 from apps.chargers.models import ChargingTransaction, Connector
-from apps.chargers.ocpp_messages.views.utils import get_price_from_settings
 from apps.common.models import UserCar, ConnectionType
 
 
@@ -42,7 +41,7 @@ class InProgressChargingTransactionListSerializer(serializers.ModelSerializer):
         fields = ('id', 'connector', 'car', 'battery_percent', 'money', 'consumed_kwh', 'start_command_id')
 
     def get_money(self, obj):
-        PRICE = get_price_from_settings()
+
         money = Decimal(str(obj.consumed_kwh)) * PRICE
         # todo i will refactor
         return str(round(money, 2))
