@@ -25,6 +25,6 @@ class ChargersDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ChargePoint
-        fields = ('id', 'name', 'charger_id', 'is_connected', 'max_electric_power', 'connectors')
+        fields = ('id', 'name', 'charger_id', 'is_connected', 'max_electric_power', 'connectors', 'price_per_kwh')
 
 
