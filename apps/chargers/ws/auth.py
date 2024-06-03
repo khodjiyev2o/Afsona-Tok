@@ -1,9 +1,9 @@
-from channels.auth import BaseMiddleware
-
-from typing import Union
 import os
-import sentry_sdk
+from typing import Union
+
 import jwt
+import sentry_sdk
+from channels.auth import BaseMiddleware
 
 
 class WebsocketJWTAuthMiddleware(BaseMiddleware):

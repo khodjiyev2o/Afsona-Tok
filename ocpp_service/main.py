@@ -1,6 +1,7 @@
 from fastapi import FastAPI
-from starlette.websockets import WebSocket, WebSocketDisconnect
 from starlette.middleware.cors import CORSMiddleware
+from starlette.websockets import WebSocket, WebSocketDisconnect
+
 from ocpp_service.commands import router
 from ocpp_service.utils import manager
 from .configs import ACTIVE_CONNECTIONS

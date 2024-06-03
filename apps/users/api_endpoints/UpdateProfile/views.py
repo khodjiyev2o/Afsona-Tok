@@ -1,8 +1,8 @@
 from rest_framework.generics import UpdateAPIView
 from rest_framework.permissions import IsAuthenticated
 
-from apps.users.models import User
 from apps.users.api_endpoints.UpdateProfile.serializers import ProfileUpdateSerializer
+from apps.users.models import User
 
 
 class ProfileUpdateView(UpdateAPIView):

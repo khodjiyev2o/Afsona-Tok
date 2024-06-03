@@ -1,8 +1,8 @@
 import sys
 
 import environ
-from django.core.cache import cache
 from django.conf import settings
+from django.core.cache import cache
 from eskiz_sms import EskizSMS
 
 from utils.cache import generate_cache_key, generate_code

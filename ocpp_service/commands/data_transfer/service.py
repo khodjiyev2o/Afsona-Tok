@@ -1,8 +1,8 @@
 from ocpp.v16.call_result import DataTransferPayload
 
-from .schema import DataTransferRequest, DataTransferResponse
 from ocpp_service.configs import ACTIVE_CONNECTIONS
 from ocpp_service.ocpp_controller import OCPP16Controller
+from .schema import DataTransferRequest, DataTransferResponse
 
 
 async def data_transfer_handler(body: DataTransferRequest) -> DataTransferResponse:

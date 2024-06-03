@@ -1,8 +1,9 @@
 import base64
 import binascii
+
+from django.conf import settings
 from rest_framework import HTTP_HEADER_ENCODING
 from rest_framework.authentication import BasicAuthentication, get_authorization_header
-from django.conf import settings
 
 
 class PaymeBasicAuthentication(BasicAuthentication):

@@ -1,6 +1,7 @@
 from rest_framework import generics
-from apps.chargers.models import Location
+
 from apps.chargers.api_endpoints.MapLocationList.serializers import MapLocationListSerializer
+from apps.chargers.models import Location
 
 
 class MapLocationListView(generics.ListAPIView):

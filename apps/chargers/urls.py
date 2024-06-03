@@ -1,6 +1,6 @@
 from django.urls import path
-from .api_endpoints import *
 
+from .api_endpoints import *
 
 app_name = 'chargers'
 

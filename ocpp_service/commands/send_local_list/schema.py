@@ -1,5 +1,3 @@
-from typing import Optional
-
 from ocpp.v16.datatypes import AuthorizationData
 from ocpp.v16.enums import UpdateType
 from pandantic import BaseModel

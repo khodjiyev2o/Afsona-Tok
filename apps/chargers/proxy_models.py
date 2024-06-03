@@ -1,6 +1,7 @@
+from django.utils.translation import gettext_lazy as _
+
 from apps.chargers.managers import InProgressChargingTransactionManager, FinishedChargingTransactionManager
 from apps.chargers.models import ChargingTransaction
-from django.utils.translation import gettext_lazy as _
 
 
 class FinishedChargingTransactionProxy(ChargingTransaction):

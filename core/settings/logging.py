@@ -1,6 +1,7 @@
 import logging
-import telegram
 from os import environ
+
+import telegram
 
 
 class TelegramHandler(logging.Handler):

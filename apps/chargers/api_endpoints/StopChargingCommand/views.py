@@ -1,14 +1,11 @@
-import requests
 from django.utils import timezone
-
-from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.generics import CreateAPIView, get_object_or_404
-from django.conf import settings
-from apps.chargers.models import ChargingTransaction, ChargeCommand
+from rest_framework.response import Response
+
 from apps.chargers.api_endpoints.StopChargingCommand.serializers import StopChargingCommandSerializer, \
     StopChargingCommandResponseSerializer
-
+from apps.chargers.models import ChargingTransaction, ChargeCommand
 from apps.chargers.utils import generate_id_tag
 
 

@@ -1,7 +1,6 @@
 from django.core.cache import cache
-from rest_framework import serializers
 from phonenumber_field.validators import validate_international_phonenumber
-
+from rest_framework import serializers
 
 from utils.cache import generate_cache_key, CacheTypes, is_code_valid
 

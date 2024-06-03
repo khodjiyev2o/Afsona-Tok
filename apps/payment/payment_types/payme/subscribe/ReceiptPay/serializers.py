@@ -1,10 +1,8 @@
 from django.conf import settings
-
 from rest_framework import serializers
 from rest_framework.serializers import ValidationError
 
 from apps.payment.models import UserCard, Transaction
-
 from apps.payment.payment_types.payme.subscribe.service import PaymeSubscribeReceipts
 
 

@@ -2,9 +2,9 @@ import aiohttp
 from fastapi import BackgroundTasks
 from ocpp.v16.enums import RemoteStartStopStatus
 
-from .schema import RemoteStartRequest, RemoteStartResponse
 from ocpp_service.configs import ACTIVE_CONNECTIONS, WEBSOCKET_COMMAND_CALLBACK_URL
 from ocpp_service.ocpp_controller import OCPP16Controller
+from .schema import RemoteStartRequest, RemoteStartResponse
 
 
 async def remote_start_handler(body: RemoteStartRequest, background_tasks: BackgroundTasks) -> RemoteStartResponse:

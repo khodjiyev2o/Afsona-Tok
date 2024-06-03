@@ -1,10 +1,9 @@
-from rest_framework import generics
 from django.db.models import Exists, OuterRef
-
-from apps.chargers.models import Location
-from apps.common.models import SavedLocation
+from rest_framework import generics
 
 from apps.chargers.api_endpoints.LocationDetail.serializers import LocationDetailSerializer
+from apps.chargers.models import Location
+from apps.common.models import SavedLocation
 
 
 class LocationDetailView(generics.RetrieveAPIView):

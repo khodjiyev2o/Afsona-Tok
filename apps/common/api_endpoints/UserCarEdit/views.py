@@ -1,8 +1,8 @@
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
-from apps.common.models import UserCar
 
 from apps.common.api_endpoints.UserCarEdit.serializers import UserCarEditSerializer
+from apps.common.models import UserCar
 
 
 class UserCarEditView(generics.UpdateAPIView):

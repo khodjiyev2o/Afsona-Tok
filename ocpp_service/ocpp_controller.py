@@ -9,10 +9,7 @@ from ocpp.v16 import call
 from ocpp.v16.datatypes import IdTagInfo
 from ocpp.v16.enums import (
     Action, AuthorizationStatus, RegistrationStatus,
-    CancelReservationStatus, AvailabilityStatus,
-    ConfigurationStatus, ClearCacheStatus, DataTransferStatus,
-    GetCompositeScheduleStatus, ReservationStatus,
-    ResetStatus, TriggerMessageStatus, UnlockStatus,
+    DataTransferStatus,
     AvailabilityType, ChargingProfilePurposeType, ChargingRateUnitType,
     ResetType, UpdateType, MessageTrigger, RemoteStartStopStatus
 )

@@ -1,7 +1,7 @@
 from rest_framework import generics
 
-from apps.chargers.models import Connector
 from apps.chargers.api_endpoints.ConnectorDetail.serializers import ConnectorDetailSerializer
+from apps.chargers.models import Connector
 
 
 class ConnectorDetailView(generics.RetrieveAPIView):

@@ -1,16 +1,11 @@
-import time
-
-import requests
 from django.utils import timezone
-from django.conf import settings
-
 from rest_framework import status
 from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from apps.chargers.models import ChargeCommand
 from apps.chargers.api_endpoints.StartChargingCommand.serializers import StartChargingCommandSerializer
+from apps.chargers.models import ChargeCommand
 from apps.chargers.utils import generate_id_tag
 
 

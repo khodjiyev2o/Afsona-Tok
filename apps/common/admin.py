@@ -1,10 +1,10 @@
 from django.contrib import admin
 from django.db.models import Count
 from django.utils.safestring import mark_safe
-from apps.common import models
 from django.utils.translation import gettext_lazy as _
 
 from apps.chargers.models import Location
+from apps.common import models
 
 
 @admin.register(models.StaticPage)

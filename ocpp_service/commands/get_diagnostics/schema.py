@@ -1,5 +1,4 @@
-from typing import Optional, Dict
-from ocpp.v16.enums import ChargingRateUnitType
+from typing import Optional
 
 from pandantic import BaseModel
 

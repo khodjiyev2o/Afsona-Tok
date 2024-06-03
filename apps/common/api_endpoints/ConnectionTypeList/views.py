@@ -1,7 +1,7 @@
 from rest_framework import generics
-from apps.common.models import ConnectionType
 
 from apps.common.api_endpoints.ConnectionTypeList.serializers import ConnectionTypeListSerializer
+from apps.common.models import ConnectionType
 
 
 class ConnectionTypeListView(generics.ListAPIView):

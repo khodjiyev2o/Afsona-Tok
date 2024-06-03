@@ -1,7 +1,8 @@
-from math import radians, sin, cos, sqrt, atan2
 from decimal import Decimal
+from math import radians, sin, cos, sqrt, atan2
 
 from rest_framework import serializers
+
 from apps.chargers.models import Location, ChargePoint, Connector
 from apps.common.models import ConnectionType
 

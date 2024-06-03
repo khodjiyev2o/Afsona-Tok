@@ -1,12 +1,11 @@
 import json
 import logging
 
-from django.db.models import Q
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from apps.chargers.models import ChargePoint, Connector, OCPPServiceRequestResponseLogs
+from apps.chargers.models import ChargePoint, OCPPServiceRequestResponseLogs
 
 logger = logging.getLogger("telegram")
 

@@ -3,9 +3,8 @@ from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
-from utils.card_identifier import CARDS
-
 from apps.payment.payment_types.payme.subscribe.CardIdentify.serializers import CardIdentifySerializer
+from utils.card_identifier import CARDS
 
 
 class CardIdentifyView(GenericAPIView):

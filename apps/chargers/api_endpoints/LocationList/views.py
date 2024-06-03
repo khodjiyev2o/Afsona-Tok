@@ -1,9 +1,9 @@
 from django.db.models import Q
 from rest_framework import generics
 from rest_framework.response import Response
-from apps.chargers.models import Location
 
 from apps.chargers.api_endpoints.LocationList.serializers import LocationListSerializer
+from apps.chargers.models import Location
 
 
 class LocationListView(generics.ListAPIView):

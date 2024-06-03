@@ -1,10 +1,10 @@
 from django.db.models import Sum, Q
 from django.db.models.fields import DecimalField
 from django.db.models.functions import Coalesce
-
-from apps.payment.models import Transaction as PaymentTransaction
-from apps.chargers.proxy_models import FinishedChargingTransactionProxy
 from django.utils import timezone
+
+from apps.chargers.proxy_models import FinishedChargingTransactionProxy
+from apps.payment.models import Transaction as PaymentTransaction
 
 
 def dashboard(request):

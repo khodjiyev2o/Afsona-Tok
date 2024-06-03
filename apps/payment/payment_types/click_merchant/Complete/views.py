@@ -4,10 +4,9 @@ from drf_yasg.utils import swagger_auto_schema
 from rest_framework.response import Response
 
 from apps.common.models import MainSettings
+from apps.payment.models import Transaction
 from apps.payment.payment_types.click_merchant.Complete.serializers import \
     ClickCompleteSerializer
-
-from apps.payment.models import Transaction
 from apps.payment.payment_types.click_merchant.auth import authentication
 from apps.payment.payment_types.click_merchant.provider import ClickProvider
 from apps.payment.payment_types.click_merchant.views import PaymentView

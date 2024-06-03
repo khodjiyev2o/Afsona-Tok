@@ -1,6 +1,7 @@
 from celery import shared_task
-from apps.payment.models import Transaction
+
 from apps.notification.models import UserNotification, Notification
+from apps.payment.models import Transaction
 
 
 @shared_task

@@ -7,7 +7,6 @@ from apps.payment.models import Transaction
 from apps.payment.payment_types.click_merchant.auth import authentication
 from apps.payment.payment_types.click_merchant.provider import ClickProvider
 from apps.payment.payment_types.click_merchant.views import PaymentView
-
 from .serializers import ClickPrepareSerializer
 
 

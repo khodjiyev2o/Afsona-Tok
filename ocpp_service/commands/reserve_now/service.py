@@ -1,8 +1,8 @@
 from ocpp.v16.call_result import ReserveNowPayload
 
-from .schema import ReserveNowRequest, ReserveNowResponse
 from ocpp_service.configs import ACTIVE_CONNECTIONS
 from ocpp_service.ocpp_controller import OCPP16Controller
+from .schema import ReserveNowRequest, ReserveNowResponse
 
 
 async def reserve_now_handler(body: ReserveNowRequest) -> ReserveNowResponse:

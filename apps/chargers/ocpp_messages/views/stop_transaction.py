@@ -11,7 +11,6 @@ from rest_framework.views import APIView
 
 from apps.chargers.models import ChargingTransaction, OCPPServiceRequestResponseLogs
 
-
 logger = logging.getLogger("telegram")
 
 

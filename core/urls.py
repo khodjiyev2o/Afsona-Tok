@@ -1,12 +1,10 @@
+from captcha import fields
 from django.conf import settings
-from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
-from django.urls import path, include, re_path
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.forms import AuthenticationForm
-
-
-from captcha import fields
+from django.urls import path, include, re_path
 
 from core.schema import swagger_urlpatterns
 

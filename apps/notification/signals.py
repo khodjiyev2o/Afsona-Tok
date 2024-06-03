@@ -1,9 +1,8 @@
-from django.utils import timezone
 from django.db.models.signals import post_save, m2m_changed
 from django.dispatch import receiver
-
-from firebase_admin.messaging import Message, Notification
+from django.utils import timezone
 from fcm_django.models import FCMDevice
+from firebase_admin.messaging import Message, Notification
 
 from apps.notification.models import Notification as Notif, UserNotification
 from apps.users.models import User

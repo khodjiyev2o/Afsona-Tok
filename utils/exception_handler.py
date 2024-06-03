@@ -1,6 +1,6 @@
-from rest_framework.views import exception_handler
-from rest_framework.serializers import as_serializer_error
 from rest_framework.exceptions import ErrorDetail
+from rest_framework.serializers import as_serializer_error
+from rest_framework.views import exception_handler
 
 
 def make_pretty_error(data, errors):

@@ -1,6 +1,7 @@
 from rest_framework import generics
-from apps.common.models import CarModel
+
 from apps.common.api_endpoints.CarModelList.serializers import CarModelListSerializer
+from apps.common.models import CarModel
 
 
 class CarModelListView(generics.ListAPIView):

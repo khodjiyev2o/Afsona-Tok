@@ -1,8 +1,8 @@
 from rest_framework import generics, status
 from rest_framework.response import Response
 
-from apps.common.models import SavedLocation
 from apps.common.api_endpoints.SavedLocation.serializers import SavedLocationSerializer
+from apps.common.models import SavedLocation
 
 
 class SavedLocationAPIView(generics.CreateAPIView):

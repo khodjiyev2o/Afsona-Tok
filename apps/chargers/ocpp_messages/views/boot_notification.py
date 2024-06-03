@@ -8,7 +8,6 @@ from rest_framework.views import APIView
 
 from apps.chargers.models import ChargePoint
 
-
 logger = logging.getLogger("telegram")
 
 

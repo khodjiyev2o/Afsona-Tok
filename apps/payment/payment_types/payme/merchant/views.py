@@ -1,22 +1,18 @@
-import sentry_sdk
-
 from datetime import datetime
 from typing import Union
 
+import sentry_sdk
 from django.conf import settings
-from django.db import transaction
 from django.utils import timezone
-
-
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from apps.payment.payment_types.payme.merchant.auth import PaymeBasicAuthentication
-from apps.payment.payment_types.payme.merchant import status_codes
-from apps.payment.payment_types.payme.merchant.serializers import PaymeCallbackSerializer
 from apps.payment.models import Transaction as PaymentTransaction, MerchantRequestLog
+from apps.payment.payment_types.payme.merchant import status_codes
+from apps.payment.payment_types.payme.merchant.auth import PaymeBasicAuthentication
+from apps.payment.payment_types.payme.merchant.serializers import PaymeCallbackSerializer
 
 
 class PaymeCallbackView(APIView):

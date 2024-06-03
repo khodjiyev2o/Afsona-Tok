@@ -1,12 +1,8 @@
 from django.contrib import admin
-from django.contrib.contenttypes.models import ContentType
-from django.utils.safestring import mark_safe
-from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from .models import User, AllTransactionHistory
-from apps.chargers.proxy_models import FinishedChargingTransactionProxy
-from apps.payment.models import Transaction
-from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
+
+from .models import User
 
 
 @admin.register(User)

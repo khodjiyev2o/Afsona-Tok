@@ -1,10 +1,11 @@
-from django.utils import timezone
+import pytz
 from celery import shared_task
-from telegram.bot import Bot
 from django.conf import settings
+from django.utils import timezone
+from telegram.bot import Bot
+
 from apps.chargers.models import ChargeCommand, ChargingTransaction
 from apps.chargers.utils import generate_id_tag
-import pytz
 
 
 @shared_task

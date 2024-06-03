@@ -1,11 +1,10 @@
 from django.urls import path
 
-from apps.payment.payment_types.payme.merchant.views import PaymeCallbackView
-from apps.payment.payment_types.click_merchant.Prepare.views import ClickPrepareAPIView
+from apps.payment.api_endpoints import *  # noqa
 from apps.payment.payment_types.click_merchant.Complete.views import ClickCompleteAPIView
-
-from apps.payment.api_endpoints import * # noqa
-from apps.payment.payment_types.payme import * # noqa
+from apps.payment.payment_types.click_merchant.Prepare.views import ClickPrepareAPIView
+from apps.payment.payment_types.payme import *  # noqa
+from apps.payment.payment_types.payme.merchant.views import PaymeCallbackView
 
 app_name = 'payment'
 

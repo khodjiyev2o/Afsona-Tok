@@ -2,9 +2,8 @@ import functools
 import json
 
 from requests import request
-from requests.exceptions import Timeout
 from requests.exceptions import RequestException
-
+from requests.exceptions import Timeout
 from rest_framework.serializers import ValidationError
 
 from apps.payment.models import MerchantRequestLog, Transaction

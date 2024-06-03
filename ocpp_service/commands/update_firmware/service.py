@@ -1,7 +1,6 @@
 from ocpp_service.configs import ACTIVE_CONNECTIONS
 from ocpp_service.ocpp_controller import OCPP16Controller
 from .schema import UpdateFirmwareRequest, UpdateFirmwareResponse
-from ocpp.v16.call_result import UpdateFirmwarePayload
 
 
 async def update_firmware_handler(body: UpdateFirmwareRequest) -> UpdateFirmwareResponse:

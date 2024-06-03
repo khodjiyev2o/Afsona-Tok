@@ -1,11 +1,13 @@
 import time
+
 import requests
+import sentry_sdk
 from django.conf import settings
 from django.db import models
-from django.utils.translation import gettext_lazy as _
-import sentry_sdk
-from apps.common.models import BaseModel, District, ConnectionType
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
+
+from apps.common.models import BaseModel, District, ConnectionType
 
 
 class Location(BaseModel):

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .api_endpoints import * # noqa
+from .api_endpoints import *  # noqa
 
 app_name = 'common'
 

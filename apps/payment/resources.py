@@ -1,7 +1,7 @@
+from django.utils.translation import gettext_lazy as _
 from import_export import resources
 
 from apps.payment.models import Transaction as PaymentTransaction
-from django.utils.translation import gettext_lazy as _
 
 
 class PaymentTransactionResource(resources.ModelResource):

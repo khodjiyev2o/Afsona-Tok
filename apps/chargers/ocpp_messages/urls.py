@@ -1,6 +1,5 @@
 from django.urls import path
 
-
 from apps.chargers.ocpp_messages.views import *
 from apps.chargers.ocpp_messages.views.diagnostics import DiagnosticsFileUploadView
 
