@@ -40,9 +40,9 @@ class InProgressChargingTransactionListSerializer(serializers.ModelSerializer):
         model = ChargingTransaction
         fields = ('id', 'connector', 'car', 'battery_percent', 'money', 'consumed_kwh', 'start_command_id')
 
-    def get_money(self, obj):
+    def get_money(self, obj: ChargingTransaction):
 
-        money = Decimal(str(obj.consumed_kwh)) * PRICE
+        money = Decimal(str(obj.consumed_kwh)) * obj.price_per_kwh
         # todo i will refactor
         return str(round(money, 2))
 
