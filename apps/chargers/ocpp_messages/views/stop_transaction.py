@@ -57,7 +57,10 @@ class StopTransactionAPIView(APIView):
             "status", "end_time", "stop_reason", 'battery_percent_on_end'
         ])
 
-        charging_transaction.user.update_balance()
+        user = charging_transaction.user
+        if user:
+            user.balance -= charging_transaction.total_price
+            user.save(update_fields=['balance'])
 
         initial_response['id_tag_info']['status'] = AuthorizationStatus.accepted.value
         return Response(data=initial_response, status=status.HTTP_200_OK)

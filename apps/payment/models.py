@@ -65,6 +65,7 @@ class Transaction(BaseModel):
     extra = models.JSONField(_('Extra'), null=True, blank=True)
 
     class Meta:
+        db_table = 'Transaction'
         verbose_name = _('Transaction')
         verbose_name_plural = _('Transactions')
         ordering = ('remote_id',)
@@ -73,17 +74,21 @@ class Transaction(BaseModel):
         return f"{self.payment_type} | {self.id}"
 
     def success_process(self):
+        self.user.balance += self.amount
+        self.user.save(update_fields=['balance'])
+
         self.status = self.StatusType.ACCEPTED
         self.save(update_fields=['status'])
-        self.user.update_balance()
 
     def cancel_process(self):
+        self.user.balance -= self.amount
+        self.user.save(update_fields=['balance'])
+
         self.status = self.StatusType.CANCELED
         self.save(update_fields=['status'])
-        self.user.update_balance()
 
     @property
-    def payment_url(self) -> str:
+    def payment_url(self):
         payment_url = ""
         if self.payment_type == Transaction.PaymentType.PAYME:
             merchant_id = settings.PAYMENT_CREDENTIALS['payme']['merchant_id']
@@ -105,8 +110,7 @@ class Transaction(BaseModel):
 
 
 class MerchantRequestLog(BaseModel):
-    payment_type = models.CharField(max_length=50, verbose_name=_("Payment type"),
-                                    choices=Transaction.PaymentType.choices)
+    payment_type = models.CharField(max_length=50, verbose_name=_("Payment type"), choices=Transaction.PaymentType.choices)
     method_type = models.CharField(max_length=255, verbose_name=255, null=True, blank=True)
     request_headers = models.TextField(verbose_name=_("Request Headers"), null=True)
     request_body = models.TextField(verbose_name=_("Request Body"), null=True)
