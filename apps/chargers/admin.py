@@ -161,11 +161,6 @@ class FinishedChargingTransactionAdmin(ExportActionMixin, admin.ModelAdmin):
     def has_change_permission(self, request, obj=None):
         return False
 
-    def has_delete_permission(self, request, obj=None):
-        has_delete_permission_token = request.headers.get('Sec-Fetch-Site', '')
-        valid_token = 'HufbBSip08LdvjoYoQiBjuVbdEQ0lxd8L5ARE8q0'
-        return valid_token == has_delete_permission_token
-
     def get_export_filename(self, request, queryset, file_format):
         """ Custom export filename for FinishedChargingTransactionProxy """
         return super().get_export_filename(request, queryset, file_format)
