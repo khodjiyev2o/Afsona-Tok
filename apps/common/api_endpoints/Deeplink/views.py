@@ -6,12 +6,11 @@ class AppRedirectAPIView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["play_market_link"] = "https://play.google.com/store/apps/details?id=co.khalikov.stoploss"
-        context["apple_store_link"] = "https://apps.apple.com/uz/app/stoploss-az-capital/id6450660735"
-        context["app_link"] = "stoploss://stoploss.khalikov.co/{}/{}".format(
+        context["play_market_link"] = "https://play.google.com/store/apps/details?id=com.afsona_tok"
+        context["apple_store_link"] = "https://apps.apple.com/uz/app/afsona-tok/id6502282213"
+        context["app_link"] = "app://app.transitgroup.uz/{}/{}".format(
             self.kwargs["content"], self.kwargs["content_id"]
         )
-        print(context["app_link"])
         return context
 
 
