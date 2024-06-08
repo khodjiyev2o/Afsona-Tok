@@ -216,8 +216,6 @@ FCM_DJANGO_SETTINGS = {
     ),
 }
 
-#  MODEL TRANSLATIONS
-
 
 def gettext(s):
     return s

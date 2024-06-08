@@ -11,6 +11,7 @@ from apps.users.models import User
 @receiver(post_save, sender=Notif)
 def create_user_notification_all(sender, instance, created, **kwargs):
     if created and instance.is_for_everyone:
+        print("working post_save")
         message = Message(
             notification=Notification(title=instance.title, body=instance.description),
         )
@@ -26,6 +27,7 @@ def create_user_notification_all(sender, instance, created, **kwargs):
 @receiver(m2m_changed, sender=Notif.users.through)
 def create_user_notification(sender, instance, action, **kwargs):
     if action == "post_add":
+        print("working post_Add")
         if instance.is_for_everyone:
             instance.users.clear()
         else:

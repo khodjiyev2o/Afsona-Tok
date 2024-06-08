@@ -14,4 +14,5 @@ class AppRedirectAPIView(TemplateView):
         print(context["app_link"])
         return context
 
+
 __all__ = ['AppRedirectAPIView']
