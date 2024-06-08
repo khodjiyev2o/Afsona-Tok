@@ -1,5 +1,9 @@
+from decimal import Decimal
+
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.db.models import Sum, DecimalField as ModelDecimalField
+from django.db.models.functions.comparison import Coalesce
 from django.utils.translation import gettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -35,6 +39,26 @@ class User(AbstractUser, BaseModel):
     def tokens(self):
         token = RefreshToken.for_user(self)
         return {"access": str(token.access_token), "refresh": str(token)}
+
+    def update_balance(self):
+        self.balance = self.__calculate_balance_based_history()
+        self.save(update_fields=['balance'])
+
+    def __calculate_balance_based_history(self) -> Decimal:
+        from apps.chargers.proxy_models import FinishedChargingTransactionProxy
+        from apps.payment.models import Transaction as PaymentTransaction
+
+        incoming_sum = PaymentTransaction.objects.filter(
+            user_id=self.id, status=PaymentTransaction.StatusType.ACCEPTED
+        ).aggregate(
+            total=Coalesce(Sum("amount"), 0, output_field=ModelDecimalField())
+        )['total']
+
+        outgoing_sum = FinishedChargingTransactionProxy.objects.filter(user_id=self.id).aggregate(
+            total=Coalesce(Sum("total_price"), 0, output_field=ModelDecimalField())
+        )['total']
+
+        return incoming_sum - outgoing_sum
 
     class Meta:
         verbose_name = _("User")

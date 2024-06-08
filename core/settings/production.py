@@ -18,7 +18,7 @@ CSRF_COOKIE_SECURE = True
 CSRF_TRUSTED_ORIGINS = [
     "https://afsona.transitgroup.uz"
 ]
-ALLOWED_HOSTS = ["afsona.transitgroup.uz", '46.101.212.188', 'localhost']
+ALLOWED_HOSTS = ["afsona.transitgroup.uz", 'app.transitgroup.uz', 'localhost']
 
 
 ###################################################################

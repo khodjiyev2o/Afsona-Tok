@@ -69,7 +69,4 @@ class StatusNotificationAPIView(APIView):
         charging_transaction.stop_reason = ChargingTransaction.StopReason.CONNECTOR_ERROR
         charging_transaction.save(update_fields=['meter_used', 'total_price', 'status', 'end_time', 'stop_reason'])
 
-        user = charging_transaction.user
-        if user:
-            user.balance -= charging_transaction.total_price
-            user.save(update_fields=['balance'])
+        charging_transaction.user.update_balance()
