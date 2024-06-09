@@ -15,7 +15,7 @@ class AppRedirectAPIView(TemplateView):
         if django_user_agent.os.family == 'iOS':
             return redirect(to=context['apple_store_link'])
         elif django_user_agent.os.family == 'Android':
-            return redirect(to=context['apple_store_link'])
+            return redirect(to=context['play_market_link'])
 
         return self.render_to_response(context)
 
