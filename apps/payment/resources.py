@@ -1,10 +1,12 @@
 from django.utils.translation import gettext_lazy as _
-from import_export import resources
+from import_export import resources, fields
 
 from apps.payment.models import Transaction as PaymentTransaction
 
 
 class PaymentTransactionResource(resources.ModelResource):
+    card__card_number = fields.Field(attribute='card__card_number', column_name='Card Number')
+
     class Meta:
         model = PaymentTransaction
         export_order = ('id', 'card', 'user__phone', 'amount', 'payment_type', 'created_at', 'status')

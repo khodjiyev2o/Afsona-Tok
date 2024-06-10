@@ -8,7 +8,7 @@ class AppRedirectAPIView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["play_market_link"] = "https://play.google.com/store/apps/details?id=com.afsona_tok"
         context["apple_store_link"] = "https://apps.apple.com/uz/app/afsona-tok/id6502282213"
-        context["app_link"] = "app://app.transitgroup.uz/{}/{}".format(
+        context["app_link"] = "https://app.transitgroup.uz/{}/{}".format(
             self.kwargs["content"], self.kwargs["content_id"]
         )
         return context
