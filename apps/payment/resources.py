@@ -12,7 +12,7 @@ class PaymentTransactionResource(resources.ModelResource):
 
     class Meta:
         model = PaymentTransaction
-        export_order = ('id', 'card', 'user__phone', 'amount', 'payment_type', 'created_at', 'status')
+        export_order = ('id', 'card__card_number', 'user__phone', 'amount', 'payment_type', 'created_at', 'status')
         fields = ('id', 'card__card_number', 'user__phone', 'amount', 'payment_type', 'created_at', 'status')
         name = _("Export Payment Transactions")
 
