@@ -5,7 +5,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from apps.common.models import BaseModel
-from apps.payment.tasks import send_payment_successful_notification
+from .tasks import send_payment_successful_notification
 
 
 class UserCard(BaseModel):
