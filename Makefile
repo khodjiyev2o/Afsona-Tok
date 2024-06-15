@@ -1,7 +1,5 @@
 #!/usr/bin/make
 
-
-
 hello:
 	echo "Hello, Afsona"
 run:
@@ -15,12 +13,5 @@ createsuperuser:
 	python3 manage.py createsuperuser
 test:
 	pytest -vv -s
-
 ocpp_service:
 	uvicorn ocpp_service.main:app --host 0.0.0.0 --port 8080 --workers 3
-
-
-
-
-## -B disable(pycache), -vv(show more information), -s(show print statements)
-

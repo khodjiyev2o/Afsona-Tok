@@ -7,7 +7,7 @@ from telegram.bot import Bot
 from telegram.parsemode import ParseMode
 
 from apps.chargers.models import ChargingTransaction, Connector
-from apps.chargers.tasks import send_report_on_stop_transaction_task
+from apps.chargers.tasks import send_report_on_stop_transaction_task, send_user_notification_on_stop_transaction_task
 
 telegram_logger = logging.getLogger('telegram')
 
@@ -15,6 +15,7 @@ telegram_logger = logging.getLogger('telegram')
 @receiver(post_save, sender=ChargingTransaction)
 def send_stop_transaction_to_telegram(sender, instance, created, **kwargs):
     if instance.status == ChargingTransaction.Status.FINISHED:
+        send_user_notification_on_stop_transaction_task.delay(instance.id)
         send_report_on_stop_transaction_task.delay(instance.id)
 
 

@@ -10,8 +10,8 @@ from apps.users.models import User
 
 @receiver(post_save, sender=Notif)
 def create_user_notification_all(sender, instance, created, **kwargs):
+    """This works when a notification is for everyone."""
     if created and instance.is_for_everyone:
-        print("working post_save")
         message = Message(
             notification=Notification(title=instance.title, body=instance.description),
         )
@@ -21,13 +21,13 @@ def create_user_notification_all(sender, instance, created, **kwargs):
         )
         users_id = [notification_user.user.id for notification_user in notification_users]
         devices = FCMDevice.objects.filter(user__in=users_id)
-        devices.send_message(message)
+        response = devices.send_message(message=message)
 
 
 @receiver(m2m_changed, sender=Notif.users.through)
 def create_user_notification(sender, instance, action, **kwargs):
+    """This works when a notification is not for everyone."""
     if action == "post_add":
-        print("working post_Add")
         if instance.is_for_everyone:
             instance.users.clear()
         else:
