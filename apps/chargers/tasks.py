@@ -55,16 +55,17 @@ Klient: {user}"""
 @shared_task
 def send_user_notification_on_stop_transaction_task(transaction_id: int):
     transaction: ChargingTransaction = ChargingTransaction.objects.get(pk=transaction_id)
+    if transaction.user:
+        notification = Notification.objects.create(
+            title="Charging finished !",
+            title_uz="Zaryad tugadi !",
+            title_ru="Зарядка завершена !",
+            title_en="Charging finished",
+            description="Your charging has been finished",
+            description_uz="Sizning zaryadingiz tugadi",
+            description_ru="Ваша зарядка завершена",
+            description_en="Your charging has been finished",
+            is_for_everyone=False,
+        )
+        notification.users.set([transaction.user])
 
-    Notification.objects.create(
-        title="Charging finished !",
-        title_uz="Zaryad tugadi !",
-        title_ru="Зарядка завершена !",
-        title_en="Charging finished",
-        description="Your charging has been finished",
-        description_uz="Sizning zaryadingiz tugadi",
-        description_ru="Ваша зарядка завершена",
-        description_en="Your charging has been finished",
-        is_for_everyone=False,
-        users=transaction.user,
-    )
