@@ -31,13 +31,23 @@ def create_user_notification(sender, instance, action, **kwargs):
         if instance.is_for_everyone:
             instance.users.clear()
         else:
-            message = Message(
-                notification=Notification(title=instance.title, body=instance.description),
-            )
             notification_users = UserNotification.objects.bulk_create(
                 (UserNotification(user_id=user.id, notification_id=instance.id, is_sent=True, sent_at=timezone.now())
                  for user in instance.users.all())
             )
-            users_id = [notification_user.user.id for notification_user in notification_users]
-            devices = FCMDevice.objects.filter(user__in=users_id)
-            devices.send_message(message)
+
+            # Group users by language preference
+            user_language_map = {}
+            for user in instance.users.all():
+                user_language_map.setdefault(user.language, []).append(user.id)
+
+            # Send messages based on user language
+            for language, user_ids in user_language_map.items():
+                title = getattr(instance, f'title_{language}', instance.title)
+                body = getattr(instance, f'description_{language}', instance.description)
+
+                message = Message(
+                    notification=Notification(title=title, body=body),
+                )
+                devices = FCMDevice.objects.filter(user__in=user_ids)
+                devices.send_message(message)

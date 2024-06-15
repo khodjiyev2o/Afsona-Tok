@@ -5,7 +5,6 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from apps.common.models import BaseModel
-from .tasks import send_payment_successful_notification
 
 
 class UserCard(BaseModel):
@@ -78,10 +77,6 @@ class Transaction(BaseModel):
     def success_process(self):
         self.user.balance += self.amount
         self.user.save(update_fields=['balance'])
-
-        self.status = self.StatusType.ACCEPTED
-        self.save(update_fields=['status'])
-        send_payment_successful_notification.delay(self.id)
 
     def cancel_process(self):
         self.user.balance -= self.amount

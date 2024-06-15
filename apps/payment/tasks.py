@@ -7,7 +7,6 @@ from apps.payment.models import Transaction
 @shared_task
 def send_payment_successful_notification(transaction_id: int):
     transaction = Transaction.objects.get(pk=transaction_id)
-
     notification = Notification.objects.create(
         title="To'lov muvaffaqiyatli amalga oshirildi",
         title_uz="To'lov muvaffaqiyatli amalga oshirildi",
