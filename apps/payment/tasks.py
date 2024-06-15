@@ -22,3 +22,6 @@ def send_payment_successful_notification(transaction_id: int):
 
     notification.users.set([transaction.user])
 
+    transaction.is_notification_sent = True
+    transaction.save(update_fields=['is_notification_sent'])
+

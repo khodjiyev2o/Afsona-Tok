@@ -63,6 +63,7 @@ class Transaction(BaseModel):
     canceled_at = models.DateTimeField(verbose_name=_("Canceled at"), null=True, blank=True)
     payment_type = models.CharField(_("Payment Type"), choices=PaymentType.choices)
     extra = models.JSONField(_('Extra'), null=True, blank=True)
+    is_notification_sent = models.BooleanField(_('Is notification sent'), default=False)
 
     class Meta:
         db_table = 'Transaction'

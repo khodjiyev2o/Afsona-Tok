@@ -7,5 +7,5 @@ from apps.payment.tasks import send_payment_successful_notification
 
 @receiver(post_save, sender=Transaction)
 def payment_successful(sender, instance, created, **kwargs):
-    if created and instance.status == Transaction.StatusType.ACCEPTED:
+    if instance.status == Transaction.StatusType.ACCEPTED and instance.is_notification_sent is False:
         send_payment_successful_notification.delay(instance.id)
