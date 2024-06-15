@@ -8,7 +8,7 @@ from apps.payment.models import Transaction
 def send_payment_successful_notification(transaction_id: int):
     transaction = Transaction.objects.get(pk=transaction_id)
 
-    notification, created = Notification.objects.get_or_create(
+    notification = Notification.objects.create(
         title="Payment successful",
         title_uz="To'lov muvaffaqiyatli amalga oshirildi 🎉🎉🎉",
         title_ru="Оплата прошла успешно 🎉🎉🎉",
@@ -20,3 +20,6 @@ def send_payment_successful_notification(transaction_id: int):
         is_for_everyone=False,
         users=transaction.user,
     )
+
+    notification.users.set([transaction.user])
+
