@@ -18,7 +18,6 @@ def send_payment_successful_notification(transaction_id: int):
         description_ru=f"Ваш баланс успешно пополнен на {transaction.amount} сум",
         description_en=f"Your balance was successfully topped up by {transaction.amount} sum",
         is_for_everyone=False,
-        users=transaction.user,
     )
 
     notification.users.set([transaction.user])
