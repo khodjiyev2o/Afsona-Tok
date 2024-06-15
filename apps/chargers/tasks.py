@@ -58,11 +58,11 @@ def send_user_notification_on_stop_transaction_task(transaction_id: int):
     if transaction.user:
         notification = Notification.objects.create(
             title="Charging finished !",
-            title_uz="Zaryad tugadi !",
+            title_uz="Zaryadlash tugadi !",
             title_ru="Зарядка завершена !",
             title_en="Charging finished",
-            description="Your charging has been finished",
-            description_uz="Sizning zaryadingiz tugadi",
+            description="Sizning mashinangizni zaryadlash tohtatildi",
+            description_uz="Sizning mashinangizni zaryadlash tohtatildi",
             description_ru="Ваша зарядка завершена",
             description_en="Your charging has been finished",
             is_for_everyone=False,
