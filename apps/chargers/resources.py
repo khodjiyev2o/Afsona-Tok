@@ -9,12 +9,12 @@ class FinishedChargingTransactionProxyResource(resources.ModelResource):
 
     class Meta:
         model = FinishedChargingTransactionProxy
-        export_order = ('id', "connector__charge_point__name", 'created_at', 'cash_mode', 'meter_used', 'total_price')
-        fields = ('id', 'connector__charge_point__name', 'created_at', 'cash_mode', 'meter_used', 'total_price',)
+        export_order = ('id', "connector__charge_point__name", 'created_at', 'cash_mode', 'user__phone', 'meter_used', 'total_price')
+        fields = ('id', 'connector__charge_point__name', 'created_at', 'cash_mode', 'user__phone', 'meter_used', 'total_price',)
         name = _("Export Charging Transactions")
 
     def dehydrate_cash_mode(self, obj):
         return obj.user is None
 
     def get_export_headers(self, fields=None):
-        return [_("ID"), _("Charger Name"), _("Created At"),  _("Cash Mode"), _("Meter Used"), _("Total Price")]
+        return [_("ID"), _("Charger Name"), _("Created At"),  _("Cash Mode"), _("Phone"), _("Meter Used"), _("Total Price")]
